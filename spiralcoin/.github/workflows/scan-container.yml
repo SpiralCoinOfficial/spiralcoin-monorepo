@@ -1,0 +1,45 @@
+name: Container Scan
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  trivy-fs:
+    name: Trivy FS Scan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Run Trivy FS scan (report-only)
+        # aquasecurity/trivy-action v0.35.0 (pinned to commit SHA for supply-chain safety)
+        uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1
+        with:
+          scan-type: 'fs'
+          ignore-unfixed: true
+          format: 'table'
+          severity: 'HIGH,CRITICAL'
+          exit-code: '0'
+  trivy-config:
+    name: Trivy Config Scan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Run Trivy config scan (report-only)
+        # aquasecurity/trivy-action v0.35.0 (pinned to commit SHA for supply-chain safety)
+        uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1
+        with:
+          scan-type: 'config'
+          ignore-unfixed: true
+          format: 'table'
+          severity: 'HIGH,CRITICAL'
+          exit-code: '0'

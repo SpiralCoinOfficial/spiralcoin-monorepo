@@ -1,0 +1,36 @@
+name: Summarize new issues
+
+'on':
+  issues:
+    types: [opened]
+
+jobs:
+  summarize:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Run AI inference
+        id: inference
+        uses: actions/ai-inference@v2
+        with:
+          prompt: |
+            Summarize the following GitHub issue in one paragraph:
+            Title: ${{ github.event.issue.title }}
+            Body: ${{ github.event.issue.body }}
+
+      - name: Comment with AI summary
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          RESPONSE: ${{ steps.inference.outputs.response }}
+        run: gh issue comment "$ISSUE_NUMBER" --body "$RESPONSE"
+  # You may pin to the exact commit or the version.
+
+  # uses: tj-django/django-migration-fixer@306c48b412beda9aeb193f0da83bb12ee20594d0
+

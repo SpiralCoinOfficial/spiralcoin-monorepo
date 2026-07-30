@@ -1,0 +1,68 @@
+# This workflow executes several linters on changed files based on languages
+# used in your code base whenever you push a code or open a pull request.
+#
+# See: https://github.com/super-linter/super-linter
+name: Lint Code Base
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+  statuses: write
+
+jobs:
+  run-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          # Full git history is needed to get a proper list of changed files
+          # within super-linter.
+          fetch-depth: 0
+
+      - name: Lint Code Base
+        uses: super-linter/super-linter@v8
+        env:
+          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_BRANCH: "main"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Skip linters that are noisy or handled elsewhere in CI.
+          # Markdown is linted by markdownlint-cli2 in build.yml.
+          VALIDATE_MARKDOWN: false
+          # Prettier-style validators are style-only (not correctness) and
+          # disagree with project conventions (e.g. GitHub workflow indentation,
+          # mixed 2/4-space JS indentation across legacy + new code).
+          VALIDATE_YAML_PRETTIER: false
+          VALIDATE_JSONC_PRETTIER: false
+          VALIDATE_JSON_PRETTIER: false
+          VALIDATE_MARKDOWN_PRETTIER: false
+          VALIDATE_JAVASCRIPT_PRETTIER: false
+          VALIDATE_TYPESCRIPT_PRETTIER: false
+          VALIDATE_JSX_PRETTIER: false
+          VALIDATE_CSS_PRETTIER: false
+          VALIDATE_HTML_PRETTIER: false
+          VALIDATE_GRAPHQL_PRETTIER: false
+          VALIDATE_VUE_PRETTIER: false
+          # Natural-language linters flag prose style/word choice; not enforced.
+          VALIDATE_NATURAL_LANGUAGE: false
+          # Biome enforces a JS style not adopted by this repo.
+          VALIDATE_JAVASCRIPT_BIOME: false
+          VALIDATE_TYPESCRIPT_BIOME: false
+          VALIDATE_BIOME_FORMAT: false
+          VALIDATE_BIOME_LINT: false
+          # Container/IaC/SAST scanning is already handled by dedicated workflows
+          # (Container Scan, Bearer, CodeQL Advanced, SBOM).
+          VALIDATE_CHECKOV: false
+          VALIDATE_TRIVY: false
+          # Zizmor "unpinned-uses" is an org-wide policy decision; not enforced here yet.
+          VALIDATE_GITHUB_ACTIONS_ZIZMOR: false
+          # No Ruby or Jscpd config in repo.
+          VALIDATE_RUBY: false
+          VALIDATE_JSCPD: false
+          # Don't scan vendored / generated content.
+          FILTER_REGEX_EXCLUDE: '(^|/)(node_modules|dist|build|out|target|venv|vendor|\.git)/'
