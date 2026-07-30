@@ -1,0 +1,21 @@
+# Node
+node_modules/
+dist/
+build/
+
+# PHP / Composer
+vendor/
+composer.lock
+
+# Private data
+private/
+*.env
+*.key
+*.pem
+*.secret
+*.sql
+*.db
+
+# IDEs, OS
+.vscode/
+.DS_Store
