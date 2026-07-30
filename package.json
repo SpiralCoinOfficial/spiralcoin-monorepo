@@ -1,1 +1,13 @@
-{"name": "spiralcoin-monorepo","private": true,"workspaces": ["SpiralCoin-SPLC", "frontend"],"scripts": {"build:all": "npm run build --workspaces", "test:contracts": "npm test --workspace=SpiralCoin-SPLC"}}
+{
+  "name": "spiralcoin-monorepo",
+  "private": true,
+  "workspaces": [
+    "*",
+    "spiralcoin*",
+    "SpiralCoin*"
+  ],
+  "scripts": {
+    "build:all": "npm run build --workspaces",
+    "test:contracts": "npm test --workspace=SpiralCoin-SPLC"
+  }
+}
