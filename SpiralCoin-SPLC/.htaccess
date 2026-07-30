@@ -1,0 +1,71 @@
+# SpiralCoin — Static site override
+
+#
+
+# Serves index.html before WordPress index.php on IONOS Apache hosting
+
+DirectoryIndex index.html index.htm index.php
+
+# --- WordPress compat: keep admin + AJAX working ---
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+# HARD BLOCK sensitive paths BEFORE any fallback (return 404, never SPA-rewrite)
+
+  RewriteRule (?i)(^|/)(\.git|\.github|\.svn|\.hg|\.vscode|\.idea|\.aws|\.ssh|node_modules|contracts|alchemy-demo|w3a-quick-start|deploy|funding/ads|db|__pycache__|vendor|venv|\.venv)(/|$) - [R=404,L,NC]
+  RewriteRule (?i)(^|/)\.env(\..*)?$ - [R=404,L,NC]
+  RewriteRule (?i)\.(bak|log|sql|md|ps1|bat|sh|py|example\.js)$ - [R=404,L,NC]
+  RewriteRule (?i)(^|/)(package(-lock)?\.json|yarn\.lock|hardhat\.config\.js|composer\.(json|lock)|Dockerfile|docker-compose\.ya?ml)$ - [R=404,L,NC]
+
+# Always serve actual static files directly (index.html wins)
+
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+# Pass WP admin and AJAX through to PHP
+
+  RewriteRule ^wp-admin/(.*)$ /wp-admin/$1 [L]
+  RewriteRule ^wp-login\.php$ /wp-login.php [L]
+  RewriteRule ^wp-cron\.php$ /wp-cron.php [L]
+  RewriteRule ^xmlrpc\.php$ /xmlrpc.php [L]
+  RewriteCond %{REQUEST_URI} ^/wp-
+  RewriteRule ^ - [L]
+
+# Everything else: serve index.html (static SPA fallback)
+
+  RewriteRule ^ /index.html [L]
+</IfModule>
+
+# --- Security headers ---
+
+<IfModule mod_headers.c>
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  # CSP is enforced via per-page <meta http-equiv="Content-Security-Policy"> tags.
+  # Do NOT set CSP here: IONOS shared Apache returns 500 on long CSP header values.
+</IfModule>
+
+# --- Cache control for assets ---
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 5 minutes"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# --- Deny access to sensitive files (by name) ---
+
+<FilesMatch "(^\.|\.env$|\.env\..*$|\.bak$|\.bak-.*$|\.log$|\.sql$|\.md$|\.ps1$|\.bat$|\.sh$|\.py$|\.example\.js$|package\.json$|package-lock\.json$|yarn\.lock$|hardhat\.config\.js$|composer\.json$|composer\.lock$|Dockerfile$|docker-compose\.ya?ml$)">
+  Require all denied
+</FilesMatch>
+
+# --- Deny access to sensitive paths (by URL, even if dir exists) ---
+
+RedirectMatch 404 (?i)/(\.git|\.github|\.svn|\.hg|\.vscode|\.idea|\.aws|\.ssh|node_modules|contracts|alchemy-demo|w3a-quick-start|deploy|funding/ads|db|tests?|__pycache__|vendor|venv|\.venv|\.env\.?[^/]*)(/|$)

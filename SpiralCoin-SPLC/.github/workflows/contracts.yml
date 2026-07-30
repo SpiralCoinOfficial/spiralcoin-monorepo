@@ -1,0 +1,49 @@
+name: contracts
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'contracts/**'
+      - '.github/workflows/contracts.yml'
+  pull_request:
+    paths:
+      - 'contracts/**'
+      - '.github/workflows/contracts.yml'
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: contracts
+
+jobs:
+  compile-and-test:
+    name: compile + test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: contracts/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps --no-audit --no-fund
+        env:
+          # Avoid Hardhat noisy telemetry prompts in CI.
+          HARDHAT_DISABLE_TELEMETRY_PROMPT: 'true'
+
+      - name: Hardhat compile
+        run: npx hardhat compile
+        env:
+          HARDHAT_DISABLE_TELEMETRY_PROMPT: 'true'
+
+      - name: Hardhat test
+        run: npx hardhat test
+        env:
+          HARDHAT_DISABLE_TELEMETRY_PROMPT: 'true'

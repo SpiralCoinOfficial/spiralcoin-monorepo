@@ -1,0 +1,2397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Cookiebot CMP -->
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="83c385c8-b96d-4d3e-a75b-0f81f3d82de3"
+    type="text/javascript" async></script>
+  <!-- Google tag (gtag.js) with Consent Mode v2 defaults -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEMH1LPSD4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    // Consent Mode v2: default to denied; Cookiebot will update on user choice.
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'functionality_storage': 'granted',
+      'security_storage': 'granted',
+      'wait_for_update': 500
+    });
+    gtag('js', new Date());
+    gtag('config', 'G-MEMH1LPSD4');
+  </script>
+  <meta charset="UTF-8">
+  <script defer data-domain="spiralcoin.net" src="https://plausible.io/js/script.js"></script>
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://plausible.io https://unpkg.com https://cdn.jsdelivr.net https://stream.binance.us https://stream.binance.us:9443 https://api.binance.us https://www.googletagmanager.com https://*.googletagmanager.com https://consent.cookiebot.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https: https://www.google-analytics.com https://www.googletagmanager.com https://*.g.doubleclick.net; connect-src 'self' https://api.binance.us wss://stream.binance.us wss://stream.binance.us:9443 https://api.allorigins.win https://query1.finance.yahoo.com https://plausible.io https://api.coingecko.com https://api.geckoterminal.com https://*.g.alchemy.com wss://*.g.alchemy.com https://*.infura.io wss://*.infura.io https://www.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.googletagmanager.com https://*.g.doubleclick.net https://stats.g.doubleclick.net https://consent.cookiebot.com https://consentcdn.cookiebot.com; frame-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="google-site-verification" content="6oroSWaeFEBXvnReKKEFf6g9oqV-hp7FPMbASNd39bY" />
+  <title>SpiralCoin (SPLC) — Institutional-Grade Market Intelligence</title>
+  <meta name="description"
+    content="Real-time data from every major exchange, crypto network, and Federal Reserve feed. Track stocks, ETFs, options, bonds, and all crypto chains in one platform.">
+  <link rel="canonical" href="https://www.spiralcoin.net/">
+  <link rel="icon" type="image/svg+xml" href="/assets/spiralcoin-mark.svg?v=20260526b">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.spiralcoin.net/">
+  <meta property="og:title" content="SpiralCoin (SPLC) — Institutional-Grade Market Intelligence">
+  <meta property="og:description"
+    content="Live data. Every exchange. Every crypto chain. Professional analytics for serious investors.">
+  <meta property="og:image" content="https://www.spiralcoin.net/spiralcoin_og_1200x630.png?v=20260526b">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SpiralCoin (SPLC) — Market Intelligence Platform">
+  <meta name="twitter:image" content="https://www.spiralcoin.net/spiralcoin_og_1200x630.png?v=20260526b">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
+  <script src="/assets/live-config.js" defer></script>
+  <style>
+    :root {
+      --bg: #060a10;
+      --surface: #0a1120;
+      --card: #0e1828;
+      --card2: #111e30;
+      --border: rgba(255, 255, 255, 0.065);
+      --border-g: rgba(201, 162, 39, 0.28);
+      --gold: #c9a227;
+      --gold-b: #e8c042;
+      --gold-dim: rgba(201, 162, 39, 0.12);
+      --text: #dce8f5;
+      --muted: #7a8fa8;
+      --dim: #4a5568;
+      --green: #00c97a;
+      --red: #ff3d5a;
+      --blue: #3b82f6;
+      --nav-h: 58px;
+      --r: 8px;
+      --r2: 14px;
+      --mono: 'IBM Plex Mono', monospace;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh
+    }
+
+    a {
+      color: var(--gold);
+      text-decoration: none
+    }
+
+    a:hover {
+      text-decoration: underline
+    }
+
+    .container {
+      width: min(1240px, 95%);
+      margin: 0 auto
+    }
+
+    button {
+      cursor: pointer;
+      font-family: inherit
+    }
+
+    input,
+    select {
+      font-family: inherit
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      height: var(--nav-h);
+      background: rgba(6, 10, 16, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border)
+    }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0 1.2rem
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      font-weight: 700;
+      font-size: .97rem;
+      color: var(--text);
+      white-space: nowrap;
+      text-decoration: none
+    }
+
+    .nav-brand img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      box-shadow: 0 0 0 1.5px var(--border-g)
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: .15rem;
+      margin-left: .8rem
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: .88rem;
+      font-weight: 500;
+      padding: .42rem .75rem;
+      border-radius: 6px;
+      transition: color .15s, background .15s
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.06);
+      text-decoration: none
+    }
+
+    .nav-spacer {
+      flex: 1
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: .6rem
+    }
+
+    .nd {
+      position: relative
+    }
+
+    .nd-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: .83rem;
+      font-weight: 500;
+      padding: .38rem .6rem;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: .25rem;
+      transition: all .15s;
+      white-space: nowrap
+    }
+
+    .nd-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, .06)
+    }
+
+    .nd-menu {
+      position: absolute;
+      top: calc(100% + 5px);
+      left: 0;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      min-width: 185px;
+      padding: .3rem;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, .65);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-4px);
+      transition: all .15s;
+      z-index: 400
+    }
+
+    .nd:hover .nd-menu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0)
+    }
+
+    .nd-menu a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .44rem .72rem;
+      border-radius: 6px;
+      color: var(--text);
+      font-size: .83rem;
+      gap: .4rem;
+      transition: background .12s;
+      white-space: nowrap
+    }
+
+    .nd-menu a:hover {
+      background: var(--card2)
+    }
+
+    .nd-div {
+      border-top: 1px solid var(--border);
+      margin: .28rem 0
+    }
+
+    .soon-b {
+      font-size: .58rem;
+      background: rgba(201, 162, 39, .15);
+      color: var(--gold);
+      padding: .1rem .33rem;
+      border-radius: 100px;
+      font-weight: 700
+    }
+
+    .nav-sp {
+      flex: 1
+    }
+
+    .nav-act {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      flex-shrink: 0
+    }
+
+    .nw {
+      position: relative
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      padding: .38rem;
+      border-radius: 6px;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      align-items: center;
+      transition: color .15s
+    }
+
+    .icon-btn:hover {
+      color: var(--text)
+    }
+
+    .nb {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      background: var(--red);
+      color: #fff;
+      font-size: .52rem;
+      font-weight: 700;
+      min-width: 13px;
+      height: 13px;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 2px
+    }
+
+    .np {
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      width: 290px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .65);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-4px);
+      transition: all .15s;
+      z-index: 400
+    }
+
+    .np.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0)
+    }
+
+    .np-hdr {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .65rem .9rem;
+      border-bottom: 1px solid var(--border);
+      font-size: .82rem;
+      font-weight: 600
+    }
+
+    .ni {
+      display: flex;
+      gap: .6rem;
+      padding: .6rem .9rem;
+      border-bottom: 1px solid var(--border);
+      font-size: .79rem
+    }
+
+    .ni:last-child {
+      border-bottom: none
+    }
+
+    .ni:hover {
+      background: var(--card2)
+    }
+
+    .u-av {
+      width: 21px;
+      height: 21px;
+      border-radius: 50%;
+      background: var(--gold-dim);
+      border: 1px solid var(--border-g);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .67rem;
+      font-weight: 700;
+      color: var(--gold);
+      flex-shrink: 0
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      border-radius: var(--r);
+      padding: .52rem 1.1rem;
+      font-size: .86rem;
+      font-weight: 600;
+      border: none;
+      transition: all .18s
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border)
+    }
+
+    .btn-ghost:hover {
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.18)
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #1a0f00
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-b)
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--border-g)
+    }
+
+    .btn-outline:hover {
+      background: var(--gold-dim)
+    }
+
+    .status-strip {
+      position: fixed;
+      top: var(--nav-h);
+      left: 0;
+      right: 0;
+      z-index: 190;
+      height: 32px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      overflow: hidden
+    }
+
+    .strip-scroll {
+      display: flex;
+      align-items: center;
+      gap: 2.4rem;
+      animation: stripScroll 50s linear infinite;
+      white-space: nowrap;
+      padding: 0 2rem
+    }
+
+    .strip-scroll:hover {
+      animation-play-state: paused
+    }
+
+    @keyframes stripScroll {
+      0% {
+        transform: translateX(0)
+      }
+
+      100% {
+        transform: translateX(-50%)
+      }
+    }
+
+    .strip-item {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      font-size: .75rem;
+      font-family: var(--mono)
+    }
+
+    .strip-sym {
+      color: var(--gold);
+      font-weight: 600
+    }
+
+    .strip-price {
+      color: var(--text)
+    }
+
+    .up {
+      color: var(--green)
+    }
+
+    .down {
+      color: var(--red)
+    }
+
+    .strip-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+      display: inline-block
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .4
+      }
+    }
+
+    .page-body {
+      padding-top: calc(var(--nav-h) + 32px)
+    }
+
+    .hero {
+      padding: 4.5rem 0 3rem;
+      background: radial-gradient(ellipse 70% 50% at 15% -10%, rgba(201, 162, 39, .09), transparent), radial-gradient(ellipse 50% 40% at 85% 5%, rgba(59, 130, 246, .06), transparent), var(--bg)
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: stretch
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .3rem .85rem;
+      border-radius: 100px;
+      border: 1px solid var(--border-g);
+      color: var(--gold);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .05em;
+      margin-bottom: 1.2rem
+    }
+
+    .hero h1 {
+      font-size: clamp(1.9rem, 3.5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.08;
+      color: var(--text);
+      margin-bottom: 1.1rem
+    }
+
+    .hero h1 span {
+      color: var(--gold)
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 520px;
+      margin-bottom: 1.8rem;
+      line-height: 1.7
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-bottom: 2rem
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem
+    }
+
+    .hstat {
+      position: relative;
+      padding: 1rem .9rem .9rem;
+      background: linear-gradient(180deg,
+          rgba(18, 22, 38, 0.92) 0%,
+          rgba(10, 14, 26, 0.92) 100%);
+      border: 1px solid rgba(201, 162, 39, 0.22);
+      border-radius: var(--r);
+      text-align: center;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 6px 18px -8px rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(8px) saturate(1.1);
+      -webkit-backdrop-filter: blur(8px) saturate(1.1);
+      overflow: hidden;
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .hstat::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 12%;
+      right: 12%;
+      height: 1px;
+      background: linear-gradient(90deg,
+          rgba(201, 162, 39, 0) 0%,
+          rgba(201, 162, 39, 0.7) 50%,
+          rgba(201, 162, 39, 0) 100%);
+    }
+
+    .hstat:hover {
+      transform: translateY(-2px);
+      border-color: rgba(201, 162, 39, 0.45);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 10px 24px -8px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(201, 162, 39, 0.06);
+    }
+
+    .hstat-val {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--gold);
+      font-family: var(--mono);
+      letter-spacing: .02em;
+      text-shadow: 0 0 14px rgba(201, 162, 39, 0.25);
+    }
+
+    .hstat-lbl {
+      font-size: .68rem;
+      color: var(--muted);
+      margin-top: .35rem;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-weight: 500;
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(180deg,
+          rgba(14, 18, 32, 0.94) 0%,
+          rgba(8, 11, 22, 0.94) 100%);
+      border: 1px solid rgba(201, 162, 39, 0.22);
+      border-radius: var(--r2);
+      overflow: hidden;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 18px 50px -18px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(10px) saturate(1.15);
+      -webkit-backdrop-filter: blur(10px) saturate(1.15);
+    }
+
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border-radius: inherit;
+      background: radial-gradient(120% 80% at 0% 0%,
+          rgba(201, 162, 39, 0.08) 0%,
+          rgba(201, 162, 39, 0) 55%);
+    }
+
+    .hero-chart-header {
+      padding: .9rem 1.1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(180deg,
+          rgba(255, 255, 255, 0.03) 0%,
+          rgba(255, 255, 255, 0) 100%);
+    }
+
+    .hch-title {
+      font-size: .9rem;
+      font-weight: 600;
+      letter-spacing: .02em;
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+    }
+
+    .hch-price {
+      font-family: var(--mono);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: .02em;
+      text-shadow: 0 0 12px rgba(201, 162, 39, 0.2);
+    }
+
+    #hero-chart {
+      flex: 1 1 auto;
+      min-height: 320px;
+      width: 100%;
+    }
+
+    .hero-promo {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .85rem 1.1rem;
+      background:
+        linear-gradient(135deg, rgba(201, 162, 39, 0.14) 0%, rgba(201, 162, 39, 0.04) 60%, rgba(59, 130, 246, 0.10) 100%);
+      border-bottom: 1px solid rgba(201, 162, 39, 0.22);
+    }
+
+    .hero-promo-left {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      min-width: 0;
+    }
+
+    .hero-promo-badge {
+      flex-shrink: 0;
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #0a0d1a;
+      background: linear-gradient(180deg, #f0c84a, #c9a227);
+      padding: .3rem .55rem;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px -2px rgba(201, 162, 39, 0.6);
+    }
+
+    .hero-promo-text {
+      font-size: .82rem;
+      line-height: 1.35;
+      color: var(--text);
+      min-width: 0;
+    }
+
+    .hero-promo-text b {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .hero-promo-text small {
+      display: block;
+      font-size: .65rem;
+      color: var(--muted);
+      margin-top: .15rem;
+      letter-spacing: .02em;
+    }
+
+    .hero-promo-cta {
+      flex-shrink: 0;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      padding: .55rem .95rem;
+      border-radius: 6px;
+      background: linear-gradient(180deg, #f0c84a, #c9a227);
+      color: #0a0d1a;
+      border: 0;
+      cursor: pointer;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: transform .15s ease, box-shadow .15s ease;
+      box-shadow: 0 6px 16px -6px rgba(201, 162, 39, 0.55);
+    }
+
+    .hero-promo-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px -8px rgba(201, 162, 39, 0.75);
+    }
+
+    .market-section {
+      padding: 3rem 0
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.4rem;
+      gap: 1rem;
+      flex-wrap: wrap
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700
+    }
+
+    .tabs {
+      display: flex;
+      gap: .3rem;
+      background: var(--card);
+      border-radius: var(--r);
+      padding: .3rem
+    }
+
+    .tab {
+      padding: .4rem .9rem;
+      border-radius: 6px;
+      font-size: .83rem;
+      font-weight: 500;
+      color: var(--muted);
+      border: none;
+      background: none;
+      transition: all .15s
+    }
+
+    .tab.active,
+    .tab:hover {
+      background: var(--card2);
+      color: var(--text)
+    }
+
+    .tab.active {
+      color: var(--gold)
+    }
+
+    .tab-panel {
+      display: none
+    }
+
+    .tab-panel.active {
+      display: block
+    }
+
+    .asset-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: .75rem
+    }
+
+    .asset-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1rem 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: border-color .15s, background .15s;
+      cursor: pointer
+    }
+
+    .asset-card:hover {
+      border-color: var(--border-g);
+      background: var(--card2)
+    }
+
+    .ac-left {
+      display: flex;
+      align-items: center;
+      gap: .75rem
+    }
+
+    .ac-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--card2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      border: 1px solid var(--border)
+    }
+
+    .ac-name {
+      font-weight: 600;
+      font-size: .9rem
+    }
+
+    .ac-sub {
+      font-size: .75rem;
+      color: var(--muted)
+    }
+
+    .ac-right {
+      text-align: right
+    }
+
+    .ac-price {
+      font-family: var(--mono);
+      font-size: .92rem;
+      font-weight: 600
+    }
+
+    .ac-chg {
+      font-size: .78rem;
+      padding: .15rem .45rem;
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-weight: 500;
+      margin-top: .2rem
+    }
+
+    .chg-up {
+      background: rgba(0, 201, 122, .15);
+      color: var(--green)
+    }
+
+    .chg-dn {
+      background: rgba(255, 61, 90, .15);
+      color: var(--red)
+    }
+
+    .chg-flat {
+      background: rgba(255, 255, 255, .06);
+      color: var(--muted)
+    }
+
+    .chart-section {
+      padding: 2rem 0 3rem
+    }
+
+    .chart-wrap {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      overflow: hidden
+    }
+
+    .chart-toolbar {
+      padding: .85rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap
+    }
+
+    .ct-pair {
+      font-weight: 700;
+      font-size: 1rem
+    }
+
+    .ct-price {
+      font-family: var(--mono);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--gold)
+    }
+
+    .ct-chg {
+      font-size: .82rem;
+      padding: .22rem .55rem;
+      border-radius: 5px
+    }
+
+    .tframe-btns {
+      display: flex;
+      gap: .25rem;
+      margin-left: auto
+    }
+
+    .tf-btn {
+      padding: .3rem .65rem;
+      border-radius: 5px;
+      font-size: .78rem;
+      font-weight: 500;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      background: none;
+      transition: all .15s
+    }
+
+    .tf-btn.active,
+    .tf-btn:hover {
+      background: var(--card2);
+      color: var(--text);
+      border-color: var(--border-g)
+    }
+
+    #main-chart {
+      height: 360px
+    }
+
+    .chart-pair-tabs {
+      display: flex;
+      gap: .3rem;
+      padding: .6rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap
+    }
+
+    .cp-tab {
+      padding: .3rem .75rem;
+      border-radius: 5px;
+      font-size: .8rem;
+      font-weight: 500;
+      color: var(--muted);
+      border: none;
+      background: none;
+      cursor: pointer;
+      transition: all .15s
+    }
+
+    .cp-tab.active {
+      background: var(--gold-dim);
+      color: var(--gold)
+    }
+
+    .cp-tab:hover {
+      color: var(--text)
+    }
+
+    .features {
+      padding: 3rem 0;
+      background: var(--surface)
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem
+    }
+
+    .feat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 1.5rem
+    }
+
+    .feat-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--gold-dim);
+      border: 1px solid var(--border-g);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1rem
+    }
+
+    .feat-title {
+      font-weight: 700;
+      font-size: .97rem;
+      margin-bottom: .5rem
+    }
+
+    .feat-body {
+      color: var(--muted);
+      font-size: .87rem;
+      line-height: 1.65
+    }
+
+    .pricing-cta {
+      padding: 4rem 0;
+      text-align: center;
+      background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(201, 162, 39, .08), transparent)
+    }
+
+    .pricing-cta h2 {
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      font-weight: 800;
+      margin-bottom: .8rem
+    }
+
+    .pricing-cta p {
+      color: var(--muted);
+      max-width: 540px;
+      margin: 0 auto 2.5rem;
+      font-size: 1rem
+    }
+
+    .plan-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      max-width: 860px;
+      margin: 0 auto
+    }
+
+    .plan-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 1.75rem;
+      text-align: left;
+      position: relative
+    }
+
+    .plan-card.featured {
+      border-color: var(--border-g);
+      background: linear-gradient(145deg, #0e1828, #111e30)
+    }
+
+    .plan-badge {
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: #1a0f00;
+      font-size: .7rem;
+      font-weight: 700;
+      padding: .2rem .75rem;
+      border-radius: 100px;
+      letter-spacing: .06em;
+      white-space: nowrap
+    }
+
+    .plan-name {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: .35rem
+    }
+
+    .plan-price {
+      font-family: var(--mono);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1
+    }
+
+    .plan-price span {
+      font-size: .85rem;
+      color: var(--muted);
+      font-weight: 400
+    }
+
+    .plan-period {
+      font-size: .78rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem
+    }
+
+    .plan-features {
+      list-style: none;
+      margin-bottom: 1.5rem
+    }
+
+    .plan-features li {
+      font-size: .86rem;
+      color: var(--muted);
+      padding: .35rem 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: .5rem
+    }
+
+    .plan-features li::before {
+      content: "✓";
+      color: var(--green);
+      font-weight: 700;
+      font-size: .82rem
+    }
+
+    .plan-features li.locked::before {
+      content: "🔒";
+      font-size: .75rem
+    }
+
+    .plan-features li.locked {
+      opacity: .55
+    }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .72);
+      z-index: 500;
+      align-items: center;
+      justify-content: center
+    }
+
+    .modal-overlay.open {
+      display: flex
+    }
+
+    .modal {
+      background: var(--card);
+      border: 1px solid var(--border-g);
+      border-radius: var(--r2);
+      width: min(520px, 95vw);
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem
+    }
+
+    .modal-title {
+      font-size: 1.1rem;
+      font-weight: 700
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: .2rem .4rem;
+      border-radius: 4px
+    }
+
+    .modal-close:hover {
+      color: var(--text)
+    }
+
+    .plan-select {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+      margin-bottom: 1.5rem
+    }
+
+    .plan-opt {
+      border: 2px solid var(--border);
+      border-radius: var(--r);
+      padding: .85rem;
+      cursor: pointer;
+      transition: all .15s;
+      text-align: center
+    }
+
+    .plan-opt.selected,
+    .plan-opt:hover {
+      border-color: var(--gold)
+    }
+
+    .plan-opt-name {
+      font-weight: 600;
+      font-size: .88rem;
+      margin-bottom: .2rem
+    }
+
+    .plan-opt-price {
+      font-family: var(--mono);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gold)
+    }
+
+    .plan-opt-save {
+      font-size: .72rem;
+      color: var(--green);
+      margin-top: .15rem
+    }
+
+    .pay-methods {
+      display: flex;
+      gap: .5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap
+    }
+
+    .pay-btn {
+      flex: 1;
+      min-width: 80px;
+      padding: .55rem;
+      border-radius: var(--r);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      transition: all .15s
+    }
+
+    .pay-btn.active,
+    .pay-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold)
+    }
+
+    .pay-form {
+      display: none
+    }
+
+    .pay-form.active {
+      display: block
+    }
+
+    .form-group {
+      margin-bottom: 1rem
+    }
+
+    .form-label {
+      display: block;
+      font-size: .82rem;
+      color: var(--muted);
+      margin-bottom: .4rem;
+      font-weight: 500
+    }
+
+    .form-input {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: .65rem .9rem;
+      color: var(--text);
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .15s
+    }
+
+    .form-input:focus {
+      border-color: var(--border-g)
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem
+    }
+
+    .form-note {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-top: .5rem
+    }
+
+    .bitcoin-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.2rem;
+      text-align: center
+    }
+
+    .btc-addr {
+      font-family: var(--mono);
+      font-size: .72rem;
+      color: var(--gold);
+      word-break: break-all;
+      margin: .75rem 0
+    }
+
+    .disclaimer {
+      font-size: .72rem;
+      color: var(--dim);
+      margin-top: 1.2rem;
+      line-height: 1.5
+    }
+
+    .auth-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.5rem
+    }
+
+    .auth-tab {
+      flex: 1;
+      padding: .65rem;
+      text-align: center;
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--muted);
+      border: none;
+      background: none;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all .15s
+    }
+
+    .auth-tab.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold)
+    }
+
+    .auth-panel {
+      display: none
+    }
+
+    .auth-panel.active {
+      display: block
+    }
+
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 3rem 0 2rem
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem
+    }
+
+    .footer-brand img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-bottom: .75rem
+    }
+
+    .footer-brand p {
+      font-size: .83rem;
+      color: var(--muted);
+      max-width: 260px;
+      line-height: 1.65
+    }
+
+    .footer-col h4 {
+      font-size: .82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+      margin-bottom: .9rem
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: .84rem;
+      color: var(--dim);
+      padding: .25rem 0;
+      transition: color .15s
+    }
+
+    .footer-col a:hover {
+      color: var(--gold);
+      text-decoration: none
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem
+    }
+
+    .footer-legal {
+      font-size: .74rem;
+      color: var(--dim);
+      max-width: 640px;
+      line-height: 1.6
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: .6rem
+    }
+
+    .social-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .8rem;
+      color: var(--muted);
+      transition: all .15s
+    }
+
+    .social-btn:hover {
+      border-color: var(--border-g);
+      color: var(--gold)
+    }
+
+    .live-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .75rem;
+      color: var(--green)
+    }
+
+    .live-dot::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 1.5s infinite;
+      display: inline-block
+    }
+
+    .risk-banner {
+      background: rgba(255, 61, 90, .07);
+      border: 1px solid rgba(255, 61, 90, .18);
+      border-radius: var(--r);
+      padding: .7rem 1rem;
+      font-size: .78rem;
+      color: #f87a8a;
+      margin: 1.5rem 0
+    }
+
+    @media(max-width:900px) {
+      .hero-inner {
+        grid-template-columns: 1fr
+      }
+
+      .hero-visual {
+        display: none
+      }
+
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    @media(max-width:640px) {
+      .nav-links {
+        display: none
+      }
+
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr
+      }
+
+      .plan-cards {
+        grid-template-columns: 1fr
+      }
+
+      .form-row {
+        grid-template-columns: 1fr
+      }
+    }
+  </style>
+  <style id="splc-live-wire">
+    /* SPLC_LIVE_WIRE_v2 - professional ticker bar, flush under nav */
+    .status-strip,
+    .ticker-bar,
+    .splc-ticker-bar {
+      position: fixed !important;
+      top: var(--nav-h, 58px) !important;
+      left: 0 !important;
+      right: 0 !important;
+      margin: 0 !important;
+      z-index: 195 !important;
+      height: 36px !important;
+      background: rgba(6, 10, 16, 0.94) !important;
+      border-top: 0 !important;
+      border-bottom: 1px solid rgba(201, 162, 39, 0.22) !important;
+      backdrop-filter: blur(14px) saturate(1.15);
+      -webkit-backdrop-filter: blur(14px) saturate(1.15);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+    }
+
+    .strip-scroll {
+      gap: 3.25rem !important;
+      padding: 0 2.5rem !important;
+      animation-duration: 90s !important;
+      will-change: transform;
+    }
+
+    .strip-item {
+      gap: 0.65rem !important;
+      font-size: 0.82rem !important;
+      letter-spacing: 0.01em;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: 'tnum' 1, 'lnum' 1;
+    }
+
+    .strip-sym {
+      color: #c9a227 !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .strip-price {
+      color: #f4f6fb !important;
+      font-weight: 500 !important;
+      min-width: 4ch;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .strip-item [data-field="chg"],
+    .strip-item [data-field="change"],
+    .strip-item [data-field="pct"] {
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+      min-width: 5ch;
+      text-align: right;
+    }
+
+    .strip-item [data-field="chg"].up,
+    .strip-item [data-field="change"].up,
+    .strip-item [data-field="pct"].up {
+      color: #00c97a;
+    }
+
+    .strip-item [data-field="chg"].down,
+    .strip-item [data-field="change"].down,
+    .strip-item [data-field="pct"].down {
+      color: #ff3d5a;
+    }
+
+    .strip-dot {
+      box-shadow: 0 0 6px rgba(0, 201, 122, 0.65);
+    }
+
+    /* Push first content section down so it isn't hidden behind nav + strip */
+    body>main,
+    body>.hero,
+    body>section:first-of-type,
+    .hero:first-of-type,
+    main>.hero:first-child {
+      padding-top: calc(var(--nav-h, 58px) + 36px + 8px) !important;
+    }
+
+    @media (max-width: 720px) {
+      .strip-scroll {
+        gap: 2rem !important;
+        padding: 0 1rem !important;
+      }
+
+      .strip-item {
+        font-size: 0.74rem !important;
+      }
+    }
+  </style>
+  <script defer src="/assets/live-feed.js?v=20260526d"></script>
+  <script defer src="/assets/live-wire.js?v=20260526d"></script>
+  <link rel="stylesheet" href="/assets/geo-block.css?v=20260526c">
+  <link rel="stylesheet" href="/assets/galaxy-bg.css?v=20260526e">
+  <script defer src="/assets/galaxy-bg.js?v=20260526i"></script>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#c9a227">
+  <script defer src="/assets/pwa-install.js?v=20260526h"></script>
+  <script src="/assets/js/utm-capture.js?v=20260528a" defer></script>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav-inner"><a href="/" class="nav-brand"><img src="/assets/spiralcoin-mark.svg?v=20260526b" alt=""
+          width="28" height="28" decoding="async">SpiralCoin</a>
+      <div class="nav-links"><a href="/dashboard.html">Dashboard</a>
+        <div class="nd"><button class="nd-btn">Markets ▾</button>
+          <div class="nd-menu"><a href="/markets.html">📊 Overview</a><a href="/crypto.html">₿ Crypto</a><a
+              href="/charts.html">📈 Charts</a><a href="/analytics.html">🔬 Analytics</a><a href="/news.html">📰
+              News</a>
+            <div class="nd-div"></div><a href="/stocks-coming-soon.html">📉 Stocks/ETFs <span
+                class="soon-b">Soon</span></a>
+          </div>
+        </div>
+        <div class="nd"><button class="nd-btn">Trade ▾</button>
+          <div class="nd-menu"><a href="/trade.html">🔄 Trade Crypto</a><a href="/portfolio.html">💼 Portfolio</a><a
+              href="/watchlist.html">⭐ Watchlists</a></div>
+        </div><a href="/community.html">Community</a><a href="/splc.html">SPLC</a><a
+          href="/funding/sponsors.html">Sponsors</a><a href="/pricing.html">Pricing</a>
+        <aa href="/app/" class="splc-install-btn" style="color:var(--gold)">&#x2B07; Install App</a>
+      </div>
+      <div class="nav-sp"></div>
+      <div class="nav-actions"><button class="btn btn-ghost" id="loginBtn">Log In</button><button class="btn btn-gold"
+          id="signupBtn">Start Free</button></div>
+    </div>
+  </nav>
+  <div class="status-strip">
+    <div class="strip-scroll" id="stripScroll">
+      <div class="strip-item"><span class="strip-dot"></span><span class="strip-sym">LIVE</span></div>
+      <div class="strip-item"><span class="strip-sym">BTC</span><span class="strip-price" data-sym="BTC"
+          data-field="price">—</span><span data-sym="BTC" data-field="chg">—</span></div>
+      <div class="strip-item"><span class="strip-sym">ETH</span><span class="strip-price" data-sym="ETH"
+          data-field="price">—</span><span data-sym="ETH" data-field="chg">—</span></div>
+      <div class="strip-item"><span class="strip-sym">BNB</span><span class="strip-price" data-sym="BNB"
+          data-field="price">—</span><span data-sym="BNB" data-field="chg">—</span></div>
+      <div class="strip-item"><span class="strip-sym">SOL</span><span class="strip-price" data-sym="SOL"
+          data-field="price">—</span><span data-sym="SOL" data-field="chg">—</span></div>
+      <div class="strip-item"><span class="strip-sym">XRP</span><span class="strip-price" data-sym="XRP"
+          data-field="price">—</span><span data-sym="XRP" data-field="chg">—</span></div>
+      <div class="strip-item"><span class="strip-sym">DOGE</span><span class="strip-price" data-sym="DOGE"
+          data-field="price">—</span><span data-sym="DOGE" data-field="chg">—</span></div>
+      <div class="strip-item"><span class="strip-sym">SPX</span><span class="strip-price" data-sym="SPX"
+          data-field="price">—</span><span data-sym="SPX" data-field="chg">—</span></div>
+      <div class="strip-item"><span class="strip-sym">AAPL</span><span class="strip-price" data-sym="AAPL"
+          data-field="price">—</span><span data-sym="AAPL" data-field="chg">—</span></div>
+      <div class="strip-item"><span class="strip-sym">TSLA</span><span class="strip-price" data-sym="TSLA"
+          data-field="price">—</span><span data-sym="TSLA" data-field="chg">—</span></div>
+      <div class="strip-item"><span class="strip-sym">US10Y</span><span class="strip-price" data-sym="US10Y"
+          data-field="price">—</span><span data-sym="US10Y" data-field="chg">—</span></div>
+      <div class="strip-item"><span class="strip-dot"></span><span class="strip-sym">LIVE</span></div>
+      <div class="strip-item"><span class="strip-sym">BTC</span><span class="strip-price" data-sym="BTC"
+          data-field="price">—</span><span data-sym="BTC" data-field="chg">—</span></div>
+      <div class="strip-item"><span class="strip-sym">ETH</span><span class="strip-price" data-sym="ETH"
+          data-field="price">—</span><span data-sym="ETH" data-field="chg">—</span></div>
+      <div class="strip-item"><span class="strip-sym">BNB</span><span class="strip-price" data-sym="BNB"
+          data-field="price">—</span><span data-sym="BNB" data-field="chg">—</span></div>
+      <div class="strip-item"><span class="strip-sym">SOL</span><span class="strip-price" data-sym="SOL"
+          data-field="price">—</span><span data-sym="SOL" data-field="chg">—</span></div>
+      <div class="strip-item"><span class="strip-sym">XRP</span><span class="strip-price" data-sym="XRP"
+          data-field="price">—</span><span data-sym="XRP" data-field="chg">—</span></div>
+      <div class="strip-item"><span class="strip-sym">DOGE</span><span class="strip-price" data-sym="DOGE"
+          data-field="price">—</span><span data-sym="DOGE" data-field="chg">—</span></div>
+      <div class="strip-item"><span class="strip-sym">SPX</span><span class="strip-price" data-sym="SPX"
+          data-field="price">—</span><span data-sym="SPX" data-field="chg">—</span></div>
+      <div class="strip-item"><span class="strip-sym">AAPL</span><span class="strip-price" data-sym="AAPL"
+          data-field="price">—</span><span data-sym="AAPL" data-field="chg">—</span></div>
+      <div class="strip-item"><span class="strip-sym">TSLA</span><span class="strip-price" data-sym="TSLA"
+          data-field="price">—</span><span data-sym="TSLA" data-field="chg">—</span></div>
+      <div class="strip-item"><span class="strip-sym">US10Y</span><span class="strip-price" data-sym="US10Y"
+          data-field="price">—</span><span data-sym="US10Y" data-field="chg">—</span></div>
+    </div>
+  </div>
+  <div class="page-body">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div>
+            <div class="hero-badge"><span class="live-dot"></span> Live Market Data Active</div>
+            <h1>Institutional-Grade<br><span>Crypto Market Intelligence</span><br>For Every Investor</h1>
+            <p class="hero-sub">Real-time feeds from NYSE, NASDAQ, CME, Binance, Coinbase, and the Federal Reserve.
+              Stocks, options, bonds, ETFs, and all crypto chains — unified in one platform.</p>
+            <div class="hero-actions">
+              <button class="btn btn-gold" onclick="document.getElementById('signupModal').classList.add('open')">Launch
+                Platform Free</button>
+              <a href="/markets.html" class="btn btn-outline">Explore Markets</a>
+              <a href="/pricing.html" class="btn btn-ghost">View Pro Plans</a>
+            </div>
+            <div class="risk-banner">⚠ Market data is for informational and analytical purposes. Trading involves risk.
+              Past performance does not guarantee future results. Not financial advice.</div>
+            <div class="hero-stats">
+              <div class="hstat">
+                <div class="hstat-val">47K+</div>
+                <div class="hstat-lbl">Assets Tracked</div>
+              </div>
+              <div class="hstat">
+                <div class="hstat-val">12</div>
+                <div class="hstat-lbl">Crypto Networks</div>
+              </div>
+              <div class="hstat">
+                <div class="hstat-val">Live</div>
+                <div class="hstat-lbl">Fed Data Feed</div>
+              </div>
+              <div class="hstat">
+                <div class="hstat-val">SPLC</div>
+                <div class="hstat-lbl">Native Token</div>
+              </div>
+            </div>
+            <a href="/funding/sponsors.html" class="splc-sponsor-strip" id="splcSponsorStrip" hidden
+              style="display:flex;align-items:center;gap:12px;margin-top:18px;padding:10px 14px;border:1px solid rgba(201,162,39,.35);border-radius:10px;background:rgba(201,162,39,.06);text-decoration:none;color:inherit;font-size:.85rem;">
+              <span style="color:#c9a227;font-weight:600;">Mainnet Backers</span>
+              <span data-splc-progress-text style="opacity:.85;">—</span>
+              <span style="flex:1;height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden;">
+                <span data-splc-progress-bar
+                  style="display:block;height:100%;width:0%;background:linear-gradient(90deg,#c9a227,#ffd86b);transition:width .8s ease;"></span>
+              </span>
+              <span style="color:#c9a227;">View →</span>
+            </a>
+          </div>
+          <div class="hero-visual">
+            <div class="hero-promo">
+              <div class="hero-promo-left">
+                <span class="hero-promo-badge">Mainnet</span>
+                <div class="hero-promo-text">
+                  Add <b>$500–$1,000+</b> in liquidity to the <b>SPLC / USDC Liquidity Pool</b>
+                  on Arbitrum mainnet. Receive on-chain LP tokens and a share of trading-fee
+                  revenue from every swap.
+                  <small>LP positions carry impermanent-loss and smart-contract risk. Trading
+                    involves risk. Past performance does not guarantee future results. Not
+                    financial advice.</small>
+                </div>
+              </div>
+              <a href="/splc.html#liquidity" class="hero-promo-cta">Join Pool</a>
+            </div>
+            <div class="hero-chart-header">
+              <span class="hch-title">SPLC / USDC <span class="live-dot"></span></span>
+              <span style="display:flex;align-items:center;gap:.6rem"><span class="hch-price"
+                  id="hero-price">—</span><span class="hch-chg chg-flat" id="hero-chg">Pool not seeded</span></span>
+            </div>
+            <div id="hero-chart" style="position:relative"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="market-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Live Markets &amp; Cryptonews</h2>
+          <div class="tabs" id="marketTabs">
+            <button class="tab active" data-tab="crypto">Crypto</button>
+            <button class="tab" data-tab="stocks">Stocks &amp; ETFs</button>
+            <button class="tab" data-tab="indices">Indices</button>
+            <button class="tab" data-tab="rates">Rates &amp; Bonds</button>
+          </div>
+        </div>
+        <div class="tab-panel active" id="tab-crypto">
+          <div class="asset-grid" id="cryptoGrid"></div>
+        </div>
+        <div class="tab-panel" id="tab-stocks">
+          <div class="asset-grid" id="stockGrid"></div>
+        </div>
+        <div class="tab-panel" id="tab-indices">
+          <div class="asset-grid" id="indexGrid"></div>
+        </div>
+        <div class="tab-panel" id="tab-rates">
+          <div class="asset-grid" id="ratesGrid"></div>
+        </div>
+      </div>
+    </section>
+    <section class="chart-section">
+      <div class="container">
+        <div class="chart-wrap">
+          <div class="chart-pair-tabs" id="pairTabs">
+            <button class="cp-tab active" data-sym="SPLC_USDC" data-label="SPLC / USDC"
+              data-type="splc">SPLC/USDC</button>
+          </div>
+          <div class="chart-toolbar">
+            <span class="ct-pair" id="ct-pair">SPLC / USDC</span>
+            <span class="ct-price" id="ct-price">—</span>
+            <span class="ct-chg chg-flat" id="ct-chg">—</span>
+            <div class="tframe-btns">
+              <button class="tf-btn active" data-tf="1m">1m</button>
+              <button class="tf-btn" data-tf="5m">5m</button>
+              <button class="tf-btn" data-tf="15m">15m</button>
+              <button class="tf-btn" data-tf="1h">1h</button>
+              <button class="tf-btn" data-tf="4h">4h</button>
+              <button class="tf-btn" data-tf="1d">1D</button>
+            </div>
+          </div>
+          <div id="main-chart"></div>
+        </div>
+      </div>
+    </section>
+    <section class="features">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Everything You Need In One Platform</h2>
+          <a href="/markets.html" class="btn btn-outline" style="font-size:.82rem">Explore All Markets →</a>
+        </div>
+        <div class="features-grid">
+          <div class="feat-card">
+            <div class="feat-icon">📈</div>
+            <div class="feat-title">Stocks, ETFs &amp; Options</div>
+            <div class="feat-body">Full equity coverage — NYSE, NASDAQ, AMEX. Live options chain data, Greeks, open
+              interest, and IV percentile rankings. <a href="/markets.html">Browse →</a></div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon">₿</div>
+            <div class="feat-title">All Crypto Networks</div>
+            <div class="feat-body">12+ blockchain networks tracked in real time — Ethereum, BSC, Solana, Polygon,
+              Avalanche, Arbitrum, Optimism, Base, and more. <a href="/crypto.html">Explore →</a></div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon">🏦</div>
+            <div class="feat-title">Fed &amp; Macro Data</div>
+            <div class="feat-body">Direct Federal Reserve FRED feed — Treasury yields (2Y, 5Y, 10Y, 30Y), CPI, PCE, Fed
+              Funds Rate, M2, employment data updated on release.</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon">🔒</div>
+            <div class="feat-title">Bonds &amp; Fixed Income</div>
+            <div class="feat-body">US Treasury yield curve, corporate bond spreads, investment-grade and high-yield
+              indices, duration and convexity analytics.</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon">🤖</div>
+            <div class="feat-title">AI Market Signals</div>
+            <div class="feat-body">Trend, momentum, and volatility signal scoring across every asset class. Powered by
+              on-chart calculations and multi-timeframe confluence analysis.</div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon">🪙</div>
+            <div class="feat-title">SPLC Token Ecosystem</div>
+            <div class="feat-body">SpiralCoin native token on Arbitrum One. Fixed supply of 1 billion SPLC. Pro
+              subscribers earn SPLC rewards. <a href="/splc.html">Learn more →</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="pricing-cta">
+      <div class="container">
+        <h2>Unlock Institutional-Level Crypt Data</h2>
+        <p>Pro subscribers get Level II quotes, full options flow, institutional dark pool data, Fed release alerts, and
+          SPLC ecosystem perks.</p>
+        <div class="plan-cards">
+          <div class="plan-card">
+            <div class="plan-name">Free</div>
+            <div class="plan-price">$0<span>/mo</span></div>
+            <div class="plan-period">Forever free</div>
+            <ul class="plan-features">
+              <li>Live crypto prices (top 100)</li>
+              <li>Basic stock quotes</li>
+              <li>Interactive charts</li>
+              <li>Market overview dashboard</li>
+              <li class="locked">Level II order book</li>
+              <li class="locked">Options flow &amp; Greeks</li>
+              <li class="locked">Fed data alerts</li>
+              <li class="locked">SPLC rewards</li>
+            </ul>
+            <button class="btn btn-outline" style="width:100%"
+              onclick="document.getElementById('signupModal').classList.add('open')">Create Free Account</button>
+          </div>
+          <div class="plan-card featured">
+            <div class="plan-badge">MOST POPULAR</div>
+            <div class="plan-name">Pro</div>
+            <div class="plan-price">$9.99<span>/mo</span></div>
+            <div class="plan-period">or $99.99/yr — save 17%</div>
+            <ul class="plan-features">
+              <li>Everything in Free</li>
+              <li>Level II order book &amp; depth</li>
+              <li>Full options chain + Greeks</li>
+              <li>Dark pool &amp; institutional flow</li>
+              <li>Fed data real-time alerts</li>
+              <li>All crypto network analytics</li>
+              <li>AI signal scoring (all assets)</li>
+              <li>SPLC token rewards program</li>
+            </ul>
+            <button class="btn btn-gold" style="width:100%" onclick="openSubscribeModal()">Start Pro — $9.99/mo</button>
+          </div>
+        </div>
+        <p style="margin-top:1.5rem;font-size:.78rem;color:var(--dim)">No hidden fees. Cancel any time. Payments secured
+          by Stripe.</p>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="/assets/spiralcoin-mark.svg?v=20260526b" alt="SPLC Logo" width="200" height="200" decoding="async"
+            loading="eager">
+          <p>SpiralCoin (SPLC) — Institutional-grade market intelligence. Real-time data from every major exchange,
+            crypto network, and Federal Reserve feed.</p>
+          <div class="footer-socials" style="margin-top:1rem">
+            <a class="social-btn" href="https://x.com/SpiralCoinLLC" target="_blank" rel="noopener"
+              aria-label="X (Twitter)">𝕏</a>
+            <a class="social-btn" href="https://github.com/SpiralCoinOfficial/ionos-migration" target="_blank"
+              rel="noopener" aria-label="GitHub">⌥</a>
+            <a class="social-btn" href="https://arbiscan.io/token/0x8e45cc9F480257a1477976848d41A6A9Fb2cf27C"
+              target="_blank" rel="noopener" aria-label="Arbiscan">⛓</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <a href="/">Home</a>
+          <a href="/markets.html">Markets</a>
+          <a href="/crypto.html">Crypto</a>
+          <a href="/splc.html">SPLC Token</a>
+          <a href="/dashboard.html">Dashboard</a>
+        </div>
+        <div class="footer-col">
+          <h4>Account</h4>
+          <a href="/signup.html" data-ga-event="cta_signup_click" data-ga-label="footer_signup">Sign Up</a>
+          <a href="/signup.html" data-ga-event="cta_login_click" data-ga-label="footer_login">Log In</a>
+          <a href="/pricing.html" data-ga-event="cta_pricing_click" data-ga-label="footer_pricing">Pricing</a>
+          <a href="/pricing.html" data-ga-event="cta_pricing_click" data-ga-label="footer_pro">Pro Plan</a>
+        </div>
+        <div class="footer-col">
+          <h4>Token</h4>
+          <a href="/splc.html">About SPLC</a>
+          <a href="/splc.html">Tokenomics</a>
+          <a href="/splc.html">Wallets</a>
+          <a href="https://github.com/SpiralCoinOfficial/ionos-migration" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div style="font-size:.75rem;color:var(--dim)"><a href="/cookies.html"
+            style="color:inherit;text-decoration:underline;margin-right:.5rem">Cookies</a></div>
+        <div class="footer-legal">© 2026 SpiralCoin (SPLC). All rights reserved. spiralcoin.net is a market data and
+          analytics platform. Data provided for informational purposes only. Trading involves substantial risk of loss.
+          Past performance does not guarantee future results. SpiralCoin is not a registered broker-dealer, investment
+          adviser, or exchange. Always consult a qualified financial professional before making investment decisions.
+        </div>
+        <div style="font-size:.75rem;color:var(--dim)">v2.0 · Live Data</div>
+      </div>
+    </div>
+  </footer>
+  <div class="modal-overlay" id="subscribeModal" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="modal">
+      <div class="modal-header"><span class="modal-title">🔓 Upgrade to Pro</span><button class="modal-close"
+          onclick="document.getElementById('subscribeModal').classList.remove('open')">✕</button></div>
+      <div class="plan-select">
+        <div class="plan-opt selected" id="planMonthly" onclick="selectPlan('monthly')">
+          <div class="plan-opt-name">Monthly</div>
+          <div class="plan-opt-price">$9.99</div>
+          <div class="plan-opt-save">per month</div>
+        </div>
+        <div class="plan-opt" id="planAnnual" onclick="selectPlan('annual')">
+          <div class="plan-opt-name">Annual</div>
+          <div class="plan-opt-price">$99.99</div>
+          <div class="plan-opt-save">Save $19.89/yr</div>
+        </div>
+      </div>
+      <div class="pay-methods">
+        <div class="pay-btn active" onclick="selectPayMethod('card',this)">💳 Card</div>
+        <div class="pay-btn" onclick="selectPayMethod('paypal',this)">🅿 PayPal</div>
+        <div class="pay-btn" onclick="selectPayMethod('bitcoin',this)">₿ Bitcoin</div>
+        <div class="pay-btn" onclick="selectPayMethod('gpay',this)">G Pay</div>
+      </div>
+      <div class="pay-form active" id="pf-card">
+        <div class="form-group"><label class="form-label" for="card-email">Email</label><input class="form-input"
+            type="email" placeholder="you@example.com" id="card-email" autocomplete="email"></div>
+        <div class="form-group"><label class="form-label" for="card-num">Card Number</label><input class="form-input"
+            type="text" placeholder="1234 5678 9012 3456" maxlength="19" id="card-num" oninput="fmtCard(this)"
+            autocomplete="cc-number" inputmode="numeric"></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="card-exp">Expiry</label><input class="form-input"
+              type="text" placeholder="MM / YY" maxlength="7" id="card-exp" oninput="fmtExp(this)"
+              autocomplete="cc-exp"></div>
+          <div class="form-group"><label class="form-label" for="card-cvc">CVC</label><input class="form-input"
+              type="text" placeholder="•••" maxlength="4" id="card-cvc" autocomplete="cc-csc" inputmode="numeric"></div>
+        </div>
+        <div class="form-group"><label class="form-label" for="card-name">Cardholder Name</label><input
+            class="form-input" type="text" placeholder="Full name on card" id="card-name" autocomplete="cc-name"></div>
+        <button class="btn btn-gold" style="width:100%;margin-top:.5rem;padding:.75rem"
+          onclick="processPayment('card')">Subscribe Now <span id="sub-amount">$9.99/mo</span></button>
+        <div class="form-note">🔒 Payments processed securely via Stripe. Cancel anytime.</div>
+      </div>
+      <div class="pay-form" id="pf-paypal">
+        <div style="text-align:center;padding:1.5rem 0">
+          <p style="color:var(--muted);font-size:.88rem;margin-bottom:1.2rem">Click below to complete your subscription
+            via PayPal.</p>
+          <button class="btn btn-gold" style="padding:.75rem 2rem;font-size:1rem" onclick="processPayment('paypal')">Pay
+            with PayPal</button>
+          <div class="form-note" style="margin-top:.75rem">You will be redirected to PayPal to authorize the recurring
+            payment.</div>
+        </div>
+      </div>
+      <div class="pay-form" id="pf-bitcoin">
+        <div class="bitcoin-box">
+          <p style="font-size:.82rem;color:var(--muted);margin-bottom:.5rem">Send exact amount to this Bitcoin address:
+          </p>
+          <div class="btc-addr" id="btcAddress">bc1q_YOUR_BTC_WALLET_ADDRESS_HERE</div>
+          <p style="font-size:.75rem;color:var(--muted)">Amount: <strong style="color:var(--gold)" class="btc-amt">$9.99
+              in BTC</strong></p>
+          <p style="font-size:.72rem;color:var(--dim);margin-top:.5rem">After payment email TX ID to: <strong
+              style="color:var(--gold)">billing@spiralcoin.net</strong></p>
+        </div>
+      </div>
+      <div class="pay-form" id="pf-gpay">
+        <div style="text-align:center;padding:1.5rem 0">
+          <button class="btn btn-outline" style="padding:.75rem 2rem" onclick="processPayment('gpay')">Pay with Google
+            Pay</button>
+          <div class="form-note" style="margin-top:.75rem">Google Pay processed via Stripe.</div>
+        </div>
+      </div>
+      <div class="disclaimer">Trading involves risk. SpiralCoin Pro provides data and analytics only. Not financial
+        advice. Subscription renews automatically. Cancel anytime from account settings.</div>
+    </div>
+  </div>
+  <div class="modal-overlay" id="signupModal" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="modal">
+      <div class="modal-header"><span class="modal-title"><img src="/assets/spiralcoin-mark.svg?v=20260526b" alt=""
+            style="width:24px;height:24px;vertical-align:middle;margin-right:.5rem" decoding="async">SpiralCoin
+          Account</span><button class="modal-close"
+          onclick="document.getElementById('signupModal').classList.remove('open')">✕</button></div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="authTabSignup" onclick="switchAuth('signup')">Create Account</button>
+        <button class="auth-tab" id="authTabLogin" onclick="switchAuth('login')">Log In</button>
+      </div>
+      <div class="auth-panel active" id="authSignup">
+        <div class="form-group"><label class="form-label" for="su-name">Full Name</label><input class="form-input"
+            type="text" placeholder="Your name" id="su-name" autocomplete="name"></div>
+        <div class="form-group"><label class="form-label" for="su-email">Email</label><input class="form-input"
+            type="email" placeholder="you@example.com" id="su-email" autocomplete="email"></div>
+        <div class="form-group"><label class="form-label" for="su-pass">Password</label><input class="form-input"
+            type="password" placeholder="At least 8 characters" id="su-pass" autocomplete="new-password"></div>
+        <div class="form-group"
+          style="display:flex;align-items:flex-start;gap:.6rem;font-size:.8rem;color:var(--muted)"><input
+            type="checkbox" id="su-terms" style="margin-top:.2rem"><label for="su-terms">I agree to the Terms of Service
+            and Privacy Policy. I understand market data is for informational purposes only.</label></div>
+        <button class="btn btn-gold" style="width:100%;padding:.75rem;margin-top:.5rem" onclick="doSignup()">Create Free
+          Account</button>
+        <p style="text-align:center;font-size:.8rem;color:var(--muted);margin-top:1rem">Already have an account? <a
+            href="#" onclick="switchAuth('login')">Log In</a></p>
+      </div>
+      <div class="auth-panel" id="authLogin">
+        <div class="form-group"><label class="form-label" for="li-email">Email</label><input class="form-input"
+            type="email" placeholder="you@example.com" id="li-email" autocomplete="email"></div>
+        <div class="form-group"><label class="form-label" for="li-pass">Password</label><input class="form-input"
+            type="password" placeholder="Your password" id="li-pass" autocomplete="current-password"></div>
+        <button class="btn btn-gold" style="width:100%;padding:.75rem;margin-top:.5rem" onclick="doLogin()">Log
+          In</button>
+        <p style="text-align:center;font-size:.8rem;color:var(--muted);margin-top:1rem">New here? <a href="#"
+            onclick="switchAuth('signup')">Create free account</a></p>
+      </div>
+    </div>
+  </div>
+  <script>
+    const CRYPTO_SYMBOLS = [{ sym: 'BTCUSDT', label: 'Bitcoin', abbr: 'BTC', icon: '₿' }, { sym: 'ETHUSDT', label: 'Ethereum', abbr: 'ETH', icon: 'Ξ' }, { sym: 'BNBUSDT', label: 'BNB Chain', abbr: 'BNB', icon: '◈' }, { sym: 'SOLUSDT', label: 'Solana', abbr: 'SOL', icon: '◎' }, { sym: 'XRPUSDT', label: 'XRP Ledger', abbr: 'XRP', icon: '✕' }, { sym: 'DOGEUSDT', label: 'Dogecoin', abbr: 'DOGE', icon: 'Ð' }, { sym: 'ADAUSDT', label: 'Cardano', abbr: 'ADA', icon: '₳' }, { sym: 'AVAXUSDT', label: 'Avalanche', abbr: 'AVAX', icon: '▲' }, { sym: 'POLUSDT', label: 'Polygon', abbr: 'POL', icon: '⬡' }, { sym: 'DOTUSDT', label: 'Polkadot', abbr: 'DOT', icon: '●' }, { sym: 'LINKUSDT', label: 'Chainlink', abbr: 'LINK', icon: '⬡' }, { sym: 'UNIUSDT', label: 'Uniswap', abbr: 'UNI', icon: '🦄' }];
+    const STOCK_SYMS = ['AAPL', 'MSFT', 'NVDA', 'GOOGL', 'AMZN', 'TSLA', 'META', 'JPM', 'V', 'GS', 'SPY', 'QQQ', 'IWM', 'GLD', 'TLT'];
+    let currentChartSym = 'SPLC_USDC', currentTF = '1m', currentChartType = 'splc';
+    let mainChart = null, mainSeries = null, heroChart = null, heroCandleSeries = null, ws = null;
+    document.addEventListener('DOMContentLoaded', () => {
+      buildCryptoGrid(); buildStockGrid();
+      hydrateFromCache(); // paint last-known prices instantly
+      initHeroChart(); initMainChart();
+      connectCryptoWS(); fetchCoinGecko(); fetchStockData(); fetchIndexData(); fetchRatesData();
+      // CoinGecko keeps cards alive for symbols Binance.US doesn't stream (e.g. MATIC)
+      setInterval(fetchCoinGecko, 30000);
+      setupTabNav(); setupPairTabs(); setupTimeframes(); updateNavAuth();
+    });
+    function initHeroChart() {
+      // Hero chart is strictly SPLC / USDC. Until the Arbitrum liquidity pool is live,
+      // render the SPLC empty-state placeholder. No BTC / ETH / other-pair data is shown here.
+      const container = document.getElementById('hero-chart');
+      if (!container) return;
+      container.style.position = 'relative';
+      container.style.background = '#0e1828';
+      container.innerHTML = `<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem;background:#0e1828;">
+          <div style="font-size:.95rem;color:#e6edf6;font-weight:600">SPLC / USDC chart activates when the Arbitrum liquidity pool goes live.</div>
+          <div style="font-size:.78rem;color:#7a8fa8;max-width:420px;line-height:1.55">Contract <a href="https://arbiscan.io/token/${SPLC_TOKEN_ARB}" target="_blank" rel="noopener" style="font-family:monospace;color:#f0c674">${SPLC_TOKEN_ARB.slice(0, 10)}…${SPLC_TOKEN_ARB.slice(-4)}</a></div>
+          <div style="display:flex;gap:.5rem;margin-top:.5rem;flex-wrap:wrap;justify-content:center">
+            <a href="/splc.html#liquidity" class="btn btn-gold" style="padding:.45rem .85rem;font-size:.78rem">Join Liquidity Pool</a>
+            <a href="https://arbiscan.io/token/${SPLC_TOKEN_ARB}" target="_blank" rel="noopener" class="btn btn-outline" style="padding:.45rem .85rem;font-size:.78rem">View on Arbiscan</a>
+          </div>
+          <div style="font-size:.66rem;color:#7a8fa8;margin-top:.6rem;line-height:1.5;max-width:440px">Trading involves risk. LP positions carry impermanent-loss and smart-contract risk. Past performance does not guarantee future results. Not financial advice.</div>
+        </div>`;
+    }
+    function initMainChart() {
+      mainChart = LightweightCharts.createChart(document.getElementById('main-chart'), { width: document.getElementById('main-chart').offsetWidth || 900, height: 360, layout: { background: { type: 'solid', color: '#0e1828' }, textColor: '#7a8fa8' }, grid: { vertLines: { color: 'rgba(255,255,255,0.04)' }, horzLines: { color: 'rgba(255,255,255,0.04)' } }, crosshair: { mode: LightweightCharts.CrosshairMode.Normal }, rightPriceScale: { borderColor: 'rgba(255,255,255,0.08)' }, timeScale: { borderColor: 'rgba(255,255,255,0.08)', timeVisible: true, secondsVisible: false } });
+      mainSeries = mainChart.addCandlestickSeries({ upColor: '#00c97a', downColor: '#ff3d5a', borderVisible: false, wickUpColor: '#00c97a', wickDownColor: '#ff3d5a' });
+      fetchSPLCKlines(currentTF);
+    }
+    // SPLC/USDC chart via GeckoTerminal. If the SPLC/USDC pool on Arbitrum is
+    // not yet seeded (token launch is staged), show the same "chart activates
+    // when the pool goes live" empty state used on the dashboard — no fake data.
+    const SPLC_TOKEN_ARB = '0x8e45cc9F480257a1477976848d41A6A9Fb2cf27C';
+    const SPLC_USDC_ARB = '0xaf88d065e77c8cC2239327C5EDb3A432268e5831';
+    const GT_TF_MAP = { '1m': 'minute?aggregate=1', '5m': 'minute?aggregate=5', '15m': 'minute?aggregate=15', '1h': 'hour?aggregate=1', '4h': 'hour?aggregate=4', '1d': 'day?aggregate=1' };
+    let splcEmptyEl = null;
+    function renderSPLCEmptyState(msg) {
+      const container = document.getElementById('main-chart');
+      if (!container) return;
+      mainSeries && mainSeries.setData([]);
+      if (splcEmptyEl) splcEmptyEl.remove();
+      splcEmptyEl = document.createElement('div');
+      splcEmptyEl.id = 'splc-chart-empty';
+      splcEmptyEl.style.cssText = 'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem;background:rgba(14,24,40,0.92);z-index:5;pointer-events:auto';
+      splcEmptyEl.innerHTML = `<div style="font-size:.95rem;color:#e6edf6;font-weight:600">${msg || 'SPLC / USDC chart activates when the Arbitrum liquidity pool goes live.'}</div>
+        <div style="font-size:.78rem;color:#7a8fa8;max-width:420px;line-height:1.55">Contract <a href="https://arbiscan.io/token/${SPLC_TOKEN_ARB}" target="_blank" rel="noopener" style="font-family:monospace;color:#f0c674">${SPLC_TOKEN_ARB.slice(0, 10)}…${SPLC_TOKEN_ARB.slice(-4)}</a></div>
+        <div style="display:flex;gap:.5rem;margin-top:.5rem;flex-wrap:wrap;justify-content:center">
+          <a href="/splc.html#liquidity" class="btn btn-gold" style="padding:.45rem .85rem;font-size:.78rem">Join Liquidity Pool</a>
+          <a href="https://arbiscan.io/token/${SPLC_TOKEN_ARB}" target="_blank" rel="noopener" class="btn btn-outline" style="padding:.45rem .85rem;font-size:.78rem">View on Arbiscan</a>
+        </div>
+        <div style="font-size:.66rem;color:#7a8fa8;margin-top:.6rem;line-height:1.5;max-width:440px">Trading involves risk. LP positions carry impermanent-loss and smart-contract risk. Past performance does not guarantee future results. Not financial advice.</div>`;
+      const wrap = container.parentElement;
+      if (wrap && getComputedStyle(wrap).position === 'static') wrap.style.position = 'relative';
+      container.style.position = 'relative';
+      container.appendChild(splcEmptyEl);
+      document.getElementById('ct-price').textContent = '—';
+      const chgEl = document.getElementById('ct-chg');
+      if (chgEl) { chgEl.textContent = 'Pool not seeded'; chgEl.className = 'ct-chg chg-flat'; }
+    }
+    function clearSPLCEmptyState() { if (splcEmptyEl) { splcEmptyEl.remove(); splcEmptyEl = null; } }
+    async function fetchSPLCKlines(tf) {
+      try {
+        const poolsUrl = `https://api.geckoterminal.com/api/v2/networks/arbitrum/tokens/${SPLC_TOKEN_ARB}/pools?page=1`;
+        const pr = await fetch(poolsUrl, { signal: AbortSignal.timeout(8000), headers: { 'Accept': 'application/json' } });
+        if (!pr.ok) { renderSPLCEmptyState(); return; }
+        const pd = await pr.json();
+        const pools = (pd && pd.data) || [];
+        const usdcPool = pools.find(p => {
+          const attrs = p.attributes || {}; const name = (attrs.name || '').toUpperCase();
+          return name.includes('USDC') || name.includes('USDC.E');
+        }) || pools[0];
+        if (!usdcPool) { renderSPLCEmptyState(); return; }
+        const poolAddr = usdcPool.attributes && usdcPool.attributes.address;
+        if (!poolAddr) { renderSPLCEmptyState(); return; }
+        const tfPath = GT_TF_MAP[tf] || GT_TF_MAP['1h'];
+        const ohlcvUrl = `https://api.geckoterminal.com/api/v2/networks/arbitrum/pools/${poolAddr}/ohlcv/${tfPath.split('?')[0]}?${tfPath.split('?')[1]}&limit=200`;
+        const or_ = await fetch(ohlcvUrl, { signal: AbortSignal.timeout(8000), headers: { 'Accept': 'application/json' } });
+        if (!or_.ok) { renderSPLCEmptyState(); return; }
+        const od = await or_.json();
+        const rows = od && od.data && od.data.attributes && od.data.attributes.ohlcv_list;
+        if (!Array.isArray(rows) || rows.length === 0) { renderSPLCEmptyState(); return; }
+        clearSPLCEmptyState();
+        const candles = rows.map(r => ({ time: r[0], open: +r[1], high: +r[2], low: +r[3], close: +r[4] }))
+          .filter(c => c.open > 0).sort((a, b) => a.time - b.time);
+        mainSeries.setData(candles); mainChart.timeScale().fitContent();
+        const last = candles[candles.length - 1];
+        if (last) {
+          document.getElementById('ct-price').textContent = '$' + fmtPrice(last.close);
+          const first = candles[0];
+          const chg = first.open ? ((last.close - first.open) / first.open * 100) : 0;
+          applyChgStyle('ct-chg', chg);
+        }
+      } catch (e) { renderSPLCEmptyState(); }
+    }
+    async function fetchKlines(sym, interval, series, chart) {
+      try {
+        const r = await fetch(`https://api.binance.us/api/v3/klines?symbol=${sym}&interval=${interval}&limit=200`);
+        const d = await r.json();
+        if (!Array.isArray(d)) return;
+        const candles = d.map(k => ({ time: Math.floor(k[0] / 1000), open: +k[1], high: +k[2], low: +k[3], close: +k[4] }));
+        series.setData(candles); chart && chart.timeScale().fitContent();
+        const last = candles[candles.length - 1];
+        if (last && series === mainSeries) document.getElementById('ct-price').textContent = fmtPrice(last.close);
+        if (last && series === heroCandleSeries) document.getElementById('hero-price').textContent = fmtPrice(last.close);
+      } catch (e) { }
+    }
+    function connectCryptoWS() {
+      const streams = CRYPTO_SYMBOLS.map(s => `${s.sym.toLowerCase()}@ticker`).join('/');
+      if (ws) ws.close();
+      ws = new WebSocket(`wss://stream.binance.us:9443/stream?streams=${streams}`);
+      ws.onmessage = e => {
+        const d = JSON.parse(e.data); if (!d.data) return;
+        const t = d.data; const price = parseFloat(t.c); const chg = parseFloat(t.P); const sym = t.s;
+        wsLive[sym] = Date.now();
+        updateCryptoCard(sym, price, chg); updateStrip(sym, price, chg); cacheSet(sym, price, chg);
+        if (sym === currentChartSym) { document.getElementById('ct-price').textContent = fmtPrice(price); applyChgStyle('ct-chg', chg); }
+        // Hero header is SPLC / USDC — do not overwrite hero-price / hero-chg with BTC stream data.
+      };
+      ws.onclose = () => setTimeout(connectCryptoWS, 3000);
+    }
+    // localStorage cache so prices appear INSTANTLY on next page load while
+    // the live fetch refreshes them. Key: 'splc:px:<SYM>' -> {p,c,t}.
+    const PXCACHE_TTL = 24 * 60 * 60 * 1000; // 24h
+    function cacheGet(sym) { try { const v = JSON.parse(localStorage.getItem('splc:px:' + sym)); if (v && Date.now() - v.t < PXCACHE_TTL) return v; } catch (e) { } return null; }
+    function cacheSet(sym, p, c) { try { localStorage.setItem('splc:px:' + sym, JSON.stringify({ p, c, t: Date.now() })); } catch (e) { } }
+    function hydrateFromCache() {
+      // crypto cards + strip
+      CRYPTO_SYMBOLS.forEach(s => { const v = cacheGet(s.sym); if (v) { updateCryptoCard(s.sym, v.p, v.c); updateStrip(s.sym, v.p, v.c); } });
+      // stocks cards + strip
+      STOCK_SYMS.forEach(s => { const v = cacheGet(s); if (v) { updateStockCard(s, v.p, v.c); updateStripStock(s, v.p, v.c); } });
+      // indices (incl. SPX strip + US10Y strip)
+      ['^GSPC', '^IXIC', '^DJI', '^VIX', '^TNX'].forEach(s => { const v = cacheGet(s); if (v) { const label = { '^GSPC': 'S&P 500', '^IXIC': 'NASDAQ', '^DJI': 'DOW 30', '^VIX': 'VIX', '^TNX': '10Y Yield' }[s]; updateIndexCard(s, label, v.p, v.c); updateStripIndex(s, v.p, v.c); } });
+    }
+    // CoinGecko: covers every crypto card in one HTTP hit (incl. MATIC which
+    // Binance.US delisted). Free public endpoint, no key required. CSP already
+    // allows api.coingecko.com. Track which symbols the live Binance WS is
+    // actively pushing so CoinGecko never clobbers a fresher RT tick.
+    const CG_IDS = { BTCUSDT: 'bitcoin', ETHUSDT: 'ethereum', BNBUSDT: 'binancecoin', SOLUSDT: 'solana', XRPUSDT: 'ripple', DOGEUSDT: 'dogecoin', ADAUSDT: 'cardano', AVAXUSDT: 'avalanche-2', POLUSDT: 'polygon-ecosystem-token', DOTUSDT: 'polkadot', LINKUSDT: 'chainlink', UNIUSDT: 'uniswap' };
+    const wsLive = {}; // sym -> timestamp of last WS tick
+    async function fetchCoinGecko() {
+      try {
+        const ids = Object.values(CG_IDS).join(',');
+        const url = `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd&include_24hr_change=true`;
+        const r = await fetch(url, { signal: AbortSignal.timeout(8000) });
+        if (!r.ok) return;
+        const d = await r.json();
+        const now = Date.now();
+        Object.entries(CG_IDS).forEach(([sym, id]) => {
+          const row = d[id]; if (!row || typeof row.usd !== 'number') return;
+          const price = row.usd; const chg = row.usd_24h_change || 0;
+          // skip if Binance WS pushed an update within the last 10s (RT wins)
+          if (wsLive[sym] && now - wsLive[sym] < 10000) return;
+          updateCryptoCard(sym, price, chg); updateStrip(sym, price, chg); cacheSet(sym, price, chg);
+        });
+      } catch (e) { }
+    }
+    async function fetchOneYahoo(sym) {
+      const url = `https://api.allorigins.win/raw?url=${encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/' + encodeURIComponent(sym) + '?interval=1d&range=5d')}`;
+      const r = await fetch(url, { signal: AbortSignal.timeout(8000) });
+      const d = await r.json(); const meta = d.chart.result[0].meta;
+      const price = meta.regularMarketPrice || meta.previousClose;
+      const prev = meta.chartPreviousClose || meta.previousClose;
+      const chg = prev ? ((price - prev) / prev * 100) : 0;
+      return { price, chg };
+    }
+    async function fetchStockData() {
+      // Fire all in parallel — was sequential w/ 200ms sleeps (~3s for 12 syms)
+      await Promise.allSettled(STOCK_SYMS.slice(0, 12).map(async sym => {
+        try {
+          const { price, chg } = await fetchOneYahoo(sym);
+          updateStockCard(sym, price, chg); updateStripStock(sym, price, chg); cacheSet(sym, price, chg);
+        } catch (e) { }
+      }));
+    }
+    async function fetchIndexData() {
+      // ^GSPC (S&P 500) populates SPX strip slot; ^TNX (10Y treasury yield) populates US10Y.
+      await Promise.allSettled(['^GSPC', '^IXIC', '^DJI', '^VIX', '^TNX'].map(async sym => {
+        try {
+          const { price, chg } = await fetchOneYahoo(sym);
+          const label = { '^GSPC': 'S&P 500', '^IXIC': 'NASDAQ', '^DJI': 'DOW 30', '^VIX': 'VIX', '^TNX': '10Y Yield' }[sym] || sym;
+          updateIndexCard(sym, label, price, chg); updateStripIndex(sym, price, chg); cacheSet(sym, price, chg);
+        } catch (e) { }
+      }));
+    }
+    async function fetchRatesData() {
+      const rates = [{ id: '10Y T', label: 'US 10Y Treasury', icon: '🏦' }, { id: '2Y T', label: 'US 2Y Treasury', icon: '🏦' }, { id: '30Y T', label: 'US 30Y Treasury', icon: '🏦' }, { id: 'FFR', label: 'Fed Funds Rate', icon: '🇺🇸' }, { id: 'CPI', label: 'CPI (YoY)', icon: '📉' }];
+      rates.forEach(s => updateRatesCard(s.id, s.label, '—', 'Add FRED key'));
+    }
+    function buildCryptoGrid() {
+      document.getElementById('cryptoGrid').innerHTML = CRYPTO_SYMBOLS.map(s => `<div class="asset-card" id="cc-${s.sym}" onclick="switchChartPair('${s.sym}','${s.abbr}/USDT','crypto')"><div class="ac-left"><div class="ac-icon">${s.icon}</div><div><div class="ac-name">${s.abbr}</div><div class="ac-sub">${s.label}</div></div></div><div class="ac-right"><div class="ac-price" id="cp-${s.sym}">—</div><div class="ac-chg chg-flat" id="cc-chg-${s.sym}">—</div></div></div>`).join('');
+    }
+    function buildStockGrid() {
+      document.getElementById('stockGrid').innerHTML = STOCK_SYMS.map(s => `<div class="asset-card" onclick="switchChartPair('${s}','${s}','stock')"><div class="ac-left"><div class="ac-icon" style="font-size:.7rem;font-weight:700">${s.substring(0, 3)}</div><div><div class="ac-name">${s}</div><div class="ac-sub">Equity</div></div></div><div class="ac-right"><div class="ac-price" id="sp-${s}">—</div><div class="ac-chg chg-flat" id="sc-chg-${s}">—</div></div></div>`).join('');
+      document.getElementById('indexGrid').innerHTML = [{ id: '^GSPC', label: 'S&P 500', icon: '📊' }, { id: '^IXIC', label: 'NASDAQ', icon: '📈' }, { id: '^DJI', label: 'DOW 30', icon: '🏛' }, { id: '^VIX', label: 'VIX', icon: '⚡' }].map(s => `<div class="asset-card"><div class="ac-left"><div class="ac-icon">${s.icon}</div><div><div class="ac-name">${s.label}</div><div class="ac-sub">Index</div></div></div><div class="ac-right"><div class="ac-price" id="ip-${encodeURIComponent(s.id)}">—</div><div class="ac-chg chg-flat" id="ic-chg-${encodeURIComponent(s.id)}">—</div></div></div>`).join('');
+      document.getElementById('ratesGrid').innerHTML = [{ id: '10Y T', label: 'US 10Y Treasury', icon: '🏦' }, { id: '2Y T', label: 'US 2Y Treasury', icon: '🏦' }, { id: '30Y T', label: 'US 30Y Treasury', icon: '🏦' }, { id: 'FFR', label: 'Fed Funds Rate', icon: '🇺🇸' }, { id: 'CPI', label: 'CPI (YoY)', icon: '📉' }].map(s => `<div class="asset-card"><div class="ac-left"><div class="ac-icon">${s.icon}</div><div><div class="ac-name">${s.id}</div><div class="ac-sub">${s.label}</div></div></div><div class="ac-right"><div class="ac-price" id="rp-${s.id.replace(/\s/g, '')}">—</div><div class="ac-chg chg-flat" id="rc-chg-${s.id.replace(/\s/g, '')}">—</div></div></div>`).join('');
+    }
+    function updateCryptoCard(sym, price, chg) { const p = document.getElementById('cp-' + sym); const c = document.getElementById('cc-chg-' + sym); if (p) p.textContent = fmtPrice(price); if (c) { c.textContent = (chg >= 0 ? '+' : '') + chg.toFixed(2) + '%'; setChgClass(c, chg); } }
+    function updateStockCard(sym, price, chg) { const p = document.getElementById('sp-' + sym); const c = document.getElementById('sc-chg-' + sym); if (p) p.textContent = '$' + fmtPrice(price); if (c) { c.textContent = (chg >= 0 ? '+' : '') + chg.toFixed(2) + '%'; setChgClass(c, chg); } }
+    function updateIndexCard(sym, label, price, chg) { const k = encodeURIComponent(sym); const p = document.getElementById('ip-' + k); const c = document.getElementById('ic-chg-' + k); if (p) p.textContent = fmtPrice(price); if (c) { c.textContent = (chg >= 0 ? '+' : '') + chg.toFixed(2) + '%'; setChgClass(c, chg); } }
+    function updateRatesCard(id, label, val, chg) { const k = id.replace(/\s/g, ''); const p = document.getElementById('rp-' + k); const c = document.getElementById('rc-chg-' + k); if (p) p.textContent = val; if (c) { c.textContent = chg; const n = parseFloat(chg); setChgClass(c, isNaN(n) ? 0 : n); } }
+    // Strip writer: updates EVERY span tagged with the symbol (both marquee copies).
+    function setStrip(sym, price, chg, prefix) {
+      document.querySelectorAll(`[data-sym="${sym}"][data-field="price"]`).forEach(el => { el.textContent = (prefix || '') + fmtPrice(price); });
+      document.querySelectorAll(`[data-sym="${sym}"][data-field="chg"]`).forEach(el => { el.textContent = (chg >= 0 ? '+' : '') + chg.toFixed(2) + '%'; el.className = chg >= 0 ? 'up' : 'down'; });
+    }
+    function updateStrip(sym, price, chg) { const m = { BTCUSDT: 'BTC', ETHUSDT: 'ETH', BNBUSDT: 'BNB', SOLUSDT: 'SOL', XRPUSDT: 'XRP', DOGEUSDT: 'DOGE' }; const k = m[sym]; if (!k) return; setStrip(k, price, chg); }
+    function updateStripStock(sym, price, chg) { const m = { AAPL: 'AAPL', TSLA: 'TSLA' }; const k = m[sym]; if (!k) return; setStrip(k, price, chg, '$'); }
+    function updateStripIndex(sym, price, chg) { const m = { '^GSPC': 'SPX', '^TNX': 'US10Y' }; const k = m[sym]; if (!k) return; setStrip(k, price, chg, k === 'US10Y' ? '' : ''); if (k === 'US10Y') { document.querySelectorAll(`[data-sym="US10Y"][data-field="price"]`).forEach(el => el.textContent = price.toFixed(2) + '%'); } }
+    function setChgClass(el, chg) { el.classList.remove('chg-up', 'chg-dn', 'chg-flat'); el.classList.add(chg > 0.01 ? 'chg-up' : chg < -0.01 ? 'chg-dn' : 'chg-flat'); }
+    function applyChgStyle(id, chg) { const el = document.getElementById(id); if (!el) return; el.textContent = (chg >= 0 ? '+' : '') + chg.toFixed(2) + '%'; el.className = 'ct-chg ' + (chg >= 0 ? 'chg-up' : 'chg-dn'); }
+    function switchChartPair(sym, label, type) { currentChartSym = sym; currentChartType = type; document.getElementById('ct-pair').textContent = label; if (type === 'splc') { fetchSPLCKlines(currentTF); } else { clearSPLCEmptyState(); if (type === 'crypto') fetchKlines(sym, currentTF, mainSeries, mainChart); else fetchStockKlines(sym); } document.querySelector('.chart-section').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    async function fetchStockKlines(sym) {
+      try {
+        const url = `https://api.allorigins.win/raw?url=${encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/' + sym + '?interval=5m&range=5d')}`;
+        const r = await fetch(url, { signal: AbortSignal.timeout(5000) });
+        const d = await r.json(); const q = d.chart.result[0]; const ts = q.timestamp; const quotes = q.indicators.quote[0];
+        const candles = ts.map((t, i) => ({ time: t, open: quotes.open[i] || 0, high: quotes.high[i] || 0, low: quotes.low[i] || 0, close: quotes.close[i] || 0 })).filter(c => c.open > 0);
+        mainSeries.setData(candles); mainChart.timeScale().fitContent();
+        const last = candles[candles.length - 1]; if (last) document.getElementById('ct-price').textContent = '$' + fmtPrice(last.close);
+      } catch (e) { }
+    }
+    function setupPairTabs() { document.querySelectorAll('.cp-tab').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.cp-tab').forEach(b => b.classList.remove('active')); btn.classList.add('active'); switchChartPair(btn.dataset.sym, btn.dataset.label, btn.dataset.type); }); }); }
+    function setupTimeframes() { document.querySelectorAll('.tf-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.tf-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); currentTF = btn.dataset.tf; if (currentChartType === 'splc') fetchSPLCKlines(currentTF); else if (currentChartType === 'crypto') fetchKlines(currentChartSym, currentTF, mainSeries, mainChart); else fetchStockKlines(currentChartSym); }); }); }
+    function setupTabNav() { document.querySelectorAll('#marketTabs .tab').forEach(tab => { tab.addEventListener('click', () => { document.querySelectorAll('#marketTabs .tab').forEach(t => t.classList.remove('active')); document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active')); tab.classList.add('active'); document.getElementById('tab-' + tab.dataset.tab).classList.add('active'); }); }); }
+    let selectedPlan = 'monthly';
+    function openSubscribeModal() { document.getElementById('subscribeModal').classList.add('open'); }
+    function selectPlan(plan) { selectedPlan = plan; document.getElementById('planMonthly').classList.toggle('selected', plan === 'monthly'); document.getElementById('planAnnual').classList.toggle('selected', plan === 'annual'); const amt = plan === 'annual' ? '$99.99/yr' : '$9.99/mo'; document.getElementById('sub-amount').textContent = amt; document.querySelectorAll('.btc-amt').forEach(e => e.textContent = amt + ' in BTC'); }
+    function selectPayMethod(method, el) { document.querySelectorAll('.pay-btn').forEach(b => b.classList.remove('active')); document.querySelectorAll('.pay-form').forEach(f => f.classList.remove('active')); el.classList.add('active'); document.getElementById('pf-' + method).classList.add('active'); }
+    function processPayment(method) { alert('Payment integration ready. Add your Stripe publishable key to activate real payments.\n\nContact: billing@spiralcoin.net'); }
+    function fmtCard(i) { i.value = i.value.replace(/\D/g, '').replace(/(.{4})/g, '$1 ').trim(); }
+    function fmtExp(i) { i.value = i.value.replace(/\D/g, '').replace(/^(\d{2})(\d)/, '$1 / $2').substring(0, 7); }
+    function switchAuth(mode) { document.getElementById('authTabSignup').classList.toggle('active', mode === 'signup'); document.getElementById('authTabLogin').classList.toggle('active', mode === 'login'); document.getElementById('authSignup').classList.toggle('active', mode === 'signup'); document.getElementById('authLogin').classList.toggle('active', mode === 'login'); }
+    function doSignup() { const name = document.getElementById('su-name').value.trim(); const email = document.getElementById('su-email').value.trim(); const pass = document.getElementById('su-pass').value; const terms = document.getElementById('su-terms').checked; if (!name || !email || !pass) { alert('Please fill all fields.'); return; } if (pass.length < 8) { alert('Password must be at least 8 characters.'); return; } if (!terms) { alert('Please accept the Terms of Service.'); return; } const user = { name, email, plan: 'free', created: new Date().toISOString() }; localStorage.setItem('splc_user', JSON.stringify(user)); document.getElementById('signupModal').classList.remove('open'); updateNavAuth(); alert('Welcome to SpiralCoin, ' + name + '! Your free account is active.'); }
+    function doLogin() { const email = document.getElementById('li-email').value.trim(); const pass = document.getElementById('li-pass').value; if (!email || !pass) { alert('Please enter email and password.'); return; } const saved = JSON.parse(localStorage.getItem('splc_user') || 'null'); if (saved && saved.email === email) { document.getElementById('signupModal').classList.remove('open'); updateNavAuth(); alert('Welcome back, ' + (saved.name || email) + '!'); } else { alert('Account not found. Please sign up first.'); } }
+    function updateNavAuth() { const user = JSON.parse(localStorage.getItem('splc_user') || 'null'); const lb = document.getElementById('loginBtn'); const sb = document.getElementById('signupBtn'); if (user) { lb.textContent = user.name || user.email; lb.onclick = () => { if (confirm('Log out?')) { localStorage.removeItem('splc_user'); updateNavAuth(); } }; sb.textContent = user.plan === 'pro' ? 'Pro ✓' : 'Upgrade'; sb.onclick = user.plan === 'pro' ? null : openSubscribeModal; } else { lb.textContent = 'Log In'; lb.onclick = () => { document.getElementById('signupModal').classList.add('open'); switchAuth('login'); }; sb.textContent = 'Start Free'; sb.onclick = () => document.getElementById('signupModal').classList.add('open'); } }
+    function fmtPrice(p) { const n = parseFloat(p); if (isNaN(n)) return '—'; if (n >= 1000) return n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); if (n >= 1) return n.toFixed(4); return n.toFixed(6); }
+    function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+    window.addEventListener('resize', () => { if (heroChart) heroChart.resize(document.getElementById('hero-chart').offsetWidth, document.getElementById('hero-chart').offsetHeight || 320); if (mainChart) mainChart.resize(document.getElementById('main-chart').offsetWidth, 360); });
+  </script>
+  <!-- -- SpiralCoin geo-block + affirmation -------------------------- -->
+  <div id="splc-geo-block" hidden>
+    <div class="splc-geo-modal">
+      <h2>Not available in your region</h2>
+      <p id="splc-geo-msg"></p>
+      <p>If you are a U.S. accredited investor, our Reg D 506(c) tranche is open by application.</p>
+      <a href="/regd.html" id="splc-regd-link" hidden>Apply via Reg D ?</a>
+    </div>
+  </div>
+  <div id="splc-affirm" hidden>
+    <div class="splc-affirm-modal">
+      <h2>Eligibility Confirmation</h2>
+      <p>Before continuing, please confirm one of the following:</p>
+      <label><input type="radio" name="splc-aff" value="non-us"> I am NOT a U.S. person.</label>
+      <label><input type="radio" name="splc-aff" value="accredited"> I am a U.S. accredited investor and have completed
+        Reg D KYC.</label>
+      <p><button id="splc-aff-confirm" disabled>Continue</button></p>
+      <p style="font-size:.8rem;opacity:.7">
+        <a href="https://www.sec.gov/education/capitalraising/building-blocks/accredited-investor" target="_blank"
+          rel="noopener">What is an accredited investor?</a>
+      </p>
+      <p style="font-size:.75rem;opacity:.6;margin-top:1rem">
+        Trading involves risk. Past performance does not guarantee future results.
+      </p>
+    </div>
+  </div>
+  <script src="/assets/geo-block.js"></script>
+  <script src="/assets/js/ga-events.js?v=20260528a" defer></script>
+  <!-- Auth0 Universal Login (wires #loginBtn / #signupBtn; swaps to user chip when authenticated) -->
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/2.18/auth0-spa-js.production.js"></script>
+  <script src="/assets/js/auth0-client.js?v=20260528a"></script>
+  <!-- MetaMask wallet binding (adds "Connect Wallet" to nav for authenticated users) -->
+  <script src="/assets/js/wallet-bind.js?v=20260528a" defer></script>
+  <!-- Live sponsor progress strip -->
+  <script>
+    (function () {
+      fetch('/api/site-status.php', { cache: 'no-store' })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) {
+          if (!d || !d.sponsors) return;
+          var s = d.sponsors;
+          var strip = document.getElementById('splcSponsorStrip');
+          if (!strip) return;
+          var txt = strip.querySelector('[data-splc-progress-text]');
+          var bar = strip.querySelector('[data-splc-progress-bar]');
+          var pct = Math.max(0, Math.min(100, s.percent_to_goal || 0));
+          if (txt) {
+            txt.textContent =
+              '$' + (s.raised_usd || 0).toLocaleString() +
+              ' raised of $' + (s.goal_usd || 120000).toLocaleString() +
+              ' (' + pct.toFixed(1) + '%)';
+          }
+          if (bar) bar.style.width = pct + '%';
+          strip.hidden = false;
+        })
+        .catch(function () { /* silent — strip stays hidden */ });
+    })();
+  </script>
+</body>
+
+</html>

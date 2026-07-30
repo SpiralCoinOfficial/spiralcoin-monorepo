@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Authenticated app pages — not indexable
+Disallow: /dashboard.html
+Disallow: /account.html
+Disallow: /portfolio.html
+Disallow: /settings.html
+Disallow: /analytics.html
+Disallow: /watchlist.html
+Disallow: /taxes.html
+Disallow: /documents.html
+Disallow: /trade-confirm.html
+
+# Keep paid-traffic landing page out of organic index
+Disallow: /ads
+Disallow: /spiralcoin_ads_landing.html
+
+# Internal/utility pages
+Disallow: /spiralcoin_oneliner.html
+Disallow: /spiralcoin_platform_embed.html
+
+Sitemap: https://www.spiralcoin.net/sitemap.xml

@@ -1,0 +1,59 @@
+__pycache__/
+*.pyc
+node_modules/
+.env
+.env.*
+!.env.example
+!**/.env.example
+contracts/node_modules/
+contracts/cache/
+contracts/artifacts/
+contracts/artifacts-solcjs/
+contracts/compile.log
+
+# Throwaway scan / log artifacts at repo root
+_*.log
+_*.json
+!_redirects
+
+# SFTP batch/log files — passwords stripped via %PWD% placeholder (see deploy/run-sftp.ps1)
+# Log files still excluded; sanitized templates are committed.
+_sftp_*_log.txt
+_sftp_log*.txt
+_sftp_*log.txt
+sftp_*.txt
+
+# MCP server config (may contain references to local env vars)
+.vscode/mcp.json
+
+# Indexer secrets (real config.php is host-only)
+indexer/config.php
+!indexer/config.example.php
+
+# Hardhat deploy logs
+_deploy_*.log
+
+# Live-feed client config (Alchemy/Infura URLs) — host-only
+assets/live-config.js
+!assets/live-config.example.js
+
+# Deployment tool logs (may contain server hostnames / session metadata)
+deploy/*.log
+deploy/winscp*.log
+
+
+api/.env
+
+private/
+
+
+# Local SFTP password (never commit)
+.ionos_sftp_pwd
+
+# GitHub Sponsors webhook secret (server-side only)
+private/sponsor-webhook-secret.txt
+# Local backup of secret
+.spiralcoin_sponsor_webhook_secret
+
+composer.phar
+

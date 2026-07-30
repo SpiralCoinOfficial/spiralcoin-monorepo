@@ -1,0 +1,11 @@
+# Block direct browsing
+Options -Indexes
+
+# Allow only the PHP endpoints listed below; deny all dotfiles & bootstrap
+<FilesMatch "^\_">
+  Require all denied
+</FilesMatch>
+
+<FilesMatch "\.(env|md|sql|log|json)$">
+  Require all denied
+</FilesMatch>

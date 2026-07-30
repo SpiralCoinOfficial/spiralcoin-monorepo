@@ -1,0 +1,105 @@
+/* SpiralCoin cosmos background — original procedural rendering.
+ *
+ * The visible cosmos is painted by /assets/galaxy-bg.js into a single
+ * <canvas id="splc-cosmos"> element that sits behind the page. This CSS
+ * just provides a deep-space base color so we never flash white before
+ * the canvas mounts, and it punches transparency through the page
+ * surfaces so the cosmos shows through.
+ */
+
+/* Deep-space base (visible the instant CSS parses) */
+html { background-color: #02030a !important; }
+body { background: transparent !important; }
+
+/* The painted cosmos canvas, locked to viewport, behind everything. */
+#splc-cosmos {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -3;
+  pointer-events: none;
+  display: block;
+  /* Smooth fade-in once the first frame paints */
+  opacity: 0;
+  transition: opacity 800ms ease-out;
+}
+#splc-cosmos.is-ready { opacity: 1; }
+
+/* Pre-paint base layer behind the canvas so the page is never blank */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -4;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 110% 80% at 50% 40%,
+      #06091a 0%, #03040d 60%, #000005 100%);
+}
+
+/* Subtle vignette on top of the cosmos, below content, for legibility */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center,
+      rgba(0,0,0,0.05) 0%,
+      rgba(0,0,0,0.38) 60%,
+      rgba(0,0,0,0.72) 100%);
+}
+
+/* Punch out solid section backgrounds so the cosmos shows through */
+.hero,
+main, main > *,
+section, .section,
+.features, .features-section,
+.markets, .markets-section, .markets-grid,
+.about, .about-section,
+.platform, .platform-section,
+.pricing-section,
+.community-section,
+.footer-section,
+.page, .page-wrap, .page-content,
+.bg-section, .dark-section {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Glass cards so the cosmos glows behind text */
+.card,
+.feature-card,
+.market-card,
+.pricing-card,
+.stat-card,
+.info-card,
+.metric-card,
+.panel,
+.surface,
+.chart-container,
+.chart-wrap {
+  background-color: rgba(8, 12, 22, 0.72) !important;
+  backdrop-filter: blur(10px) saturate(1.15);
+  -webkit-backdrop-filter: blur(10px) saturate(1.15);
+  border: 1px solid rgba(201, 162, 39, 0.18) !important;
+}
+
+.nav, header.nav, nav.nav {
+  background-color: rgba(4, 6, 12, 0.85) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.strip, .ticker, .price-strip, .market-strip {
+  background-color: rgba(4, 6, 12, 0.80) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Legacy photo layers from previous build — hide if any old HTML cached */
+.splc-cosmos-layer { display: none !important; }
+.splc-cosmos-stars,
+.splc-cosmos-aurora { display: none !important; }

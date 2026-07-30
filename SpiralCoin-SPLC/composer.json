@@ -1,0 +1,15 @@
+{
+  "name": "spiralcoinofficial/spiralcoin-splc",
+  "description": "SpiralCoin official site — PHP API endpoints (IONOS hosting).",
+  "type": "project",
+  "license": "proprietary",
+  "require": {
+    "php": ">=8.0",
+    "simplito/elliptic-php": "^1.0",
+    "kornrunner/keccak": "^1.1"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true
+  }
+}

@@ -1,0 +1,12 @@
+option batch continue
+option confirm off
+option transfer binary
+open sftp://a2797960:%PWD%@access-5020476011.webspace-host.com/ -hostkey=*
+cd /
+lcd "C:\Users\Trisha Dreyer\Documents\ionos-migration"
+
+# Mirror funding/ads (landing page, banners, video, scripts)
+synchronize remote -mirror -criteria=time funding\ads /funding/ads
+
+close
+exit

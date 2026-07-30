@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Cookiebot CMP -->
+  <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="83c385c8-b96d-4d3e-a75b-0f81f3d82de3"
+    type="text/javascript" async></script>
+  <!-- Google tag (gtag.js) with Consent Mode v2 defaults -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEMH1LPSD4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    // Consent Mode v2: default to denied; Cookiebot will update on user choice.
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'functionality_storage': 'granted',
+      'security_storage': 'granted',
+      'wait_for_update': 500
+    });
+    gtag('js', new Date());
+    gtag('config', 'G-MEMH1LPSD4');
+  </script>
+  <meta charset="UTF-8">
+  <script defer data-domain="spiralcoin.net" src="https://plausible.io/js/script.js"></script>
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://plausible.io https://unpkg.com https://cdn.jsdelivr.net https://stream.binance.us https://stream.binance.us:9443 https://api.binance.us https://www.googletagmanager.com https://*.googletagmanager.com https://consent.cookiebot.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https: https://www.google-analytics.com https://www.googletagmanager.com https://*.g.doubleclick.net; connect-src 'self' https://api.binance.us wss://stream.binance.us wss://stream.binance.us:9443 https://api.allorigins.win https://query1.finance.yahoo.com https://plausible.io https://api.coingecko.com https://*.g.alchemy.com wss://*.g.alchemy.com https://*.infura.io wss://*.infura.io https://www.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.googletagmanager.com https://*.g.doubleclick.net https://stats.g.doubleclick.net https://consent.cookiebot.com https://consentcdn.cookiebot.com; frame-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sign In / Register — SpiralCoin Platform</title>
+  <meta name="description"
+    content="Create your SpiralCoin account or sign in to access live markets, crypto trading, portfolio tools, and more.">
+  <link rel="icon" type="image/svg+xml" href="/assets/spiralcoin-mark.svg?v=20260526b">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #060a10;
+      --surface: #0a1120;
+      --card: #0e1828;
+      --card2: #111e30;
+      --border: rgba(255, 255, 255, 0.065);
+      --border-g: rgba(201, 162, 39, 0.28);
+      --gold: #c9a227;
+      --gold-b: #e8c042;
+      --gold-dim: rgba(201, 162, 39, 0.12);
+      --text: #dce8f5;
+      --muted: #7a8fa8;
+      --dim: #4a5568;
+      --green: #00c97a;
+      --red: #ff3d5a;
+      --mono: 'IBM Plex Mono', monospace;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column
+    }
+
+    a {
+      color: var(--gold);
+      text-decoration: none
+    }
+
+    button {
+      cursor: pointer;
+      font-family: inherit
+    }
+
+    input {
+      font-family: inherit
+    }
+
+    .auth-bg {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      position: relative;
+      overflow: hidden
+    }
+
+    .auth-bg::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(201, 162, 39, .04) 0%, transparent 60%), radial-gradient(ellipse at 70% 20%, rgba(0, 201, 122, .03) 0%, transparent 50%);
+      pointer-events: none
+    }
+
+    .auth-brand {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 2rem;
+      text-decoration: none
+    }
+
+    .auth-brand img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px var(--border-g)
+    }
+
+    .auth-brand span {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text)
+    }
+
+    .auth-card {
+      background: var(--card);
+      border: 1px solid var(--border-g);
+      border-radius: 18px;
+      width: 100%;
+      max-width: 420px;
+      padding: 2rem;
+      position: relative
+    }
+
+    .auth-tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .3rem;
+      background: var(--surface);
+      border-radius: 10px;
+      padding: .3rem;
+      margin-bottom: 1.8rem
+    }
+
+    .auth-tab {
+      padding: .6rem;
+      border-radius: 8px;
+      border: none;
+      background: none;
+      color: var(--muted);
+      font-size: .88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .15s
+    }
+
+    .auth-tab.active {
+      background: var(--card);
+      color: var(--text)
+    }
+
+    .auth-form {
+      display: none
+    }
+
+    .auth-form.active {
+      display: block
+    }
+
+    .form-group {
+      margin-bottom: 1rem
+    }
+
+    .form-label {
+      display: block;
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: .4rem;
+      font-weight: 500;
+      letter-spacing: .02em
+    }
+
+    .form-input {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: .68rem .95rem;
+      color: var(--text);
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .15s
+    }
+
+    .form-input:focus {
+      border-color: var(--border-g)
+    }
+
+    .form-input.error {
+      border-color: var(--red)
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .4rem;
+      border-radius: 8px;
+      padding: .65rem 1.1rem;
+      font-size: .88rem;
+      font-weight: 600;
+      border: none;
+      transition: all .18s;
+      width: 100%
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #1a0f00
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-b)
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--border-g)
+    }
+
+    .btn-outline:hover {
+      background: var(--gold-dim)
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, .05);
+      color: var(--muted);
+      border: 1px solid var(--border)
+    }
+
+    .btn-ghost:hover {
+      color: var(--text)
+    }
+
+    .auth-divider {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin: 1.2rem 0
+    }
+
+    .auth-divider::before,
+    .auth-divider::after {
+      content: '';
+      flex: 1;
+      border-top: 1px solid var(--border)
+    }
+
+    .auth-divider span {
+      font-size: .75rem;
+      color: var(--dim)
+    }
+
+    .err-msg {
+      font-size: .8rem;
+      color: var(--red);
+      margin-top: .45rem;
+      padding: .4rem .6rem;
+      background: rgba(255, 61, 90, .08);
+      border-radius: 6px;
+      border: 1px solid rgba(255, 61, 90, .15)
+    }
+
+    .ok-msg {
+      font-size: .8rem;
+      color: var(--green);
+      margin-top: .45rem;
+      padding: .4rem .6rem;
+      background: rgba(0, 201, 122, .08);
+      border-radius: 6px;
+      border: 1px solid rgba(0, 201, 122, .15)
+    }
+
+    .check-row {
+      display: flex;
+      align-items: flex-start;
+      gap: .5rem;
+      font-size: .82rem;
+      color: var(--muted);
+      margin-bottom: 1rem
+    }
+
+    .check-row input[type=checkbox] {
+      accent-color: var(--gold);
+      margin-top: .15rem;
+      flex-shrink: 0
+    }
+
+    .plan-pills {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .5rem;
+      margin-bottom: 1.2rem
+    }
+
+    .plan-pill {
+      padding: .65rem .75rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all .15s;
+      text-align: center
+    }
+
+    .plan-pill.selected {
+      border-color: var(--border-g);
+      background: var(--gold-dim)
+    }
+
+    .plan-pill-name {
+      font-size: .88rem;
+      font-weight: 700
+    }
+
+    .plan-pill-price {
+      font-size: .75rem;
+      color: var(--muted)
+    }
+
+    .strength-bar {
+      height: 3px;
+      border-radius: 2px;
+      margin-top: .3rem;
+      transition: all .3s;
+      width: 0%
+    }
+
+    .auth-footer {
+      text-align: center;
+      font-size: .8rem;
+      color: var(--muted);
+      margin-top: 1.5rem
+    }
+
+    .features-strip {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+      flex-wrap: wrap
+    }
+
+    .feat {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .78rem;
+      color: var(--muted)
+    }
+
+    .feat-icon {
+      font-size: .9rem
+    }
+  </style>
+  <style id="splc-live-wire">
+    /* SPLC_LIVE_WIRE_v2 - professional ticker bar, flush under nav */
+    .status-strip,
+    .ticker-bar,
+    .splc-ticker-bar {
+      position: fixed !important;
+      top: var(--nav-h, 58px) !important;
+      left: 0 !important;
+      right: 0 !important;
+      margin: 0 !important;
+      z-index: 195 !important;
+      height: 36px !important;
+      background: rgba(6, 10, 16, 0.94) !important;
+      border-top: 0 !important;
+      border-bottom: 1px solid rgba(201, 162, 39, 0.22) !important;
+      backdrop-filter: blur(14px) saturate(1.15);
+      -webkit-backdrop-filter: blur(14px) saturate(1.15);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+    }
+
+    .strip-scroll {
+      gap: 3.25rem !important;
+      padding: 0 2.5rem !important;
+      animation-duration: 90s !important;
+      will-change: transform;
+    }
+
+    .strip-item {
+      gap: 0.65rem !important;
+      font-size: 0.82rem !important;
+      letter-spacing: 0.01em;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: 'tnum' 1, 'lnum' 1;
+    }
+
+    .strip-sym {
+      color: #c9a227 !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .strip-price {
+      color: #f4f6fb !important;
+      font-weight: 500 !important;
+      min-width: 4ch;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .strip-item [data-field="chg"],
+    .strip-item [data-field="change"],
+    .strip-item [data-field="pct"] {
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+      min-width: 5ch;
+      text-align: right;
+    }
+
+    .strip-item [data-field="chg"].up,
+    .strip-item [data-field="change"].up,
+    .strip-item [data-field="pct"].up {
+      color: #00c97a;
+    }
+
+    .strip-item [data-field="chg"].down,
+    .strip-item [data-field="change"].down,
+    .strip-item [data-field="pct"].down {
+      color: #ff3d5a;
+    }
+
+    .strip-dot {
+      box-shadow: 0 0 6px rgba(0, 201, 122, 0.65);
+    }
+
+    /* Push first content section down so it isn't hidden behind nav + strip */
+    body>main,
+    body>.hero,
+    body>section:first-of-type,
+    .hero:first-of-type,
+    main>.hero:first-child {
+      padding-top: calc(var(--nav-h, 58px) + 36px + 8px) !important;
+    }
+
+    @media (max-width: 720px) {
+      .strip-scroll {
+        gap: 2rem !important;
+        padding: 0 1rem !important;
+      }
+
+      .strip-item {
+        font-size: 0.74rem !important;
+      }
+    }
+  </style>
+  <script defer src="/assets/live-feed.js?v=20260526d"></script>
+  <script defer src="/assets/live-wire.js?v=20260526d"></script>
+  <style id="splc-cosmos-photoreal">
+    /* SPLC_COSMOS_PHOTOREAL_v1 - real NASA JWST image, Ken Burns motion */
+    /* Disable the procedural cartoon canvas from cosmos v3 */
+    #splc-cosmos {
+      display: none !important;
+    }
+
+    #splc-cosmos-photo {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/%22Cosmic_Cliffs%22_in_the_Carina_Nebula_%28NIRCam_Image%29.jpg/2880px-%22Cosmic_Cliffs%22_in_the_Carina_Nebula_%28NIRCam_Image%29.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-color: #02040a;
+      transform-origin: 55% 45%;
+      animation: splcKenBurns 120s ease-in-out infinite alternate;
+      will-change: transform;
+    }
+
+    #splc-cosmos-veil {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.35) 60%, rgba(0, 0, 0, 0.78) 100%),
+        linear-gradient(180deg, rgba(6, 10, 16, 0.45) 0%, rgba(6, 10, 16, 0.25) 35%, rgba(6, 10, 16, 0.55) 100%);
+    }
+
+    @keyframes splcKenBurns {
+      0% {
+        transform: scale(1.00) translate3d(0, 0, 0);
+      }
+
+      50% {
+        transform: scale(1.10) translate3d(-1.5%, -1%, 0);
+      }
+
+      100% {
+        transform: scale(1.05) translate3d(1.5%, 1%, 0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #splc-cosmos-photo {
+        animation: none !important;
+      }
+    }
+
+    /* Body needs to be transparent so the bg shows */
+    html,
+    body {
+      background-color: transparent !important;
+    }
+
+    body {
+      background-image: none !important;
+    }
+  </style>
+  <script>
+    (function () {
+      if (window.__SPLC_COSMOS_PHOTOREAL__) return;
+      window.__SPLC_COSMOS_PHOTOREAL__ = true;
+      function mount() {
+        if (document.getElementById('splc-cosmos-photo')) return;
+        var photo = document.createElement('div');
+        photo.id = 'splc-cosmos-photo';
+        var veil = document.createElement('div');
+        veil.id = 'splc-cosmos-veil';
+        var b = document.body || document.documentElement;
+        b.insertBefore(veil, b.firstChild);
+        b.insertBefore(photo, b.firstChild);
+        console.info('%c[SpiralCoin] photoreal cosmos v1 boot', 'color:#c9a227;font-weight:bold');
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', mount, { once: true });
+      } else { mount(); }
+    })();
+  </script>
+  <link rel="stylesheet" href="/assets/geo-block.css?v=20260526c">
+  <link rel="stylesheet" href="/assets/galaxy-bg.css?v=20260526e">
+  <script defer src="/assets/galaxy-bg.js?v=20260526i"></script>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#c9a227">
+  <script defer src="/assets/pwa-install.js?v=20260526h"></script>
+<script src="/assets/js/utm-capture.js?v=20260528a" defer></script>
+</head>
+
+<body>
+  <div class="auth-bg">
+    <a href="/" class="auth-brand"><img src="/assets/spiralcoin-mark.svg?v=20260526b" alt="SPLC" width="28" height="28"
+        decoding="async"><span>SpiralCoin</span></a>
+    <div class="auth-card">
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tab-login-btn" onclick="switchTab('login')">Sign In</button>
+        <button class="auth-tab" id="tab-signup-btn" onclick="switchTab('signup')">Create Account</button>
+      </div>
+      <!-- LOGIN -->
+      <div id="t-login" class="auth-form active">
+        <div id="l-err" class="err-msg" style="display:none;margin-bottom:1rem"></div>
+        <div class="form-group"><label class="form-label" for="l-email">Email Address</label><input class="form-input"
+            type="email" id="l-email" placeholder="you@example.com" autocomplete="email"></div>
+        <div class="form-group">
+          <div style="display:flex;justify-content:space-between;margin-bottom:.4rem"><label class="form-label"
+              for="l-pass" style="margin:0">Password</label><a href="#" onclick="switchTab('forgot')"
+              style="font-size:.78rem">Forgot?</a></div>
+          <input class="form-input" type="password" id="l-pass" placeholder="••••••••"
+            autocomplete="current-password">
+        </div>
+        <div class="check-row"><input type="checkbox" id="l-remember"><label for="l-remember">Remember me on this
+            device</label></div>
+        <button class="btn btn-gold" onclick="doLogin()" id="loginBtn">Sign In</button>
+        <div class="auth-divider"><span>or continue with</span></div>
+        <button class="btn btn-ghost" style="margin-bottom:.5rem" onclick="demoLogin()">🎮 Demo Account (no signup
+          needed)</button>
+        <button class="btn btn-ghost" onclick="googleStub()"><svg width="16" height="16" viewBox="0 0 24 24"
+            fill="currentColor" style="opacity:.7">
+            <path
+              d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+              fill="#4285F4" />
+            <path
+              d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+              fill="#34A853" />
+            <path
+              d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+              fill="#FBBC05" />
+            <path
+              d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+              fill="#EA4335" />
+          </svg> Sign in with Google</button>
+      </div>
+      <!-- SIGNUP -->
+      <div id="t-signup" class="auth-form">
+        <div id="s-err" class="err-msg" style="display:none;margin-bottom:1rem"></div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="s-fn">First Name</label><input class="form-input"
+              type="text" id="s-fn" placeholder="Jane" autocomplete="given-name"></div>
+          <div class="form-group"><label class="form-label" for="s-ln">Last Name</label><input class="form-input"
+              type="text" id="s-ln" placeholder="Doe" autocomplete="family-name"></div>
+        </div>
+        <div class="form-group"><label class="form-label" for="s-email">Email Address</label><input class="form-input"
+            type="email" id="s-email" placeholder="you@example.com" autocomplete="email"></div>
+        <div class="form-group">
+          <label class="form-label" for="s-pass">Password</label>
+          <input class="form-input" type="password" id="s-pass" placeholder="Min 8 characters"
+            oninput="checkStrength(this.value)" autocomplete="new-password">
+          <div style="margin-top:.35rem">
+            <div style="height:3px;border-radius:2px;background:var(--border);overflow:hidden">
+              <div id="s-strength-bar" style="height:100%;width:0%;transition:all .3s;border-radius:2px"></div>
+            </div>
+            <div id="s-strength-txt" style="font-size:.72rem;color:var(--muted);margin-top:.25rem"></div>
+          </div>
+        </div>
+        <div class="form-group"><label class="form-label" for="s-pass2">Confirm Password</label><input
+            class="form-input" type="password" id="s-pass2" placeholder="••••••••"
+            autocomplete="new-password"></div>
+        <div style="margin-bottom:1rem">
+          <div style="font-size:.8rem;font-weight:500;color:var(--muted);margin-bottom:.5rem">Choose Plan</div>
+          <div class="plan-pills">
+            <div class="plan-pill selected" onclick="selPlan('free',this)" id="pp-free">
+              <div class="plan-pill-name">Free</div>
+              <div class="plan-pill-price">$0/mo</div>
+            </div>
+            <div class="plan-pill" onclick="selPlan('pro',this)" id="pp-pro">
+              <div class="plan-pill-name">Pro ⚡</div>
+              <div class="plan-pill-price">$9.99/mo</div>
+            </div>
+          </div>
+        </div>
+        <div class="check-row"><input type="checkbox" id="s-tos"><label for="s-tos">I agree to the <a href="#">Terms of
+              Service</a> and <a href="#">Privacy Policy</a>. I understand trading involves risk and this platform is
+            for informational purposes.</label></div>
+        <button class="btn btn-gold" onclick="doSignup()" id="signupBtn">Create Account</button>
+        <div class="auth-divider"><span>or</span></div>
+        <button class="btn btn-ghost" onclick="googleStub()"><svg width="16" height="16" viewBox="0 0 24 24"
+            fill="currentColor" style="opacity:.7">
+            <path
+              d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+              fill="#4285F4" />
+            <path
+              d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+              fill="#34A853" />
+            <path
+              d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+              fill="#FBBC05" />
+            <path
+              d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+              fill="#EA4335" />
+          </svg> Sign up with Google</button>
+      </div>
+      <!-- FORGOT -->
+      <div id="t-forgot" class="auth-form">
+        <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.2rem">Enter your email and we'll send you a reset
+          link.</p>
+        <div id="f-msg" class="ok-msg" style="display:none;margin-bottom:1rem"></div>
+        <div class="form-group"><label class="form-label" for="f-email">Email Address</label><input class="form-input"
+            type="email" id="f-email" placeholder="you@example.com" autocomplete="email"></div>
+        <button class="btn btn-gold" onclick="doForgot()">Send Reset Link</button>
+        <div style="text-align:center;margin-top:1rem"><a href="#" onclick="switchTab('login')"
+            style="font-size:.82rem">← Back to Sign In</a></div>
+      </div>
+    </div>
+    <div class="features-strip">
+      <div class="feat"><span class="feat-icon">📈</span>Live Crypto Markets</div>
+      <div class="feat"><span class="feat-icon">🔒</span>Secure &amp; Private</div>
+      <div class="feat"><span class="feat-icon">⚡</span>SPLC Token Rewards</div>
+      <div class="feat"><span class="feat-icon">💼</span>Portfolio Tracking</div>
+    </div>
+  </div>
+  <script>
+    let selectedPlan = 'free';
+    function switchTab(t) {
+      document.querySelectorAll('.auth-tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+      if (t === 'login') { document.getElementById('tab-login-btn').classList.add('active'); document.getElementById('t-login').classList.add('active'); }
+      else if (t === 'signup') { document.getElementById('tab-signup-btn').classList.add('active'); document.getElementById('t-signup').classList.add('active'); }
+      else if (t === 'forgot') { document.getElementById('t-forgot').classList.add('active'); }
+    }
+    function selPlan(p, el) {
+      selectedPlan = p;
+      document.querySelectorAll('.plan-pill').forEach(x => x.classList.remove('selected'));
+      el.classList.add('selected');
+      if (p === 'pro') { const btn = document.getElementById('signupBtn'); if (btn) btn.textContent = 'Create Pro Account — $9.99/mo'; }
+      else { const btn = document.getElementById('signupBtn'); if (btn) btn.textContent = 'Create Account'; }
+    }
+    function checkStrength(v) {
+      const bar = document.getElementById('s-strength-bar'); const txt = document.getElementById('s-strength-txt');
+      if (!v) { bar.style.width = '0%'; txt.textContent = ''; return; }
+      let score = 0;
+      if (v.length >= 8) score++; if (v.length >= 12) score++; if (/[A-Z]/.test(v)) score++; if (/[0-9]/.test(v)) score++; if (/[^A-Za-z0-9]/.test(v)) score++;
+      const levels = [{ w: '20%', c: '#ff3d5a', t: 'Weak' }, { w: '40%', c: '#ff8c42', t: 'Fair' }, { w: '60%', c: '#ffd700', t: 'Good' }, { w: '80%', c: '#7bc67e', t: 'Strong' }, { w: '100%', c: '#00c97a', t: 'Excellent' }];
+      const l = levels[Math.min(score, levels.length) - 1] || levels[0];
+      bar.style.width = l.w; bar.style.background = l.c; txt.textContent = l.t; txt.style.color = l.c;
+    }
+    function showErr(id, msg) { const el = document.getElementById(id); if (el) { el.textContent = msg; el.style.display = 'block'; } }
+    function hideErr(id) { const el = document.getElementById(id); if (el) el.style.display = 'none'; }
+    function doLogin() {
+      hideErr('l-err');
+      const email = document.getElementById('l-email').value.trim();
+      const pass = document.getElementById('l-pass').value;
+      if (!email || !pass) { showErr('l-err', 'Please fill in all fields.'); return; }
+      if (!/\S+@\S+\.\S+/.test(email)) { showErr('l-err', 'Invalid email address.'); return; }
+      const stored = JSON.parse(localStorage.getItem('splc_user') || 'null');
+      if (!stored) { showErr('l-err', 'No account found. Please create an account first.'); return; }
+      if (stored.email !== email) { showErr('l-err', 'Email not found.'); return; }
+      // Demo: any password works for demo accounts
+      localStorage.setItem('splc_user', JSON.stringify({ ...stored, lastLogin: new Date().toISOString() }));
+      const next = new URLSearchParams(location.search).get('next') || '/dashboard.html';
+      window.location.href = next;
+    }
+    function doSignup() {
+      hideErr('s-err');
+      const fn = document.getElementById('s-fn').value.trim();
+      const ln = document.getElementById('s-ln').value.trim();
+      const email = document.getElementById('s-email').value.trim();
+      const pass = document.getElementById('s-pass').value;
+      const pass2 = document.getElementById('s-pass2').value;
+      const tos = document.getElementById('s-tos').checked;
+      if (!fn || !ln || !email || !pass) { showErr('s-err', 'Please fill in all required fields.'); return; }
+      if (!/\S+@\S+\.\S+/.test(email)) { showErr('s-err', 'Invalid email address.'); return; }
+      if (pass.length < 8) { showErr('s-err', 'Password must be at least 8 characters.'); return; }
+      if (pass !== pass2) { showErr('s-err', 'Passwords do not match.'); return; }
+      if (!tos) { showErr('s-err', 'You must agree to the Terms of Service.'); return; }
+      const user = { name: fn + ' ' + ln, email, plan: selectedPlan, created: new Date().toISOString(), balance: { USD: 10000, demo: true } };
+      localStorage.setItem('splc_user', JSON.stringify(user));
+      if (selectedPlan === 'pro') { window.location.href = '/pricing.html'; }
+      else { window.location.href = '/dashboard.html'; }
+    }
+    function demoLogin() {
+      const user = { name: 'Demo Trader', email: 'demo@spiralcoin.net', plan: 'pro', created: new Date().toISOString(), balance: { USD: 50000, demo: true }, isDemo: true };
+      localStorage.setItem('splc_user', JSON.stringify(user));
+      window.location.href = '/dashboard.html';
+    }
+    function doForgot() {
+      const email = document.getElementById('f-email').value.trim();
+      if (!email) { return; }
+      document.getElementById('f-msg').textContent = 'Reset link sent to ' + email + '. Check your inbox.';
+      document.getElementById('f-msg').style.display = 'block';
+    }
+    function googleStub() { alert('Google OAuth integration coming soon. Use email signup or the Demo Account to try the platform now.'); }
+    // Auto-redirect if already logged in
+    (function () {
+      const u = JSON.parse(localStorage.getItem('splc_user') || 'null');
+      if (u) { const next = new URLSearchParams(location.search).get('next') || '/dashboard.html'; window.location.href = next; }
+    })();
+  </script>
+  <!-- ── SpiralCoin geo-block + affirmation ────────────────────────── -->
+  <div id="splc-geo-block" hidden>
+    <div class="splc-geo-modal">
+      <h2>Not available in your region</h2>
+      <p id="splc-geo-msg"></p>
+      <p>If you are a U.S. accredited investor, our Reg D 506(c) tranche is open by application.</p>
+      <a href="/regd.html" id="splc-regd-link" hidden>Apply via Reg D →</a>
+    </div>
+  </div>
+  <div id="splc-affirm" hidden>
+    <div class="splc-affirm-modal">
+      <h2>Eligibility Confirmation</h2>
+      <p>Before continuing, please confirm one of the following:</p>
+      <label><input type="radio" name="splc-aff" value="non-us"> I am NOT a U.S. person.</label>
+      <label><input type="radio" name="splc-aff" value="accredited"> I am a U.S. accredited investor and have completed
+        Reg D KYC.</label>
+      <p><button id="splc-aff-confirm" disabled>Continue</button></p>
+      <p style="font-size:.8rem;opacity:.7">
+        <a href="https://www.sec.gov/education/capitalraising/building-blocks/accredited-investor" target="_blank"
+          rel="noopener">What is an accredited investor?</a>
+      </p>
+      <p style="font-size:.75rem;opacity:.6;margin-top:1rem">
+        Trading involves risk. Past performance does not guarantee future results.
+      </p>
+    </div>
+  </div>
+  <script src="/assets/geo-block.js"></script>
+  <div style="position:fixed;bottom:8px;right:12px;font:11px/1 system-ui,sans-serif;opacity:.6;z-index:9999;"><a
+      href="/cookies.html" style="color:inherit;text-decoration:none;">Cookie Policy</a></div>
+<script src="/assets/js/ga-events.js?v=20260528a" defer></script>
+</body>
+
+</html>

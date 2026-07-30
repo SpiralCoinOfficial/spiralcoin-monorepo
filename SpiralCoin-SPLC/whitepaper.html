@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Cookiebot CMP -->
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="83c385c8-b96d-4d3e-a75b-0f81f3d82de3"
+        type="text/javascript" async></script>
+    <!-- Google tag (gtag.js) with Consent Mode v2 defaults -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEMH1LPSD4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        // Consent Mode v2: default to denied; Cookiebot will update on user choice.
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied',
+            'functionality_storage': 'granted',
+            'security_storage': 'granted',
+            'wait_for_update': 500
+        });
+        gtag('js', new Date());
+        gtag('config', 'G-MEMH1LPSD4');
+    </script>
+    <meta charset="UTF-8">
+    <title>SpiralCoin (SPLC) — Technical Whitepaper</title>
+    <meta name="description"
+        content="Technical whitepaper for SpiralCoin (SPLC): a fixed-supply, transfer-taxed, vote-enabled ERC-20 with cross-chain mobility via LayerZero V2 OFT on Arbitrum One.">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://www.spiralcoin.net/whitepaper.html">
+
+    <!-- Open Graph / Twitter Card for shareable previews -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.spiralcoin.net/whitepaper.html">
+    <meta property="og:title" content="SpiralCoin (SPLC) — Technical Whitepaper">
+    <meta property="og:description"
+        content="Fixed-supply, transfer-taxed, vote-enabled ERC-20 with cross-chain mobility via LayerZero V2 OFT on Arbitrum One.">
+    <meta property="og:image" content="https://www.spiralcoin.net/SPLC/splc-256.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="SpiralCoin (SPLC) — Technical Whitepaper">
+    <meta name="twitter:description"
+        content="Fixed-supply ERC-20, 3.14% transfer tax, 12-month LP time-lock, cross-chain via LayerZero V2.">
+    <meta name="twitter:image" content="https://www.spiralcoin.net/SPLC/splc-256.png">
+
+    <script src="/assets/js/utm-capture.js?v=20260528a" defer></script>
+    <style>
+        :root {
+            --gold: #c9a227;
+            --gold-b: #e8c042;
+            --gold-dim: rgba(201, 162, 39, .12);
+            --bg: #05080f;
+            --bg2: #0a1626;
+            --ink: #e6edf3;
+            --muted: #9aa7b4;
+            --rule: rgba(255, 255, 255, .08)
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: Inter, system-ui, -apple-system, sans-serif;
+            line-height: 1.65;
+            font-size: 16px
+        }
+
+        .wrap {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 48px 24px 96px
+        }
+
+        header {
+            border-bottom: 1px solid var(--rule);
+            padding-bottom: 28px;
+            margin-bottom: 36px
+        }
+
+        .eyebrow {
+            color: var(--gold);
+            font-size: 12px;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin: 0 0 12px
+        }
+
+        h1 {
+            font-size: 36px;
+            line-height: 1.15;
+            margin: 0 0 14px;
+            color: var(--gold-b);
+            font-weight: 700
+        }
+
+        .sub {
+            color: var(--muted);
+            font-size: 15px;
+            margin: 0
+        }
+
+        h2 {
+            font-size: 22px;
+            color: var(--gold-b);
+            margin: 48px 0 14px;
+            padding-top: 8px;
+            font-weight: 600
+        }
+
+        h3 {
+            font-size: 16px;
+            color: var(--gold);
+            margin: 28px 0 8px;
+            font-weight: 600;
+            letter-spacing: .02em
+        }
+
+        p {
+            margin: 0 0 14px
+        }
+
+        ul,
+        ol {
+            margin: 0 0 14px;
+            padding-left: 22px
+        }
+
+        li {
+            margin: 0 0 6px
+        }
+
+        code,
+        .mono {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 13px;
+            color: #e6c878;
+            background: rgba(201, 162, 39, .08);
+            padding: 1px 6px;
+            border-radius: 4px;
+            word-break: break-all
+        }
+
+        pre {
+            background: #0a1626;
+            border: 1px solid var(--rule);
+            border-radius: 8px;
+            padding: 14px 16px;
+            overflow-x: auto;
+            font-size: 13px
+        }
+
+        .meta {
+            background: var(--gold-dim);
+            border-left: 3px solid var(--gold);
+            padding: 14px 18px;
+            border-radius: 0 6px 6px 0;
+            margin: 0 0 28px
+        }
+
+        .meta b {
+            color: var(--gold-b)
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0 22px;
+            font-size: 14px
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 9px 10px;
+            border-bottom: 1px solid var(--rule)
+        }
+
+        th {
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: .1em
+        }
+
+        .risk {
+            background: rgba(220, 80, 80, .06);
+            border: 1px solid rgba(220, 80, 80, .25);
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin: 18px 0
+        }
+
+        .risk h3 {
+            color: #ff7676;
+            margin-top: 0
+        }
+
+        a {
+            color: var(--gold-b);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(232, 192, 66, .35)
+        }
+
+        a:hover {
+            border-bottom-color: var(--gold-b)
+        }
+
+        footer {
+            margin-top: 64px;
+            padding-top: 22px;
+            border-top: 1px solid var(--rule);
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                color: #111;
+                font-size: 11pt
+            }
+
+            .wrap {
+                max-width: none;
+                padding: 24px
+            }
+
+            h1,
+            h2,
+            h3,
+            .eyebrow {
+                color: #7a5e0a
+            }
+
+            pre,
+            code,
+            .mono {
+                background: #f6f1de;
+                color: #5a4500;
+                border-color: #e2d49b
+            }
+
+            .meta {
+                background: #f6f1de;
+                border-color: #7a5e0a
+            }
+
+            a {
+                color: #5a4500
+            }
+
+            .risk {
+                background: #fdecec;
+                border-color: #aa3030
+            }
+
+            footer {
+                border-color: #ccc;
+                color: #666
+            }
+        }
+    </style>
+    <script src="/assets/js/utm-capture.js?v=20260528a" defer></script>
+</head>
+
+<body>
+    <div class="wrap">
+
+        <header>
+            <!-- Cookiebot CMP -->
+            <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js"
+                data-cbid="83c385c8-b96d-4d3e-a75b-0f81f3d82de3" type="text/javascript" async></script>
+            <!-- Google tag (gtag.js) -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEMH1LPSD4"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag() { dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-MEMH1LPSD4');
+            </script>
+            <p class="eyebrow">Technical Whitepaper · v1.0</p>
+            <h1>SpiralCoin (SPLC)</h1>
+            <p class="sub">A fixed-supply, transfer-taxed, vote-enabled ERC-20 with cross-chain mobility via LayerZero
+                V2 OFT — deployed as a UUPS proxy on Arbitrum One.</p>
+        </header>
+
+        <div class="meta">
+            <b>Contract:</b> <span class="mono">0x8e45cc9F480257a1477976848d41A6A9Fb2cf27C</span> (Arbitrum One, UUPS
+            proxy)<br>
+            <b>Standard:</b> ERC-20 + ERC-20Permit (EIP-2612) + ERC-20Votes + LayerZero V2 OFT<br>
+            <b>Supply:</b> Fixed at mint; no inflation function exists in source<br>
+            <b>Decimals:</b> 18 &nbsp;·&nbsp; <b>Transfer tax:</b> 3.14% (immutable; split 50/50 treasury/staking)
+        </div>
+
+        <h2>1. Abstract</h2>
+        <p>SpiralCoin (ticker <b>SPLC</b>) is a self-bootstrapping ERC-20 designed to fund its own ecosystem development
+            through a small, mathematically constrained transfer tax. The contract is upgradeable under the UUPS pattern
+            (for security patches only — supply mechanics are immutable in source), governed by a token-weighted DAO
+            with timelocked execution, and deployable across EVM chains via LayerZero V2 OFT for unified cross-chain
+            liquidity.</p>
+        <p>SpiralCoin does not claim or guarantee yield, price appreciation, or utility beyond what its on-chain code
+            enforces. This document describes the contract architecture, economic mechanics, and operational commitments
+            — all of which are verifiable on-chain.</p>
+
+        <h2>2. Contract Architecture</h2>
+        <h3>2.1 Proxy pattern (UUPS)</h3>
+        <p>SPLC is deployed via OpenZeppelin's UUPS (Universal Upgradeable Proxy Standard). The proxy contract holds
+            storage; the implementation contract holds logic. Upgrade authority is gated by <code>onlyOwner</code> and
+            will transition to the SpiralDAO timelock contract prior to large-scale custody, institutional integration,
+            or staking-vault mainnet activation (see Roadmap §9 phases 5–6). The seed-round LP position is independently
+            protected by the <code>SPLCLPLock</code> 12-month time-lock described in §7.2, so initial pool liquidity
+            cannot be removed by the deployer key regardless of governance status. UUPS is preferred over
+            Transparent Proxies because it removes the admin-storage collision surface and reduces gas overhead on every
+            call.</p>
+
+        <h3>2.2 Inherited extensions</h3>
+        <ul>
+            <li><b>ERC20Upgradeable</b> — base token semantics.</li>
+            <li><b>ERC20PermitUpgradeable (EIP-2612)</b> — gasless approvals via off-chain signatures.</li>
+            <li><b>ERC20VotesUpgradeable</b> — delegation + checkpointing required by SpiralDAO.</li>
+            <li><b>OFTUpgradeable (LayerZero V2)</b> — burn-and-mint cross-chain bridging.</li>
+            <li><b>OwnableUpgradeable</b> + <b>UUPSUpgradeable</b> — controlled upgrade path.</li>
+        </ul>
+
+        <h3>2.3 No mint function</h3>
+        <p>The implementation source contains <b>no public, external, or owner-callable <code>mint()</code></b>
+            entrypoint. The initial supply is set inside <code>initialize()</code> via
+            <code>_mint(initialOwner, INITIAL_SUPPLY)</code>, which runs exactly once. After initialization the only
+            paths that mint tokens are: (a) the OFT bridge's internal credit-on-receive, which is matched by a
+            debit-on-send on the origin chain (net supply = 0), and (b) impossible — there is no other path.
+        </p>
+
+        <h2>3. The 3.14% Transfer Tax</h2>
+        <p>Every transfer between non-exempt addresses skims <b>314 basis points (3.14%)</b> from the gross amount. The
+            skim is split 50/50:</p>
+        <ul>
+            <li><b>1.57%</b> → <code>treasury</code> address (operations, audits, grants, runway).</li>
+            <li><b>1.57%</b> → <code>stakingVault</code> address (rewards for SPLC stakers).</li>
+        </ul>
+        <p>The rate (<code>FEE_BPS_TOTAL = 314</code>) is declared <code>constant</code> in source. There is no setter.
+            To change it, the entire implementation contract would have to be upgraded — a change visible on-chain and
+            subject to the timelock once governance is transferred.</p>
+
+        <h3>3.1 Why 3.14%</h3>
+        <p>π (pi) ≈ 3.14159 was selected as a culturally recognizable constant. The practical rationale: it is low
+            enough to permit normal trading and DeFi composability, but meaningful enough — when multiplied by genuine
+            transfer volume — to fund continued protocol development without requiring inflation, paid sponsorships, or
+            rent-seeking governance proposals.</p>
+
+        <h3>3.2 Tax exemptions</h3>
+        <p>Specific addresses can be marked <code>feeExempt</code> by the owner (later: DAO). Exemptions are needed for:
+            the treasury and staking-vault recipients themselves (preventing recursive skim), bridge/OFT endpoints, the
+            LP-lock contract (so initial pool seeding is untaxed), and known router contracts where the skim breaks AMM
+            invariants (see §7.2 for the V3 caveat).</p>
+
+        <h3>3.3 AMM compatibility note</h3>
+        <p>Uniswap V3 pools enforce the K-invariant on every swap: if the actual transferred amount differs from the
+            swap-quoted amount, the transaction reverts. Therefore <b>V3 pools are kept tax-INACTIVE</b> — they are
+            added to <code>feeExempt</code>. The 3.14% revenue is collected on (a) wallet-to-wallet transfers, (b)
+            V2-style pools (PancakeSwap V2, SushiSwap V2) where the skim is supported, and (c) future curve-shaped or
+            balancer-style venues that tolerate fee-on-transfer tokens.</p>
+
+        <h2>4. Fixed-Supply Commitment</h2>
+        <p>SPLC ships with a fixed initial supply set in <code>initialize()</code>. There is no minting authority, no
+            rebase function, no inflationary issuance, no validator-reward emission. The total supply can only decrease
+            (via voluntary burns sent to <code>0x000…dead</code> or via the standard <code>_burn</code> path if exposed
+            in a future audit).</p>
+        <p>This is a deliberate design choice that mirrors Bitcoin's fixed-supply commitment: the protocol cannot fund
+            itself through dilution. All operational funding flows from the 3.14% transfer-tax stream, not from
+            issuance.</p>
+
+        <h2>5. Governance (SpiralDAO)</h2>
+        <p>SPLC is the voting token for <b>SpiralDAO</b>, a Governor-Bravo-style on-chain DAO with timelocked execution.
+            Once governance is migrated:</p>
+        <ul>
+            <li>Voting power = SPLC balance at proposal-snapshot block (via ERC20Votes checkpointing).</li>
+            <li>Proposals execute through a <code>TimelockController</code> with a configurable delay (target: 48 hours
+                minimum on mainnet).</li>
+            <li>Upgrade authority over the SPLC proxy will be transferred to the timelock — meaning <b>no single key can
+                    ship a malicious upgrade</b>.</li>
+            <li>The treasury wallet and staking-vault wallet will be migrated to multisigs and later to DAO-controlled
+                timelock outputs.</li>
+        </ul>
+        <p>Until those migrations complete, SPLC documents an interim centralization risk in §11.2.</p>
+
+        <h2>6. Staking Vault</h2>
+        <p>The staking vault receives 1.57% of every taxed transfer. Stakers deposit SPLC into the vault contract and
+            accrue a pro-rata share of incoming tax revenue. There is no fixed APR; yield is purely a function of
+            network transfer volume — when volume is high, yield is high; when volume is zero, yield is zero. No
+            inflation subsidizes staking.</p>
+
+        <h2>7. Liquidity Strategy</h2>
+        <h3>7.1 Initial venue: SPLC / USDC on Uniswap V3</h3>
+        <p>The first AMM venue is a <b>SPLC / USDC</b> pair on Uniswap V3 (Arbitrum One), in the <b>1% fee tier</b>
+            (10,000 bps; tick spacing 200) — the standard tier for new/volatile tokens. Seeding is done via <a
+                href="https://github.com/SpiralCoinOfficial/ionos-migration/blob/main/contracts/scripts/deployLpAndLock.js">contracts/scripts/deployLpAndLock.js</a>
+            using a full-range position.</p>
+
+        <h3>7.2 LP NFT time-lock (12 months minimum)</h3>
+        <p>After the pool is seeded, the LP-position NFT is transferred to <b>SPLCLPLock</b> — a custody contract that
+            prevents withdrawal of the underlying position for a minimum of 12 months. Trading fees accrued by the
+            locked position can still be collected by a designated <code>feeRecipient</code> (the treasury), but the
+            principal liquidity cannot be removed during the lock window. The lock contract address and unlock timestamp
+            are recorded in <a
+                href="https://github.com/SpiralCoinOfficial/ionos-migration/tree/main/contracts/deployments">contracts/deployments/{network}/LpAndLock.json</a>
+            after seeding.</p>
+
+        <h2>8. Cross-Chain Mobility (LayerZero V2 OFT)</h2>
+        <p>SPLC inherits <b>OFTUpgradeable</b> from LayerZero V2's official package. Cross-chain transfers are
+            burn-and-mint: tokens are burned on the origin chain and an equivalent amount is minted on the destination
+            chain after the LayerZero DVN attestation. Net global supply is preserved across all chains. Initial chains:
+            Arbitrum One (live), Base + Polygon + Ethereum mainnet (configured but not yet liquid).</p>
+
+        <h2>9. Roadmap</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Phase</th>
+                    <th>Milestone</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>0</td>
+                    <td>Token deployed on Arbitrum One (UUPS proxy)</td>
+                    <td>Live</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Arbiscan token-info verification + listing</td>
+                    <td>Submitted</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>SPLC/USDC seed pool on Uniswap V3 (1% fee, full-range)</td>
+                    <td>Funding</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>LP NFT time-lock activation (12 months minimum)</td>
+                    <td>Pending pool</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>GeckoTerminal + DEXScreener listings (auto-indexed)</td>
+                    <td>Pending pool</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Staking vault mainnet deployment</td>
+                    <td>Audit-pending</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>SpiralDAO governance + timelock takeover of proxy</td>
+                    <td>Drafting</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>LayerZero OFT peer enable to Base / Polygon / Ethereum</td>
+                    <td>Configured</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>ERC-4337 paymaster (pay gas in SPLC) — review pending</td>
+                    <td>Drafted</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>10. Verifiable References</h2>
+        <ul>
+            <li>Proxy contract on Arbiscan: <a
+                    href="https://arbiscan.io/token/0x8e45cc9F480257a1477976848d41A6A9Fb2cf27C">arbiscan.io/token/0x8e45…f27C</a>
+            </li>
+            <li>Source code repository: <a
+                    href="https://github.com/SpiralCoinOfficial/ionos-migration">github.com/SpiralCoinOfficial/ionos-migration</a>
+            </li>
+            <li>Token implementation: <code>contracts/contracts/SpiralCoinUpgradeable.sol</code></li>
+            <li>LP lock contract: <code>contracts/contracts/SPLCLPLock.sol</code></li>
+            <li>Deploy scripts: <code>contracts/scripts/deployLpAndLock.js</code></li>
+            <li>Official site: <a href="https://www.spiralcoin.net">www.spiralcoin.net</a></li>
+        </ul>
+
+        <h2>11. Risk Disclosures</h2>
+
+        <div class="risk">
+            <h3>11.1 General market risk</h3>
+            <p>SPLC is a volatile, speculative digital asset. Token prices can and do go to zero. There is no guaranteed
+                yield, no guaranteed liquidity, and no guaranteed price floor. Past performance — including any
+                backtested or hypothetical figures — does not predict future results. Trading involves risk; only
+                allocate capital you can afford to lose entirely.</p>
+        </div>
+
+        <div class="risk">
+            <h3>11.2 Interim centralization</h3>
+            <p>Until SpiralDAO governance is live and the proxy's upgrade authority is transferred to the timelock
+                contract, the deployer wallet retains the technical ability to upgrade the SPLC implementation contract.
+                While the published source contains no mint function and no tax-rate setter, a malicious upgrade could
+                in principle alter those properties. Users should evaluate this risk explicitly until the governance
+                migration is complete and verifiable on-chain.</p>
+        </div>
+
+        <div class="risk">
+            <h3>11.3 Liquidity bootstrap risk</h3>
+            <p>The initial SPLC/USDC pool is funded by a seed-round contribution rather than by a large institutional
+                market-maker. Until secondary liquidity grows, slippage will be high and exit liquidity will be limited.
+                The 12-month LP time-lock partially mitigates rug-risk for the seed position, but does not guarantee
+                tradeable depth.</p>
+        </div>
+
+        <div class="risk">
+            <h3>11.4 Smart-contract risk</h3>
+            <p>The SPLC contracts have been written against audited OpenZeppelin and LayerZero base contracts, but the
+                SPLC-specific extensions (tax logic, OFT integration, staking vault, paymaster) are not yet third-party
+                audited. An external audit is planned before any large-scale custody or institutional integration. Until
+                then, deposits, staking, and bridging carry standard smart-contract risk.</p>
+        </div>
+
+        <div class="risk">
+            <h3>11.5 Regulatory risk</h3>
+            <p>The regulatory treatment of digital assets, governance tokens, and DeFi liquidity provision varies by
+                jurisdiction and is evolving. SPLC is not registered as a security in any jurisdiction. Users are
+                responsible for determining the legal status of their participation under their own local laws.</p>
+        </div>
+
+        <h2>12. Contact</h2>
+        <ul>
+            <li>Website: <a href="https://www.spiralcoin.net">spiralcoin.net</a></li>
+            <li>X / Twitter: <a href="https://x.com/SpiralCoinLLC">@SpiralCoinLLC</a></li>
+            <li>GitHub: <a href="https://github.com/SpiralCoinOfficial">github.com/SpiralCoinOfficial</a></li>
+        </ul>
+
+        <footer>
+            © SpiralCoin LLC. This whitepaper is informational and does not constitute investment advice, a securities
+            offering, or a solicitation to buy or sell any asset. Trading and holding cryptocurrency involves
+            substantial risk including total loss of capital. Verify all on-chain claims directly against the contract
+            source code linked above before relying on them.
+
+            <div style="text-align:center;padding:10px 0;font-size:.75rem;color:#9aa7b4"><a href="/cookies.html"
+                    style="color:#9aa7b4;text-decoration:underline">Cookie Policy</a></div>
+        </footer>
+
+    </div>
+    <script src="/assets/js/ga-events.js?v=20260528a" defer></script>
+</body>
+
+</html>

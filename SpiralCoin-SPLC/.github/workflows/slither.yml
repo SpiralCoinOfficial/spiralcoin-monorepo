@@ -1,0 +1,60 @@
+name: slither
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'contracts/contracts/**'
+      - 'contracts/hardhat.config.js'
+      - 'contracts/package*.json'
+      - 'contracts/.npmrc'
+      - '.github/workflows/slither.yml'
+  pull_request:
+    paths:
+      - 'contracts/contracts/**'
+      - 'contracts/hardhat.config.js'
+      - 'contracts/package*.json'
+      - 'contracts/.npmrc'
+      - '.github/workflows/slither.yml'
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: contracts
+
+jobs:
+  slither:
+    name: Slither static analysis
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Gate: HIGH-severity Slither findings fail the build.
+      #
+      # Why fail-on: high (not medium):
+      #   The repository has 8+ contracts spanning presale, staking, paymaster,
+      #   LP-lock, oracle, and governance. Several medium detectors produce
+      #   structural false positives that are documented and accepted:
+      #     - reentrancy-no-eth : all affected functions carry nonReentrant or
+      #       the `initializer` modifier; no real re-entry vector exists.
+      #     - locked-ether      : SPLCPresalePublic and SPLCPaymaster accept ETH
+      #       intentionally; ETH is forwarded or managed through the EntryPoint.
+      #   True HIGH-severity detectors (uninitialized-state/storage,
+      #   reentrancy-eth, arbitrary-send-eth to user-controlled dest,
+      #   controlled-delegatecall, etc.) remain active.
+      #
+      # contracts/.npmrc sets legacy-peer-deps=true so the Docker container's
+      # `npm ci` step resolves @layerzerolabs peer-dep conflicts automatically.
+      - name: Run Slither
+        uses: crytic/slither-action@v0.4.0
+        id: slither
+        with:
+          target: 'contracts/'
+          node-version: '20'
+          slither-version: '0.10.4'
+          slither-args: '--filter-paths "node_modules|contracts/mocks" --exclude-informational --exclude-low'
+          fail-on: high

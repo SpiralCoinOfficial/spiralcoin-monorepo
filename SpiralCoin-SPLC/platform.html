@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Cookiebot CMP -->
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="83c385c8-b96d-4d3e-a75b-0f81f3d82de3"
+        type="text/javascript" async></script>
+    <!-- Google tag (gtag.js) with Consent Mode v2 defaults -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEMH1LPSD4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'analytics_storage': 'denied',
+            'functionality_storage': 'granted',
+            'security_storage': 'granted',
+            'wait_for_update': 500
+        });
+        gtag('js', new Date());
+        gtag('config', 'G-MEMH1LPSD4');
+    </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.googletagmanager.com https://consent.cookiebot.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; connect-src 'self' https://www.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.googletagmanager.com https://consent.cookiebot.com https://consentcdn.cookiebot.com; frame-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SpiralCoin — Modern Trading Platform · Charts, Watchlists, Portfolio</title>
+    <meta name="description"
+        content="A modern trading platform for active traders. Live charts, custom watchlists, portfolio tracking, and a free demo. Trading involves risk.">
+    <link rel="canonical" href="https://www.spiralcoin.net/platform.html">
+    <link rel="icon" type="image/svg+xml" href="/assets/spiralcoin-mark.svg?v=20260529">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.spiralcoin.net/platform.html">
+    <meta property="og:title" content="SpiralCoin — Modern Trading Platform">
+    <meta property="og:description"
+        content="Live charts, custom watchlists, and a clean portfolio view. Try the free demo.">
+    <meta name="robots" content="index,follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #060a10;
+            --surface: #0a1120;
+            --card: #0e1828;
+            --border: rgba(255, 255, 255, 0.08);
+            --text: #e8ecf3;
+            --muted: #8a93a6;
+            --gold: #c9a227;
+            --gold-2: #ffd76a;
+            --accent: #5aa9ff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font: 16px/1.55 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        header.site {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(6, 10, 16, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .brand-mark {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, var(--gold-2), var(--gold) 60%, #6b4d10);
+            box-shadow: 0 0 18px rgba(201, 162, 39, 0.35);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--gold), var(--gold-2));
+            color: #1a1300;
+            padding: 9px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .nav-cta:hover {
+            text-decoration: none;
+            filter: brightness(1.08);
+        }
+
+        .hero {
+            padding: 80px 0 56px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 13px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(34px, 5.2vw, 56px);
+            line-height: 1.08;
+            margin: 0 0 18px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 .grad {
+            background: linear-gradient(135deg, var(--gold-2), var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p.lede {
+            max-width: 680px;
+            margin: 0 auto 30px;
+            color: var(--muted);
+            font-size: 18px;
+        }
+
+        .cta-row {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 22px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: transform .12s ease, filter .12s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), var(--gold-2));
+            color: #1a1300;
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.08);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border-color: var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .hero-note {
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        section {
+            padding: 64px 0;
+        }
+
+        section h2 {
+            font-size: clamp(26px, 3.4vw, 36px);
+            margin: 0 0 12px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        section .lede {
+            color: var(--muted);
+            max-width: 640px;
+            margin: 0 0 36px;
+            font-size: 17px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+
+        .feat {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px;
+        }
+
+        .feat-icn {
+            width: 36px;
+            height: 36px;
+            border-radius: 9px;
+            background: linear-gradient(135deg, rgba(201, 162, 39, .18), rgba(90, 169, 255, .14));
+            display: grid;
+            place-items: center;
+            margin-bottom: 14px;
+            font-size: 18px;
+        }
+
+        .feat h3 {
+            margin: 0 0 6px;
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .feat p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14.5px;
+            line-height: 1.55;
+        }
+
+        .strip {
+            background: linear-gradient(135deg, rgba(201, 162, 39, .08), rgba(90, 169, 255, .05));
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .strip h2 {
+            margin-bottom: 14px;
+        }
+
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 22px;
+        }
+
+        .pillar {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+        }
+
+        .pillar h3 {
+            margin: 0 0 8px;
+            font-size: 18px;
+        }
+
+        .pillar ul {
+            padding-left: 18px;
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .pillar li {
+            margin: 6px 0;
+            font-size: 14.5px;
+        }
+
+        .faq {
+            display: grid;
+            gap: 10px;
+        }
+
+        .faq details {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px 18px;
+        }
+
+        .faq summary {
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .faq p {
+            color: var(--muted);
+            margin: 10px 0 0;
+        }
+
+        footer.site {
+            background: #050810;
+            border-top: 1px solid var(--border);
+            padding: 28px 0;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        footer.site .frow {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer.site a {
+            color: var(--muted);
+            margin-right: 14px;
+        }
+
+        footer.site a:hover {
+            color: var(--text);
+        }
+
+        .risk-footer {
+            background: #040810;
+            color: #6a7184;
+            font-size: 12px;
+            line-height: 1.55;
+            padding: 18px 24px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site">
+        <div class="container nav">
+            <a class="brand" href="/">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <span>SpiralCoin</span>
+            </a>
+            <a class="nav-cta" href="/signup.html" data-ga-conversion="demo_signup">Start Free Demo</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="container">
+                <div class="eyebrow">Modern Trading Platform</div>
+                <h1>A trading workspace built for <span class="grad">active traders</span></h1>
+                <p class="lede">Live charts, custom watchlists, and a clean portfolio view — all in one place.
+                    Practice in the free demo before you fund a live account.</p>
+                <div class="cta-row">
+                    <a class="btn btn-primary" href="/signup.html" data-ga-conversion="demo_signup">Start the Free
+                        Demo</a>
+                    <a class="btn btn-outline" href="#how">See How It Works</a>
+                </div>
+                <div class="hero-note">No card required to explore the demo.</div>
+            </div>
+        </section>
+
+        <!-- FEATURES -->
+        <section id="how">
+            <div class="container">
+                <h2>Everything you need in one workspace</h2>
+                <p class="lede">A focused toolset, not feature bloat. Designed so you can move between
+                    charts, watchlists, and your portfolio without losing context.</p>
+                <div class="features">
+                    <div class="feat">
+                        <div class="feat-icn">📈</div>
+                        <h3>Live charts</h3>
+                        <p>Real-time price action with technical indicators, multiple timeframes, and a clean,
+                            fast chart engine.</p>
+                    </div>
+                    <div class="feat">
+                        <div class="feat-icn">⭐</div>
+                        <h3>Custom watchlists</h3>
+                        <p>Organize the instruments you actually follow. Switch between lists with a click.</p>
+                    </div>
+                    <div class="feat">
+                        <div class="feat-icn">💼</div>
+                        <h3>Portfolio tracking</h3>
+                        <p>See positions, exposure, and a transparent P/L breakdown in one place.</p>
+                    </div>
+                    <div class="feat">
+                        <div class="feat-icn">🔔</div>
+                        <h3>Price alerts</h3>
+                        <p>Set conditions and get notified the moment they trigger. Stay informed without
+                            watching screens.</p>
+                    </div>
+                    <div class="feat">
+                        <div class="feat-icn">📱</div>
+                        <h3>Mobile-ready</h3>
+                        <p>The same workspace, optimized for phone and tablet. Pick up where you left off.</p>
+                    </div>
+                    <div class="feat">
+                        <div class="feat-icn">🧪</div>
+                        <h3>Free demo mode</h3>
+                        <p>Test your approach with simulated balances. No deposit needed to explore the full
+                            workspace.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEMO STRIP -->
+        <section class="strip">
+            <div class="container">
+                <h2>Try the platform before you fund</h2>
+                <p class="lede" style="margin-left:auto;margin-right:auto;text-align:center">
+                    Open the demo with one click. No card, no commitment. Explore the full workspace with
+                    simulated balances so you can test your strategy first.
+                </p>
+                <div class="cta-row">
+                    <a class="btn btn-primary" href="/signup.html" data-ga-conversion="demo_signup">Start Demo</a>
+                    <a class="btn btn-outline" href="/pricing.html">View Plans</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PILLARS -->
+        <section>
+            <div class="container">
+                <h2>Built on clarity</h2>
+                <div class="pillars">
+                    <div class="pillar">
+                        <h3>Transparent</h3>
+                        <ul>
+                            <li>Clear fee schedule</li>
+                            <li>Straightforward account setup</li>
+                            <li>Plain-English documentation</li>
+                        </ul>
+                    </div>
+                    <div class="pillar">
+                        <h3>Responsive</h3>
+                        <ul>
+                            <li>Support during market hours</li>
+                            <li>Active community channel</li>
+                            <li>Regular product updates</li>
+                        </ul>
+                    </div>
+                    <div class="pillar">
+                        <h3>Secure by design</h3>
+                        <ul>
+                            <li>Documented security practices</li>
+                            <li>Encrypted credential storage</li>
+                            <li>Granular session controls</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section>
+            <div class="container">
+                <h2>Frequently asked</h2>
+                <div class="faq">
+                    <details>
+                        <summary>Do I need to fund an account to try the platform?</summary>
+                        <p>No. The demo runs with simulated balances so you can explore the workspace and test
+                            your approach without depositing.</p>
+                    </details>
+                    <details>
+                        <summary>What does the platform cost?</summary>
+                        <p>The demo is free. Live-account plans are listed on the
+                            <a href="/pricing.html">pricing page</a> with a transparent fee schedule.
+                        </p>
+                    </details>
+                    <details>
+                        <summary>Is the platform mobile-friendly?</summary>
+                        <p>Yes. The workspace is responsive and works on phone, tablet, and desktop.</p>
+                    </details>
+                    <details>
+                        <summary>Where can I read your terms and risk disclosures?</summary>
+                        <p>See the footer below for links to our terms, privacy policy, and full risk
+                            disclosure.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site">
+        <div class="container frow">
+            <div>
+                <a href="/">Home</a>
+                <a href="/pricing.html">Pricing</a>
+                <a href="/markets.html">Markets</a>
+                <a href="/signup.html">Sign Up</a>
+                <a href="/cookies.html">Cookies</a>
+            </div>
+            <div>© SpiralCoin</div>
+        </div>
+    </footer>
+
+    <footer class="risk-footer" role="contentinfo">
+        Trading involves risk, including the possible loss of principal. Past performance does not
+        guarantee future results. SpiralCoin provides software tools for self-directed traders and is
+        not investment advice.
+    </footer>
+</body>
+
+</html>

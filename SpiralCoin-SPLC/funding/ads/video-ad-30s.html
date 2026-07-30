@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>SpiralCoin — 30s Funding Video Ad</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+        /*
+    SPIRALCOIN — 30-SECOND ANIMATED FUNDING AD
+    Record with OBS Studio:
+      - Window Capture on this tab, crop to the .stage element
+      - 1920x1080 (landscape, default) OR add ?v=1 for 1080x1920 vertical
+      - 30 fps, recording bitrate 8-12 Mbps for YouTube/X
+      - Audio: layer voiceover (see funding/ads/video-ad-script.md) + soft music bed in post
+    Total runtime: 30.0s. Auto-loops.
+  */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html,
+        body {
+            background: #000;
+            color: #fff;
+            font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .stage {
+            position: relative;
+            width: 1920px;
+            height: 1080px;
+            background: radial-gradient(circle at 18% 22%, rgba(245, 196, 81, .22), transparent 38%), radial-gradient(circle at 82% 12%, rgba(245, 196, 81, .12), transparent 32%), radial-gradient(circle at 50% 95%, rgba(120, 180, 255, .08), transparent 40%), #080b12;
+            overflow: hidden;
+            transform-origin: center center
+        }
+
+        body.vertical .stage {
+            width: 1080px;
+            height: 1920px;
+            background: radial-gradient(circle at 18% 14%, rgba(245, 196, 81, .22), transparent 38%), radial-gradient(circle at 82% 8%, rgba(245, 196, 81, .12), transparent 32%), radial-gradient(circle at 50% 95%, rgba(120, 180, 255, .08), transparent 40%), #080b12
+        }
+
+        /* fit to viewport */
+        .stage {
+            transform: scale(var(--scale, 1))
+        }
+
+        /* ── Starfield galaxy bg ── */
+        .stars {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: .55
+        }
+
+        .stars i {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 4s infinite ease-in-out
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: .2;
+                transform: scale(1)
+            }
+
+            50% {
+                opacity: .9;
+                transform: scale(1.4)
+            }
+        }
+
+        /* ── Spiral mark ── */
+        .mark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140px;
+            height: 140px
+        }
+
+        .mark svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 24px rgba(245, 196, 81, .55))
+        }
+
+        .spin {
+            transform-origin: center;
+            animation: spin 18s linear infinite
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        /* ── Frames (each scene) ── */
+        .frame {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6vw;
+            opacity: 0;
+            animation: frameCycle 30s infinite
+        }
+
+        .gold {
+            color: #f5c451
+        }
+
+        .eyebrow {
+            font-size: 22px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #f5c451;
+            font-weight: 700;
+            margin-bottom: 24px;
+            opacity: .9
+        }
+
+        body.vertical .eyebrow {
+            font-size: 28px
+        }
+
+        .h {
+            font-size: 96px;
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            max-width: 1500px;
+            margin: 0 auto
+        }
+
+        body.vertical .h {
+            font-size: 88px;
+            max-width: 900px
+        }
+
+        .sub {
+            font-size: 36px;
+            color: #9da7ba;
+            max-width: 1200px;
+            margin: 32px auto 0;
+            line-height: 1.45;
+            font-weight: 500
+        }
+
+        body.vertical .sub {
+            font-size: 38px;
+            max-width: 900px
+        }
+
+        .pill {
+            display: inline-block;
+            background: rgba(245, 196, 81, .12);
+            border: 2px solid rgba(245, 196, 81, .4);
+            color: #f5c451;
+            padding: 14px 32px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 28px;
+            margin-top: 48px
+        }
+
+        .row {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 48px
+        }
+
+        body.vertical .row {
+            flex-direction: column;
+            align-items: center
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: 20px;
+            padding: 28px 44px;
+            min-width: 240px
+        }
+
+        .stat .v {
+            font-size: 64px;
+            font-weight: 900;
+            color: #f5c451;
+            line-height: 1
+        }
+
+        .stat .l {
+            font-size: 22px;
+            color: #9da7ba;
+            margin-top: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600
+        }
+
+        .addr {
+            font-family: ui-monospace, Consolas, monospace;
+            background: rgba(0, 0, 0, .55);
+            border: 1px solid rgba(245, 196, 81, .35);
+            color: #f5c451;
+            padding: 18px 28px;
+            border-radius: 14px;
+            font-size: 30px;
+            margin-top: 36px;
+            display: inline-block;
+            word-break: break-all;
+            max-width: 90%
+        }
+
+        body.vertical .addr {
+            font-size: 22px
+        }
+
+        .cta {
+            background: #f5c451;
+            color: #080b12;
+            font-weight: 800;
+            padding: 24px 56px;
+            border-radius: 14px;
+            font-size: 36px;
+            margin-top: 48px;
+            display: inline-block;
+            box-shadow: 0 10px 40px rgba(245, 196, 81, .3)
+        }
+
+        .url {
+            font-size: 30px;
+            color: #9da7ba;
+            margin-top: 18px;
+            letter-spacing: 1px
+        }
+
+        body.vertical .url {
+            font-size: 26px
+        }
+
+        .disc {
+            position: absolute;
+            bottom: 32px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 18px;
+            color: #777;
+            letter-spacing: .5px;
+            padding: 0 40px
+        }
+
+        body.vertical .disc {
+            font-size: 22px;
+            bottom: 48px
+        }
+
+        /* ── Timing (30 seconds total) ──
+     Scene 1: 0-5s    Hook
+     Scene 2: 5-10s   Honest pitch
+     Scene 3: 10-16s  The numbers
+     Scene 4: 16-22s  Verify
+     Scene 5: 22-30s  CTA
+  */
+        @keyframes frameCycle {
+            0% {
+                opacity: 0;
+                transform: translateY(8px)
+            }
+
+            2% {
+                opacity: 1;
+                transform: translateY(0)
+            }
+
+            14% {
+                opacity: 1
+            }
+
+            17% {
+                opacity: 0;
+                transform: translateY(-8px)
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-8px)
+            }
+        }
+
+        .f1 {
+            animation-delay: 0s
+        }
+
+        .f2 {
+            animation-delay: 5s
+        }
+
+        .f3 {
+            animation-delay: 10s
+        }
+
+        .f4 {
+            animation-delay: 16s
+        }
+
+        .f5 {
+            animation-delay: 22s;
+            animation-duration: 30s
+        }
+
+        /* Scene 5 holds longer */
+        .f5 {
+            animation: frameHold 30s infinite
+        }
+
+        @keyframes frameHold {
+
+            0%,
+            73% {
+                opacity: 0;
+                transform: translateY(8px)
+            }
+
+            76% {
+                opacity: 1;
+                transform: translateY(0)
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        /* logo persistent corner */
+        .corner {
+            position: absolute;
+            top: 36px;
+            left: 48px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            z-index: 10
+        }
+
+        .corner svg {
+            width: 46px;
+            height: 46px;
+            filter: drop-shadow(0 0 10px rgba(245, 196, 81, .5))
+        }
+
+        .corner .name {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: .5px;
+            color: #f5c451
+        }
+
+        .corner .name small {
+            display: block;
+            font-size: 14px;
+            color: #9da7ba;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-top: 2px;
+            text-transform: uppercase
+        }
+
+        /* progress bar */
+        .progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 6px;
+            background: #f5c451;
+            width: 0;
+            animation: prog 30s linear infinite
+        }
+
+        @keyframes prog {
+            to {
+                width: 100%
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stage" id="stage">
+
+        <div class="stars" id="stars"></div>
+
+        <div class="corner">
+            <svg viewBox="0 0 100 100">
+                <defs>
+                    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="#f5c451" />
+                        <stop offset="1" stop-color="#c9a227" />
+                    </linearGradient>
+                </defs>
+                <path
+                    d="M50 8a42 42 0 1 1-42 42 42 42 0 0 1 42-42m0 12a30 30 0 1 0 30 30 30 30 0 0 0-30-30m0 8a22 22 0 1 1-22 22 22 22 0 0 1 22-22m0 8a14 14 0 1 0 14 14 14 14 0 0 0-14-14"
+                    fill="url(#lg)" />
+            </svg>
+            <div class="name">SpiralCoin<small>$SPLC · Arbitrum One</small></div>
+        </div>
+
+        <!-- spiral mark behind scenes -->
+        <div class="mark" style="opacity:.06">
+            <div class="spin"><svg viewBox="0 0 100 100">
+                    <defs>
+                        <linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0" stop-color="#f5c451" />
+                            <stop offset="1" stop-color="#c9a227" />
+                        </linearGradient>
+                    </defs>
+                    <path
+                        d="M50 8a42 42 0 1 1-42 42 42 42 0 0 1 42-42m0 12a30 30 0 1 0 30 30 30 30 0 0 0-30-30m0 8a22 22 0 1 1-22 22 22 22 0 0 1 22-22m0 8a14 14 0 1 0 14 14 14 14 0 0 0-14-14"
+                        fill="url(#lg2)" />
+                </svg></div>
+        </div>
+
+        <!-- Scene 1: HOOK (0-5s) -->
+        <div class="frame f1">
+            <div class="eyebrow">⚡ A new kind of launch</div>
+            <h1 class="h">A crypto launch <span class="gold">without the hype premium.</span></h1>
+        </div>
+
+        <!-- Scene 2: HONEST PITCH (5-10s) -->
+        <div class="frame f2">
+            <div class="eyebrow">The honest model</div>
+            <h1 class="h">No VC round.<br><span class="gold">No private premium.</span><br>Just code.</h1>
+            <p class="sub">Solo-founded · Open source · Locked liquidity · Market-discovered price</p>
+        </div>
+
+        <!-- Scene 3: NUMBERS (10-16s) -->
+        <div class="frame f3">
+            <div class="eyebrow">The numbers — verifiable on-chain</div>
+            <div class="row">
+                <div class="stat">
+                    <div class="v">1B</div>
+                    <div class="l">Fixed Supply</div>
+                </div>
+                <div class="stat">
+                    <div class="v">12 mo</div>
+                    <div class="l">LP NFT Lock</div>
+                </div>
+                <div class="stat">
+                    <div class="v">3.14%</div>
+                    <div class="l">AMM Tax (V2 only)</div>
+                </div>
+                <div class="stat">
+                    <div class="v">121</div>
+                    <div class="l">Passing Tests</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 4: VERIFY (16-22s) -->
+        <div class="frame f4">
+            <div class="eyebrow">Don't trust — verify.</div>
+            <h1 class="h" style="font-size:64px">SPLC is live on <span class="gold">Arbitrum One</span></h1>
+            <div class="addr">0x8e45cc9F480257a1477976848d41A6A9Fb2cf27C</div>
+            <p class="sub" style="margin-top:28px;font-size:30px">Open source · Multisig-bound treasury · 9-bucket
+                on-chain allocation</p>
+        </div>
+
+        <!-- Scene 5: CTA (22-30s, holds) -->
+        <div class="frame f5">
+            <div class="eyebrow">Support an honest crypto launch</div>
+            <h1 class="h"><span class="gold">Review the source.</span><br>Fund the runway.</h1>
+            <div class="cta">spiralcoin.net</div>
+            <div class="url">github.com/SpiralCoinOfficial/ionos-migration</div>
+        </div>
+
+        <div class="disc">Trading involves risk. Past performance does not guarantee future results. Not an offer to
+            sell securities.</div>
+        <div class="progress"></div>
+
+    </div>
+
+    <script>
+        // Generate twinkling starfield
+        (function () {
+            const c = document.getElementById('stars');
+            const n = 80;
+            for (let i = 0; i < n; i++) {
+                const s = document.createElement('i');
+                s.style.left = (Math.random() * 100) + '%';
+                s.style.top = (Math.random() * 100) + '%';
+                s.style.animationDelay = (Math.random() * 4) + 's';
+                s.style.opacity = (Math.random() * .7 + .2);
+                s.style.transform = `scale(${Math.random() * 1.5 + .5})`;
+                c.appendChild(s);
+            }
+        })();
+        // Vertical (1080x1920) mode via ?v=1
+        if (new URLSearchParams(location.search).get('v') === '1') { document.body.classList.add('vertical') }
+        // Auto-fit stage to viewport while preserving aspect ratio
+        function fit() {
+            const s = document.getElementById('stage');
+            const sw = s.offsetWidth, sh = s.offsetHeight;
+            const scale = Math.min(window.innerWidth / sw, window.innerHeight / sh);
+            s.style.setProperty('--scale', scale);
+        }
+        window.addEventListener('resize', fit); fit();
+    </script>
+</body>
+
+</html>

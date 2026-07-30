@@ -1,0 +1,84 @@
+option batch continue
+option confirm off
+option transfer binary
+open sftp://a2797960:%PWD%@access-5020476011.webspace-host.com/ -hostkey=*
+cd /
+lcd "C:\Users\Trisha Dreyer\Documents\ionos-migration"
+
+# Apache config (security headers + CSP + rewrites). MUST upload to apply CSP changes.
+put -neweronly .htaccess
+
+# Mirror brand and assets folders
+synchronize remote -mirror -criteria=time brand /brand
+synchronize remote -mirror -criteria=time assets /assets
+
+# Root-level images
+put -neweronly spiralcoin_logo.png
+put -neweronly spiralcoin_og_1200x630.png
+put -neweronly apple-touch-icon.png
+
+# All root-level HTML pages with bumped ?v=20260526b
+put -neweronly 404.html
+put -neweronly account.html
+put -neweronly analytics.html
+put -neweronly callback.html
+put -neweronly charts.html
+put -neweronly community.html
+put -neweronly crypto.html
+put -neweronly dashboard.html
+put -neweronly documents.html
+put -neweronly index.html
+put -neweronly login.html
+put -neweronly markets.html
+put -neweronly news.html
+put -neweronly portfolio.html
+put -neweronly pricing.html
+put -neweronly settings.html
+put -neweronly signup.html
+put -neweronly spiralcoin_ads_landing.html
+put -neweronly spiralcoin_oneliner.html
+put -neweronly spiralcoin_platform_embed.html
+put -neweronly spiralcoin_trading_platform.html
+put -neweronly splc.html
+put -neweronly stocks-coming-soon.html
+put -neweronly taxes.html
+put -neweronly trade-confirm.html
+put -neweronly trade.html
+put -neweronly watchlist.html
+put -neweronly regd.html
+put -neweronly whitepaper.html
+put -neweronly whitepaper.pdf
+put -neweronly cookies.html
+put -neweronly sitemap.xml
+put -neweronly robots.txt
+
+# Sponsor / listing pack (funding/ subdir) - publish only the public files.
+# Uses synchronize so the /funding dir is auto-created if missing.
+# Filemask: include only the 3 public files; exclude all subfolders (e.g. funding/ads/) and .md grant strategy files.
+synchronize remote -mirror -criteria=time -filemask="splc-usdc-seed-pool.html; splc-usdc-seed-pool.pdf; listing-application-pack.html; sponsors.html | */" funding /funding
+
+# PWA: web manifest + service worker (must be at /)
+put manifest.webmanifest
+put sw.js
+
+# App subfolder logo
+put -neweronly app\spiralcoin_logo.png /app/
+
+# API endpoints (PHP) — server-side proxies; keep .env on server, never push it
+put -neweronly api\yahoo.php /api/yahoo.php
+put api\regd.php /api/regd.php
+put -neweronly api\bind-wallet.php /api/bind-wallet.php
+put -neweronly api\sponsor-webhook.php /api/sponsor-webhook.php
+put -neweronly api\sponsors-list.php /api/sponsors-list.php
+put -neweronly api\wallet-nonce.php /api/wallet-nonce.php
+put -neweronly api\site-status.php /api/site-status.php
+put -neweronly api\_auth0_verify.php /api/_auth0_verify.php
+
+# Private writable dir (.htaccess denies all web access; PHP can still write to it)
+# Server must have /private/ directory writable by the PHP user (744 dir / 644 .htaccess)
+# NOTE: private/sponsor-webhook-secret.txt is NOT in this script — upload it MANUALLY
+#       once (it contains a real secret); after that, this script will not overwrite it.
+put -neweronly private\.htaccess /private/.htaccess
+
+close
+exit

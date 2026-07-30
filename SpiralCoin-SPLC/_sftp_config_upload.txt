@@ -1,0 +1,11 @@
+option batch abort
+option confirm off
+open sftp://a2797960:%PWD%@access-5020476011.webspace-host.com/ -hostkey=*
+
+# Upload the real config to /indexer/config.php on the server
+lcd "C:\Users\Trisha Dreyer\Documents\ionos-migration\indexer"
+cd /indexer
+put -delete config.php
+
+close
+exit

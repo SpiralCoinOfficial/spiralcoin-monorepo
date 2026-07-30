@@ -1,0 +1,16 @@
+{
+    "name": "@spiralcoin/db",
+    "version": "0.1.0",
+    "private": true,
+    "description": "SpiralCoin database connectivity + indexer",
+    "main": "test-connection.js",
+    "scripts": {
+        "test:db": "node test-connection.js",
+        "test:testnet": "SPLC_ENV=testnet node test-connection.js",
+        "test:mainnet": "SPLC_ENV=mainnet node test-connection.js"
+    },
+    "dependencies": {
+        "dotenv": "^16.4.5",
+        "mysql2": "3.11.5"
+    }
+}

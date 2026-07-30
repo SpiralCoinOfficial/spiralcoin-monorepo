@@ -1,0 +1,100 @@
+/* SpiralCoin live cosmos — make the universe show through the page.
+ * The animated scene is painted by /assets/galaxy-bg.js on a fixed canvas.
+ * This stylesheet:
+ *   1. Makes html/body transparent so the canvas can be seen
+ *   2. Adds a deep-space gradient pre-boot fallback
+ *   3. Punches out the solid backgrounds of structural page sections
+ *      (.hero, main, section, .container, etc.) so the cosmos shows through
+ *   4. Replaces solid card backgrounds with translucent "glass" so cards
+ *      remain readable but the cosmos still glows behind them
+ */
+
+/* ===== 1. Body + html transparent (else they paint over the canvas) ===== */
+html { background-color: #03060d !important; }
+body { background: transparent !important; }
+
+/* ===== 2. Pre-boot fallback (deep space + static stars) ===== */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  background:
+    radial-gradient(1px 1px at 12% 18%,  rgba(255,255,255,.85), transparent 60%),
+    radial-gradient(1px 1px at 28% 62%,  rgba(200,225,255,.80), transparent 60%),
+    radial-gradient(1.2px 1.2px at 45% 12%, rgba(255,240,200,.85), transparent 60%),
+    radial-gradient(1px 1px at 62% 78%,  rgba(255,255,255,.80), transparent 60%),
+    radial-gradient(1px 1px at 78% 28%,  rgba(180,210,255,.85), transparent 60%),
+    radial-gradient(1.4px 1.4px at 88% 58%, rgba(255,230,180,.85), transparent 60%),
+    radial-gradient(ellipse at 55% 45%,
+      #0a0a22 0%, #04051a 45%, #01020a 80%, #000004 100%);
+}
+
+/* ===== 3. The live canvas (mounted by galaxy-bg.js) ===== */
+#splc-cosmos {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: -2 !important;
+  pointer-events: none !important;
+  display: block !important;
+}
+
+/* ===== 4. Punch out solid backgrounds of structural sections =====
+ * These elements would otherwise paint over the canvas. We make them
+ * transparent so the cosmos shows through. */
+.hero,
+main, main > *,
+section, .section,
+.features, .features-section,
+.markets, .markets-section, .markets-grid,
+.about, .about-section,
+.platform, .platform-section,
+.pricing-section,
+.community-section,
+.footer-section,
+.page, .page-wrap, .page-content,
+.bg-section, .dark-section {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* ===== 5. Glass-morph the cards so the cosmos glows behind them =====
+ * Keep enough opacity that text stays readable on top of moving stars. */
+.card,
+.feature-card,
+.market-card,
+.pricing-card,
+.stat-card,
+.info-card,
+.metric-card,
+.panel,
+.surface,
+.chart-container,
+.chart-wrap {
+  background-color: rgba(10, 16, 28, 0.78) !important;
+  backdrop-filter: blur(8px) saturate(1.1);
+  -webkit-backdrop-filter: blur(8px) saturate(1.1);
+  border: 1px solid rgba(201, 162, 39, 0.18) !important;
+}
+
+/* Nav: keep mostly opaque so brand reads cleanly */
+.nav, header.nav, nav.nav {
+  background-color: rgba(6, 10, 16, 0.86) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Strip: also semi-transparent so cosmos peeks through */
+.strip, .ticker, .price-strip, .market-strip {
+  background-color: rgba(6, 10, 16, 0.80) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Reduced motion: keep canvas, drop nothing */
+@media (prefers-reduced-motion: reduce) {
+  #splc-cosmos { filter: brightness(.95); }
+}

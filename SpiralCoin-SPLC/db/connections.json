@@ -1,0 +1,22 @@
+{
+    "testnet": {
+        "host": "db5020529487.hosting-data.io",
+        "port": 3306,
+        "database": "dbs15711921",
+        "user": "dbu1479504",
+        "engine": "mysql",
+        "version": "8.0",
+        "purpose": "Sepolia + Arbitrum Sepolia indexing",
+        "chain_ids": [ 11155111, 421614 ]
+    },
+    "mainnet": {
+        "host": "db5020529589.hosting-data.io",
+        "port": 3306,
+        "database": "dbs15711971",
+        "user": "dbu4105523",
+        "engine": "mysql",
+        "version": "8.0",
+        "purpose": "Ethereum / Arbitrum / Polygon / Base mainnet indexing",
+        "chain_ids": [ 1, 42161, 137, 8453 ]
+    }
+}

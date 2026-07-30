@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Cookiebot CMP --><script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="83c385c8-b96d-4d3e-a75b-0f81f3d82de3" type="text/javascript" async></script>
+  <!-- Google tag (gtag.js) with Consent Mode v2 defaults -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MEMH1LPSD4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2: default to denied; Cookiebot will update on user choice.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'functionality_storage': 'granted',
+    'security_storage': 'granted',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-MEMH1LPSD4');
+</script>
+  <meta charset="UTF-8">
+  <script defer data-domain="spiralcoin.net" src="https://plausible.io/js/script.js"></script>
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://plausible.io https://unpkg.com https://cdn.jsdelivr.net https://stream.binance.us https://stream.binance.us:9443 https://api.binance.us https://www.googletagmanager.com https://*.googletagmanager.com https://consent.cookiebot.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https: https://www.google-analytics.com https://www.googletagmanager.com https://*.g.doubleclick.net; connect-src 'self' https://api.binance.us wss://stream.binance.us wss://stream.binance.us:9443 https://api.allorigins.win https://query1.finance.yahoo.com https://plausible.io https://api.coingecko.com https://*.g.alchemy.com wss://*.g.alchemy.com https://*.infura.io wss://*.infura.io https://www.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.googletagmanager.com https://*.g.doubleclick.net https://stats.g.doubleclick.net https://consent.cookiebot.com https://consentcdn.cookiebot.com; frame-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Community — SpiralCoin Platform</title>
+  <meta name="description"
+    content="Join the SpiralCoin community. Discuss markets, share strategies, and connect with traders using the SpiralCoin platform.">
+  <link rel="icon" type="image/svg+xml" href="/assets/spiralcoin-mark.svg?v=20260526b">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #060a10;
+      --surface: #0a1120;
+      --card: #0e1828;
+      --card2: #111e30;
+      --border: rgba(255, 255, 255, 0.065);
+      --border-g: rgba(201, 162, 39, 0.28);
+      --gold: #c9a227;
+      --gold-b: #e8c042;
+      --gold-dim: rgba(201, 162, 39, 0.12);
+      --text: #dce8f5;
+      --muted: #7a8fa8;
+      --dim: #4a5568;
+      --green: #00c97a;
+      --red: #ff3d5a;
+      --nav-h: 58px;
+      --r: 8px;
+      --r2: 14px;
+      --mono: 'IBM Plex Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      font-family: Inter, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh
+    }
+
+    a {
+      color: var(--gold);
+      text-decoration: none
+    }
+
+    button {
+      cursor: pointer;
+      font-family: inherit
+    }
+
+    textarea {
+      font-family: inherit
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      height: var(--nav-h);
+      background: rgba(6, 10, 16, .96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border)
+    }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      padding: 0 1.1rem
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-weight: 700;
+      font-size: .95rem;
+      color: var(--text);
+      text-decoration: none;
+      flex-shrink: 0
+    }
+
+    .nav-brand img {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      box-shadow: 0 0 0 1.5px var(--border-g)
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: .05rem;
+      margin-left: .5rem
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: .83rem;
+      font-weight: 500;
+      padding: .38rem .6rem;
+      border-radius: 6px;
+      transition: all .15s;
+      white-space: nowrap
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: rgba(255, 255, 255, .06)
+    }
+
+    .nd {
+      position: relative
+    }
+
+    .nd-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: .83rem;
+      font-weight: 500;
+      padding: .38rem .6rem;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: .25rem;
+      transition: all .15s;
+      white-space: nowrap
+    }
+
+    .nd-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, .06)
+    }
+
+    .nd-menu {
+      position: absolute;
+      top: calc(100% + 5px);
+      left: 0;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      min-width: 185px;
+      padding: .3rem;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, .65);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-4px);
+      transition: all .15s;
+      z-index: 400
+    }
+
+    .nd:hover .nd-menu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0)
+    }
+
+    .nd-menu a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .44rem .72rem;
+      border-radius: 6px;
+      color: var(--text);
+      font-size: .83rem;
+      gap: .4rem;
+      transition: background .12s;
+      white-space: nowrap
+    }
+
+    .nd-menu a:hover {
+      background: var(--card2)
+    }
+
+    .nd-div {
+      border-top: 1px solid var(--border);
+      margin: .28rem 0
+    }
+
+    .soon-b {
+      font-size: .58rem;
+      background: rgba(201, 162, 39, .15);
+      color: var(--gold);
+      padding: .1rem .33rem;
+      border-radius: 100px;
+      font-weight: 700
+    }
+
+    .nav-sp {
+      flex: 1
+    }
+
+    .nav-act {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      flex-shrink: 0
+    }
+
+    .nw {
+      position: relative
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      padding: .38rem;
+      border-radius: 6px;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      align-items: center;
+      transition: color .15s
+    }
+
+    .icon-btn:hover {
+      color: var(--text)
+    }
+
+    .nb {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      background: var(--red);
+      color: #fff;
+      font-size: .52rem;
+      font-weight: 700;
+      min-width: 13px;
+      height: 13px;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 2px
+    }
+
+    .np {
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      width: 290px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .65);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-4px);
+      transition: all .15s;
+      z-index: 400
+    }
+
+    .np.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0)
+    }
+
+    .np-hdr {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .65rem .9rem;
+      border-bottom: 1px solid var(--border);
+      font-size: .82rem;
+      font-weight: 600
+    }
+
+    .ni {
+      display: flex;
+      gap: .6rem;
+      padding: .6rem .9rem;
+      border-bottom: 1px solid var(--border);
+      font-size: .79rem
+    }
+
+    .ni:last-child {
+      border-bottom: none
+    }
+
+    .ni:hover {
+      background: var(--card2)
+    }
+
+    .u-av {
+      width: 21px;
+      height: 21px;
+      border-radius: 50%;
+      background: var(--gold-dim);
+      border: 1px solid var(--border-g);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .67rem;
+      font-weight: 700;
+      color: var(--gold);
+      flex-shrink: 0
+    }
+
+    .av-lg {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--gold-dim);
+      border: 1px solid var(--border-g);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gold);
+      flex-shrink: 0
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .35rem;
+      border-radius: var(--r);
+      padding: .46rem .9rem;
+      font-size: .82rem;
+      font-weight: 600;
+      border: none;
+      transition: all .18s;
+      white-space: nowrap
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #1a0f00
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-b)
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--border-g)
+    }
+
+    .btn-outline:hover {
+      background: var(--gold-dim)
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, .05);
+      color: var(--muted);
+      border: 1px solid var(--border)
+    }
+
+    .btn-ghost:hover {
+      color: var(--text)
+    }
+
+    .page {
+      padding-top: calc(var(--nav-h) + 1.75rem)
+    }
+
+    .container {
+      width: min(1300px, 97%);
+      margin: 0 auto;
+      padding: 0 .75rem
+    }
+
+    .ph {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .75rem;
+      margin-bottom: 1.25rem
+    }
+
+    .ph-title {
+      font-size: 1.35rem;
+      font-weight: 800
+    }
+
+    .comm-grid {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 1.25rem
+    }
+
+    @media(max-width:900px) {
+      .comm-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .compose-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 1rem;
+      margin-bottom: 1rem
+    }
+
+    .compose-inner {
+      display: flex;
+      gap: .75rem
+    }
+
+    .compose-ta {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: .65rem .85rem;
+      color: var(--text);
+      font-size: .88rem;
+      resize: none;
+      outline: none;
+      transition: border-color .15s;
+      min-height: 72px
+    }
+
+    .compose-ta:focus {
+      border-color: var(--border-g)
+    }
+
+    .compose-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: .6rem
+    }
+
+    .post-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: .95rem 1.1rem;
+      margin-bottom: .75rem;
+      transition: border-color .15s
+    }
+
+    .post-card:hover {
+      border-color: rgba(255, 255, 255, .1)
+    }
+
+    .post-hdr {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      margin-bottom: .65rem
+    }
+
+    .post-name {
+      font-weight: 700;
+      font-size: .88rem
+    }
+
+    .post-handle {
+      font-size: .78rem;
+      color: var(--muted)
+    }
+
+    .post-time {
+      font-size: .73rem;
+      color: var(--dim);
+      margin-left: auto
+    }
+
+    .post-body {
+      font-size: .88rem;
+      line-height: 1.6;
+      margin-bottom: .7rem
+    }
+
+    .post-tag {
+      display: inline-block;
+      background: rgba(201, 162, 39, .1);
+      border: 1px solid rgba(201, 162, 39, .15);
+      color: var(--gold);
+      font-size: .72rem;
+      padding: .1rem .42rem;
+      border-radius: 100px;
+      margin-right: .3rem
+    }
+
+    .post-actions {
+      display: flex;
+      gap: .85rem;
+      margin-top: .6rem
+    }
+
+    .post-act {
+      background: none;
+      border: none;
+      color: var(--dim);
+      font-size: .8rem;
+      display: flex;
+      align-items: center;
+      gap: .3rem;
+      cursor: pointer;
+      transition: color .15s;
+      padding: .2rem .35rem;
+      border-radius: 5px
+    }
+
+    .post-act:hover {
+      color: var(--text);
+      background: var(--card2)
+    }
+
+    .post-act.liked {
+      color: var(--red)
+    }
+
+    .post-act.bookmarked {
+      color: var(--gold)
+    }
+
+    .sidebar-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      padding: 1rem;
+      margin-bottom: 1rem
+    }
+
+    .sc-title {
+      font-size: .88rem;
+      font-weight: 700;
+      margin-bottom: .75rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .lb-row {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .4rem 0;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .lb-row:last-child {
+      border-bottom: none
+    }
+
+    .lb-rank {
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--muted);
+      width: 18px;
+      text-align: center;
+      flex-shrink: 0
+    }
+
+    .lb-name {
+      flex: 1;
+      font-size: .83rem;
+      font-weight: 600
+    }
+
+    .lb-return {
+      font-family: var(--mono);
+      font-size: .8rem;
+      color: var(--green)
+    }
+
+    .badge-gold {
+      background: var(--gold-dim);
+      border: 1px solid var(--border-g);
+      color: var(--gold);
+      font-size: .65rem;
+      padding: .1rem .38rem;
+      border-radius: 100px
+    }
+
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 1.2rem 0;
+      margin-top: 2rem
+    }
+
+    .fi {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .75rem
+    }
+
+    .fl {
+      font-size: .72rem;
+      color: var(--dim)
+    }
+
+    .flinks {
+      display: flex;
+      gap: .8rem
+    }
+
+    .flinks a {
+      font-size: .76rem;
+      color: var(--dim)
+    }
+
+    .flinks a:hover {
+      color: var(--gold)
+    }
+  </style>
+  <style id="splc-live-wire">
+    /* SPLC_LIVE_WIRE_v2 - professional ticker bar, flush under nav */
+    .status-strip,
+    .ticker-bar,
+    .splc-ticker-bar {
+      position: fixed !important;
+      top: var(--nav-h, 58px) !important;
+      left: 0 !important;
+      right: 0 !important;
+      margin: 0 !important;
+      z-index: 195 !important;
+      height: 36px !important;
+      background: rgba(6, 10, 16, 0.94) !important;
+      border-top: 0 !important;
+      border-bottom: 1px solid rgba(201, 162, 39, 0.22) !important;
+      backdrop-filter: blur(14px) saturate(1.15);
+      -webkit-backdrop-filter: blur(14px) saturate(1.15);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+    }
+
+    .strip-scroll {
+      gap: 3.25rem !important;
+      padding: 0 2.5rem !important;
+      animation-duration: 90s !important;
+      will-change: transform;
+    }
+
+    .strip-item {
+      gap: 0.65rem !important;
+      font-size: 0.82rem !important;
+      letter-spacing: 0.01em;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: 'tnum' 1, 'lnum' 1;
+    }
+
+    .strip-sym {
+      color: #c9a227 !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .strip-price {
+      color: #f4f6fb !important;
+      font-weight: 500 !important;
+      min-width: 4ch;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .strip-item [data-field="chg"],
+    .strip-item [data-field="change"],
+    .strip-item [data-field="pct"] {
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+      min-width: 5ch;
+      text-align: right;
+    }
+
+    .strip-item [data-field="chg"].up,
+    .strip-item [data-field="change"].up,
+    .strip-item [data-field="pct"].up {
+      color: #00c97a;
+    }
+
+    .strip-item [data-field="chg"].down,
+    .strip-item [data-field="change"].down,
+    .strip-item [data-field="pct"].down {
+      color: #ff3d5a;
+    }
+
+    .strip-dot {
+      box-shadow: 0 0 6px rgba(0, 201, 122, 0.65);
+    }
+
+    /* Push first content section down so it isn't hidden behind nav + strip */
+    body>main,
+    body>.hero,
+    body>section:first-of-type,
+    .hero:first-of-type,
+    main>.hero:first-child {
+      padding-top: calc(var(--nav-h, 58px) + 36px + 8px) !important;
+    }
+
+    @media (max-width: 720px) {
+      .strip-scroll {
+        gap: 2rem !important;
+        padding: 0 1rem !important;
+      }
+
+      .strip-item {
+        font-size: 0.74rem !important;
+      }
+    }
+  </style>
+  <script defer src="/assets/live-feed.js?v=20260526d"></script>
+  <script defer src="/assets/live-wire.js?v=20260526d"></script>
+  <link rel="stylesheet" href="/assets/galaxy-bg.css?v=20260526e">
+  <script defer src="/assets/galaxy-bg.js?v=20260526i"></script>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#c9a227">
+  <script defer src="/assets/pwa-install.js?v=20260526h"></script>
+<script src="/assets/js/utm-capture.js?v=20260528a" defer></script>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand"><img src="/assets/spiralcoin-mark.svg?v=20260526b" alt="" width="28" height="28"
+          decoding="async">SpiralCoin</a>
+      <div class="nav-links">
+        <a href="/dashboard.html">Dashboard</a>
+        <div class="nd"><button class="nd-btn">Markets ▾</button>
+          <div class="nd-menu"><a href="/markets.html">📊 Overview</a><a href="/crypto.html">₿ Crypto</a><a
+              href="/charts.html">📈 Charts</a><a href="/analytics.html">🔬 Analytics</a><a href="/news.html">📰
+              News</a>
+            <div class="nd-div"></div><a href="/stocks-coming-soon.html">📉 Stocks/ETFs <span
+                class="soon-b">Soon</span></a>
+          </div>
+        </div>
+        <div class="nd"><button class="nd-btn">Trade ▾</button>
+          <div class="nd-menu"><a href="/trade.html">🔄 Trade Crypto</a><a href="/portfolio.html">💼 Portfolio</a><a
+              href="/watchlist.html">⭐ Watchlists</a></div>
+        </div>
+        <a href="/community.html" class="active">Community</a><a href="/splc.html">SPLC</a><a
+          href="/pricing.html">Pricing</a><a href="/app/" class="splc-install-btn" style="color:var(--gold)">&#x2B07;
+          Install App</a>
+      </div>
+      <div class="nav-sp"></div>
+      <div class="nav-act">
+        <div class="nw"><button class="icon-btn" onclick="toggleNotif()"><svg width="16" height="16" fill="none"
+              stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+            </svg><span class="nb" id="nBadge">1</span></button>
+          <div class="np" id="nPanel">
+            <div class="np-hdr"><span>Notifications</span><button onclick="clearNotif()"
+                style="background:none;border:none;color:var(--muted);font-size:.73rem;cursor:pointer">Clear</button>
+            </div>
+            <div id="nList"></div>
+          </div>
+        </div>
+        <div class="nd"><button class="nd-btn"><span class="u-av" id="uAv">D</span><span id="uName">User</span>
+            ▾</button>
+          <div class="nd-menu" style="right:0;left:auto"><a href="/account.html">👤 Account</a><a
+              href="/portfolio.html">💼 Portfolio</a><a href="/settings.html">⚙️ Settings</a>
+            <div class="nd-div"></div><a href="#" onclick="doSignOut()" style="color:var(--red)">🚪 Sign Out</a>
+          </div>
+        </div>
+        <a href="/pricing.html" class="btn btn-gold" id="navUpgrade">Get Pro ⚡</a>
+      </div>
+    </div>
+  </nav>
+  <div class="page">
+    <div class="container">
+      <div class="ph">
+        <div>
+          <h1 class="ph-title">Community 🌐</h1>
+          <div style="font-size:.82rem;color:var(--muted)">Share ideas, analysis, and signals with fellow traders</div>
+        </div>
+      </div>
+      <div class="comm-grid">
+        <div>
+          <div class="compose-card">
+            <div class="compose-inner">
+              <div class="av-lg" id="myAv">?</div>
+              <textarea class="compose-ta" id="postInput"
+                placeholder="Share a trade idea, analysis, or market update..."></textarea>
+            </div>
+            <div class="compose-actions">
+              <div style="display:flex;gap:.5rem">
+                <button class="btn btn-ghost" style="font-size:.78rem;padding:.3rem .6rem" onclick="addTag('#BTC')">₿
+                  BTC</button>
+                <button class="btn btn-ghost" style="font-size:.78rem;padding:.3rem .6rem" onclick="addTag('#ETH')">Ξ
+                  ETH</button>
+                <button class="btn btn-ghost" style="font-size:.78rem;padding:.3rem .6rem" onclick="addTag('#SPLC')">🌀
+                  SPLC</button>
+              </div>
+              <button class="btn btn-gold" onclick="submitPost()">Post</button>
+            </div>
+          </div>
+          <div id="postFeed"></div>
+        </div>
+        <div>
+          <div class="sidebar-card">
+            <div class="sc-title">🏆 Leaderboard (7d)</div>
+            <div id="leaderboard"></div>
+          </div>
+          <div class="sidebar-card">
+            <div class="sc-title">🔥 Trending</div>
+            <div style="display:flex;flex-wrap:wrap;gap:.35rem">
+              <span class="post-tag" style="cursor:pointer">#BTC</span><span class="post-tag"
+                style="cursor:pointer">#ETH</span><span class="post-tag" style="cursor:pointer">#SPLC</span><span
+                class="post-tag" style="cursor:pointer">#DeFi</span><span class="post-tag"
+                style="cursor:pointer">#SOL</span><span class="post-tag" style="cursor:pointer">#FedRates</span><span
+                class="post-tag" style="cursor:pointer">#Altcoin</span>
+            </div>
+          </div>
+          <div class="sidebar-card">
+            <div class="sc-title">📜 Community Rules</div>
+            <ul style="font-size:.79rem;color:var(--muted);line-height:1.85;padding-left:1rem">
+              <li>No financial advice — share analysis, not signals</li>
+              <li>Be respectful and constructive</li>
+              <li>No spam, self-promotion, or pump schemes</li>
+              <li>All content is community-generated, not vetted</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="container">
+      <div class="fi">
+        <div class="fl">© 2026 SpiralCoin Community · User content · Not financial advice</div>
+        <div class="flinks"><a href="/news.html">News</a><a href="/splc.html">SPLC</a></div>
+      </div>
+    </div>
+  
+    <div style="text-align:center;padding:10px 0;font-size:.75rem;color:#9aa7b4"><a href="/cookies.html" style="color:#9aa7b4;text-decoration:underline">Cookie Policy</a></div>
+  </footer>
+  <script>
+    // NOTE: SAMPLE_POSTS and LEADERBOARD below are placeholder layout content
+    // shown only when the community has no real activity yet. They contain no
+    // performance figures, yield claims, price targets, or testimonials about
+    // SpiralCoin or any third-party platform. Real user posts replace them at runtime.
+    const SAMPLE_POSTS = [
+      { id: 1, name: 'SampleUser1', handle: '@sample1', time: 'just now', body: 'Welcome to the SpiralCoin community feed. Real posts from members will appear here. Be your own analyst — nothing on this feed is investment advice.', likes: 0, bookmarks: 0, liked: false, bookmarked: false },
+      { id: 2, name: 'SampleUser2', handle: '@sample2', time: 'just now', body: 'Reminder: paper-trading results are simulated and do not reflect real money outcomes. Markets carry risk and you can lose money.', likes: 0, bookmarks: 0, liked: false, bookmarked: false },
+      { id: 3, name: 'SampleUser3', handle: '@sample3', time: 'just now', body: 'Tip: use the charts page to study price history. Past performance does not predict future results.', likes: 0, bookmarks: 0, liked: false, bookmarked: false },
+    ];
+    const LEADERBOARD = [];
+    const NOTIFS = [{ icon: '📢', msg: 'Community is in preview — demo posts only', t: 'now' }];
+    let posts = [...SAMPLE_POSTS]; let myName = 'You';
+    document.addEventListener('DOMContentLoaded', () => {
+      const u = JSON.parse(localStorage.getItem('splc_user') || 'null');
+      if (u) { myName = (u.name || 'User'); document.getElementById('uName').textContent = myName.split(' ')[0]; const av = myName[0].toUpperCase(); document.getElementById('uAv').textContent = av; document.getElementById('myAv').textContent = av; if (u.plan === 'pro') { const b = document.getElementById('navUpgrade'); if (b) { b.innerHTML = 'Pro ⚡'; b.style.cssText = 'background:rgba(201,162,39,.12);color:var(--gold);border:1px solid rgba(201,162,39,.3);display:inline-flex;align-items:center;border-radius:8px;padding:.46rem .9rem;font-size:.82rem;font-weight:600;'; } } }
+      document.getElementById('nList').innerHTML = NOTIFS.map(n => `<div class="ni"><span>${n.icon}</span><div><div>${n.msg}</div><div style="font-size:.7rem;color:var(--muted)">${n.t}</div></div></div>`).join('');
+      const saved = localStorage.getItem('splc_community_posts'); if (saved) { try { const sp = JSON.parse(saved); posts = [...sp, ...SAMPLE_POSTS].slice(0, 50); } catch (e) { } }
+      renderPosts();
+      document.getElementById('leaderboard').innerHTML = LEADERBOARD.length
+        ? LEADERBOARD.map((l, i) => `<div class="lb-row"><span class="lb-rank">${i + 1}</span><div class="av-lg" style="width:26px;height:26px;font-size:.7rem">${l.name[0]}</div><span class="lb-name">${l.name} ${l.badge ? `<span class="badge-gold">${l.badge}</span>` : ''}</span><span class="lb-return">${l.ret}</span></div>`).join('')
+        : '<div style="padding:1rem;text-align:center;color:var(--muted);font-size:.85rem;line-height:1.5">Leaderboard is disabled in preview.<br><span style="font-size:.78rem">No live results are shown until paper-trading is reviewed and any displayed figures can be verified.</span></div>';
+    });
+    function renderPosts() {
+      document.getElementById('postFeed').innerHTML = posts.map(p => `<div class="post-card" id="post-${p.id}">
+    <div class="post-hdr"><div class="av-lg">${p.name[0]}</div><div><div class="post-name">${p.name}</div><div class="post-handle">${p.handle}</div></div><span class="post-time">${p.time}</span></div>
+    <div class="post-body">${p.body}</div>
+    <div class="post-actions">
+      <button class="post-act ${p.liked ? 'liked' : ''}" onclick="toggleLike(${p.id})">❤ ${p.likes}</button>
+      <button class="post-act ${p.bookmarked ? 'bookmarked' : ''}" onclick="toggleBookmark(${p.id})">🔖 ${p.bookmarks}</button>
+      <button class="post-act" onclick="sharePost(${p.id})">↗ Share</button>
+    </div>
+  </div>`).join('');
+    }
+    function toggleLike(id) { const p = posts.find(x => x.id === id); if (!p) return; p.liked = !p.liked; p.likes += p.liked ? 1 : -1; renderPosts(); }
+    function toggleBookmark(id) { const p = posts.find(x => x.id === id); if (!p) return; p.bookmarked = !p.bookmarked; p.bookmarks += p.bookmarked ? 1 : -1; renderPosts(); }
+    function sharePost(id) { if (navigator.clipboard) navigator.clipboard.writeText(location.origin + '/community.html#post-' + id).then(() => alert('Link copied!')); }
+    function addTag(tag) { document.getElementById('postInput').value += (document.getElementById('postInput').value ? ' ' : '') + tag; }
+    function submitPost() {
+      const txt = document.getElementById('postInput').value.trim(); if (!txt) return;
+      const np = { id: Date.now(), name: myName, handle: '@' + myName.toLowerCase().replace(/\s+/g, ''), time: 'just now', body: txt, likes: 0, bookmarks: 0, liked: false, bookmarked: false };
+      posts.unshift(np); document.getElementById('postInput').value = ''; renderPosts();
+      const userPosts = posts.filter(p => !SAMPLE_POSTS.find(s => s.id === p.id)); localStorage.setItem('splc_community_posts', JSON.stringify(userPosts));
+    }
+    function toggleNotif() { document.getElementById('nPanel').classList.toggle('open'); }
+    function clearNotif() { document.getElementById('nList').innerHTML = '<div style="padding:.75rem;text-align:center;color:var(--muted)">All caught up!</div>'; document.getElementById('nBadge').style.display = 'none'; }
+    document.addEventListener('click', e => { if (!e.target.closest('.nw')) document.getElementById('nPanel').classList.remove('open'); });
+    function doSignOut() { localStorage.removeItem('splc_user'); window.location.href = '/signup.html'; }
+  </script>
+<script src="/assets/js/ga-events.js?v=20260528a" defer></script>
+</body>
+
+</html>

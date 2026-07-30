@@ -1,0 +1,61 @@
+name: PHP Lint
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'api/**/*.php'
+      - 'private/**/*.php'
+      - '.github/workflows/php-lint.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'api/**/*.php'
+      - 'private/**/*.php'
+
+jobs:
+  lint:
+    name: PHP syntax + PHPStan
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP 8.2
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: openssl, json, mbstring
+          coverage: none
+          tools: phpstan, phpcs
+
+      - name: php -l (parse all .php files)
+        run: |
+          set -e
+          fail=0
+          while IFS= read -r f; do
+            php -l "$f" || fail=1
+          done < <(find api private -type f -name '*.php' 2>/dev/null)
+          if [ "$fail" -ne 0 ]; then
+            echo "::error::One or more files failed syntax check."
+            exit 1
+          fi
+
+      - name: PHPStan (level 4)
+        continue-on-error: true
+        run: |
+          phpstan analyse api \
+            --level=4 \
+            --no-progress \
+            --memory-limit=512M \
+            --error-format=github
+
+      - name: PHP_CodeSniffer (PSR-12)
+        continue-on-error: true
+        run: |
+          phpcs --standard=PSR12 \
+            --extensions=php \
+            --warning-severity=0 \
+            --report=summary \
+            api/

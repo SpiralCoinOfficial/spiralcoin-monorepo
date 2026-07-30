@@ -1,0 +1,12 @@
+option batch abort
+option confirm off
+open sftp://a2797960:%PWD%@access-5020476011.webspace-host.com/ -hostkey=*
+
+lcd "C:\Users\Trisha Dreyer\Documents\ionos-migration\indexer"
+cd /indexer
+get config.php
+get cron.php
+get .htaccess
+
+close
+exit

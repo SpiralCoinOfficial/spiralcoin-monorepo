@@ -1,0 +1,1 @@
+const { ethers } = require("hardhat"); (async () => { const [s] = await ethers.getSigners(); const bal = await ethers.provider.getBalance(s.address); console.log("Deployer:", s.address); console.log("Balance:", ethers.formatEther(bal), "ETH"); })();

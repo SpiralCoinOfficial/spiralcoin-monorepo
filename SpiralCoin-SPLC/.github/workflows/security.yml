@@ -1,0 +1,72 @@
+name: Security Gate
+
+# Blocks merges when dependencies have known high/critical vulnerabilities
+# or when a package's type-check fails. Runs on every push and pull request.
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  npm-audit:
+    name: npm audit (${{ matrix.dir }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # Only directories that ship a package-lock.json are audited here.
+        # contracts/ holds build tooling only (Hardhat, LayerZero SDK) —
+        # these packages never appear in deployed bytecode, so critical is
+        # the right gate (high is too noisy for deeply-nested dev deps).
+        # alchemy-demo holds integration code → high.
+        # w3a-quick-start is a frontend demo with a large Web3Auth/wagmi dep
+        # tree; critical is the appropriate gate for a demo app.
+        include:
+          - dir: contracts
+            audit_level: critical
+          - dir: alchemy-demo
+            audit_level: high
+          - dir: w3a-quick-start
+            audit_level: critical
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # Install first so package.json overrides are applied to the tree
+      # before the advisory scan. Without this step npm audit may flag the
+      # pre-override vulnerable versions even when the lockfile resolves
+      # them to safe versions.
+      - name: Install ${{ matrix.dir }} dependencies
+        working-directory: ${{ matrix.dir }}
+        run: npm ci --legacy-peer-deps --no-audit --no-fund
+
+      - name: Audit ${{ matrix.dir }} (fail on ${{ matrix.audit_level }}+)
+        working-directory: ${{ matrix.dir }}
+        run: npm audit --audit-level=${{ matrix.audit_level }}
+
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # Type-check the frontend demo. eslint is not in devDependencies so
+      # `npm run lint` (which calls `eslint`) would fail with command-not-found
+      # after `npm ci`. Use `tsc --noEmit` instead — TypeScript IS a devDep
+      # and catches the same class of static errors that matter for CI.
+      - name: Type-check w3a-quick-start
+        working-directory: w3a-quick-start
+        run: |
+          npm ci --no-audit --no-fund
+          npx tsc --noEmit

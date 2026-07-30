@@ -1,0 +1,25 @@
+{
+    "name": "SpiralCoin — Institutional Market Intelligence",
+    "short_name": "SpiralCoin",
+    "description": "Real-time market intelligence across crypto, stocks, ETFs, options, bonds, and Federal Reserve data — unified in one platform.",
+    "id": "/?source=pwa",
+    "start_url": "/?source=pwa",
+    "scope": "/",
+    "display": "standalone",
+    "display_override": [ "standalone", "minimal-ui" ],
+    "orientation": "any",
+    "background_color": "#02030a",
+    "theme_color": "#c9a227",
+    "categories": [ "finance", "business", "productivity" ],
+    "icons": [
+        { "src": "/brand/splc-android-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+        { "src": "/brand/splc-logo-256.png", "sizes": "256x256", "type": "image/png", "purpose": "any" },
+        { "src": "/brand/splc-android-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+        { "src": "/brand/splc-android-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    ],
+    "shortcuts": [
+        { "name": "Dashboard", "url": "/dashboard.html", "icons": [ { "src": "/brand/splc-android-192.png", "sizes": "192x192" } ] },
+        { "name": "Markets", "url": "/markets.html", "icons": [ { "src": "/brand/splc-android-192.png", "sizes": "192x192" } ] },
+        { "name": "Portfolio", "url": "/portfolio.html", "icons": [ { "src": "/brand/splc-android-192.png", "sizes": "192x192" } ] }
+    ]
+}

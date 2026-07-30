@@ -1,0 +1,76 @@
+name: Deploy to IONOS
+
+# Triggers on every push to main. Uploads the production site to IONOS
+# webspace via SFTP using credentials stored in repo Secrets.
+#
+# REQUIRED REPO SECRETS (Settings → Secrets and variables → Actions):
+#   IONOS_SFTP_HOST     access-5020476011.webspace-host.com
+#   IONOS_SFTP_USER     a2797960
+#   IONOS_SFTP_PASS     <your IONOS SFTP password>
+#
+# (Port is hardcoded to 22 below — IONOS standard SFTP port — so no
+# IONOS_SFTP_PORT secret is required. The previous empty-port secret
+# was producing `Bad port "-o"` failures in the action.)
+#
+# Once those secrets exist, every `git push origin main` triggers a
+# deploy — no more WinSCP / SFTP commands locally.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-ionos
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: SFTP upload to IONOS webspace
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Stage only the files we actually want on the server. The previous
+      # action+exclude_list combo wasn't supported on v1.2.4 (silently
+      # ignored) so the upload tried to push the whole repo. We now build
+      # a clean ./_deploy directory and ship just that.
+      - name: Stage deploy tree
+        run: |
+          set -euo pipefail
+          mkdir -p _deploy
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='node_modules' \
+            --exclude='_deploy' \
+            --exclude='*.log' \
+            --exclude='_sftp_*.txt' \
+            --exclude='_*.ps1' \
+            --exclude='_*.js' \
+            --exclude='_*.json' \
+            --exclude='.ionos_sftp_pwd' \
+            --exclude='.spiralcoin_sponsor_webhook_secret' \
+            --exclude='private/sponsor-events.jsonl' \
+            --exclude='private/wallet-bindings.json' \
+            --exclude='private/wallet-nonces.json' \
+            --exclude='private/auth0-jwks.cache.json' \
+            --exclude='private/sponsor-optout.json' \
+            --exclude='private/sponsor-webhook-secret.txt' \
+            ./ _deploy/
+
+      - name: Upload via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        with:
+          server: ${{ secrets.IONOS_SFTP_HOST }}
+          username: ${{ secrets.IONOS_SFTP_USER }}
+          password: ${{ secrets.IONOS_SFTP_PASS }}
+          ssh_private_key: ''   # not used — password auth via IONOS_SFTP_PASS
+          port: '22'
+          local_path: './_deploy/*'
+          remote_path: '/'
+          sftp_only: true
+          # Keep server files that aren't in the repo (private/, logs, etc.)
+          delete_remote_files: false

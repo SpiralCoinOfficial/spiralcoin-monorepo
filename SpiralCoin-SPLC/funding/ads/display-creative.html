@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SpiralCoin — Display Banner Creative (Print to PNG)</title>
+    <style>
+        /*
+  3 static banner creatives in one page.
+  Render to PNG via headless Chrome:
+    chrome.exe --headless --disable-gpu --screenshot=banner-1200x628.png --window-size=1200,628 "file:///.../display-creative.html?b=lead"
+    chrome.exe --headless --disable-gpu --screenshot=banner-1080x1080.png --window-size=1080,1080 "file:///.../display-creative.html?b=square"
+    chrome.exe --headless --disable-gpu --screenshot=banner-1080x1920.png --window-size=1080,1920 "file:///.../display-creative.html?b=story"
+  Or open in browser and use built-in screenshot tool.
+*/
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Inter, Segoe UI, Roboto, Arial, sans-serif
+        }
+
+        html,
+        body {
+            background: #000;
+            color: #fff;
+            overflow: hidden
+        }
+
+        .banner {
+            display: none;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at 18% 22%, rgba(245, 196, 81, .22), transparent 38%), radial-gradient(circle at 82% 12%, rgba(245, 196, 81, .12), transparent 32%), #080b12
+        }
+
+        .banner.show {
+            display: block
+        }
+
+        .gold {
+            color: #f5c451
+        }
+
+        .disc {
+            position: absolute;
+            bottom: 14px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 11px;
+            color: #888;
+            letter-spacing: .3px;
+            padding: 0 20px
+        }
+
+        /* Lead (1200x628) — landscape display */
+        #lead {
+            width: 1200px;
+            height: 628px;
+            padding: 60px 70px;
+            display: none
+        }
+
+        #lead.show {
+            display: flex;
+            flex-direction: column;
+            justify-content: center
+        }
+
+        #lead .eyebrow {
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #f5c451;
+            font-weight: 700;
+            margin-bottom: 18px
+        }
+
+        #lead h1 {
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -1.5px;
+            max-width: 780px;
+            margin-bottom: 24px
+        }
+
+        #lead .sub {
+            font-size: 22px;
+            color: #9da7ba;
+            max-width: 680px;
+            margin-bottom: 28px;
+            line-height: 1.45
+        }
+
+        #lead .cta {
+            background: #f5c451;
+            color: #080b12;
+            font-weight: 800;
+            padding: 16px 36px;
+            border-radius: 10px;
+            font-size: 20px;
+            display: inline-block;
+            align-self: flex-start;
+            box-shadow: 0 8px 26px rgba(245, 196, 81, .3)
+        }
+
+        #lead .corner {
+            position: absolute;
+            top: 40px;
+            right: 60px;
+            text-align: right
+        }
+
+        #lead .corner svg {
+            width: 48px;
+            height: 48px;
+            float: right;
+            margin-left: 14px
+        }
+
+        #lead .corner .name {
+            font-size: 22px;
+            font-weight: 800;
+            color: #f5c451;
+            margin-top: 6px
+        }
+
+        #lead .corner small {
+            display: block;
+            font-size: 11px;
+            color: #9da7ba;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 2px
+        }
+
+        #lead .badges {
+            display: flex;
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        #lead .badge {
+            font-size: 12px;
+            background: rgba(245, 196, 81, .1);
+            border: 1px solid rgba(245, 196, 81, .3);
+            color: #f5c451;
+            padding: 6px 12px;
+            border-radius: 100px;
+            font-weight: 600
+        }
+
+        /* Square (1080x1080) — IG / X / FB feed */
+        #square {
+            width: 1080px;
+            height: 1080px;
+            padding: 90px 80px;
+            display: none;
+            text-align: center;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center
+        }
+
+        #square.show {
+            display: flex
+        }
+
+        #square .eyebrow {
+            font-size: 18px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #f5c451;
+            font-weight: 700;
+            margin-bottom: 28px
+        }
+
+        #square h1 {
+            font-size: 78px;
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 36px;
+            max-width: 900px
+        }
+
+        #square .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin: 30px 0;
+            width: 100%;
+            max-width: 760px
+        }
+
+        #square .stat {
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: 18px;
+            padding: 22px
+        }
+
+        #square .stat .v {
+            font-size: 48px;
+            font-weight: 900;
+            color: #f5c451;
+            line-height: 1
+        }
+
+        #square .stat .l {
+            font-size: 16px;
+            color: #9da7ba;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-weight: 600
+        }
+
+        #square .cta {
+            background: #f5c451;
+            color: #080b12;
+            font-weight: 800;
+            padding: 20px 48px;
+            border-radius: 12px;
+            font-size: 24px;
+            margin-top: 32px;
+            box-shadow: 0 10px 30px rgba(245, 196, 81, .3)
+        }
+
+        #square .corner {
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            align-items: center
+        }
+
+        #square .corner svg {
+            width: 40px;
+            height: 40px
+        }
+
+        #square .corner .name {
+            font-size: 20px;
+            font-weight: 800;
+            color: #f5c451;
+            letter-spacing: .5px
+        }
+
+        /* Story (1080x1920) — Reels / TikTok / Shorts / Stories */
+        #story {
+            width: 1080px;
+            height: 1920px;
+            padding: 120px 80px;
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            align-items: center
+        }
+
+        #story.show {
+            display: flex
+        }
+
+        #story .top {
+            display: flex;
+            flex-direction: column;
+            align-items: center
+        }
+
+        #story .top svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 24px;
+            filter: drop-shadow(0 0 20px rgba(245, 196, 81, .5))
+        }
+
+        #story .top .brand {
+            font-size: 24px;
+            font-weight: 800;
+            color: #f5c451;
+            letter-spacing: 1px;
+            margin-bottom: 12px
+        }
+
+        #story .top .pill {
+            font-size: 14px;
+            background: rgba(245, 196, 81, .12);
+            border: 1px solid rgba(245, 196, 81, .4);
+            color: #f5c451;
+            padding: 8px 18px;
+            border-radius: 100px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase
+        }
+
+        #story .mid {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center
+        }
+
+        #story h1 {
+            font-size: 96px;
+            font-weight: 900;
+            line-height: 1.04;
+            letter-spacing: -2.5px;
+            margin-bottom: 36px
+        }
+
+        #story .sub {
+            font-size: 34px;
+            color: #9da7ba;
+            line-height: 1.4;
+            max-width: 900px;
+            margin: 0 auto 40px
+        }
+
+        #story .stats {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto
+        }
+
+        #story .stat {
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: 18px;
+            padding: 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        #story .stat .v {
+            font-size: 44px;
+            font-weight: 900;
+            color: #f5c451
+        }
+
+        #story .stat .l {
+            font-size: 22px;
+            color: #9da7ba;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-weight: 600
+        }
+
+        #story .bot {
+            width: 100%
+        }
+
+        #story .cta {
+            background: #f5c451;
+            color: #080b12;
+            font-weight: 800;
+            padding: 28px 0;
+            border-radius: 14px;
+            font-size: 32px;
+            width: 100%;
+            display: block;
+            box-shadow: 0 10px 30px rgba(245, 196, 81, .3)
+        }
+
+        #story .url {
+            font-size: 24px;
+            color: #9da7ba;
+            margin-top: 20px;
+            letter-spacing: 1px
+        }
+
+        /* selector buttons (only visible in normal browsing, hidden when screenshotting via ?b=) */
+        .picker {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            gap: 8px;
+            z-index: 9999;
+            background: rgba(0, 0, 0, .7);
+            padding: 10px;
+            border-radius: 8px
+        }
+
+        .picker a {
+            color: #f5c451;
+            text-decoration: none;
+            padding: 6px 12px;
+            border: 1px solid #f5c451;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700
+        }
+
+        body.solo .picker {
+            display: none
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="picker">
+        <a href="?b=lead">1200×628</a>
+        <a href="?b=square">1080×1080</a>
+        <a href="?b=story">1080×1920</a>
+    </div>
+
+    <!-- ── LEAD 1200x628 ── -->
+    <div class="banner" id="lead">
+        <div class="corner">
+            <svg viewBox="0 0 100 100">
+                <defs>
+                    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="#f5c451" />
+                        <stop offset="1" stop-color="#c9a227" />
+                    </linearGradient>
+                </defs>
+                <path
+                    d="M50 8a42 42 0 1 1-42 42 42 42 0 0 1 42-42m0 12a30 30 0 1 0 30 30 30 30 0 0 0-30-30m0 8a22 22 0 1 1-22 22 22 22 0 0 1 22-22m0 8a14 14 0 1 0 14 14 14 14 0 0 0-14-14"
+                    fill="url(#g1)" />
+            </svg>
+            <div class="name">SpiralCoin<small>$SPLC · Arbitrum One</small></div>
+        </div>
+        <div class="eyebrow">⚡ Live on Arbitrum One · Open Source</div>
+        <h1>A crypto launch <span class="gold">without the hype premium.</span></h1>
+        <div class="sub">Solo-founded. 1B fixed supply. 12-month locked LP. Market-discovered price.</div>
+        <a class="cta">Review the Source →</a>
+        <div class="badges">
+            <span class="badge">1B Fixed Supply</span>
+            <span class="badge">12-mo LP Lock</span>
+            <span class="badge">121 Passing Tests</span>
+        </div>
+        <div class="disc">Trading involves risk. Past performance does not guarantee future results. Not an offer to
+            sell securities.</div>
+    </div>
+
+    <!-- ── SQUARE 1080x1080 ── -->
+    <div class="banner" id="square">
+        <div class="corner">
+            <svg viewBox="0 0 100 100">
+                <defs>
+                    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="#f5c451" />
+                        <stop offset="1" stop-color="#c9a227" />
+                    </linearGradient>
+                </defs>
+                <path
+                    d="M50 8a42 42 0 1 1-42 42 42 42 0 0 1 42-42m0 12a30 30 0 1 0 30 30 30 30 0 0 0-30-30m0 8a22 22 0 1 1-22 22 22 22 0 0 1 22-22m0 8a14 14 0 1 0 14 14 14 14 0 0 0-14-14"
+                    fill="url(#g2)" />
+            </svg>
+            <div class="name">SpiralCoin · $SPLC</div>
+        </div>
+        <div class="eyebrow">⚡ A new kind of launch</div>
+        <h1>No VC round.<br><span class="gold">No private premium.</span><br>Just code.</h1>
+        <div class="stats">
+            <div class="stat">
+                <div class="v">1B</div>
+                <div class="l">Fixed Supply</div>
+            </div>
+            <div class="stat">
+                <div class="v">12 mo</div>
+                <div class="l">LP NFT Lock</div>
+            </div>
+            <div class="stat">
+                <div class="v">3.14%</div>
+                <div class="l">AMM Tax · V2 only</div>
+            </div>
+            <div class="stat">
+                <div class="v">121</div>
+                <div class="l">Passing Tests</div>
+            </div>
+        </div>
+        <a class="cta">spiralcoin.net</a>
+        <div class="disc">Trading involves risk. Past performance does not guarantee future results.</div>
+    </div>
+
+    <!-- ── STORY 1080x1920 ── -->
+    <div class="banner" id="story">
+        <div class="top">
+            <svg viewBox="0 0 100 100">
+                <defs>
+                    <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="#f5c451" />
+                        <stop offset="1" stop-color="#c9a227" />
+                    </linearGradient>
+                </defs>
+                <path
+                    d="M50 8a42 42 0 1 1-42 42 42 42 0 0 1 42-42m0 12a30 30 0 1 0 30 30 30 30 0 0 0-30-30m0 8a22 22 0 1 1-22 22 22 22 0 0 1 22-22m0 8a14 14 0 1 0 14 14 14 14 0 0 0-14-14"
+                    fill="url(#g3)" />
+            </svg>
+            <div class="brand">SpiralCoin · $SPLC</div>
+            <div class="pill">Live on Arbitrum One</div>
+        </div>
+        <div class="mid">
+            <h1>A crypto launch <span class="gold">without the hype.</span></h1>
+            <div class="sub">Solo-founded. Open-source. Locked liquidity. Market discovers the price.</div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="l">Fixed Supply</div>
+                    <div class="v">1B</div>
+                </div>
+                <div class="stat">
+                    <div class="l">LP NFT Lock</div>
+                    <div class="v">12 mo</div>
+                </div>
+                <div class="stat">
+                    <div class="l">Passing Tests</div>
+                    <div class="v">121</div>
+                </div>
+            </div>
+        </div>
+        <div class="bot">
+            <a class="cta">Review the Source</a>
+            <div class="url">spiralcoin.net · github.com/SpiralCoinOfficial</div>
+            <div style="font-size:14px;color:#777;margin-top:18px;line-height:1.4">Trading involves risk. Past
+                performance does not guarantee future results. Not an offer to sell securities.</div>
+        </div>
+    </div>
+
+    <script>
+        const b = new URLSearchParams(location.search).get('b');
+        if (b) {
+            document.body.classList.add('solo');
+            const el = document.getElementById(b);
+            if (el) { el.classList.add('show') }
+        } else {
+            // default: show first
+            document.getElementById('lead').classList.add('show');
+        }
+    </script>
+</body>
+
+</html>

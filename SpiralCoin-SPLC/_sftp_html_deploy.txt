@@ -1,0 +1,18 @@
+option batch abort
+option confirm off
+open sftp://a2797960:%PWD%@access-5020476011.webspace-host.com/ -hostkey=*
+cd /
+lcd "C:\Users\Trisha Dreyer\Documents\ionos-migration"
+put index.html
+put markets.html
+put analytics.html
+put community.html
+put crypto.html
+put dashboard.html
+put news.html
+put portfolio.html
+put splc.html
+put stocks-coming-soon.html
+put watchlist.html
+close
+exit

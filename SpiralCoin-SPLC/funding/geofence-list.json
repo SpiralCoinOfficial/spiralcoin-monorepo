@@ -1,0 +1,60 @@
+{
+    "_meta": {
+        "purpose": "State and country allowlist for SpiralCoin LLC paid acquisition + signup eligibility. Used by assets/state-geofence.js when SPLC_GEO_MODE='allowlist'.",
+        "lastUpdated": "2026-05-29",
+        "owner": "Trisha Dreyer",
+        "legalNote": "Do NOT activate the US-state allowlist until SpiralCoin LLC holds a valid money transmitter license (or partner-MSB coverage) in each allowed state. This file is metadata for future use. Currently US is fully blocked via assets/geo-block.js.",
+        "version": 1
+    },
+    "us_states": {
+        "_explainer": "Tiers represent regulatory friction for a crypto money services business. Tier 1 = most achievable first. Tier 4 = avoid unless materially funded.",
+        "tier1_friendly_or_low_friction": {
+            "states": [ "WY", "TX", "FL", "NH", "MT" ],
+            "rationale": "Wyoming has a crypto-specific Special Purpose Depository Institution framework; Texas does not require a separate MTL for purely software-only non-custodial activity (verify with counsel for your specific model); Florida MTL is achievable with moderate bond; New Hampshire and Montana have explicit crypto exemptions for certain activities. Verify current rules with counsel; they change.",
+            "estimated_setup_cost_per_state": "$5K-$50K legal + $25K-$250K surety bond per state",
+            "estimated_timeline": "2-6 months per state"
+        },
+        "tier2_workable": {
+            "states": [ "AZ", "GA", "NC", "OH", "MO", "KY", "TN", "IN", "VA", "WI", "CO", "PA", "MA", "MI", "MD", "IL", "NJ" ],
+            "rationale": "Standard MTL regime; achievable with a fintech attorney and standard bond/net-worth requirements.",
+            "estimated_setup_cost_per_state": "$10K-$50K legal + $50K-$500K bond",
+            "estimated_timeline": "4-12 months per state"
+        },
+        "tier3_hard": {
+            "states": [ "CA", "WA", "OR", "MN", "AK", "HI", "OK", "AR", "AL", "SC", "WV", "NE", "ND", "SD", "ME", "VT", "RI", "CT", "DE", "DC", "IA", "KS", "ID", "NV", "NM", "UT", "MS", "LA" ],
+            "rationale": "California (DFPI Digital Financial Assets Law, effective 2025), Washington, Hawaii, Louisiana have crypto-specific regimes; others have onerous bonding or capital requirements.",
+            "estimated_setup_cost_per_state": "$25K-$150K legal + $100K-$2M bond",
+            "estimated_timeline": "9-24 months per state"
+        },
+        "tier4_avoid_until_funded": {
+            "states": [ "NY" ],
+            "rationale": "BitLicense — typical legal+filing cost $100K-$500K, capital requirement $250K+, 12-24 month timeline. Most early-stage projects geofence NY entirely.",
+            "estimated_setup_cost_per_state": "$100K-$500K legal + $250K+ capital + $500K-$5M bond",
+            "estimated_timeline": "12-24 months"
+        }
+    },
+    "international": {
+        "_explainer": "Country-level allowlist for non-US users. Aligns with Google Ads cryptocurrency allowed regions where SpiralCoin will operate first.",
+        "allowed_phase1": [ "CA", "GB", "AU", "NZ", "SG", "JP", "DE", "FR", "NL", "BE", "SE", "FI", "DK", "NO", "IE", "ES", "PT", "IT", "AT", "CH", "PL", "CZ", "HU", "BR", "MX", "AR", "CL", "CO", "ZA" ],
+        "_phase1_notes": "Major markets where Google Ads permits crypto with certification; MiCA (EU) registration recommended before launching in EU production.",
+        "always_blocked": [ "US", "CN", "KP", "IR", "SY", "CU", "RU", "BY", "AF", "IQ", "LB", "LY", "MM", "SO", "SD", "SS", "YE", "ZW", "VE" ],
+        "_blocked_notes": "OFAC-sanctioned jurisdictions and US (until state-MTL/partner-MSB strategy is in place). Block list must be reviewed monthly against latest OFAC SDN updates."
+    },
+    "activation_checklist": {
+        "before_enabling_any_us_state": [
+            "FinCEN MSB number received",
+            "State MTL granted OR partner-MSB agreement signed for that state",
+            "AML/KYC program live with vendor (Sumsub / Persona / Veriff)",
+            "1099-DA tax reporting infrastructure live",
+            "Securities attorney memo confirming token sale structure for that state",
+            "Suspicious Activity Reporting (SAR) procedures documented",
+            "Consumer-protection complaint handling procedure live (state-specific requirements)"
+        ],
+        "before_enabling_international": [
+            "MiCA registration (for EU)",
+            "FCA / ASIC / MAS guidance review (for UK/AU/SG)",
+            "Tax withholding / reporting requirements per country",
+            "Localized Terms of Service and Privacy Policy"
+        ]
+    }
+}

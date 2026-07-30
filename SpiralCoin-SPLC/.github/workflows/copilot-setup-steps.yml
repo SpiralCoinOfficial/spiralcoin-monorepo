@@ -1,0 +1,23 @@
+name: Copilot Setup Steps
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+  pull_request:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+
+jobs:
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Configure Node.js heap limit for Copilot sessions
+        shell: bash
+        run: |
+          echo 'NODE_OPTIONS=--max-old-space-size=4096' >> "$GITHUB_ENV"
+          echo 'export NODE_OPTIONS="--max-old-space-size=4096"' >> "$HOME/.bashrc"
+          echo 'export NODE_OPTIONS="--max-old-space-size=4096"' >> "$HOME/.profile"

@@ -1,0 +1,1879 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Cookiebot CMP --><script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="83c385c8-b96d-4d3e-a75b-0f81f3d82de3" type="text/javascript" async></script>
+  <!-- Google tag (gtag.js) with Consent Mode v2 defaults -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MEMH1LPSD4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2: default to denied; Cookiebot will update on user choice.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'functionality_storage': 'granted',
+    'security_storage': 'granted',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-MEMH1LPSD4');
+</script>
+<meta charset="UTF-8" />
+  <script defer data-domain="spiralcoin.net" src="https://plausible.io/js/script.js"></script>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://plausible.io https://unpkg.com https://cdn.jsdelivr.net https://stream.binance.us https://stream.binance.us:9443 https://api.binance.us https://www.googletagmanager.com https://*.googletagmanager.com https://consent.cookiebot.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https: https://www.google-analytics.com https://www.googletagmanager.com https://*.g.doubleclick.net; connect-src 'self' https://api.binance.us wss://stream.binance.us wss://stream.binance.us:9443 https://api.allorigins.win https://query1.finance.yahoo.com https://plausible.io https://api.coingecko.com https://*.g.alchemy.com wss://*.g.alchemy.com https://*.infura.io wss://*.infura.io https://www.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.googletagmanager.com https://*.g.doubleclick.net https://stats.g.doubleclick.net https://consent.cookiebot.com https://consentcdn.cookiebot.com; frame-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="SpiralCoin (SPLC) — Real-time trading platform with live market data, AI-fed signals, and interactive charts." />
+  <meta name="robots" content="index,follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="SpiralCoin | Live Trading Platform" />
+  <meta property="og:description"
+    content="Trade faster with live markets, AI signals, and full chart control. Stream real-time data, AI-fed analysis, and interactive charts." />
+  <meta property="og:url" content="https://www.spiralcoin.net/spiralcoin_trading_platform.html" />
+  <meta property="og:image" content="https://spiralcoin.net/spiralcoin_og_1200x630.png?v=20260526b" />
+  <link rel="canonical" href="https://www.spiralcoin.net/spiralcoin_trading_platform.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SpiralCoin | Live Trading Platform" />
+  <meta name="twitter:description" content="Trade faster with live markets, AI signals, and full chart control." />
+  <title>SpiralCoin | Live Trading Platform</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/spiralcoin-mark.svg?v=20260526b">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20260526b" />
+  <meta name="theme-color" content="#0b0f15" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="SpiralCoin" />
+
+  <!-- Google Analytics -->
+
+  <!-- TradingView Lightweight Charts -->
+  <script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
+  <script src="/assets/live-config.js" defer></script>
+
+  <style>
+    :root {
+      --bg: #0b0f15;
+      --bg-soft: #121924;
+      --card: #111827;
+      --card2: #0e1621;
+      --gold: #f5c451;
+      --gold-soft: #d7a93f;
+      --text: #e8edf6;
+      --muted: #9da7ba;
+      --green: #22c55e;
+      --red: #ef4444;
+      --line: rgba(245, 196, 81, 0.22);
+      --radius: 14px;
+      --nav-h: 62px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(245, 196, 81, .11), transparent 35%),
+        radial-gradient(circle at 82% 0%, rgba(245, 196, 81, .07), transparent 28%),
+        var(--bg);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(1160px, 94%);
+      margin: 0 auto;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      height: var(--nav-h);
+      backdrop-filter: blur(12px);
+      background: rgba(11, 15, 21, .82);
+      border-bottom: 1px solid rgba(255, 255, 255, .055);
+    }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      font-weight: 700;
+    }
+
+    .brand img {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      box-shadow: 0 0 0 1px rgba(245, 196, 81, .35);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.4rem;
+      font-size: .93rem;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    /* ── LIVE TICKER STRIP ───────────────────────────────── */
+    .ticker-bar {
+      background: var(--card2);
+      border-bottom: 1px solid rgba(255, 255, 255, .05);
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: .82rem;
+      padding: .35rem 0;
+    }
+
+    .ticker-inner {
+      display: inline-flex;
+      gap: 2.4rem;
+      animation: tickerScroll 28s linear infinite;
+    }
+
+    .ticker-inner:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes tickerScroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .tick {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+
+    .tick-sym {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .tick-price {
+      color: var(--text);
+    }
+
+    .tick-chg.up {
+      color: var(--green);
+    }
+
+    .tick-chg.down {
+      color: var(--red);
+    }
+
+    /* ── HERO ────────────────────────────────────────────── */
+    .hero {
+      padding: 5.5rem 0 3.5rem;
+      display: grid;
+      gap: 1.6rem;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      margin: 0 auto;
+      padding: .3rem .9rem;
+      border-radius: 100px;
+      border: 1px solid var(--line);
+      color: var(--gold);
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4.2vw, 3.3rem);
+      line-height: 1.1;
+      color: var(--gold);
+    }
+
+    .hero .sub {
+      max-width: 740px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .75rem;
+      margin-top: .6rem;
+    }
+
+    .btn {
+      border: 1px solid transparent;
+      border-radius: 10px;
+      padding: .78rem 1.35rem;
+      font-weight: 600;
+      font-size: .97rem;
+      cursor: pointer;
+      transition: transform .15s, opacity .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: .94;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #241b09;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border-color: var(--line);
+    }
+
+    .urgency {
+      font-size: .83rem;
+      color: var(--muted);
+      margin-top: .3rem;
+    }
+
+    /* ── LIVE CHART SECTION ──────────────────────────────── */
+    .chart-section {
+      margin: 1rem 0 2.5rem;
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, .07);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .chart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .75rem;
+      padding: .9rem 1.2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, .06);
+    }
+
+    .chart-title {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 6px var(--green);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: .35;
+      }
+    }
+
+    .live-label {
+      font-size: .75rem;
+      color: var(--green);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+    }
+
+    .chart-controls {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+
+    .tf-btn {
+      padding: .3rem .65rem;
+      border-radius: 7px;
+      border: 1px solid rgba(255, 255, 255, .1);
+      background: transparent;
+      color: var(--muted);
+      font-size: .78rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all .15s;
+    }
+
+    .tf-btn:hover,
+    .tf-btn.active {
+      background: var(--gold);
+      color: #241b09;
+      border-color: var(--gold);
+      font-weight: 700;
+    }
+
+    .pair-tabs {
+      display: flex;
+      gap: .4rem;
+    }
+
+    .pair-tab {
+      padding: .28rem .7rem;
+      border-radius: 7px;
+      border: 1px solid rgba(255, 255, 255, .1);
+      background: transparent;
+      color: var(--muted);
+      font-size: .8rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all .15s;
+    }
+
+    .pair-tab:hover,
+    .pair-tab.active {
+      background: rgba(245, 196, 81, .14);
+      color: var(--gold);
+      border-color: var(--line);
+    }
+
+    #chart-container {
+      width: 100%;
+      height: 340px;
+    }
+
+    /* ── AI SIGNALS + MARKET PANEL ───────────────────────── */
+    .panel-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 0 0 2.5rem;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, .07);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.2rem;
+    }
+
+    .panel-title {
+      font-size: .88rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--gold);
+      margin-bottom: .9rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .signal-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .55rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .05);
+      font-size: .9rem;
+    }
+
+    .signal-row:last-child {
+      border-bottom: none;
+    }
+
+    .signal-label {
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    .signal-value {
+      font-weight: 700;
+    }
+
+    .sig-bull {
+      color: var(--green);
+    }
+
+    .sig-bear {
+      color: var(--red);
+    }
+
+    .sig-neut {
+      color: var(--muted);
+    }
+
+    .sig-bar-wrap {
+      flex: 1;
+      margin: 0 .75rem;
+      height: 4px;
+      background: rgba(255, 255, 255, .07);
+      border-radius: 2px;
+    }
+
+    .sig-bar {
+      height: 100%;
+      border-radius: 2px;
+      transition: width .8s ease;
+    }
+
+    .mkt-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .52rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .05);
+      font-size: .88rem;
+    }
+
+    .mkt-row:last-child {
+      border-bottom: none;
+    }
+
+    .mkt-sym {
+      font-weight: 700;
+      color: var(--text);
+      min-width: 60px;
+    }
+
+    .mkt-price {
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .mkt-chg {
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      min-width: 58px;
+      text-align: right;
+    }
+
+    .mkt-chg.up {
+      color: var(--green);
+    }
+
+    .mkt-chg.dn {
+      color: var(--red);
+    }
+
+    /* ── FEATURES ────────────────────────────────────────── */
+    .section-label {
+      text-align: center;
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--gold);
+      margin-bottom: .5rem;
+    }
+
+    .section-heading {
+      text-align: center;
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: .6rem;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 2.2rem;
+    }
+
+    .feat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .feat-card {
+      background: linear-gradient(160deg, rgba(245, 196, 81, .05), rgba(255, 255, 255, .02));
+      border: 1px solid rgba(255, 255, 255, .07);
+      border-radius: var(--radius);
+      padding: 1.3rem;
+    }
+
+    .feat-icon {
+      font-size: 1.65rem;
+      margin-bottom: .7rem;
+    }
+
+    .feat-card h3 {
+      font-size: .96rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: .45rem;
+    }
+
+    .feat-card p {
+      font-size: .88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── WHY SECTION ─────────────────────────────────────── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .75rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .why-item {
+      display: flex;
+      gap: .8rem;
+      align-items: flex-start;
+      padding: .9rem;
+      background: var(--bg-soft);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: 10px;
+    }
+
+    .why-bullet {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(245, 196, 81, .15);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .75rem;
+      flex-shrink: 0;
+      margin-top: .15rem;
+    }
+
+    .why-item p {
+      font-size: .88rem;
+      color: var(--muted);
+    }
+
+    .why-item strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: .2rem;
+    }
+
+    /* ── TRUST SECTION ───────────────────────────────────── */
+    .trust-section {
+      background: var(--bg-soft);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: var(--radius);
+      padding: 2rem 1.75rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .9rem;
+      margin-top: 1.3rem;
+    }
+
+    .trust-item {
+      display: flex;
+      gap: .7rem;
+      align-items: flex-start;
+      font-size: .88rem;
+    }
+
+    .trust-check {
+      color: var(--green);
+      font-size: 1rem;
+      margin-top: .1rem;
+      flex-shrink: 0;
+    }
+
+    .trust-item p {
+      color: var(--muted);
+    }
+
+    .disclaimer {
+      margin-top: 1.2rem;
+      padding: .7rem 1rem;
+      background: rgba(245, 196, 81, .07);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      font-size: .82rem;
+      color: var(--muted);
+    }
+
+    /* ── WALLETS ─────────────────────────────────────────── */
+    .wallets-list {
+      display: grid;
+      gap: .7rem;
+      margin-top: 1.25rem;
+    }
+
+    .wallets-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .8rem;
+      padding: .75rem .9rem;
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid rgba(255, 255, 255, .06);
+      border-radius: 12px;
+    }
+
+    .wallets-meta {
+      min-width: 0;
+    }
+
+    .wallets-label {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: .15rem;
+    }
+
+    .wallets-addr {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: .92rem;
+      color: var(--text);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 100%;
+    }
+
+    .wallets-sub {
+      margin-top: .25rem;
+      font-size: .82rem;
+      color: var(--muted);
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .wallets-token {
+      margin-top: 1rem;
+      padding: .75rem .9rem;
+      background: rgba(245, 196, 81, .07);
+      border: 1px solid rgba(245, 196, 81, .18);
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .wallets-token strong {
+      color: var(--text);
+    }
+
+    .wallets-actions {
+      display: flex;
+      gap: .5rem;
+      flex-shrink: 0;
+    }
+
+    .wallets-btn {
+      padding: .45rem .7rem;
+      font-size: .85rem;
+      border-radius: 9px;
+    }
+
+    /* ── FAQ ─────────────────────────────────────────────── */
+    .faq-list {
+      max-width: 740px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(255, 255, 255, .07);
+    }
+
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: .97rem;
+      font-weight: 600;
+      padding: 1rem .25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .8rem;
+    }
+
+    .faq-q:hover {
+      color: var(--gold);
+    }
+
+    .faq-chevron {
+      font-size: .75rem;
+      color: var(--muted);
+      transition: transform .25s;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.7;
+      transition: max-height .35s ease, padding .3s;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      padding-bottom: 1rem;
+    }
+
+    /* ── FINAL CTA ───────────────────────────────────────── */
+    .final-cta {
+      text-align: center;
+      padding: 3.5rem 1.5rem;
+      background: linear-gradient(135deg, rgba(245, 196, 81, .09), rgba(245, 196, 81, .04));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      margin-bottom: 3rem;
+    }
+
+    .final-cta h2 {
+      font-size: clamp(1.65rem, 3.2vw, 2.4rem);
+      color: var(--gold);
+      margin-bottom: .7rem;
+    }
+
+    .final-cta p {
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 1.5rem;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, .06);
+      padding: 1.8rem 0 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    footer a {
+      color: var(--muted);
+    }
+
+    footer a:hover {
+      color: var(--gold);
+    }
+
+    /* ── STATUS BADGE ────────────────────────────────────── */
+    .conn-status {
+      font-size: .73rem;
+      padding: .2rem .55rem;
+      border-radius: 100px;
+      border: 1px solid;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+
+    .conn-status.live {
+      color: var(--green);
+      border-color: rgba(34, 197, 94, .35);
+      background: rgba(34, 197, 94, .08);
+    }
+
+    .conn-status.reconnecting {
+      color: #facc15;
+      border-color: rgba(250, 204, 21, .35);
+      background: rgba(250, 204, 21, .08);
+    }
+
+    .conn-status.offline {
+      color: var(--red);
+      border-color: rgba(239, 68, 68, .35);
+      background: rgba(239, 68, 68, .08);
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 860px) {
+
+      .feat-grid,
+      .panel-row,
+      .why-grid,
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 4rem 0 2.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      #chart-container {
+        height: 260px;
+      }
+    }
+  </style>
+    <style id="splc-live-wire">
+/* SPLC_LIVE_WIRE_v2 - professional ticker bar, flush under nav */
+.status-strip, .ticker-bar, .splc-ticker-bar {
+  position: fixed !important;
+  top: var(--nav-h, 58px) !important;
+  left: 0 !important;
+  right: 0 !important;
+  margin: 0 !important;
+  z-index: 195 !important;
+  height: 36px !important;
+  background: rgba(6,10,16,0.94) !important;
+  border-top: 0 !important;
+  border-bottom: 1px solid rgba(201,162,39,0.22) !important;
+  backdrop-filter: blur(14px) saturate(1.15);
+  -webkit-backdrop-filter: blur(14px) saturate(1.15);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+}
+.strip-scroll {
+  gap: 3.25rem !important;
+  padding: 0 2.5rem !important;
+  animation-duration: 90s !important;
+  will-change: transform;
+}
+.strip-item {
+  gap: 0.65rem !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1, 'lnum' 1;
+}
+.strip-sym {
+  color: #c9a227 !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.strip-price {
+  color: #f4f6fb !important;
+  font-weight: 500 !important;
+  min-width: 4ch;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.strip-item [data-field="chg"],
+.strip-item [data-field="change"],
+.strip-item [data-field="pct"] {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  min-width: 5ch;
+  text-align: right;
+}
+.strip-item [data-field="chg"].up,
+.strip-item [data-field="change"].up,
+.strip-item [data-field="pct"].up { color: #00c97a; }
+.strip-item [data-field="chg"].down,
+.strip-item [data-field="change"].down,
+.strip-item [data-field="pct"].down { color: #ff3d5a; }
+.strip-dot {
+  box-shadow: 0 0 6px rgba(0,201,122,0.65);
+}
+/* Push first content section down so it isn't hidden behind nav + strip */
+body > main, body > .hero, body > section:first-of-type,
+.hero:first-of-type, main > .hero:first-child {
+  padding-top: calc(var(--nav-h, 58px) + 36px + 8px) !important;
+}
+@media (max-width: 720px) {
+  .strip-scroll { gap: 2rem !important; padding: 0 1rem !important; }
+  .strip-item { font-size: 0.74rem !important; }
+}
+</style>
+  <script defer src="/assets/live-feed.js?v=20260526d"></script>
+  <script defer src="/assets/live-wire.js?v=20260526d"></script>
+  <link rel="stylesheet" href="/assets/geo-block.css?v=20260526c">
+  <link rel="stylesheet" href="/assets/galaxy-bg.css?v=20260526e">
+  <script defer src="/assets/galaxy-bg.js?v=20260526i"></script>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#c9a227">
+  <script defer src="/assets/pwa-install.js?v=20260526h"></script>
+<script src="/assets/js/utm-capture.js?v=20260528a" defer></script>
+</head>
+
+<body>
+
+  <!-- ── NAV ─────────────────────────────────────────────────────── -->
+  <nav class="nav" aria-label="Main navigation">
+    <div class="container nav-inner">
+      <div class="brand">
+        <img src="/spiralcoin_logo.png?v=20260526b" alt="SpiralCoin" />
+        <span>SpiralCoin <span style="color:var(--muted);font-weight:400">(SPLC)</span></span>
+      </div>
+      <div class="nav-links">
+        <a href="#platform">Platform</a>
+        <a href="#features">Features</a>
+        <a href="#trust">Trust</a>
+        <a href="#wallets" id="nav-wallets" style="display:none;">Wallets</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:.7rem;">
+        <span id="conn-badge" class="conn-status reconnecting">Connecting…</span>
+        <button class="btn btn-primary" onclick="scrollToDemo()" style="padding:.5rem 1rem;font-size:.88rem;">Start
+          Demo</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── LIVE TICKER ──────────────────────────────────────────────── -->
+  <div class="ticker-bar" aria-live="polite" aria-label="Live market prices">
+    <div class="ticker-inner" id="ticker-inner">
+      <!-- JS populated twice for seamless loop -->
+    </div>
+  </div>
+
+  <!-- ── HERO ────────────────────────────────────────────────────── -->
+  <section class="hero container" id="platform" data-variant="B">
+    <div class="hero-badge">🔴 Live Market Feed Active</div>
+    <h1>Trade Faster With Live Markets,<br>AI Signals &amp; Full Chart Control</h1>
+    <p class="sub">
+      SpiralCoin combines streaming market data, AI-fed analysis, and fully interactive
+      charts so you can move from insight to action in seconds.
+    </p>
+    <div class="actions">
+      <button class="btn btn-primary" onclick="scrollToDemo(); trackCTA('hero-primary')"
+        data-cta-event="hero_start_demo">Start Live Demo</button>
+      <button class="btn btn-outline"
+        onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'}); trackCTA('hero-secondary')"
+        data-cta-event="hero_see_in_action">See It In Action</button>
+    </div>
+    <p class="urgency">Join active users testing real-time workflows today.</p>
+  </section>
+
+  <!-- ── LIVE CHART ───────────────────────────────────────────────── -->
+  <div class="container" id="demo">
+    <div class="chart-section">
+      <div class="chart-header">
+        <div class="chart-title">
+          <div class="live-dot"></div>
+          <span id="chart-pair-label">BTC/USDT</span>
+          <span id="chart-price-display"
+            style="font-size:1.3rem;color:var(--gold);font-variant-numeric:tabular-nums;">—</span>
+          <span id="chart-chg-display" style="font-size:.88rem;"></span>
+          <span class="live-label" id="live-label">LIVE</span>
+        </div>
+        <div style="display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;">
+          <div class="pair-tabs">
+            <button class="pair-tab active" onclick="switchPair('BTCUSDT','BTC/USDT',this)">BTC</button>
+            <button class="pair-tab" onclick="switchPair('ETHUSDT','ETH/USDT',this)">ETH</button>
+            <button class="pair-tab" onclick="switchPair('BNBUSDT','BNB/USDT',this)">BNB</button>
+            <button class="pair-tab" onclick="switchPair('SOLUSDT','SOL/USDT',this)">SOL</button>
+            <button class="pair-tab" onclick="switchPair('XRPUSDT','XRP/USDT',this)">XRP</button>
+            <button class="pair-tab" onclick="switchPair('DOGEUSDT','DOGE/USDT',this)">DOGE</button>
+          </div>
+          <div class="chart-controls">
+            <button class="tf-btn" onclick="setTF('1m',this)">1m</button>
+            <button class="tf-btn active" onclick="setTF('5m',this)">5m</button>
+            <button class="tf-btn" onclick="setTF('15m',this)">15m</button>
+            <button class="tf-btn" onclick="setTF('1h',this)">1h</button>
+            <button class="tf-btn" onclick="setTF('4h',this)">4h</button>
+            <button class="tf-btn" onclick="setTF('1d',this)">1D</button>
+          </div>
+        </div>
+      </div>
+      <div id="chart-container"></div>
+    </div>
+
+    <!-- ── AI SIGNALS + MARKET OVERVIEW ────────────────────────── -->
+    <div class="panel-row">
+
+      <!-- AI SIGNALS -->
+      <div class="panel">
+        <div class="panel-title">🤖 AI Signal Feed</div>
+        <div id="ai-signals">
+          <div class="signal-row">
+            <span class="signal-label">Trend</span>
+            <div class="sig-bar-wrap">
+              <div class="sig-bar" id="sig-trend" style="width:0%;background:var(--green)"></div>
+            </div>
+            <span class="signal-value sig-bull" id="sig-trend-label">—</span>
+          </div>
+          <div class="signal-row">
+            <span class="signal-label">Momentum (RSI)</span>
+            <div class="sig-bar-wrap">
+              <div class="sig-bar" id="sig-rsi" style="width:0%;background:var(--gold)"></div>
+            </div>
+            <span class="signal-value" id="sig-rsi-label">—</span>
+          </div>
+          <div class="signal-row">
+            <span class="signal-label">Volatility (ATR%)</span>
+            <div class="sig-bar-wrap">
+              <div class="sig-bar" id="sig-atr" style="width:0%;background:var(--gold-soft)"></div>
+            </div>
+            <span class="signal-value sig-neut" id="sig-atr-label">—</span>
+          </div>
+          <div class="signal-row">
+            <span class="signal-label">MA Cross (9/21)</span>
+            <div class="sig-bar-wrap">
+              <div class="sig-bar" id="sig-ma" style="width:0%;background:var(--green)"></div>
+            </div>
+            <span class="signal-value" id="sig-ma-label">—</span>
+          </div>
+          <div class="signal-row">
+            <span class="signal-label">Overall Signal</span>
+            <div class="sig-bar-wrap">
+              <div class="sig-bar" id="sig-overall" style="width:0%"></div>
+            </div>
+            <span class="signal-value" id="sig-overall-label">—</span>
+          </div>
+        </div>
+        <p style="font-size:.75rem;color:var(--muted);margin-top:.9rem;">
+          AI signals are decision-support tools only. Not financial advice.
+        </p>
+      </div>
+
+      <!-- MARKET OVERVIEW -->
+      <div class="panel">
+        <div class="panel-title">📊 Market Overview</div>
+        <div id="mkt-table">
+          <div class="mkt-row" id="mkt-BTCUSDT">
+            <span class="mkt-sym">BTC</span>
+            <span class="mkt-price" id="mp-BTCUSDT">—</span>
+            <span class="mkt-chg" id="mc-BTCUSDT">—</span>
+          </div>
+          <div class="mkt-row" id="mkt-ETHUSDT">
+            <span class="mkt-sym">ETH</span>
+            <span class="mkt-price" id="mp-ETHUSDT">—</span>
+            <span class="mkt-chg" id="mc-ETHUSDT">—</span>
+          </div>
+          <div class="mkt-row" id="mkt-BNBUSDT">
+            <span class="mkt-sym">BNB</span>
+            <span class="mkt-price" id="mp-BNBUSDT">—</span>
+            <span class="mkt-chg" id="mc-BNBUSDT">—</span>
+          </div>
+          <div class="mkt-row" id="mkt-SOLUSDT">
+            <span class="mkt-sym">SOL</span>
+            <span class="mkt-price" id="mp-SOLUSDT">—</span>
+            <span class="mkt-chg" id="mc-SOLUSDT">—</span>
+          </div>
+          <div class="mkt-row" id="mkt-XRPUSDT">
+            <span class="mkt-sym">XRP</span>
+            <span class="mkt-price" id="mp-XRPUSDT">—</span>
+            <span class="mkt-chg" id="mc-XRPUSDT">—</span>
+          </div>
+          <div class="mkt-row" id="mkt-DOGEUSDT">
+            <span class="mkt-sym">DOGE</span>
+            <span class="mkt-price" id="mp-DOGEUSDT">—</span>
+            <span class="mkt-chg" id="mc-DOGEUSDT">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FEATURES ────────────────────────────────────────────────── -->
+  <section class="container" id="features">
+    <div class="section-label">Platform Capabilities</div>
+    <h2 class="section-heading">Everything You Need to Move Faster</h2>
+    <p class="section-sub">Built for traders who need precision, speed, and full chart control in a single workflow.</p>
+
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">⚡</div>
+        <h3>Live Market Integration</h3>
+        <p>Stream near real-time market updates with clear live/reconnecting status so you stay aligned with current
+          conditions at all times.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🤖</div>
+        <h3>Live AI-Fed Data</h3>
+        <p>AI context updates with market behavior to highlight trend, momentum, and volatility signals for faster
+          analysis and decision support.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📈</div>
+        <h3>Interactive Charts + User Modifications</h3>
+        <p>Edit indicators, drawing tools, timeframes, and layouts. Your workspace is fully customizable and persists
+          between sessions.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔄</div>
+        <h3>Multi-Pair Monitoring</h3>
+        <p>Track BTC, ETH, BNB, SOL, XRP, DOGE and more in the live market overview. Switch chart pairs instantly
+          without losing context.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📐</div>
+        <h3>Multiple Timeframes</h3>
+        <p>Switch between 1m, 5m, 15m, 1h, 4h, and 1D timeframes. Each view updates with fresh candle data in real time.
+        </p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🛡️</div>
+        <h3>Transparent Data State</h3>
+        <p>Clear connection status and reconnect visibility means you always know whether you're viewing live or stale
+          data.</p>
+      </div>
+    </div>
+
+    <!-- Why Section -->
+    <div class="section-label">Why SpiralCoin</div>
+    <h2 class="section-heading">Why Traders Choose SpiralCoin</h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-bullet">✓</div>
+        <div><strong>Faster Clarity</strong>
+          <p>See live movements without waiting on stale snapshots. React when it matters.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-bullet">✓</div>
+        <div><strong>Smarter Context</strong>
+          <p>AI-assisted signal framing supports better decision flow without false certainty.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-bullet">✓</div>
+        <div><strong>Total Control</strong>
+          <p>Modify chart behavior and views to match your exact strategy and preferences.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-bullet">✓</div>
+        <div><strong>Cleaner Execution Path</strong>
+          <p>Less friction from analysis to action — built so insight becomes decision faster.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TRUST ────────────────────────────────────────────────────── -->
+  <section class="container" id="trust">
+    <div class="trust-section">
+      <div class="section-label">Security &amp; Trust</div>
+      <h2 class="section-heading" style="text-align:left;margin-bottom:0;">Built for Trust, Designed for Control</h2>
+      <div class="trust-grid">
+        <div class="trust-item"><span class="trust-check">✓</span>
+          <p>Transparent data-state labeling and live/reconnecting status at all times</p>
+        </div>
+        <div class="trust-item"><span class="trust-check">✓</span>
+          <p>User-controlled chart personalization and workspace settings</p>
+        </div>
+        <div class="trust-item"><span class="trust-check">✓</span>
+          <p>Clear risk-aware messaging and responsible product framing</p>
+        </div>
+        <div class="trust-item"><span class="trust-check">✓</span>
+          <p>No unrealistic promises — just practical, high-performance tooling</p>
+        </div>
+      </div>
+      <div class="disclaimer">
+        ⚠️ Trading involves risk. Past performance does not guarantee future results. AI signals are informational only
+        and not financial advice.
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WALLETS ─────────────────────────────────────────────────── -->
+  <section class="container" id="wallets" style="display:none;">
+    <div class="trust-section" style="margin-bottom:3.5rem;">
+      <div class="section-label">Wallets</div>
+      <h2 class="section-heading" style="text-align:left;margin-bottom:.35rem;">Wallet Addresses</h2>
+      <p style="color:var(--muted);margin-top:0;max-width:740px;">
+        Find and copy the configured SpiralCoin wallet destinations.
+      </p>
+      <div id="wallets-token" class="wallets-token" style="display:none;"></div>
+      <div id="wallets-list" class="wallets-list" aria-label="Wallet address list"></div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ──────────────────────────────────────────────────────── -->
+  <section class="container" id="faq">
+    <div class="section-label">Questions</div>
+    <h2 class="section-heading">Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is the market feed live? <span
+            class="faq-chevron">▼</span></button>
+        <div class="faq-a">SpiralCoin is designed for streaming market updates via WebSocket with status visibility
+          during reconnect events, so you always know the freshness of your data.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Does AI guarantee profitable trades? <span
+            class="faq-chevron">▼</span></button>
+        <div class="faq-a">No. AI is a decision-support layer that surfaces trend, momentum, and volatility context. It
+          cannot guarantee outcomes and should not replace your own analysis and risk management.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I fully customize the charts? <span
+            class="faq-chevron">▼</span></button>
+        <div class="faq-a">Yes. You can switch pairs, change timeframes, and the platform is designed to support drawing
+          tools, indicators, and saved layouts in upcoming updates.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is this only for advanced traders? <span
+            class="faq-chevron">▼</span></button>
+        <div class="faq-a">No. The platform is built for fast onboarding with the market overview and AI signals
+          providing immediate context, while advanced depth is available for experienced users.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What data sources does SpiralCoin use? <span
+            class="faq-chevron">▼</span></button>
+        <div class="faq-a">Market price data streams from public exchange WebSocket endpoints. AI signals are derived
+          from on-chart calculations including moving averages, RSI, and ATR — updated with each new candle.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FINAL CTA ─────────────────────────────────────────────────── -->
+  <section class="container">
+    <div class="final-cta">
+      <h2>Ready to Trade With Real-Time Intelligence?</h2>
+      <p>Launch your live demo and experience streaming data, AI-assisted analysis, and user-driven chart control in one
+        platform.</p>
+      <div class="actions">
+        <button class="btn btn-primary" onclick="scrollToDemo(); trackCTA('final-primary')"
+          data-cta-event="final_start_demo">Start Your Demo</button>
+        <button class="btn btn-outline" data-cta-event="final_compare_plans">Compare Plans</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ───────────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <p>SpiralCoin (SPLC) · <a href="https://spiralcoin.net">spiralcoin.net</a></p>
+      <p style="margin-top:.4rem;font-size:.82rem;">
+        Trading involves risk. Past performance does not guarantee future results. Not financial advice.
+      </p>
+    </div>
+  
+    <div style="text-align:center;padding:10px 0;font-size:.75rem;color:#9aa7b4"><a href="/cookies.html" style="color:#9aa7b4;text-decoration:underline">Cookie Policy</a></div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+     JAVASCRIPT — Live Data Engine
+═══════════════════════════════════════════════════════════════ -->
+  <script>
+    'use strict';
+
+    // ─── Wallets ─────────────────────────────────────────────────────
+    function getTokenConfig() {
+      const raw = window.SPLC_TOKEN_CONFIG;
+      if (!raw || typeof raw !== 'object') return null;
+
+      const tokenAddress = typeof raw.tokenAddress === 'string' ? raw.tokenAddress.trim() : '';
+      const explorerBaseRaw = typeof raw.explorerBase === 'string' ? raw.explorerBase.trim() : '';
+      const explorerBase = explorerBaseRaw ? explorerBaseRaw.replace(/\/+$/, '') : '';
+      const allocations = Array.isArray(raw.allocations) ? raw.allocations : [];
+
+      return { tokenAddress, explorerBase, allocations };
+    }
+
+    function formatWholeNumberString(s) {
+      const str = (typeof s === 'string' ? s.trim() : '');
+      if (!str) return '';
+      if (!/^\d+$/.test(str)) return str;
+      return str.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    function getConfiguredWallets() {
+      const raw = window.SPLC_WALLETS ?? window.SPLC_WALLET_ADDRS ?? window.SPLC_WALLET ?? [];
+      const order = [];
+      const byAddr = new Map();
+
+      const push = (address, patch) => {
+        const addr = typeof address === 'string' ? address.trim() : '';
+        if (!addr) return;
+
+        if (!byAddr.has(addr)) order.push(addr);
+        const prev = byAddr.get(addr) || { address: addr, label: '', amount: '', allocationType: '' };
+        const next = { ...prev, ...patch, address: addr };
+        if (typeof next.label === 'string') next.label = next.label.trim();
+        if (typeof next.amount === 'string') next.amount = next.amount.trim();
+        if (typeof next.allocationType === 'string') next.allocationType = next.allocationType.trim();
+        byAddr.set(addr, next);
+      };
+
+      if (typeof raw === 'string') {
+        push(raw, { label: 'Primary' });
+      }
+
+      if (Array.isArray(raw)) {
+        raw.forEach((entry) => {
+          if (typeof entry === 'string') {
+            push(entry, {});
+            return;
+          }
+          if (entry && typeof entry === 'object') {
+            push(entry.address, { label: entry.label });
+          }
+        });
+      }
+
+      const token = getTokenConfig();
+      if (token && Array.isArray(token.allocations)) {
+        token.allocations.forEach((a) => {
+          if (!a || typeof a !== 'object') return;
+          push(a.address, {
+            label: a.label || a.type,
+            allocationType: a.type || '',
+            amount: a.amount || '',
+          });
+        });
+      }
+
+      return order.map((addr, idx) => {
+        const w = byAddr.get(addr) || { address: addr };
+        return {
+          address: w.address,
+          label: w.label || (idx === 0 ? 'Primary' : `Wallet ${idx + 1}`),
+          amount: w.amount || '',
+          allocationType: w.allocationType || '',
+        };
+      });
+    }
+
+    async function copyToClipboard(text) {
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+          return true;
+        }
+      } catch (_) { }
+
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'absolute';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        const ok = document.execCommand('copy');
+        document.body.removeChild(ta);
+        return ok;
+      } catch (_) {
+        return false;
+      }
+    }
+
+    function renderWallets() {
+      const token = getTokenConfig();
+      const wallets = getConfiguredWallets();
+      if (!wallets.length) return;
+
+      const section = document.getElementById('wallets');
+      if (section) section.style.display = '';
+
+      const nav = document.getElementById('nav-wallets');
+      if (nav) nav.style.display = '';
+
+      const listEl = document.getElementById('wallets-list');
+      if (!listEl) return;
+
+      const tokenEl = document.getElementById('wallets-token');
+      if (tokenEl) {
+        const hasToken = token && token.tokenAddress;
+        if (hasToken) {
+          const addr = token.tokenAddress;
+          const explorer = token.explorerBase;
+          const href = explorer ? `${explorer}/address/${addr}` : '';
+          tokenEl.innerHTML = '';
+
+          const strong = document.createElement('strong');
+          strong.textContent = 'Token contract: ';
+          tokenEl.appendChild(strong);
+
+          if (href) {
+            const a = document.createElement('a');
+            a.href = href;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            a.textContent = addr;
+            tokenEl.appendChild(a);
+          } else {
+            tokenEl.appendChild(document.createTextNode(addr));
+          }
+
+          tokenEl.style.display = '';
+        } else {
+          tokenEl.style.display = 'none';
+        }
+      }
+
+      listEl.replaceChildren();
+      wallets.forEach((w) => {
+        const item = document.createElement('div');
+        item.className = 'wallets-item';
+
+        const meta = document.createElement('div');
+        meta.className = 'wallets-meta';
+
+        const label = document.createElement('div');
+        label.className = 'wallets-label';
+        label.textContent = w.label;
+
+        const addr = document.createElement('div');
+        addr.className = 'wallets-addr';
+        addr.textContent = w.address;
+
+        meta.appendChild(label);
+        meta.appendChild(addr);
+
+        const amountLabel = w.amount ? formatWholeNumberString(w.amount) : '';
+        if (amountLabel) {
+          const sub = document.createElement('div');
+          sub.className = 'wallets-sub';
+          sub.textContent = `${amountLabel} SPLC${w.allocationType ? ` · ${w.allocationType}` : ''}`;
+          meta.appendChild(sub);
+        }
+
+        const actions = document.createElement('div');
+        actions.className = 'wallets-actions';
+
+        const explorerBase = token && token.explorerBase ? token.explorerBase : '';
+        if (explorerBase) {
+          const link = document.createElement('a');
+          link.className = 'btn btn-outline wallets-btn';
+          link.href = `${explorerBase}/address/${w.address}`;
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.textContent = 'Explorer';
+          actions.appendChild(link);
+        }
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'btn btn-outline wallets-btn';
+        btn.textContent = 'Copy';
+        btn.addEventListener('click', async () => {
+          const ok = await copyToClipboard(w.address);
+          const prev = btn.textContent;
+          btn.textContent = ok ? 'Copied' : 'Copy failed';
+          setTimeout(() => { btn.textContent = prev; }, 1200);
+        });
+
+        actions.appendChild(btn);
+        item.appendChild(meta);
+        item.appendChild(actions);
+        listEl.appendChild(item);
+      });
+    }
+
+    // ─── Chart Setup ─────────────────────────────────────────────────
+    const chartEl = document.getElementById('chart-container');
+    const chart = LightweightCharts.createChart(chartEl, {
+      layout: { background: { color: '#111827' }, textColor: '#9da7ba' },
+      grid: {
+        vertLines: { color: 'rgba(255,255,255,0.04)' },
+        horzLines: { color: 'rgba(255,255,255,0.04)' },
+      },
+      crosshair: { mode: LightweightCharts.CrosshairMode.Normal },
+      rightPriceScale: { borderColor: 'rgba(255,255,255,0.06)' },
+      timeScale: { borderColor: 'rgba(255,255,255,0.06)', timeVisible: true, secondsVisible: false },
+      handleScroll: true,
+      handleScale: true,
+    });
+    const candleSeries = chart.addCandlestickSeries({
+      upColor: '#22c55e', downColor: '#ef4444',
+      borderUpColor: '#22c55e', borderDownColor: '#ef4444',
+      wickUpColor: '#22c55e', wickDownColor: '#ef4444',
+    });
+    const ma9Series = chart.addLineSeries({ color: '#f5c451', lineWidth: 1.5, priceLineVisible: false, lastValueVisible: false });
+    const ma21Series = chart.addLineSeries({ color: '#60a5fa', lineWidth: 1.5, priceLineVisible: false, lastValueVisible: false });
+    const volSeries = chart.addHistogramSeries({ color: 'rgba(100,120,160,0.35)', priceFormat: { type: 'volume' }, priceScaleId: '', lastValueVisible: false, priceLineVisible: false });
+    volSeries.priceScale().applyOptions({ scaleMargins: { top: 0.75, bottom: 0 } });
+    const bbUpperSeries = chart.addLineSeries({ color: 'rgba(250,204,21,0.55)', lineWidth: 1, priceLineVisible: false, lastValueVisible: false });
+    const bbMidSeries = chart.addLineSeries({ color: 'rgba(250,204,21,0.30)', lineWidth: 1, priceLineVisible: false, lastValueVisible: false });
+    const bbLowerSeries = chart.addLineSeries({ color: 'rgba(250,204,21,0.55)', lineWidth: 1, priceLineVisible: false, lastValueVisible: false });
+
+    new ResizeObserver(entries => {
+      const { width, height } = entries[0].contentRect;
+      chart.applyOptions({ width, height });
+    }).observe(chartEl);
+
+    // ─── State ───────────────────────────────────────────────────────
+    let currentPair = 'BTCUSDT';
+    let currentTF = '5m';
+    let candleData = [];
+    let marketWS = null;
+    let tickerWS = null;
+    let reconnectTimer = null;
+    const mktPrices = { BTCUSDT: null, ETHUSDT: null, BNBUSDT: null, SOLUSDT: null, XRPUSDT: null, DOGEUSDT: null };
+    const mktOpen = {};
+
+    // ─── Utilities ───────────────────────────────────────────────────
+    function fmt(n, dec = 2) {
+      if (n === null || n === undefined) return '—';
+      if (n >= 1000) return Number(n).toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+      if (n >= 1) return Number(n).toFixed(dec);
+      return Number(n).toPrecision(4);
+    }
+
+    function setConnStatus(state) {
+      const el = document.getElementById('conn-badge');
+      el.className = 'conn-status ' + state;
+      el.textContent = { live: '● Live', reconnecting: '↻ Connecting…', offline: '✕ Offline' }[state] || state;
+      const dot = document.querySelector('.live-dot');
+      if (dot) dot.style.background = state === 'live' ? 'var(--green)' : state === 'reconnecting' ? '#facc15' : 'var(--red)';
+      document.getElementById('live-label').textContent = state === 'live' ? 'LIVE' : state.toUpperCase();
+    }
+
+    function scrollToDemo() { document.getElementById('demo').scrollIntoView({ behavior: 'smooth' }); }
+
+    // CTA event stub — replace with your analytics provider (GA4, Segment, etc.)
+    function trackCTA(name) {
+      if (typeof gtag !== 'undefined') gtag('event', 'cta_click', { cta_name: name, variant: 'B' });
+      if (typeof analytics !== 'undefined') analytics.track('CTA Click', { cta_name: name, variant: 'B' });
+    }
+
+    // ─── Fetch Historical Candles + 24hr ticker ────────────────────────
+    async function fetchCandles(symbol, interval) {
+      try {
+        const [klinesRes, tickerRes] = await Promise.all([
+          fetch('https://api.binance.us/api/v3/klines?symbol=' + encodeURIComponent(symbol) + '&interval=' + encodeURIComponent(interval) + '&limit=300'),
+          fetch('https://api.binance.us/api/v3/ticker/24hr?symbol=' + encodeURIComponent(symbol)),
+        ]);
+        const [klines, ticker] = await Promise.all([klinesRes.json(), tickerRes.json()]);
+
+        // Update 24hr change display
+        const chgPct = parseFloat(ticker.priceChangePercent);
+        const chgEl = document.getElementById('chart-chg-display');
+        if (chgEl) {
+          chgEl.textContent = (chgPct >= 0 ? '+' : '') + chgPct.toFixed(2) + '% (24h)';
+          chgEl.style.color = chgPct >= 0 ? 'var(--green)' : 'var(--red)';
+        }
+
+        return klines.map(k => ({
+          time: Math.floor(k[0] / 1000),
+          open: parseFloat(k[1]),
+          high: parseFloat(k[2]),
+          low: parseFloat(k[3]),
+          close: parseFloat(k[4]),
+          volume: parseFloat(k[5]),
+        }));
+      } catch (e) {
+        console.warn('fetchCandles error', e);
+        return [];
+      }
+    }
+
+    // ─── Moving Average helper ────────────────────────────────────────
+    function calcMA(candles, period) {
+      return candles.slice(period - 1).map((_, i) => {
+        const slice = candles.slice(i, i + period);
+        const avg = slice.reduce((s, c) => s + c.close, 0) / period;
+        return { time: candles[i + period - 1].time, value: avg };
+      });
+    }
+
+    // ─── RSI helper ───────────────────────────────────────────────────
+    function calcBB(candles, period, mult) {
+      period = period || 20; mult = mult || 2;
+      return candles.slice(period - 1).map(function (_, i) {
+        var slice = candles.slice(i, i + period);
+        var avg = slice.reduce(function (s, c) { return s + c.close; }, 0) / period;
+        var std = Math.sqrt(slice.reduce(function (s, c) { return s + Math.pow(c.close - avg, 2); }, 0) / period);
+        return { time: slice[slice.length - 1].time, upper: avg + mult * std, mid: avg, lower: avg - mult * std };
+      });
+    }
+
+    function calcRSI(candles, period = 14) {
+      if (candles.length < period + 1) return 50;
+      let gains = 0, losses = 0;
+      for (let i = candles.length - period; i < candles.length; i++) {
+        const d = candles[i].close - candles[i - 1].close;
+        if (d > 0) gains += d; else losses -= d;
+      }
+      const rs = gains / (losses || 0.001);
+      return 100 - 100 / (1 + rs);
+    }
+
+    // ─── ATR % helper ─────────────────────────────────────────────────
+    function calcATRpct(candles, period = 14) {
+      if (candles.length < period + 1) return 0;
+      const recent = candles.slice(-period);
+      const avgATR = recent.reduce((s, c, i) => {
+        const tr = Math.max(c.high - c.low, Math.abs(c.high - (recent[i - 1]?.close ?? c.close)), Math.abs(c.low - (recent[i - 1]?.close ?? c.close)));
+        return s + tr;
+      }, 0) / period;
+      return (avgATR / candles[candles.length - 1].close) * 100;
+    }
+
+    // ─── Update AI Signals ────────────────────────────────────────────
+    function updateSignals(candles) {
+      if (candles.length < 22) return;
+
+      const rsi = calcRSI(candles);
+      const atrPct = calcATRpct(candles);
+      const ma9 = candles.slice(-9).reduce((s, c) => s + c.close, 0) / 9;
+      const ma21 = candles.slice(-21).reduce((s, c) => s + c.close, 0) / 21;
+      const close = candles[candles.length - 1].close;
+      const isUpTrend = close > ma21;
+      const maCross = ma9 > ma21;
+
+      // Trend bar
+      const trendPct = Math.min(100, isUpTrend ? 60 + (close - ma21) / ma21 * 2000 : 40 - (ma21 - close) / ma21 * 2000);
+      document.getElementById('sig-trend').style.width = Math.max(5, trendPct) + '%';
+      document.getElementById('sig-trend').style.background = isUpTrend ? 'var(--green)' : 'var(--red)';
+      document.getElementById('sig-trend-label').textContent = isUpTrend ? 'Bullish' : 'Bearish';
+      document.getElementById('sig-trend-label').className = 'signal-value ' + (isUpTrend ? 'sig-bull' : 'sig-bear');
+
+      // RSI bar
+      document.getElementById('sig-rsi').style.width = rsi + '%';
+      document.getElementById('sig-rsi').style.background = rsi > 70 ? 'var(--red)' : rsi < 30 ? 'var(--green)' : 'var(--gold)';
+      const rsiLbl = rsi > 70 ? 'Overbought' : rsi < 30 ? 'Oversold' : 'Neutral';
+      document.getElementById('sig-rsi-label').textContent = rsi.toFixed(1) + ' — ' + rsiLbl;
+      document.getElementById('sig-rsi-label').className = 'signal-value ' + (rsi > 70 ? 'sig-bear' : rsi < 30 ? 'sig-bull' : 'sig-neut');
+
+      // ATR bar
+      const atrNorm = Math.min(100, atrPct * 20);
+      document.getElementById('sig-atr').style.width = atrNorm + '%';
+      document.getElementById('sig-atr-label').textContent = atrPct.toFixed(2) + '% — ' + (atrPct > 3 ? 'High' : atrPct > 1 ? 'Medium' : 'Low');
+      document.getElementById('sig-atr-label').className = 'signal-value ' + (atrPct > 3 ? 'sig-bear' : 'sig-neut');
+
+      // MA Cross bar
+      const maPct = Math.min(100, Math.abs((ma9 - ma21) / ma21) * 10000);
+      document.getElementById('sig-ma').style.width = Math.max(5, maPct) + '%';
+      document.getElementById('sig-ma').style.background = maCross ? 'var(--green)' : 'var(--red)';
+      document.getElementById('sig-ma-label').textContent = maCross ? '9 > 21 — Bullish' : '9 < 21 — Bearish';
+      document.getElementById('sig-ma-label').className = 'signal-value ' + (maCross ? 'sig-bull' : 'sig-bear');
+
+      // Overall
+      const bullCount = [isUpTrend, rsi > 40 && rsi < 70, maCross].filter(Boolean).length;
+      const overallPct = (bullCount / 3) * 100;
+      document.getElementById('sig-overall').style.width = overallPct + '%';
+      document.getElementById('sig-overall').style.background = overallPct >= 60 ? 'var(--green)' : overallPct <= 33 ? 'var(--red)' : 'var(--gold)';
+      document.getElementById('sig-overall-label').textContent = overallPct >= 60 ? 'Buy Bias' : overallPct <= 33 ? 'Sell Bias' : 'Mixed';
+      document.getElementById('sig-overall-label').className = 'signal-value ' + (overallPct >= 60 ? 'sig-bull' : overallPct <= 33 ? 'sig-bear' : 'sig-neut');
+    }
+
+    // ─── Load Chart ───────────────────────────────────────────────────
+    async function loadChart(symbol, interval) {
+      candleData = await fetchCandles(symbol, interval);
+      if (!candleData.length) return;
+      candleSeries.setData(candleData);
+      ma9Series.setData(calcMA(candleData, 9));
+      ma21Series.setData(calcMA(candleData, 21));
+      volSeries.setData(candleData.map(c => ({ time: c.time, value: c.volume, color: c.close >= c.open ? 'rgba(34,197,94,0.4)' : 'rgba(239,68,68,0.4)' })));
+      const bb = calcBB(candleData);
+      bbUpperSeries.setData(bb.map(b => ({ time: b.time, value: b.upper })));
+      bbMidSeries.setData(bb.map(b => ({ time: b.time, value: b.mid })));
+      bbLowerSeries.setData(bb.map(b => ({ time: b.time, value: b.lower })));
+      chart.timeScale().fitContent();
+      updateSignals(candleData);
+
+      const last = candleData[candleData.length - 1];
+      document.getElementById('chart-price-display').textContent = '$' + fmt(last.close);
+    }
+
+    // ─── Live Candle WebSocket ────────────────────────────────────────
+    function connectChartWS(symbol, interval) {
+      if (marketWS) { marketWS.onclose = null; marketWS.onerror = null; try { marketWS.close(); } catch (e) { } }
+      clearTimeout(reconnectTimer);
+
+      const stream = `wss://stream.binance.us:9443/ws/${symbol.toLowerCase()}@kline_${interval}`;
+      marketWS = new WebSocket(stream);
+      setConnStatus('reconnecting');
+
+      marketWS.onopen = () => setConnStatus('live');
+
+      marketWS.onmessage = (ev) => {
+        const d = JSON.parse(ev.data);
+        const k = d.k;
+        const candle = {
+          time: Math.floor(k.t / 1000),
+          open: parseFloat(k.o),
+          high: parseFloat(k.h),
+          low: parseFloat(k.l),
+          close: parseFloat(k.c),
+          volume: parseFloat(k.v),
+        };
+        candleSeries.update(candle);
+        volSeries.update({ time: candle.time, value: candle.volume, color: candle.close >= candle.open ? 'rgba(34,197,94,0.4)' : 'rgba(239,68,68,0.4)' });
+
+        if (candleData.length && candleData[candleData.length - 1].time === candle.time) {
+          candleData[candleData.length - 1] = candle;
+        } else if (candle.time > candleData[candleData.length - 1]?.time) {
+          candleData.push(candle);
+        }
+
+        ma9Series.update(calcMA(candleData, 9).at(-1));
+        ma21Series.update(calcMA(candleData, 21).at(-1));
+        const bbNow = calcBB(candleData).at(-1);
+        if (bbNow) {
+          bbUpperSeries.update({ time: bbNow.time, value: bbNow.upper });
+          bbMidSeries.update({ time: bbNow.time, value: bbNow.mid });
+          bbLowerSeries.update({ time: bbNow.time, value: bbNow.lower });
+        }
+
+        document.getElementById('chart-price-display').textContent = '$' + fmt(candle.close);
+        updateSignals(candleData);
+      };
+
+      marketWS.onerror = () => setConnStatus('offline');
+      marketWS.onclose = () => {
+        setConnStatus('reconnecting');
+        reconnectTimer = setTimeout(() => connectChartWS(symbol, interval), 5000);
+      };
+    }
+
+    // ─── Ticker WebSocket (all mini-tickers) ─────────────────────────
+    const TICKER_PAIRS = ['BTCUSDT', 'ETHUSDT', 'BNBUSDT', 'SOLUSDT', 'XRPUSDT', 'DOGEUSDT'];
+
+    function connectTickerWS() {
+      if (tickerWS) { tickerWS.onclose = null; tickerWS.onerror = null; try { tickerWS.close(); } catch (e) { } }
+      tickerWS = new WebSocket('wss://stream.binance.us:9443/ws/!miniTicker@arr');
+
+      tickerWS.onerror = () => { setConnStatus('offline'); };
+      tickerWS.onmessage = (ev) => {
+        const arr = JSON.parse(ev.data);
+        arr.forEach(t => {
+          if (!TICKER_PAIRS.includes(t.s)) return;
+          const price = parseFloat(t.c);
+          const open = parseFloat(t.o);
+          const chgPct = ((price - open) / open) * 100;
+          mktPrices[t.s] = price;
+          mktOpen[t.s] = open;
+
+          const mp = document.getElementById('mp-' + t.s);
+          const mc = document.getElementById('mc-' + t.s);
+          if (mp) mp.textContent = '$' + fmt(price);
+          if (mc) {
+            mc.textContent = (chgPct >= 0 ? '+' : '') + chgPct.toFixed(2) + '%';
+            mc.className = 'mkt-chg ' + (chgPct >= 0 ? 'up' : 'dn');
+          }
+        });
+        buildTicker();
+      };
+
+      tickerWS.onclose = () => setTimeout(connectTickerWS, 5000);
+    }
+
+    function buildTicker() {
+      const pairs = [
+        ['BTC', 'BTCUSDT'], ['ETH', 'ETHUSDT'], ['BNB', 'BNBUSDT'],
+        ['SOL', 'SOLUSDT'], ['XRP', 'XRPUSDT'], ['DOGE', 'DOGEUSDT'],
+      ];
+      const items = pairs.map(([sym, key]) => {
+        const p = mktPrices[key];
+        const o = mktOpen[key];
+        if (!p) return '';
+        const chg = o ? ((p - o) / o * 100) : 0;
+        return `<span class="tick"><span class="tick-sym">${sym}/USDT</span><span class="tick-price">$${fmt(p)}</span><span class="tick-chg ${chg >= 0 ? 'up' : 'down'}">${chg >= 0 ? '+' : ''}${chg.toFixed(2)}%</span></span>`;
+      }).filter(Boolean);
+      if (!items.length) return;
+      const html = items.join('') + items.join(''); // duplicate for seamless loop
+      document.getElementById('ticker-inner').innerHTML = html;
+    }
+
+    // ─── Chart Pair / TF controls ────────────────────────────────────
+    function switchPair(symbol, label, btn) {
+      currentPair = symbol;
+      document.querySelectorAll('.pair-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('chart-pair-label').textContent = label;
+      loadChart(symbol, currentTF);
+      connectChartWS(symbol, currentTF);
+    }
+
+    function setTF(tf, btn) {
+      currentTF = tf;
+      document.querySelectorAll('.tf-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      loadChart(currentPair, currentTF);
+      connectChartWS(currentPair, currentTF);
+    }
+
+    // ─── FAQ toggle ───────────────────────────────────────────────────
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    }
+
+    // ─── Boot ─────────────────────────────────────────────────────────
+    (async function init() {
+      renderWallets();
+      await loadChart(currentPair, currentTF);
+      connectChartWS(currentPair, currentTF);
+      connectTickerWS();
+    })();
+  </script>
+  <!-- -- SpiralCoin geo-block + affirmation -------------------------- -->
+  <div id="splc-geo-block" hidden>
+    <div class="splc-geo-modal">
+      <h2>Not available in your region</h2>
+      <p id="splc-geo-msg"></p>
+      <p>If you are a U.S. accredited investor, our Reg D 506(c) tranche is open by application.</p>
+      <a href="/regd.html" id="splc-regd-link" hidden>Apply via Reg D ?</a>
+    </div>
+  </div>
+  <div id="splc-affirm" hidden>
+    <div class="splc-affirm-modal">
+      <h2>Eligibility Confirmation</h2>
+      <p>Before continuing, please confirm one of the following:</p>
+      <label><input type="radio" name="splc-aff" value="non-us"> I am NOT a U.S. person.</label>
+      <label><input type="radio" name="splc-aff" value="accredited"> I am a U.S. accredited investor and have completed Reg D KYC.</label>
+      <p><button id="splc-aff-confirm" disabled>Continue</button></p>
+      <p style="font-size:.8rem;opacity:.7">
+        <a href="https://www.sec.gov/education/capitalraising/building-blocks/accredited-investor" target="_blank" rel="noopener">What is an accredited investor?</a>
+      </p>
+      <p style="font-size:.75rem;opacity:.6;margin-top:1rem">
+        Trading involves risk. Past performance does not guarantee future results.
+      </p>
+    </div>
+  </div>
+  <script src="/assets/geo-block.js"></script>
+<script src="/assets/js/ga-events.js?v=20260528a" defer></script>
+</body>
+
+</html>

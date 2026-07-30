@@ -1,0 +1,16 @@
+option batch abort
+option confirm off
+open sftp://a2797960:%PWD%@access-5020476011.webspace-host.com/ -hostkey=*
+
+option exclude "config.php"
+
+lcd "C:\Users\Trisha Dreyer\Documents\ionos-migration\indexer"
+cd /indexer
+get -nopreservetime *
+
+lcd "C:\Users\Trisha Dreyer\Documents\ionos-migration\api"
+cd /api
+get -nopreservetime *
+
+close
+exit

@@ -1,0 +1,14 @@
+{
+    "network": "arbitrum",
+    "chainId": 42161,
+    "proxy": "0x8e45cc9F480257a1477976848d41A6A9Fb2cf27C",
+    "deployer": "0x396157d2de70247dbc6895c5d835e46e6eb0bd22",
+    "initialOwner": "0xa1766d57a3102763ED89e9a543E960B5243ef2EE",
+    "treasury": "0x3a1Dc8a78AE204C1EBAEe58699826f0b21c30D7F",
+    "initialSupply": "500000000000000000000000000",
+    "initialSupplyHuman": "500,000,000 SPLC",
+    "creationTxHash": "0xab6c95595b54e1d88c50584ff321045dcf2f0bc7395dbc268ce4f0ebd4792243",
+    "creationBlock": 466964506,
+    "createdAt": "2026-05-23T17:33:43Z",
+    "note": "Manually populated from Arbiscan on-chain data on 2026-05-28 because the original Hardhat deployment artifact was not committed. Verified via mcp_etherscan_getContractCreation."
+}

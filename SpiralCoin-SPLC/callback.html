@@ -1,0 +1,118 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Signing you inâ€¦ â€” SpiralCoin</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" href="/brand/splc-logo-64.png" />
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            background: #0a0a14;
+            color: #e8e8f0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif
+        }
+
+        .card {
+            text-align: center;
+            padding: 40px
+        }
+
+        .spin {
+            width: 48px;
+            height: 48px;
+            border: 4px solid #2a2a3a;
+            border-top-color: #d4af37;
+            border-radius: 50%;
+            animation: r 1s linear infinite;
+            margin: 0 auto 20px
+        }
+
+        @keyframes r {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .err {
+            color: #ff6b6b;
+            max-width: 480px;
+            margin: 16px auto;
+            text-align: left;
+            background: #1a0e0e;
+            border: 1px solid #ff6b6b33;
+            padding: 16px;
+            border-radius: 8px;
+            font: 13px/1.5 ui-monospace, Menlo, Consolas, monospace
+        }
+
+        a {
+            color: #d4af37
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="spin" id="spin"></div>
+        <div id="status">Completing sign-inâ€¦</div>
+        <div id="err" class="err" hidden></div>
+        <p><a href="/">â† Return to home</a></p>
+    </div>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.18/auth0-spa-js.production.js"></script>
+    <script src="/assets/js/auth0-client.js?v=20260528a"></script>
+    <script>
+        (async () => {
+            const statusEl = document.getElementById('status');
+            const errEl = document.getElementById('err');
+            const spinEl = document.getElementById('spin');
+            const showErr = (msg) => { spinEl.style.display = 'none'; errEl.hidden = false; errEl.textContent = msg; statusEl.textContent = 'Sign-in failed.'; };
+            try {
+                const qs = new URLSearchParams(location.search);
+                if (qs.get('error')) {
+                    showErr(`${qs.get('error')}: ${qs.get('error_description') || '(no description)'}`);
+                    return;
+                }
+                if (!qs.has('code') || !qs.has('state')) {
+                    showErr('Missing code/state in redirect URL. Open https://www.spiralcoin.net and click Log In.');
+                    return;
+                }
+                // SPLCAuth lazily inits; reach the underlying client through its helpers
+                // by calling isAuthenticated() which forces the createAuth0Client call
+                // we then re-grab via the same SDK to run handleRedirectCallback.
+                const client = await auth0.createAuth0Client({
+                    domain: 'dev-t6gnxzv48a8g4ny3.us.auth0.com',
+                    clientId: 'hKf1O2BMMiDhlYmwOwaqk4jv07zHVJEB',
+                    authorizationParams: { redirect_uri: location.origin + '/callback.html' },
+                    cacheLocation: 'localstorage',
+                    useRefreshTokens: true,
+                });
+                await client.handleRedirectCallback();
+                statusEl.textContent = 'Signed in. Redirectingâ€¦';
+                if (typeof gtag === 'function') gtag('event', 'login_success');
+                const back = sessionStorage.getItem('splc_post_login') || '/';
+                sessionStorage.removeItem('splc_post_login');
+                // Guard: only return to same-origin paths
+                const safe = back.startsWith(location.origin) ? back : '/';
+                setTimeout(() => { location.replace(safe); }, 600);
+            } catch (e) {
+                console.error(e);
+                showErr(e.message || String(e));
+                if (typeof gtag === 'function') gtag('event', 'login_failure', { error: String(e.message || e) });
+            }
+        })();
+    </script>
+
+<!-- BEGIN risk-disclosure-footer (compliance) -->
+<footer class="risk-footer" role="contentinfo" style="background:#040810;color:#6a7184;font:12px/1.55 Inter,system-ui,-apple-system,Segoe UI,sans-serif;padding:18px 24px;text-align:center;border-top:1px solid rgba(255,255,255,.08)">
+  Trading involves risk, including the possible loss of principal. Past performance does not guarantee future results. SpiralCoin provides software tools for self-directed traders and is not investment advice.
+</footer>
+<!-- END risk-disclosure-footer -->
+</body>
+
+</html>

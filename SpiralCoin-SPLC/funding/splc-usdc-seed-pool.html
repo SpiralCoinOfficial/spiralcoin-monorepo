@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SPLC / USDC Seed Pool — $20,000 Sponsor Pack | SpiralCoin</title>
+    <meta name="description"
+        content="$20,000 SPLC/USDC seed-pool sponsor opportunity on Arbitrum One. Uniswap V3, 1% fee, 12-month LP time-lock, full on-chain verifiability.">
+    <meta name="robots" content="noindex,follow">
+    <link rel="canonical" href="https://www.spiralcoin.net/funding/splc-usdc-seed-pool.html">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <!-- Open Graph / Twitter Card: shows cover image when shared on X, Telegram, Discord, LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.spiralcoin.net/funding/splc-usdc-seed-pool.html">
+    <meta property="og:title" content="SPLC / USDC Seed Pool — $20,000 Sponsor Pack">
+    <meta property="og:description"
+        content="Bootstrap the SPLC/USDC AMM on Arbitrum One. Uniswap V3, 1% fee, 12-month LP time-lock, fully on-chain verifiable.">
+    <meta property="og:image" content="https://www.spiralcoin.net/brand/pool-cover-20k.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SPLC / USDC Seed Pool — $20,000 Sponsor Pack">
+    <meta name="twitter:description"
+        content="Bootstrap the SPLC/USDC AMM on Arbitrum One. 12-month LP time-lock. On-chain verifiable.">
+    <meta name="twitter:image" content="https://www.spiralcoin.net/brand/pool-cover-20k.png">
+
+    <!-- GA4 + Consent Mode + UTM capture (sponsors arriving from X/Telegram links should be tracked) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEMH1LPSD4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('consent', 'default', {
+            ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+            analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted',
+            wait_for_update: 500
+        });
+        gtag('js', new Date());
+        gtag('config', 'G-MEMH1LPSD4');
+    </script>
+    <script src="/assets/js/utm-capture.js?v=20260528a" defer></script>
+    <script src="/assets/js/ga-events.js?v=20260528a" defer></script>
+    <style>
+        :root {
+            --gold: #c9a227;
+            --gold-b: #e8c042;
+            --gold-dim: rgba(201, 162, 39, .12);
+            --bg: #05080f;
+            --bg2: #0a1626;
+            --ink: #e6edf3;
+            --muted: #9aa7b4;
+            --rule: rgba(255, 255, 255, .08);
+            --usdc: #2775ca
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: Inter, system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            font-size: 15px
+        }
+
+        .wrap {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 36px 24px 80px
+        }
+
+        .cover {
+            width: 100%;
+            border-radius: 12px;
+            display: block;
+            margin-bottom: 28px;
+            border: 1px solid var(--rule)
+        }
+
+        .eyebrow {
+            color: var(--gold);
+            font-size: 11px;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin: 0 0 10px
+        }
+
+        h1 {
+            font-size: 32px;
+            line-height: 1.15;
+            margin: 0 0 12px;
+            color: var(--gold-b);
+            font-weight: 700
+        }
+
+        h2 {
+            font-size: 18px;
+            color: var(--gold-b);
+            margin: 34px 0 10px;
+            font-weight: 600
+        }
+
+        h3 {
+            font-size: 14px;
+            color: var(--gold);
+            margin: 18px 0 6px;
+            font-weight: 600;
+            letter-spacing: .04em;
+            text-transform: uppercase
+        }
+
+        p {
+            margin: 0 0 12px
+        }
+
+        ul {
+            margin: 0 0 14px;
+            padding-left: 20px
+        }
+
+        li {
+            margin: 0 0 5px
+        }
+
+        .lead {
+            color: var(--muted);
+            font-size: 16px;
+            max-width: 680px
+        }
+
+        .pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 14px 0 22px
+        }
+
+        .pill {
+            background: var(--gold-dim);
+            color: var(--gold-b);
+            border: 1px solid rgba(201, 162, 39, .4);
+            padding: 5px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .04em
+        }
+
+        .pill.blue {
+            background: rgba(39, 117, 202, .12);
+            color: #5fa3e6;
+            border-color: rgba(39, 117, 202, .4)
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 18px 0
+        }
+
+        .card {
+            background: var(--bg2);
+            border: 1px solid var(--rule);
+            border-radius: 10px;
+            padding: 18px 20px
+        }
+
+        .card .label {
+            color: var(--muted);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            margin: 0 0 6px
+        }
+
+        .card .val {
+            color: var(--gold-b);
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 0 4px;
+            font-variant-numeric: tabular-nums
+        }
+
+        .card .desc {
+            color: var(--muted);
+            font-size: 12px;
+            margin: 0;
+            line-height: 1.4
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0 22px;
+            font-size: 14px
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--rule)
+        }
+
+        th {
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: .1em
+        }
+
+        td.num {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            color: var(--gold-b);
+            font-weight: 600
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin: 14px 0 22px
+        }
+
+        .step {
+            background: var(--bg2);
+            border-left: 3px solid var(--gold);
+            border-radius: 0 8px 8px 0;
+            padding: 14px 16px
+        }
+
+        .step .n {
+            color: var(--gold);
+            font-size: 11px;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin: 0 0 4px
+        }
+
+        .step .t {
+            color: var(--ink);
+            font-size: 14px;
+            font-weight: 600;
+            margin: 0 0 6px
+        }
+
+        .step .d {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.45;
+            margin: 0
+        }
+
+        code,
+        .mono {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 12px;
+            color: #e6c878;
+            background: rgba(201, 162, 39, .08);
+            padding: 1px 6px;
+            border-radius: 4px;
+            word-break: break-all
+        }
+
+        .risk {
+            background: rgba(220, 80, 80, .06);
+            border: 1px solid rgba(220, 80, 80, .25);
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin: 18px 0;
+            font-size: 13px;
+            color: #ddd
+        }
+
+        .risk b {
+            color: #ff8a8a
+        }
+
+        a {
+            color: var(--gold-b);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(232, 192, 66, .35)
+        }
+
+        a:hover {
+            border-bottom-color: var(--gold-b)
+        }
+
+        .cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #c9a227, #e8c042);
+            color: #0a1626;
+            font-weight: 700;
+            padding: 11px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            border: 0;
+            font-size: 14px;
+            letter-spacing: .04em;
+            margin: 6px 6px 6px 0
+        }
+
+        .cta.outline {
+            background: transparent;
+            color: var(--gold-b);
+            border: 1px solid var(--gold)
+        }
+
+        footer {
+            margin-top: 50px;
+            padding-top: 18px;
+            border-top: 1px solid var(--rule);
+            color: var(--muted);
+            font-size: 12px
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                color: #111;
+                font-size: 10.5pt
+            }
+
+            .wrap {
+                max-width: none;
+                padding: 18px
+            }
+
+            h1,
+            h2,
+            h3,
+            .eyebrow,
+            .card .val,
+            td.num,
+            .step .n {
+                color: #7a5e0a
+            }
+
+            .pill {
+                background: #f6f1de;
+                color: #7a5e0a;
+                border-color: #d4b95a
+            }
+
+            .pill.blue {
+                background: #e8f0fa;
+                color: #1f5fa3;
+                border-color: #7fa3d6
+            }
+
+            .card,
+            .step {
+                background: #fafafa;
+                border-color: #ddd
+            }
+
+            .step {
+                border-left-color: #7a5e0a
+            }
+
+            .card .desc,
+            .step .d,
+            .lead {
+                color: #444
+            }
+
+            .risk {
+                background: #fdecec;
+                border-color: #aa3030;
+                color: #400
+            }
+
+            .risk b {
+                color: #a02020
+            }
+
+            code,
+            .mono {
+                background: #f6f1de;
+                color: #5a4500
+            }
+
+            a {
+                color: #5a4500
+            }
+
+            .cta {
+                background: #7a5e0a;
+                color: #fff
+            }
+
+            .cta.outline {
+                background: transparent;
+                color: #5a4500;
+                border-color: #7a5e0a
+            }
+
+            footer {
+                color: #666;
+                border-color: #ccc
+            }
+        }
+
+        @media (max-width:600px) {
+
+            .grid,
+            .timeline {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+
+        <img class="cover" src="../brand/pool-cover-20k.png"
+            alt="SPLC / USDC Liquidity Pool — Arbitrum · Uniswap V3 · $20,000 USDC goal">
+
+        <p class="eyebrow">Sponsor Pack · Seed Round</p>
+        <h1>$20,000 to bootstrap the SPLC / USDC AMM on Arbitrum One</h1>
+        <p class="lead">One transparent, on-chain sponsor pool. Uniswap V3 (1% fee tier, full-range). LP NFT time-locked
+            for a minimum of 12 months. Every dollar verifiable on Arbiscan from the moment it lands.</p>
+
+        <div class="pills">
+            <span class="pill">ARBITRUM ONE</span>
+            <span class="pill">UNISWAP V3 · 1%</span>
+            <span class="pill">FULL-RANGE LP</span>
+            <span class="pill">12-MONTH TIME-LOCK</span>
+            <span class="pill blue">USDC-PAIRED</span>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <p class="label">Funding goal</p>
+                <p class="val">$20,000 USDC</p>
+                <p class="desc">Bootstraps a tradeable SPLC/USDC venue on Arbitrum One — the on-ramp for every
+                    downstream listing.</p>
+            </div>
+            <div class="card">
+                <p class="label">LP time-lock</p>
+                <p class="val">12 months min</p>
+                <p class="desc">LP NFT transferred to SPLCLPLock immediately after seeding. Principal cannot be
+                    withdrawn during the lock window.</p>
+            </div>
+            <div class="card">
+                <p class="label">Venue</p>
+                <p class="val">Uniswap V3</p>
+                <p class="desc">1% fee tier (10,000 bps), full-range concentrated position. Native USDC. Tax-inactive on
+                    the V3 pool to preserve K-invariant.</p>
+            </div>
+            <div class="card">
+                <p class="label">Verifiability</p>
+                <p class="val">100% on-chain</p>
+                <p class="desc">Pool address, LP NFT, lock contract, and seeded amounts are all queryable on Arbiscan
+                    within minutes of deployment.</p>
+            </div>
+        </div>
+
+        <h2>Where the $20,000 goes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Allocation</th>
+                    <th>Purpose</th>
+                    <th style="text-align:right">USDC</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>USDC pool side</td>
+                    <td>Paired into the SPLC/USDC V3 pool (full-range LP).</td>
+                    <td class="num">$19,000</td>
+                </tr>
+                <tr>
+                    <td>Gas + deployment</td>
+                    <td>Pool create, mint, lock-transfer, oracle init, multi-chain peer setup.</td>
+                    <td class="num">$600</td>
+                </tr>
+                <tr>
+                    <td>Listing & data fees</td>
+                    <td>DEXScreener Enhanced Token Info, GeckoTerminal trust badge, metadata hosting.</td>
+                    <td class="num">$400</td>
+                </tr>
+                <tr>
+                    <td><b>Total</b></td>
+                    <td></td>
+                    <td class="num"><b>$20,000</b></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>What's already built (proof of work)</h2>
+        <ul>
+            <li><b>Token deployed live</b> on Arbitrum One — UUPS upgradeable proxy at <a
+                    href="https://arbiscan.io/token/0x8e45cc9F480257a1477976848d41A6A9Fb2cf27C"><span
+                        class="mono">0x8e45cc9F&hellip;cf27C</span></a>.</li>
+            <li><b>Trading platform online</b> at <a
+                    href="https://www.spiralcoin.net/spiralcoin_trading_platform.html">spiralcoin.net</a> — self-custody
+                wallet, live SPLC/USDC chart, order book UI.</li>
+            <li><b>LP deploy + lock contracts</b> code-reviewed and ready to ship: <span
+                    class="mono">deployLpAndLock.js</span> + <span class="mono">SPLCLPLock.sol</span> (1% slippage
+                protection, balance pre-checks, ERC-721 lock).</li>
+            <li><b>Whitepaper published</b> at <a
+                    href="https://www.spiralcoin.net/whitepaper.html">spiralcoin.net/whitepaper.html</a>.</li>
+            <li><b>Grant applications</b> drafted for Arbitrum Foundation, Base Builder Grant, Optimism Mission, and
+                Polygon Village — the seed pool unlocks the on-chain volume those grants require as proof.</li>
+            <li><b>Compliance baseline</b>: GA4 + Cookiebot consent banner, GDPR cookie policy, Content Security Policy,
+                sitemap submitted to Google Search Console.</li>
+        </ul>
+
+        <h2>Sponsor tiers (partial sponsors welcome)</h2>
+        <p>The full $20,000 unlocks the launch. Smaller contributions stack toward the goal. Every tier gets the same
+            on-chain attribution and weekly reporting.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tier</th>
+                    <th>Amount (USDC)</th>
+                    <th>Additional recognition</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>Catalyst</b></td>
+                    <td class="num">$1,000</td>
+                    <td>Wallet listed in seed-round contributors on splc.html.</td>
+                </tr>
+                <tr>
+                    <td><b>Architect</b></td>
+                    <td class="num">$5,000</td>
+                    <td>Above + named credit on the cover graphic shared at launch.</td>
+                </tr>
+                <tr>
+                    <td><b>Anchor</b></td>
+                    <td class="num">$10,000</td>
+                    <td>Above + 15-min founder call before launch + early preview of follow-on round.</td>
+                </tr>
+                <tr>
+                    <td><b>Founding Liquidity Partner</b></td>
+                    <td class="num">$20,000 (solo)</td>
+                    <td>Above + sole sponsor billing in launch communications + advisory seat invitation (non-binding).
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>How it deploys (3 transparent steps)</h2>
+        <div class="timeline">
+            <div class="step">
+                <p class="n">Step 1 · T+0</p>
+                <p class="t">USDC received in treasury</p>
+                <p class="d">Sponsor contribution sent to the multisig treasury address. Receipt published with the
+                    on-chain transaction hash.</p>
+            </div>
+            <div class="step">
+                <p class="n">Step 2 · T+24h</p>
+                <p class="t">Pool seeded + LP locked</p>
+                <p class="d">SPLC + USDC paired in Uniswap V3 (1% tier, full-range). LP NFT transferred to <span
+                        class="mono">SPLCLPLock</span> with a 12-month minimum unlock timestamp.</p>
+            </div>
+            <div class="step">
+                <p class="n">Step 3 · T+72h</p>
+                <p class="t">Listings live</p>
+                <p class="d">GeckoTerminal + DEXScreener auto-index the new pool. CoinGecko/CoinMarketCap submissions
+                    filed once the pool meets their volume thresholds.</p>
+            </div>
+        </div>
+
+        <h2>What the sponsor gets</h2>
+        <ul>
+            <li><b>On-chain attribution</b> — sponsor wallet recognized in
+                <code>contracts/deployments/arbitrum/LpAndLock.json</code> alongside the pool address and lock contract.
+            </li>
+            <li><b>Site recognition</b> — sponsor logo or wallet badge on <a
+                    href="https://www.spiralcoin.net/splc.html">spiralcoin.net/splc</a> under "Seed-round contributors"
+                (opt-in; anonymous accepted).</li>
+            <li><b>Cover graphic credit</b> — name listed on the published cover graphic on social and listing pages
+                (opt-in).</li>
+            <li><b>Direct reporting</b> — weekly email with pool TVL, volume, and fee accrual figures pulled directly
+                from on-chain data.</li>
+            <li><b>First look at follow-on rounds</b> — preferential access to the next funding round (no obligation to
+                participate).</li>
+        </ul>
+
+        <h2>Verifiable contract references</h2>
+        <ul>
+            <li>SPLC token (Arbitrum One, UUPS proxy): <a
+                    href="https://arbiscan.io/token/0x8e45cc9F480257a1477976848d41A6A9Fb2cf27C"><span
+                        class="mono">0x8e45cc9F480257a1477976848d41A6A9Fb2cf27C</span></a></li>
+            <li>Native USDC on Arbitrum: <span class="mono">0xaf88d065e77c8cC2239327C5EDb3A432268e5831</span></li>
+            <li>Treasury wallet (multisig): <span class="mono">0x3a1Dc8a78AE204C1EBAEe58699826f0b21c30D7F</span></li>
+            <li>Deploy script: <a
+                    href="https://github.com/SpiralCoinOfficial/SpiralCoin-SPLC-/blob/main/contracts/scripts/deployLpAndLock.js">github.com/SpiralCoinOfficial/SpiralCoin-SPLC-
+                    · contracts/scripts/deployLpAndLock.js</a></li>
+            <li>Technical whitepaper: <a
+                    href="https://www.spiralcoin.net/whitepaper.html">spiralcoin.net/whitepaper.html</a></li>
+        </ul>
+
+        <div class="risk">
+            <b>Risk disclosure.</b> SPLC is a volatile, speculative digital asset. Token prices can and do go to zero.
+            The 12-month LP time-lock prevents removal of seeded liquidity but does not guarantee price stability,
+            secondary trading volume, or return of capital. Sponsor contributions are not investments, equity, or
+            revenue-share entitlements — they are donations toward bootstrapping public on-chain infrastructure, with
+            the recognition benefits described above. Trading involves risk. Past performance does not guarantee future
+            results. Verify all on-chain references directly via Arbiscan before contributing.
+        </div>
+
+        <div>
+            <a class="cta" href="mailto:sponsor@spiralcoin.net?subject=SPLC%2FUSDC%20Seed%20Pool%20Sponsorship"
+                data-ga-event="sponsor_contact_click" data-ga-label="seed_pool_mailto">Contact the team</a>
+            <a class="cta outline" href="https://www.spiralcoin.net/splc.html" data-ga-event="sponsor_outbound_click"
+                data-ga-label="view_token_page">View token page</a>
+            <a class="cta outline" href="https://www.spiralcoin.net/whitepaper.html"
+                data-ga-event="sponsor_outbound_click" data-ga-label="view_whitepaper">Read whitepaper</a>
+        </div>
+
+        <footer>
+            © SpiralCoin LLC · <a href="https://www.spiralcoin.net">spiralcoin.net</a> · This document is informational
+            and does not constitute investment advice, a securities offering, or a solicitation. Trading and providing
+            liquidity involve risk including total loss of capital.
+        </footer>
+
+    </div>
+</body>
+
+</html>

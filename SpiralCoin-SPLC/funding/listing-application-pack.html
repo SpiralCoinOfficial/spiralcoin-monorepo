@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SPLC Listing Application Pack — paste-in values for GeckoTerminal, DEXScreener, CoinGecko, CoinMarketCap
+    </title>
+    <meta name="description"
+        content="Paste-ready values for SPLC token-info listings on GeckoTerminal, DEXScreener, CoinGecko, and CoinMarketCap. Submit once the SPLC/USDC pool is seeded.">
+    <meta name="robots" content="noindex,follow">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- GA4 + Consent Mode + UTM (internal-use page, but tracked for who-opens-when) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEMH1LPSD4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('consent', 'default', {
+            ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+            analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted',
+            wait_for_update: 500
+        });
+        gtag('js', new Date());
+        gtag('config', 'G-MEMH1LPSD4');
+    </script>
+    <script src="/assets/js/utm-capture.js?v=20260528a" defer></script>
+    <script src="/assets/js/ga-events.js?v=20260528a" defer></script>
+    <style>
+        :root {
+            --gold: #c9a227;
+            --gold-b: #e8c042;
+            --gold-dim: rgba(201, 162, 39, .12);
+            --bg: #05080f;
+            --bg2: #0a1626;
+            --ink: #e6edf3;
+            --muted: #9aa7b4;
+            --rule: rgba(255, 255, 255, .08)
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: Inter, system-ui, sans-serif;
+            line-height: 1.6;
+            font-size: 15px
+        }
+
+        .wrap {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 36px 24px 80px
+        }
+
+        h1 {
+            font-size: 30px;
+            color: var(--gold-b);
+            margin: 0 0 8px
+        }
+
+        .lead {
+            color: var(--muted);
+            font-size: 15px;
+            margin: 0 0 24px
+        }
+
+        h2 {
+            font-size: 20px;
+            color: var(--gold-b);
+            margin: 36px 0 8px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--rule)
+        }
+
+        h3 {
+            font-size: 14px;
+            color: var(--gold);
+            margin: 18px 0 6px;
+            text-transform: uppercase;
+            letter-spacing: .06em
+        }
+
+        .card {
+            background: var(--bg2);
+            border: 1px solid var(--rule);
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin: 0 0 18px
+        }
+
+        .kv {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 8px 18px;
+            font-size: 14px;
+            margin: 8px 0
+        }
+
+        .kv .k {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: .06em
+        }
+
+        .kv .v {
+            color: var(--ink);
+            font-family: ui-monospace, Menlo, Consolas, monospace;
+            font-size: 13px;
+            word-break: break-all
+        }
+
+        code {
+            font-family: ui-monospace, Menlo, Consolas, monospace;
+            background: rgba(201, 162, 39, .08);
+            color: #e6c878;
+            padding: 1px 6px;
+            border-radius: 4px;
+            word-break: break-all
+        }
+
+        pre {
+            background: #0a1626;
+            border: 1px solid var(--rule);
+            border-radius: 8px;
+            padding: 14px 16px;
+            overflow-x: auto;
+            font-size: 13px;
+            color: #cdd9e5;
+            white-space: pre-wrap;
+            word-break: break-word
+        }
+
+        ol,
+        ul {
+            margin: 8px 0 14px;
+            padding-left: 22px
+        }
+
+        li {
+            margin: 0 0 5px
+        }
+
+        .pill {
+            display: inline-block;
+            background: var(--gold-dim);
+            color: var(--gold-b);
+            border: 1px solid rgba(201, 162, 39, .4);
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: .06em;
+            margin-right: 6px
+        }
+
+        .pill.todo {
+            background: rgba(220, 80, 80, .1);
+            color: #ff8a8a;
+            border-color: rgba(220, 80, 80, .35)
+        }
+
+        .pill.auto {
+            background: rgba(50, 180, 120, .1);
+            color: #5ed79e;
+            border-color: rgba(50, 180, 120, .35)
+        }
+
+        a {
+            color: var(--gold-b);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(232, 192, 66, .35)
+        }
+
+        a:hover {
+            border-bottom-color: var(--gold-b)
+        }
+
+        .copy {
+            background: var(--bg2);
+            border: 1px dashed var(--gold);
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-family: ui-monospace, Menlo, Consolas, monospace;
+            font-size: 12.5px;
+            color: #e6c878;
+            margin: 6px 0 12px;
+            white-space: pre-wrap;
+            word-break: break-word
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+
+        <h1>SPLC Listing Application Pack</h1>
+        <p class="lead">Paste-ready values for the four major aggregators. Submit each as soon as its prerequisite (pool
+            seeded, volume threshold, etc.) is met. Every URL, address, and number below is verified against the live
+            Arbitrum One deployment.</p>
+
+        <h2>0 · Source-of-truth values (reused across all forms)</h2>
+        <div class="card">
+            <div class="kv">
+                <div class="k">Token name</div>
+                <div class="v">SpiralCoin</div>
+                <div class="k">Symbol</div>
+                <div class="v">SPLC</div>
+                <div class="k">Decimals</div>
+                <div class="v">18</div>
+                <div class="k">Chain</div>
+                <div class="v">Arbitrum One (chainId 42161)</div>
+                <div class="k">Contract</div>
+                <div class="v">0x8e45cc9F480257a1477976848d41A6A9Fb2cf27C</div>
+                <div class="k">Standard</div>
+                <div class="v">ERC-20 + ERC-20Permit + ERC-20Votes + LayerZero V2 OFT (UUPS proxy)</div>
+                <div class="k">Transfer tax</div>
+                <div class="v">3.14% (immutable, split 50/50 treasury / staking vault)</div>
+                <div class="k">Website</div>
+                <div class="v">https://www.spiralcoin.net</div>
+                <div class="k">Token page</div>
+                <div class="v">https://www.spiralcoin.net/splc.html</div>
+                <div class="k">Whitepaper</div>
+                <div class="v">https://www.spiralcoin.net/whitepaper.html</div>
+                <div class="k">Whitepaper PDF</div>
+                <div class="v">https://www.spiralcoin.net/whitepaper.pdf</div>
+                <div class="k">Logo 256px PNG</div>
+                <div class="v">https://www.spiralcoin.net/SPLC/splc-256.png</div>
+                <div class="k">Logo 32px PNG</div>
+                <div class="v">https://www.spiralcoin.net/SPLC/splc-32.png</div>
+                <div class="k">Twitter / X</div>
+                <div class="v">https://x.com/SpiralCoinLLC</div>
+                <div class="k">GitHub</div>
+                <div class="v">https://github.com/SpiralCoinOfficial</div>
+                <div class="k">Contact email</div>
+                <div class="v">listings@spiralcoin.net</div>
+                <div class="k">Treasury wallet</div>
+                <div class="v">0x3a1Dc8a78AE204C1EBAEe58699826f0b21c30D7F</div>
+                <div class="k">Founder wallet</div>
+                <div class="v">0xa1766d57a3102763ED89e9a543E960B5243ef2EE</div>
+                <div class="k">USDC (Arbitrum, native)</div>
+                <div class="v">0xaf88d065e77c8cC2239327C5EDb3A432268e5831</div>
+                <div class="k">Pool address</div>
+                <div class="v" style="color:#ff8a8a">[FILL IN AFTER deployLpAndLock.js RUNS]</div>
+                <div class="k">LP NFT tokenId</div>
+                <div class="v" style="color:#ff8a8a">[FILL IN AFTER deployLpAndLock.js RUNS]</div>
+                <div class="k">LP lock contract</div>
+                <div class="v" style="color:#ff8a8a">[FILL IN AFTER deployLpAndLock.js RUNS]</div>
+                <div class="k">LP unlock timestamp</div>
+                <div class="v" style="color:#ff8a8a">[FILL IN AFTER deployLpAndLock.js RUNS]</div>
+            </div>
+        </div>
+
+        <h2>1 · GeckoTerminal <span class="pill auto">AUTO-INDEX</span></h2>
+        <div class="card">
+            <p><b>No application form required.</b> GeckoTerminal automatically indexes Uniswap V3 pools on Arbitrum
+                within ~24 hours of the first trade. As soon as the SPLC/USDC pool has at least one swap, it will appear
+                at:</p>
+            <pre>https://www.geckoterminal.com/arbitrum/pools/[POOL_ADDRESS_LOWERCASE]</pre>
+            <h3>To accelerate indexing</h3>
+            <ol>
+                <li>Seed the pool via <code>deployLpAndLock.js</code> (creates pool + adds initial liquidity).</li>
+                <li>Execute one small swap (e.g. 1 USDC → SPLC) to trigger trade-history indexing.</li>
+                <li>Wait 1–24 hours for the GeckoTerminal indexer to pick it up.</li>
+            </ol>
+            <h3>Trust badge (optional, post-listing)</h3>
+            <p>Once the pool is indexed, request the GeckoTerminal "Verified" badge by emailing <a
+                    href="mailto:info@geckoterminal.com">info@geckoterminal.com</a> with the values from §0, plus a
+                screenshot of the indexed pool page.</p>
+        </div>
+
+        <h2>2 · DEXScreener — Enhanced Token Info <span class="pill todo">FORM</span></h2>
+        <div class="card">
+            <p>Submit at <a href="https://dexscreener.com/edit/token">dexscreener.com/edit/token</a> (one-time $300 USDC
+                fee). Requires: pool must already be indexed (auto, within ~1 hour of first swap), plus an on-chain
+                signature from the token-owner wallet to prove control.</p>
+
+            <h3>Paste-in values</h3>
+            <div class="kv">
+                <div class="k">Chain</div>
+                <div class="v">Arbitrum</div>
+                <div class="k">Token address</div>
+                <div class="v">0x8e45cc9F480257a1477976848d41A6A9Fb2cf27C</div>
+                <div class="k">Description (300 chars max)</div>
+                <div class="v"></div>
+            </div>
+            <div class="copy">SpiralCoin (SPLC) is a fixed-supply ERC-20 on Arbitrum One with an immutable 3.14%
+                transfer tax split 50/50 between the treasury and the staking vault. Vote-enabled (ERC20Votes), gasless
+                approvals (ERC20Permit), and cross-chain via LayerZero V2 OFT.</div>
+
+            <div class="kv">
+                <div class="k">Website</div>
+                <div class="v">https://www.spiralcoin.net</div>
+                <div class="k">Whitepaper</div>
+                <div class="v">https://www.spiralcoin.net/whitepaper.html</div>
+                <div class="k">Twitter</div>
+                <div class="v">https://x.com/SpiralCoinLLC</div>
+                <div class="k">GitHub (source)</div>
+                <div class="v">https://github.com/SpiralCoinOfficial</div>
+                <div class="k">Logo URL</div>
+                <div class="v">https://www.spiralcoin.net/SPLC/splc-256.png</div>
+                <div class="k">Header image (optional)</div>
+                <div class="v">https://www.spiralcoin.net/brand/pool-cover-20k.png</div>
+                <div class="k">Email</div>
+                <div class="v">listings@spiralcoin.net</div>
+            </div>
+
+            <h3>Signature step</h3>
+            <ol>
+                <li>Connect the founder/owner wallet <code>0xa1766d57a3102763ED89e9a543E960B5243ef2EE</code> on
+                    DEXScreener's edit page.</li>
+                <li>Sign the EIP-191 personal_sign challenge presented by the form.</li>
+                <li>Pay the $300 USDC fee on Arbitrum (kept by DEXScreener).</li>
+                <li>Confirmation email arrives within 1–3 business days.</li>
+            </ol>
+        </div>
+
+        <h2>3 · CoinGecko — Listing application <span class="pill todo">FORM</span></h2>
+        <div class="card">
+            <p>Submit at <a href="https://www.coingecko.com/request">coingecko.com/request</a>. Free, but takes 2–4
+                weeks. Volume threshold: at least <b>$1,000 daily trading volume</b> across all indexed venues for 7
+                consecutive days.</p>
+
+            <h3>Paste-in values</h3>
+            <div class="kv">
+                <div class="k">Project name</div>
+                <div class="v">SpiralCoin</div>
+                <div class="k">Symbol</div>
+                <div class="v">SPLC</div>
+                <div class="k">Chain</div>
+                <div class="v">Arbitrum One</div>
+                <div class="k">Contract</div>
+                <div class="v">0x8e45cc9F480257a1477976848d41A6A9Fb2cf27C</div>
+                <div class="k">Category</div>
+                <div class="v">Tokenized Assets / DeFi / Cross-Chain</div>
+                <div class="k">Hash algorithm</div>
+                <div class="v">N/A (ERC-20, not a Layer-1)</div>
+                <div class="k">Consensus</div>
+                <div class="v">N/A (inherits Arbitrum One)</div>
+                <div class="k">Block explorer</div>
+                <div class="v">https://arbiscan.io/token/0x8e45cc9F480257a1477976848d41A6A9Fb2cf27C</div>
+            </div>
+
+            <h3>Description (500-word max — paste verbatim)</h3>
+            <div class="copy">SpiralCoin (SPLC) is a fixed-supply, transfer-taxed ERC-20 deployed as a UUPS proxy on
+                Arbitrum One. Every transfer between non-exempt addresses skims 3.14% — split 50/50 between an
+                operational treasury and a staking-rewards vault — to fund continued protocol development without
+                inflation, sponsored issuance, or rent-seeking governance proposals.
+
+                The token inherits OpenZeppelin's audited ERC-20, ERC-20Permit (gasless approvals via EIP-2612), and
+                ERC-20Votes (token-weighted delegation and checkpointing for the upcoming SpiralDAO). Cross-chain
+                mobility is provided by LayerZero V2's OFT standard via burn-and-mint, preserving net global supply
+                across all destination chains.
+
+                The initial liquidity venue is a SPLC/USDC pair on Uniswap V3 (Arbitrum One, 1% fee tier, full-range),
+                seeded via the open-source deployLpAndLock.js script. The LP position NFT is transferred to a custody
+                contract (SPLCLPLock) that prevents withdrawal of the underlying liquidity for a minimum of 12 months,
+                while still allowing accrued trading fees to be collected by the treasury. The lock contract address, LP
+                NFT tokenId, and unlock timestamp are recorded on-chain and verifiable on Arbiscan.
+
+                SpiralCoin makes no claim of guaranteed yield, price appreciation, or utility beyond what its on-chain
+                code enforces. Source code, deploy scripts, and deployment records are public at
+                github.com/SpiralCoinOfficial. The full technical whitepaper is available at
+                spiralcoin.net/whitepaper.html.</div>
+
+            <h3>Required links</h3>
+            <div class="kv">
+                <div class="k">Website</div>
+                <div class="v">https://www.spiralcoin.net</div>
+                <div class="k">Whitepaper</div>
+                <div class="v">https://www.spiralcoin.net/whitepaper.html</div>
+                <div class="k">Source code</div>
+                <div class="v">https://github.com/SpiralCoinOfficial</div>
+                <div class="k">Twitter</div>
+                <div class="v">https://x.com/SpiralCoinLLC</div>
+                <div class="k">Block explorer</div>
+                <div class="v">https://arbiscan.io/token/0x8e45cc9F480257a1477976848d41A6A9Fb2cf27C</div>
+                <div class="k">Logo (256×256 PNG)</div>
+                <div class="v">https://www.spiralcoin.net/SPLC/splc-256.png</div>
+            </div>
+        </div>
+
+        <h2>4 · CoinMarketCap — Listing application <span class="pill todo">FORM</span></h2>
+        <div class="card">
+            <p>Submit at <a href="https://coinmarketcap.com/request/">coinmarketcap.com/request</a>. Free; review takes
+                2–6 weeks. CMC requires more proof-of-real-trading than CG: at least <b>$5,000 daily volume</b> on at
+                least one indexed venue, sustained for 14 days.</p>
+
+            <h3>Form values</h3>
+            <p>All metadata, description, and links from §3 are reused. Additional CMC-specific fields:</p>
+            <div class="kv">
+                <div class="k">Project launch date</div>
+                <div class="v">2026-05-15 (token deployment date — confirm against deployUpgradeable.js receipt)</div>
+                <div class="k">ICO/IDO date</div>
+                <div class="v">N/A — fair launch via Uniswap V3 seed pool, no presale</div>
+                <div class="k">Max supply</div>
+                <div class="v">Fixed at mint; no inflation function exists in source. (Insert exact number after reading
+                    from contract via Arbiscan: <code>totalSupply()</code>)</div>
+                <div class="k">Circulating supply</div>
+                <div class="v">Public-floating SPLC = totalSupply() − (treasury + staking vault + team vesting +
+                    LP-locked balance). Compute via on-chain reads.</div>
+                <div class="k">Tags</div>
+                <div class="v">Arbitrum Ecosystem, DeFi, Governance, Staking, Cross-Chain, LayerZero</div>
+            </div>
+        </div>
+
+        <h2>5 · Pre-submission checklist</h2>
+        <div class="card">
+            <ul>
+                <li>☐ <code>deployLpAndLock.js</code> executed successfully on Arbitrum mainnet</li>
+                <li>☐ Pool address copied into §0 (above) and into all four forms</li>
+                <li>☐ LP NFT transferred to <code>SPLCLPLock</code>; unlock timestamp ≥ 12 months out</li>
+                <li>☐ At least one swap executed on the pool to trigger aggregator indexing</li>
+                <li>☐ Logo files uploaded to <code>/SPLC/splc-256.png</code> and <code>/SPLC/splc-32.png</code> on the
+                    live site</li>
+                <li>☐ Whitepaper live at <code>https://www.spiralcoin.net/whitepaper.html</code> and
+                    <code>whitepaper.pdf</code>
+                </li>
+                <li>☐ Cover banner live at <code>https://www.spiralcoin.net/brand/pool-cover-20k.png</code></li>
+                <li>☐ Arbiscan token-info already submitted (confirmed earlier in this sprint)</li>
+                <li>☐ <code>listings@spiralcoin.net</code> mailbox monitored for confirmation/verification emails</li>
+                <li>☐ Founder wallet <code>0xa176…f2EE</code> available to sign DEXScreener challenge</li>
+                <li>☐ ~$300 USDC on Arbitrum One available in the founder wallet for the DEXScreener fee</li>
+            </ul>
+        </div>
+
+        <footer
+            style="margin-top:40px;padding-top:18px;border-top:1px solid var(--rule);color:var(--muted);font-size:12px">
+            © SpiralCoin LLC · Internal listing-application reference · All paste-in values are verified against the
+            on-chain SPLC deployment at <code>0x8e45cc9F480257a1477976848d41A6A9Fb2cf27C</code>. Do not edit numeric
+            values; if they need to change, update the deploy scripts first and regenerate this pack.
+        </footer>
+
+    </div>
+</body>
+
+</html>

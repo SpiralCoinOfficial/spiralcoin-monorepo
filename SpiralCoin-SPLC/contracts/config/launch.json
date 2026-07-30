@@ -1,0 +1,114 @@
+{
+    "$comment": "Locked launch parameters for SPLC at 1,000,000,000 (1B) total supply. Bootstrap-launch model: initial public liquidity is intentionally small ($1k pair-side on Arbitrum One). Market discovers price. Future presale rounds (Reg D / Reg CF) are priced from then-current market price, NOT from a pre-set target. No fabricated FDV. Read by deploy scripts. Edit BEFORE running any mainnet pool seed.",
+    "supply": {
+        "totalSupplySplc": "1000000000",
+        "decimals": 18,
+        "comment": "1B SPLC total, minted once at construction. Bridged via LayerZero V2 OFT to additional chains — never re-minted per chain."
+    },
+    "launchModel": {
+        "type": "bootstrap-liquidity",
+        "bootstrapUsdPerSplc": "0.001",
+        "bootstrapFdvUsd": 1000000,
+        "rationale": "Fair-launch bootstrap. Solo-founder project with $1k initial pair-side capital. Market discovers true valuation organically. No private valuation premium implied. No promised price appreciation. Reg D / Reg CF rounds (if conducted) will be priced from then-current 30-day VWAP at offering date, not a pre-set target.",
+        "lpLockYears": 1,
+        "lpLockExtendable": true,
+        "lpLockShortenable": false
+    },
+    "tax": {
+        "feeBps": 314,
+        "treasuryShareBps": 5000,
+        "stakingShareBps": 5000,
+        "immutable": true,
+        "appliesTo": "V2-style AMM pairs ONLY (PancakeSwap V2, SushiSwap V2, QuickSwap, Aerodrome, Velodrome). NEVER call setAmmPair on Uniswap V3 pools — breaks K-invariant.",
+        "exemptions": [ "owner", "treasury", "stakingVault", "vestingContract", "lpLockContract", "presaleContract", "airdropContract", "founderWallet", "v2Routers" ]
+    },
+    "tokenomics": {
+        "$comment": "9-bucket allocation totalling 1B SPLC. Allocations are fixed; pricing of presale buckets is market-discovered at the time of each offering, not pre-set here.",
+        "founderTeam": { "splc": 150000000, "pct": 15.0, "vestMonths": 12, "cliffMonths": 3, "destination": "SPLCPresaleVesting (founder beneficiary 0xa1766d57a3102763ED89e9a543E960B5243ef2EE)", "notes": "Linear after 3mo cliff over 12mo" },
+        "treasuryOps": { "splc": 200000000, "pct": 20.0, "vestMonths": 24, "cliffMonths": 6, "destination": "SPLCPresaleVesting (treasury Safe multisig 0x3a1Dc8a78AE204C1EBAEe58699826f0b21c30D7F)", "notes": "Operations runway: legal, audits, marketing, dev payroll, future CEX listings" },
+        "stakingRewards": { "splc": 300000000, "pct": 30.0, "vestMonths": 48, "cliffMonths": 0, "destination": "SPLCStakingVault", "notes": "Perpetual rewards stream — 48mo linear release, governance-extendable" },
+        "publicPresale": { "splc": 100000000, "pct": 10.0, "vestMonths": 6, "cliffMonths": 0, "destination": "SPLCPresalePublic (Reg CF + Reg S non-US, when/if conducted)", "notes": "Price set from then-current 30-day market VWAP at offering open. Not pre-committed." },
+        "accreditedRegD": { "splc": 50000000, "pct": 5.0, "vestMonths": 12, "cliffMonths": 6, "destination": "SPLCPresaleVesting (Reg D 506(c), per-investor schedules, when/if conducted)", "notes": "US accredited only. KYC via VerifyInvestor.com. Price set from then-current 30-day market VWAP at offering open. Not pre-committed." },
+        "airdropMerkle": { "splc": 5000000, "pct": 0.5, "vestMonths": 0, "cliffMonths": 0, "destination": "SPLCAirdropMerkle", "notes": "Community claim, 90-day window" },
+        "lpSeed": { "splc": 15000000, "pct": 1.5, "lockYears": 1, "destination": "SPLCLPLock (multi-chain reserve)", "notes": "1M deployed to Arbitrum bootstrap pool at launch. Remaining 14M reserved for cross-chain pool expansion via LayerZero OFT as capital allows." },
+        "cexListingReserve": { "splc": 100000000, "pct": 10.0, "vestMonths": 0, "cliffMonths": 0, "destination": "Cold storage Ledger (separate from operating wallets)", "notes": "Reserved for Tier-1 CEX listings. Use ONLY when listing agreement signed. Idle until then." },
+        "ecosystemGrants": { "splc": 80000000, "pct": 8.0, "vestMonths": 36, "cliffMonths": 12, "destination": "DAO Timelock", "notes": "DAO-voted grants: integrations, hackathons, builder bounties" }
+    },
+    "totalAllocated": {
+        "splc": 1000000000,
+        "pct": 100,
+        "$check": "150 + 200 + 300 + 100 + 50 + 5 + 15 + 100 + 80 = 1,000M"
+    },
+    "pools": {
+        "$comment": "Pool deploy plan. Bootstrap launch on Arbitrum One only, with single Uniswap V3 1% pool, full-range, 1M SPLC + ~$1k USDC. Tax-INACTIVE (V3 K-invariant). Cross-chain expansion via LayerZero OFT as capital and demand justify.",
+        "arbitrumBootstrap": {
+            "active": true,
+            "chain": "arbitrum",
+            "chainId": 42161,
+            "dex": "UniswapV3",
+            "pair": "USDC",
+            "pairAddress": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+            "feeBps": 10000,
+            "feeTier": "1%",
+            "rangeMode": "full-range",
+            "splc": 1000000,
+            "pairUsd": 1000,
+            "initialPriceUsdPerSplc": 0.001,
+            "initialFdvUsd": 1000000,
+            "taxFires": false,
+            "lockYears": 1
+        },
+        "futureExpansion": {
+            "active": false,
+            "$comment": "Additional pools (ETH, Base, BSC, Polygon, Optimism + V2 tax-active pools) will be deployed when capital and organic demand justify. NOT pre-committed. NOT a promise to investors. Driven by reserve.lpSeed (14M SPLC remaining) and treasuryOps allocation."
+        }
+    },
+    "lpTotals": {
+        "splcAtLaunch": 1000000,
+        "pairUsdAtLaunch": 1000,
+        "splcReservedForFuture": 14000000,
+        "$check": "1M deployed + 14M reserved = 15M total lpSeed allocation"
+    },
+    "vesting": {
+        "founderCliffSeconds": 7776000,
+        "founderDurationSeconds": 31536000,
+        "treasuryCliffSeconds": 15552000,
+        "treasuryDurationSeconds": 63072000,
+        "stakingCliffSeconds": 0,
+        "stakingDurationSeconds": 124416000,
+        "regDCliffSeconds": 15552000,
+        "regDDurationSeconds": 31536000,
+        "publicPresaleCliffSeconds": 0,
+        "publicPresaleDurationSeconds": 15552000,
+        "ecosystemCliffSeconds": 31536000,
+        "ecosystemDurationSeconds": 93312000,
+        "$secondsLegend": "30d=2592000 ; 90d=7776000 ; 180d=15552000 ; 360d=31536000 ; 720d=63072000 ; 1080d=93312000 ; 1440d=124416000"
+    },
+    "lpLock": {
+        "minSeconds": 31536000,
+        "recommendedSeconds": 63072000,
+        "$comment": "1yr enforced by SPLCLPLock.sol. Recommendation: lock 2yr at launch for stronger trust signal. Always extendable, never shortenable."
+    },
+    "feeRevenue": {
+        "ammTax": { "rate": "3.14%", "destination": "50% treasury + 50% staking vault", "appliesOn": "V2 pool swaps only (no V2 pool exists at bootstrap launch)" },
+        "stakingVaultDepositFee": { "rate": "2%", "destination": "staking reward pool" },
+        "v3LpFees": { "rate": "1% (bootstrap tier)", "destination": "LP NFT holder via SPLCLPLock → treasury at unlock" },
+        "$legalNote": "AMM tax 50/50 split prevents single-beneficiary Howey-test risk. Staking-vault share returns value to holders via on-chain governance. Bootstrap pool is V3 only — 3.14% tax does not fire until/unless a V2 pool is added with explicit setAmmPair() call."
+    },
+    "wallets": {
+        "founder": { "address": "0xa1766d57a3102763ED89e9a543E960B5243ef2EE", "type": "EOA (migrate to Ledger before any large vested withdrawal)", "balance": "150M vested via SPLCPresaleVesting (post-vest contract deploy)" },
+        "treasury": { "address": "0x3a1Dc8a78AE204C1EBAEe58699826f0b21c30D7F", "type": "Safe multisig (3-of-5 recommended) — currently EOA, migrate before pool seed if possible", "balance": "200M vested + AMM tax 50% share (when V2 pool added)" },
+        "deployer": { "address": "0x396157D2De70247dBc6895c5d835E46E6eB0BD22", "type": "EOA (hot wallet, gas only — never custody)", "balance": "120M premine (to be distributed per tokenomics)" },
+        "cexColdStorage": { "address": "TBD — generate fresh Ledger before any CEX listing", "type": "Ledger hardware", "balance": "100M unlocked, idle until listing agreement" },
+        "daoTimelock": { "address": "TBD — deployed at TGE", "type": "OZ TimelockController", "balance": "80M ecosystem grants" }
+    },
+    "complianceRequirements": {
+        "geoBlock": "Client-side US-block + accredited affirmation gate live on all financial pages",
+        "kycVerification": "REQUIRED for US accredited investors via VerifyInvestor.com or Parallel Markets, when/if Reg D round is conducted",
+        "audit": "RECOMMENDED before any large pool expansion or CEX listing (Hacken / Cyfrin / CertiK budget $20-60k). Contract has 121-test Hardhat suite passing; bootstrap launch acceptable on test coverage alone.",
+        "multisig": "RECOMMENDED — transfer SPLC proxy ownership + treasury to Safe multisig before pool seeding (or as soon as practical post-bootstrap)",
+        "vestingTransparency": "All vest schedules published on-chain, queryable via SPLCPresaleVesting.schedules(address)",
+        "disclaimer": "Trading involves risk. Past performance does not guarantee future results.",
+        "noPromisedReturns": "NO marketing material, page copy, or social post may promise specific price targets, FDV growth, or guaranteed returns. Bootstrap = market-discovered. Period."
+    }
+}

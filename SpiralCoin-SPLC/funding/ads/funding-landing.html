@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description"
+        content="SpiralCoin (SPLC): a fair-launch ERC-20 on Arbitrum One. Bootstrap liquidity, locked LP, open source. Support an honest crypto launch." />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SpiralCoin — Fund an Honest Bootstrap Launch" />
+    <meta property="og:description"
+        content="Solo-founded. Open source. 1B fixed supply. 12-month locked LP. No fabricated valuation." />
+    <meta property="og:url" content="https://www.spiralcoin.net/funding/ads/funding-landing.html" />
+    <meta property="og:image" content="https://www.spiralcoin.net/spiralcoin_og_1200x630.png?v=20260526b" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://www.spiralcoin.net/funding/ads/funding-landing.html" />
+    <title>SpiralCoin | Fund an Honest Bootstrap Launch</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/spiralcoin-mark.svg?v=20260526b">
+    <meta name="theme-color" content="#0b0f15" />
+    <style>
+        :root {
+            --bg: #0b0f15;
+            --bg2: #121826;
+            --gold: #f5c451;
+            --text: #e8edf6;
+            --muted: #9da7ba;
+            --ok: #22c55e;
+            --line: rgba(245, 196, 81, .22);
+            --r: 14px
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+            color: var(--text);
+            background: radial-gradient(circle at 12% 8%, rgba(245, 196, 81, .14), transparent 32%), radial-gradient(circle at 85% 5%, rgba(245, 196, 81, .08), transparent 26%), var(--bg);
+            min-height: 100vh;
+            line-height: 1.62
+        }
+
+        .wrap {
+            width: min(820px, 94%);
+            margin: 0 auto
+        }
+
+        header {
+            padding: 1.1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, .055);
+            text-align: center
+        }
+
+        header img {
+            height: 38px;
+            vertical-align: middle
+        }
+
+        header .brand {
+            font-weight: 800;
+            letter-spacing: .4px;
+            margin-left: .4rem;
+            color: var(--gold)
+        }
+
+        .hero {
+            padding: 3.2rem 0 1.6rem;
+            text-align: center
+        }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(245, 196, 81, .1);
+            border: 1px solid var(--line);
+            padding: .38rem .85rem;
+            border-radius: 100px;
+            margin-bottom: 1.1rem
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 4.4vw, 2.7rem);
+            font-weight: 800;
+            line-height: 1.18;
+            margin-bottom: .85rem;
+            letter-spacing: -.5px
+        }
+
+        h1 .gold {
+            color: var(--gold)
+        }
+
+        .sub {
+            font-size: 1.04rem;
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 1.6rem
+        }
+
+        .ctas {
+            display: flex;
+            gap: .7rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: .4rem
+        }
+
+        .btn {
+            display: inline-block;
+            padding: .78rem 1.4rem;
+            border-radius: var(--r);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: .92rem;
+            transition: transform .15s, box-shadow .15s;
+            border: 1px solid transparent
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: #0b0f15;
+            box-shadow: 0 6px 18px rgba(245, 196, 81, .22)
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--text);
+            border-color: rgba(255, 255, 255, .16)
+        }
+
+        .btn:hover {
+            transform: translateY(-1px)
+        }
+
+        .facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: .7rem;
+            margin: 2.4rem auto 0;
+            max-width: 760px
+        }
+
+        .fact {
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: var(--r);
+            padding: .95rem .9rem;
+            text-align: center
+        }
+
+        .fact .v {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: .15rem
+        }
+
+        .fact .l {
+            font-size: .74rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: .8px
+        }
+
+        section {
+            padding: 2.6rem 0;
+            border-top: 1px solid rgba(255, 255, 255, .05)
+        }
+
+        h2 {
+            font-size: 1.45rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -.3px
+        }
+
+        h2 .num {
+            color: var(--gold);
+            font-size: .85rem;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            display: block;
+            margin-bottom: .25rem;
+            text-transform: uppercase
+        }
+
+        p {
+            color: var(--muted);
+            margin-bottom: .85rem
+        }
+
+        ul.bullets {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0
+        }
+
+        ul.bullets li {
+            padding: .55rem 0 .55rem 1.6rem;
+            position: relative;
+            color: var(--muted);
+            font-size: .95rem;
+            border-bottom: 1px solid rgba(255, 255, 255, .04)
+        }
+
+        ul.bullets li::before {
+            content: "●";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            top: .55rem;
+            font-size: .7rem
+        }
+
+        ul.bullets li strong {
+            color: var(--text)
+        }
+
+        .card {
+            background: var(--bg2);
+            border: 1px solid var(--line);
+            border-radius: var(--r);
+            padding: 1.4rem
+        }
+
+        .grid2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem
+        }
+
+        .addr {
+            font-family: ui-monospace, Consolas, monospace;
+            font-size: .78rem;
+            background: rgba(0, 0, 0, .35);
+            padding: .55rem .7rem;
+            border-radius: 8px;
+            color: var(--gold);
+            word-break: break-all;
+            border: 1px solid rgba(245, 196, 81, .18);
+            display: block;
+            margin: .5rem 0
+        }
+
+        .pills {
+            display: flex;
+            gap: .4rem;
+            flex-wrap: wrap;
+            margin-top: .6rem
+        }
+
+        .pill {
+            background: rgba(245, 196, 81, .08);
+            color: var(--gold);
+            border: 1px solid var(--line);
+            padding: .25rem .6rem;
+            border-radius: 100px;
+            font-size: .7rem;
+            font-weight: 600
+        }
+
+        .disclaim {
+            background: rgba(239, 68, 68, .06);
+            border: 1px solid rgba(239, 68, 68, .25);
+            border-radius: var(--r);
+            padding: 1rem 1.2rem;
+            margin: 2rem 0;
+            font-size: .84rem;
+            color: #fda4a4;
+            line-height: 1.55
+        }
+
+        .disclaim strong {
+            color: #fca5a5
+        }
+
+        footer {
+            padding: 2.4rem 0 2.8rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, .05);
+            color: var(--muted);
+            font-size: .78rem
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+            margin: 0 .55rem
+        }
+
+        @media (max-width:520px) {
+            .hero {
+                padding: 2.2rem 0 1.2rem
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="wrap"><img src="/assets/spiralcoin-mark.svg?v=20260526b" alt="SpiralCoin"><span
+                class="brand">SpiralCoin</span></div>
+    </header>
+
+    <main class="wrap">
+
+        <section class="hero" style="border-top:none">
+            <span class="eyebrow">⚡ Live on Arbitrum One · Open Source</span>
+            <h1>A crypto launch <span class="gold">without the hype premium.</span></h1>
+            <p class="sub">SpiralCoin (SPLC) is a solo-founded, fair-launch ERC-20 on Arbitrum One. Bootstrap liquidity.
+                12-month locked LP. No private valuation. No promised returns. Market discovers the price.</p>
+            <div class="ctas">
+                <a class="btn btn-gold" href="https://github.com/SpiralCoinOfficial/ionos-migration" rel="noopener"
+                    target="_blank">Review the Source</a>
+                <a class="btn btn-ghost" href="https://www.spiralcoin.net/splc.html">Learn How It Works</a>
+            </div>
+            <div class="facts">
+                <div class="fact">
+                    <div class="v">1B</div>
+                    <div class="l">Fixed Supply</div>
+                </div>
+                <div class="fact">
+                    <div class="v">12 mo</div>
+                    <div class="l">LP NFT Lock</div>
+                </div>
+                <div class="fact">
+                    <div class="v">3.14%</div>
+                    <div class="l">AMM Tax (V2 only)</div>
+                </div>
+                <div class="fact">
+                    <div class="v">121</div>
+                    <div class="l">Passing Tests</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2><span class="num">01 · The Honest Pitch</span>Why we're funding the boring way.</h2>
+            <p>Most 2026 token launches still open at multi-million-dollar pre-set valuations, then chase price-target
+                marketing. SpiralCoin does the opposite:</p>
+            <ul class="bullets">
+                <li><strong>1,000,000,000 SPLC</strong> fixed supply, deployed once, no mint function post-init.</li>
+                <li><strong>9-bucket allocation</strong> locked on-chain via vesting, staking, LP-lock, and
+                    multisig-bound treasury contracts.</li>
+                <li><strong>Bootstrap public liquidity:</strong> 1,000,000 SPLC + $1,000 USDC in a Uniswap V3 1%
+                    full-range pool — LP NFT locked 12 months in <code>SPLCLPLock.sol</code>.</li>
+                <li><strong>No private round priced above retail.</strong> No promised returns. No fabricated FDV. If
+                    the project is real, market demand prices it.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span class="num">02 · Use of Funds</span>What runway gets you.</h2>
+            <div class="grid2">
+                <div class="card"><strong style="color:var(--gold)">🔍 Third-party audit</strong>
+                    <p style="margin-top:.4rem">Hacken / Cyfrin / CertiK budget. Hardhat test suite already passes
+                        121/121; external audit is the next trust signal.</p>
+                </div>
+                <div class="card"><strong style="color:var(--gold)">🌐 Cross-chain expansion</strong>
+                    <p style="margin-top:.4rem">LayerZero V2 OFT pool seeding on ETH, Base, BSC, Polygon, Optimism —
+                        funded from the 14M SPLC LP Seed reserve as demand justifies.</p>
+                </div>
+                <div class="card"><strong style="color:var(--gold)">⚖️ Legal review</strong>
+                    <p style="margin-top:.4rem">Securities counsel for any future Reg D 506(c) / Reg CF rounds, plus
+                        state blue-sky filings.</p>
+                </div>
+                <div class="card"><strong style="color:var(--gold)">🛠️ Builder bounties</strong>
+                    <p style="margin-top:.4rem">DAO-voted grants for integrations, hackathon prizes, and ecosystem dev
+                        tooling.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2><span class="num">03 · Verify Everything</span>Don't trust — verify.</h2>
+            <div class="card">
+                <div style="font-size:.78rem;color:var(--muted);margin-bottom:.3rem">SPLC Contract (Arbitrum One — UUPS
+                    Proxy)</div>
+                <code class="addr">0x8e45cc9F480257a1477976848d41A6A9Fb2cf27C</code>
+                <div class="pills">
+                    <a class="pill" style="text-decoration:none"
+                        href="https://arbiscan.io/token/0x8e45cc9F480257a1477976848d41A6A9Fb2cf27C" target="_blank"
+                        rel="noopener">View on Arbiscan ↗</a>
+                    <a class="pill" style="text-decoration:none"
+                        href="https://github.com/SpiralCoinOfficial/ionos-migration" target="_blank"
+                        rel="noopener">GitHub Source ↗</a>
+                    <a class="pill" style="text-decoration:none" href="https://www.spiralcoin.net/splc.html">Tokenomics
+                        ↗</a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2><span class="num">04 · Ways to Support</span>Funding paths.</h2>
+            <ul class="bullets">
+                <li><strong>Ecosystem grants:</strong> Arbitrum Foundation, Base Builder Grants, Optimism Mission,
+                    Polygon Village, Gitcoin rounds — applications in flight.</li>
+                <li><strong>Angel checks ($5k–$25k):</strong> Reach out via the contact link below. Any future regulated
+                    offering is conducted under appropriate exemption with full subscription docs.</li>
+                <li><strong>Community LP support:</strong> Add liquidity to the public Uniswap V3 pool after launch
+                    (your call, your risk — review the contract first).</li>
+                <li><strong>Code contributions:</strong> Open PRs on the public repo.</li>
+            </ul>
+            <div class="ctas" style="margin-top:1.4rem">
+                <a class="btn btn-gold"
+                    href="mailto:founder@spiralcoin.net?subject=SpiralCoin%20Funding%20Inquiry">Start a Conversation</a>
+                <a class="btn btn-ghost" href="https://github.com/SpiralCoinOfficial/ionos-migration" target="_blank"
+                    rel="noopener">Review the Source</a>
+            </div>
+        </section>
+
+        <div class="disclaim">
+            <strong>Risk &amp; Compliance.</strong> Trading involves risk. Past performance does not guarantee future
+            results. Bootstrap-launched tokens with thin initial liquidity are inherently volatile. Nothing on this page
+            is an offer to sell securities or a solicitation of any investment; any future regulated offering will be
+            conducted under an appropriate exemption (Reg D 506(c) / Reg CF / Reg S) with full subscription documents
+            and KYC verification. SpiralCoin is not registered as a broker-dealer, investment adviser, or money
+            transmitter. Do your own research and consult a qualified professional before participating.
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div>© 2026 SpiralCoin · <a href="https://www.spiralcoin.net">spiralcoin.net</a> · <a
+                    href="https://github.com/SpiralCoinOfficial/ionos-migration" target="_blank"
+                    rel="noopener">GitHub</a> · <a
+                    href="https://arbiscan.io/token/0x8e45cc9F480257a1477976848d41A6A9Fb2cf27C" target="_blank"
+                    rel="noopener">Arbiscan</a></div>
+            <div style="margin-top:.6rem;opacity:.65">Open source · Bootstrap launch · Market-discovered pricing</div>
+        </div>
+    </footer>
+</body>
+
+</html>

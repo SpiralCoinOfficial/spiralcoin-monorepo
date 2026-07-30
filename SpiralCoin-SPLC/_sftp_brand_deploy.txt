@@ -1,0 +1,32 @@
+option batch continue
+option confirm off
+open sftp://a2797960:%PWD%@access-5020476011.webspace-host.com/ -hostkey=*
+cd /
+lcd "C:\Users\Trisha Dreyer\Documents\ionos-migration"
+
+# Create folders (errors ignored — batch continue)
+mkdir brand
+mkdir assets
+
+# Mirror entire local brand/ folder to remote /brand
+synchronize remote -mirror -criteria=time brand /brand
+
+# Upload assets/ (galaxy background + unified mark)
+put -neweronly assets\spiralcoin-mark.svg /assets/
+put -neweronly assets\galaxy-bg.css /assets/
+put -neweronly assets\galaxy-bg.js /assets/
+
+# Root-level brand assets
+put -neweronly spiralcoin_logo.png
+put -neweronly spiralcoin_og_1200x630.png
+put -neweronly apple-touch-icon.png
+
+# HTML pages with updated og:image + apple-touch-icon meta
+put -neweronly index.html
+put -neweronly spiralcoin_trading_platform.html
+put -neweronly spiralcoin_platform_embed.html
+put -neweronly spiralcoin_oneliner.html
+put -neweronly spiralcoin_ads_landing.html
+
+close
+exit

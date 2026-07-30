@@ -1,0 +1,90 @@
+name: mainnet-dryrun
+
+# Proves the REAL deploy script (scripts/deploy-multichain.js) runs end-to-end
+# and that every governance / supply / fee invariant holds — against forked
+# mainnet state when a fork RPC secret is present, otherwise a clean local
+# chain. ZERO real ETH is spent and NOTHING is broadcast to a live network.
+#
+# Optional repo secret for a true live-state rehearsal:
+#   MAINNET_FORK_RPC_URL  — an eth-mainnet RPC URL (Alchemy/Infura/etc.)
+# Without it the job still runs and still validates the deploy logic.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'contracts/contracts/**'
+      - 'contracts/scripts/deploy-multichain.js'
+      - 'contracts/scripts/dryrun-mainnet.js'
+      - 'contracts/scripts/validate-env.js'
+      - 'contracts/hardhat.config.js'
+      - 'contracts/package*.json'
+      - '.github/workflows/mainnet-dryrun.yml'
+  pull_request:
+    paths:
+      - 'contracts/contracts/**'
+      - 'contracts/scripts/deploy-multichain.js'
+      - 'contracts/scripts/dryrun-mainnet.js'
+      - 'contracts/scripts/validate-env.js'
+      - 'contracts/hardhat.config.js'
+      - 'contracts/package*.json'
+      - '.github/workflows/mainnet-dryrun.yml'
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: contracts
+
+permissions:
+  contents: read
+
+jobs:
+  dryrun:
+    name: deploy dry-run + invariant gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: contracts/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps --no-audit --no-fund
+        env:
+          HARDHAT_DISABLE_TELEMETRY_PROMPT: 'true'
+
+      - name: Compile
+        run: npx hardhat compile
+        env:
+          HARDHAT_DISABLE_TELEMETRY_PROMPT: 'true'
+
+      - name: Report fork mode
+        run: |
+          if [ -n "${{ secrets.MAINNET_FORK_RPC_URL }}" ]; then
+            echo "Fork RPC secret present -> rehearsing against LIVE mainnet state."
+          else
+            echo "No MAINNET_FORK_RPC_URL secret -> rehearsing on a clean local chain."
+            echo "Add the secret for a true live-state rehearsal (optional)."
+          fi
+
+      - name: Mainnet deploy dry-run + invariant gate
+        run: npx hardhat run scripts/dryrun-mainnet.js --network hardhat
+        env:
+          HARDHAT_DISABLE_TELEMETRY_PROMPT: 'true'
+          # When set, the in-process Hardhat network forks live mainnet state.
+          FORK_RPC_URL: ${{ secrets.MAINNET_FORK_RPC_URL }}
+          FORK_CHAIN_ID: '1'
+          # Dry-run wallet params (distinct placeholder multisigs). No real value
+          # is at stake — these only exercise the deploy + wiring on the fork.
+          SUPPLY_VAULT_WALLET: '0x1111111111111111111111111111111111111111'
+          FOUNDER_WALLET: '0x2222222222222222222222222222222222222222'
+          TREASURY_WALLET: '0x3333333333333333333333333333333333333333'
+          PREMINE_AMOUNT: '900000000'
+          FOUNDER_AMOUNT: '100000000'
+          TIMELOCK_MIN_DELAY: '172800'

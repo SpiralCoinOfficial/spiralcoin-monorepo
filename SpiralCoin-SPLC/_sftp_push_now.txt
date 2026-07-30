@@ -1,0 +1,23 @@
+cd /
+-mkdir api
+-mkdir funding
+-mkdir private
+-mkdir assets/js
+put api/_auth0_verify.php       /api/_auth0_verify.php
+put api/wallet-nonce.php        /api/wallet-nonce.php
+put api/bind-wallet.php         /api/bind-wallet.php
+put api/sponsor-webhook.php     /api/sponsor-webhook.php
+put api/sponsors-list.php       /api/sponsors-list.php
+put api/site-status.php         /api/site-status.php
+put assets/js/wallet-bind.js    /assets/js/wallet-bind.js
+put funding/sponsors.html       /funding/sponsors.html
+put index.html                  /index.html
+put private/sponsor-webhook-secret.txt  /private/sponsor-webhook-secret.txt
+chmod 644 /api/_auth0_verify.php
+chmod 644 /api/wallet-nonce.php
+chmod 644 /api/bind-wallet.php
+chmod 644 /api/sponsor-webhook.php
+chmod 644 /api/sponsors-list.php
+chmod 644 /api/site-status.php
+chmod 600 /private/sponsor-webhook-secret.txt
+bye

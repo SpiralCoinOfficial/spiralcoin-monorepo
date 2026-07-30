@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# Local env (contains API key — don't commit)
+.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db

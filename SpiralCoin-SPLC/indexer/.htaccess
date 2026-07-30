@@ -1,0 +1,8 @@
+# Deny everything by default
+Require all denied
+
+# Allow cron.php so external scheduler (cron-job.org) can trigger it.
+# Authentication is enforced inside cron.php via ?secret=... check.
+<Files "cron.php">
+  Require all granted
+</Files>

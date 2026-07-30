@@ -1,0 +1,7 @@
+option batch abort
+option confirm off
+open sftp://a2797960:%PWD%@access-5020476011.webspace-host.com/ -hostkey=*
+mkdir /app
+synchronize remote "C:\Users\Trisha Dreyer\Documents\ionos-migration\w3a-quick-start\dist" /app
+close
+exit

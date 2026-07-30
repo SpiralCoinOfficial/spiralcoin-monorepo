@@ -1,0 +1,30 @@
+diff --git a/node_modules/ethereumjs-util/dist/hash.js b/node_modules/ethereumjs-util/dist/hash.js
+index 016f177..75eb239 100644
+--- a/node_modules/ethereumjs-util/dist/hash.js
++++ b/node_modules/ethereumjs-util/dist/hash.js
+@@ -13,18 +13,21 @@ const helpers_1 = require("./helpers");
+  */
+ const keccak = function (a, bits = 256) {
+     (0, helpers_1.assertIsBuffer)(a);
++    // Node v22+/24 compat: ethereum-cryptography keccak* now returns Uint8Array.
++    // Wrap back to Buffer so downstream `.toString('hex')` and BigInt() work.
++    const _wrap = (u8) => Buffer.isBuffer(u8) ? u8 : Buffer.from(u8);
+     switch (bits) {
+         case 224: {
+-            return (0, keccak_1.keccak224)(a);
++            return _wrap((0, keccak_1.keccak224)(a));
+         }
+         case 256: {
+-            return (0, keccak_1.keccak256)(a);
++            return _wrap((0, keccak_1.keccak256)(a));
+         }
+         case 384: {
+-            return (0, keccak_1.keccak384)(a);
++            return _wrap((0, keccak_1.keccak384)(a));
+         }
+         case 512: {
+-            return (0, keccak_1.keccak512)(a);
++            return _wrap((0, keccak_1.keccak512)(a));
+         }
+         default: {
+             throw new Error(`Invald algorithm: keccak${bits}`);

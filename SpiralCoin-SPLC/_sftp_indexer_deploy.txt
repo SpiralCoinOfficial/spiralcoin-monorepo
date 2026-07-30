@@ -1,0 +1,37 @@
+option batch abort
+option confirm off
+open sftp://a2797960:%PWD%@access-5020476011.webspace-host.com/ -hostkey=*
+cd /
+
+# Push the PHP indexer (cron-only; .htaccess blocks web access)
+lcd "C:\Users\Trisha Dreyer\Documents\ionos-migration\indexer"
+cd /
+option exclude "config.php; *.log; .git*"
+mkdir indexer
+cd indexer
+put -delete db.php
+put -delete rpc.php
+put -delete abi.php
+put -delete index_transfers.php
+put -delete index_staking.php
+put -delete index_votes.php
+put -delete cron.php
+put -delete config.example.php
+put -delete .htaccess
+put -delete README.md
+
+# Push the public read-only PHP API
+cd /
+lcd "C:\Users\Trisha Dreyer\Documents\ionos-migration\api"
+mkdir api
+cd api
+put -delete _bootstrap.php
+put -delete balance.php
+put -delete transactions.php
+put -delete staking.php
+put -delete proposals.php
+put -delete status.php
+put -delete .htaccess
+
+close
+exit

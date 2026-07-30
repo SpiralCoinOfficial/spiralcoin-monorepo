@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Cookiebot CMP --><script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="83c385c8-b96d-4d3e-a75b-0f81f3d82de3" type="text/javascript" async></script>
+  <!-- Google tag (gtag.js) with Consent Mode v2 defaults -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MEMH1LPSD4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2: default to denied; Cookiebot will update on user choice.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'functionality_storage': 'granted',
+    'security_storage': 'granted',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-MEMH1LPSD4');
+</script>
+  <meta charset="UTF-8">
+  <script defer data-domain="spiralcoin.net" src="https://plausible.io/js/script.js"></script>
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://plausible.io https://unpkg.com https://cdn.jsdelivr.net https://stream.binance.us https://stream.binance.us:9443 https://api.binance.us https://www.googletagmanager.com https://*.googletagmanager.com https://consent.cookiebot.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https: https://www.google-analytics.com https://www.googletagmanager.com https://*.g.doubleclick.net; connect-src 'self' https://api.binance.us wss://stream.binance.us wss://stream.binance.us:9443 https://plausible.io https://api.coingecko.com https://*.g.alchemy.com wss://*.g.alchemy.com https://*.infura.io wss://*.infura.io https://www.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.googletagmanager.com https://*.g.doubleclick.net https://stats.g.doubleclick.net https://consent.cookiebot.com https://consentcdn.cookiebot.com; frame-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Markets — SpiralCoin Platform</title>
+  <meta name="description"
+    content="Live stocks, ETFs, options chains, bonds, and indices. NYSE, NASDAQ, CME real-time data.">
+  <link rel="icon" type="image/svg+xml" href="/assets/spiralcoin-mark.svg?v=20260526b">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
+  <script src="/assets/live-config.js" defer></script>
+  <style>
+    :root {
+      --bg: #060a10;
+      --surface: #0a1120;
+      --card: #0e1828;
+      --card2: #111e30;
+      --border: rgba(255, 255, 255, 0.065);
+      --border-g: rgba(201, 162, 39, 0.28);
+      --gold: #c9a227;
+      --gold-b: #e8c042;
+      --gold-dim: rgba(201, 162, 39, 0.12);
+      --text: #dce8f5;
+      --muted: #7a8fa8;
+      --dim: #4a5568;
+      --green: #00c97a;
+      --red: #ff3d5a;
+      --nav-h: 58px;
+      --r: 8px;
+      --r2: 14px;
+      --mono: 'IBM Plex Mono', monospace;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6
+    }
+
+    a {
+      color: var(--gold);
+      text-decoration: none
+    }
+
+    .container {
+      width: min(1240px, 95%);
+      margin: 0 auto
+    }
+
+    button {
+      cursor: pointer;
+      font-family: inherit
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      height: var(--nav-h);
+      background: rgba(6, 10, 16, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border)
+    }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0 1.2rem
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      font-weight: 700;
+      font-size: .97rem;
+      color: var(--text);
+      text-decoration: none
+    }
+
+    .nav-brand img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      box-shadow: 0 0 0 1.5px var(--border-g)
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: .15rem;
+      margin-left: .8rem
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: .88rem;
+      font-weight: 500;
+      padding: .42rem .75rem;
+      border-radius: 6px;
+      transition: color .15s, background .15s
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.06);
+      text-decoration: none
+    }
+
+    .nav-spacer {
+      flex: 1
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: .6rem
+    }
+
+    .nd {
+      position: relative
+    }
+
+    .nd-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: .83rem;
+      font-weight: 500;
+      padding: .38rem .6rem;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: .25rem;
+      transition: all .15s;
+      white-space: nowrap
+    }
+
+    .nd-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, .06)
+    }
+
+    .nd-menu {
+      position: absolute;
+      top: calc(100% + 5px);
+      left: 0;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      min-width: 185px;
+      padding: .3rem;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, .65);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-4px);
+      transition: all .15s;
+      z-index: 400
+    }
+
+    .nd:hover .nd-menu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0)
+    }
+
+    .nd-menu a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .44rem .72rem;
+      border-radius: 6px;
+      color: var(--text);
+      font-size: .83rem;
+      gap: .4rem;
+      transition: background .12s;
+      white-space: nowrap
+    }
+
+    .nd-menu a:hover {
+      background: var(--card2)
+    }
+
+    .nd-div {
+      border-top: 1px solid var(--border);
+      margin: .28rem 0
+    }
+
+    .soon-b {
+      font-size: .58rem;
+      background: rgba(201, 162, 39, .15);
+      color: var(--gold);
+      padding: .1rem .33rem;
+      border-radius: 100px;
+      font-weight: 700
+    }
+
+    .nav-sp {
+      flex: 1
+    }
+
+    .nav-act {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      flex-shrink: 0
+    }
+
+    .nw {
+      position: relative
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      padding: .38rem;
+      border-radius: 6px;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      align-items: center;
+      transition: color .15s
+    }
+
+    .icon-btn:hover {
+      color: var(--text)
+    }
+
+    .nb {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      background: var(--red);
+      color: #fff;
+      font-size: .52rem;
+      font-weight: 700;
+      min-width: 13px;
+      height: 13px;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 2px
+    }
+
+    .np {
+      position: absolute;
+      top: calc(100% + 6px);
+      right: 0;
+      width: 290px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .65);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-4px);
+      transition: all .15s;
+      z-index: 400
+    }
+
+    .np.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0)
+    }
+
+    .np-hdr {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .65rem .9rem;
+      border-bottom: 1px solid var(--border);
+      font-size: .82rem;
+      font-weight: 600
+    }
+
+    .ni {
+      display: flex;
+      gap: .6rem;
+      padding: .6rem .9rem;
+      border-bottom: 1px solid var(--border);
+      font-size: .79rem
+    }
+
+    .ni:last-child {
+      border-bottom: none
+    }
+
+    .ni:hover {
+      background: var(--card2)
+    }
+
+    .u-av {
+      width: 21px;
+      height: 21px;
+      border-radius: 50%;
+      background: var(--gold-dim);
+      border: 1px solid var(--border-g);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .67rem;
+      font-weight: 700;
+      color: var(--gold);
+      flex-shrink: 0
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      border-radius: var(--r);
+      padding: .52rem 1.1rem;
+      font-size: .86rem;
+      font-weight: 600;
+      border: none;
+      transition: all .18s
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border)
+    }
+
+    .btn-ghost:hover {
+      color: var(--text)
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #1a0f00
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-b)
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--border-g)
+    }
+
+    .btn-outline:hover {
+      background: var(--gold-dim)
+    }
+
+    .page-body {
+      padding-top: calc(var(--nav-h) + 2rem)
+    }
+
+    .page-header {
+      padding: 2.5rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem
+    }
+
+    .page-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      margin-bottom: .5rem
+    }
+
+    .page-sub {
+      color: var(--muted);
+      font-size: .97rem
+    }
+
+    .tabs {
+      display: flex;
+      gap: .3rem;
+      background: var(--card);
+      border-radius: var(--r);
+      padding: .3rem;
+      flex-wrap: wrap
+    }
+
+    .tab {
+      padding: .4rem .9rem;
+      border-radius: 6px;
+      font-size: .83rem;
+      font-weight: 500;
+      color: var(--muted);
+      border: none;
+      background: none;
+      transition: all .15s
+    }
+
+    .tab.active,
+    .tab:hover {
+      background: var(--card2);
+      color: var(--text)
+    }
+
+    .tab.active {
+      color: var(--gold)
+    }
+
+    .tab-panel {
+      display: none
+    }
+
+    .tab-panel.active {
+      display: block
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+      gap: .75rem
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700
+    }
+
+    .market-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: .5rem
+    }
+
+    .market-table th {
+      text-align: left;
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: .65rem 1rem;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap
+    }
+
+    .market-table td {
+      padding: .8rem 1rem;
+      border-bottom: 1px solid var(--border);
+      font-size: .88rem;
+      vertical-align: middle
+    }
+
+    .market-table tr:hover td {
+      background: var(--card2)
+    }
+
+    .market-table tr:last-child td {
+      border-bottom: none
+    }
+
+    .sym-cell {
+      font-weight: 700;
+      font-family: var(--mono)
+    }
+
+    .name-cell {
+      color: var(--muted);
+      font-size: .82rem
+    }
+
+    .price-cell {
+      font-family: var(--mono);
+      font-weight: 600;
+      text-align: right
+    }
+
+    .chg-cell {
+      text-align: right;
+      font-family: var(--mono);
+      font-size: .83rem;
+      padding: .2rem .5rem;
+      border-radius: 4px
+    }
+
+    .up {
+      color: var(--green)
+    }
+
+    .down {
+      color: var(--red)
+    }
+
+    .flat {
+      color: var(--muted)
+    }
+
+    .chg-up {
+      background: rgba(0, 201, 122, .13);
+      color: var(--green)
+    }
+
+    .chg-dn {
+      background: rgba(255, 61, 90, .13);
+      color: var(--red)
+    }
+
+    .chg-flat {
+      background: rgba(255, 255, 255, .05);
+      color: var(--muted)
+    }
+
+    .vol-cell {
+      text-align: right;
+      color: var(--muted);
+      font-size: .82rem;
+      font-family: var(--mono)
+    }
+
+    .table-wrap {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      overflow: hidden;
+      margin-bottom: 2rem
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .73rem;
+      color: var(--green);
+      background: rgba(0, 201, 122, .1);
+      border: 1px solid rgba(0, 201, 122, .2);
+      border-radius: 100px;
+      padding: .2rem .65rem
+    }
+
+    .live-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 1.5s infinite;
+      display: inline-block
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: .4
+      }
+    }
+
+    .options-note {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1rem 1.2rem;
+      font-size: .83rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem
+    }
+
+    .chart-wrap {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r2);
+      overflow: hidden;
+      margin-bottom: 2rem
+    }
+
+    .chart-bar {
+      padding: .75rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap
+    }
+
+    #markets-chart {
+      height: 300px
+    }
+
+    .risk-banner {
+      background: rgba(255, 61, 90, .07);
+      border: 1px solid rgba(255, 61, 90, .18);
+      border-radius: var(--r);
+      padding: .7rem 1rem;
+      font-size: .78rem;
+      color: #f87a8a;
+      margin-bottom: 2rem
+    }
+
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      margin-top: 3rem
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem
+    }
+
+    .footer-legal {
+      font-size: .74rem;
+      color: var(--dim)
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap
+    }
+
+    .footer-links a {
+      font-size: .8rem;
+      color: var(--dim)
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+      text-decoration: none
+    }
+
+    @media(max-width:640px) {
+
+      .market-table th:nth-child(n+4),
+      .market-table td:nth-child(n+4) {
+        display: none
+      }
+    }
+  </style>
+  <style id="splc-live-wire">
+    /* SPLC_LIVE_WIRE_v2 - professional ticker bar, flush under nav */
+    .status-strip,
+    .ticker-bar,
+    .splc-ticker-bar {
+      position: fixed !important;
+      top: var(--nav-h, 58px) !important;
+      left: 0 !important;
+      right: 0 !important;
+      margin: 0 !important;
+      z-index: 195 !important;
+      height: 36px !important;
+      background: rgba(6, 10, 16, 0.94) !important;
+      border-top: 0 !important;
+      border-bottom: 1px solid rgba(201, 162, 39, 0.22) !important;
+      backdrop-filter: blur(14px) saturate(1.15);
+      -webkit-backdrop-filter: blur(14px) saturate(1.15);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+    }
+
+    .strip-scroll {
+      gap: 3.25rem !important;
+      padding: 0 2.5rem !important;
+      animation-duration: 90s !important;
+      will-change: transform;
+    }
+
+    .strip-item {
+      gap: 0.65rem !important;
+      font-size: 0.82rem !important;
+      letter-spacing: 0.01em;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: 'tnum' 1, 'lnum' 1;
+    }
+
+    .strip-sym {
+      color: #c9a227 !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .strip-price {
+      color: #f4f6fb !important;
+      font-weight: 500 !important;
+      min-width: 4ch;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .strip-item [data-field="chg"],
+    .strip-item [data-field="change"],
+    .strip-item [data-field="pct"] {
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+      min-width: 5ch;
+      text-align: right;
+    }
+
+    .strip-item [data-field="chg"].up,
+    .strip-item [data-field="change"].up,
+    .strip-item [data-field="pct"].up {
+      color: #00c97a;
+    }
+
+    .strip-item [data-field="chg"].down,
+    .strip-item [data-field="change"].down,
+    .strip-item [data-field="pct"].down {
+      color: #ff3d5a;
+    }
+
+    .strip-dot {
+      box-shadow: 0 0 6px rgba(0, 201, 122, 0.65);
+    }
+
+    /* Push first content section down so it isn't hidden behind nav + strip */
+    body>main,
+    body>.hero,
+    body>section:first-of-type,
+    .hero:first-of-type,
+    main>.hero:first-child {
+      padding-top: calc(var(--nav-h, 58px) + 36px + 8px) !important;
+    }
+
+    @media (max-width: 720px) {
+      .strip-scroll {
+        gap: 2rem !important;
+        padding: 0 1rem !important;
+      }
+
+      .strip-item {
+        font-size: 0.74rem !important;
+      }
+    }
+  </style>
+  <script defer src="/assets/live-feed.js?v=20260526d"></script>
+  <script defer src="/assets/live-wire.js?v=20260526d"></script>
+  <link rel="stylesheet" href="/assets/galaxy-bg.css?v=20260526e">
+  <script defer src="/assets/galaxy-bg.js?v=20260526i"></script>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#c9a227">
+  <script defer src="/assets/pwa-install.js?v=20260526h"></script>
+<script src="/assets/js/utm-capture.js?v=20260528a" defer></script>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav-inner"><a href="/" class="nav-brand"><img src="/assets/spiralcoin-mark.svg?v=20260526b" alt=""
+          width="28" height="28" decoding="async">SpiralCoin</a>
+      <div class="nav-links"><a href="/dashboard.html">Dashboard</a>
+        <div class="nd"><button class="nd-btn">Markets ▾</button>
+          <div class="nd-menu"><a href="/markets.html" style="color:var(--gold)">📊 Overview</a><a href="/crypto.html">₿
+              Crypto</a><a href="/charts.html">📈 Charts</a><a href="/analytics.html">🔬 Analytics</a><a
+              href="/news.html">📰 News</a>
+            <div class="nd-div"></div><a href="/stocks-coming-soon.html">📉 Stocks/ETFs <span
+                class="soon-b">Soon</span></a>
+          </div>
+        </div>
+        <div class="nd"><button class="nd-btn">Trade ▾</button>
+          <div class="nd-menu"><a href="/trade.html">🔄 Trade Crypto</a><a href="/portfolio.html">💼 Portfolio</a><a
+              href="/watchlist.html">⭐ Watchlists</a></div>
+        </div><a href="/community.html">Community</a><a href="/splc.html">SPLC</a><a href="/pricing.html">Pricing</a><a
+          href="/app/" class="splc-install-btn" style="color:var(--gold)">&#x2B07; Install App</a>
+      </div>
+      <div class="nav-sp"></div>
+      <div class="nav-act">
+        <div class="nd" id="authLinks" style="display:none"><button class="nd-btn"><span class="u-av"
+              id="uAv">U</span><span id="uName">User</span> ▾</button>
+          <div class="nd-menu" style="right:0;left:auto"><a href="/account.html">👤 Account</a><a
+              href="/dashboard.html">📊 Dashboard</a><a href="/settings.html">⚙️ Settings</a>
+            <div class="nd-div"></div><a href="#" onclick="doSignOut()" style="color:var(--red)">🚪 Sign Out</a>
+          </div>
+        </div>
+        <div id="guestLinks" style="display:flex;gap:.45rem"><a href="/signup.html" class="btn btn-ghost"
+            style="font-size:.82rem;padding:.38rem .75rem">Log In</a><a href="/signup.html?plan=pro"
+            class="btn btn-gold" style="font-size:.82rem;padding:.38rem .75rem">Get Pro ⚡</a></div>
+      </div>
+    </div>
+  </nav>
+  <div class="page-body">
+    <div class="container">
+      <div class="page-header">
+        <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:.75rem">
+          <h1 class="page-title">Live Markets</h1>
+          <div class="live-badge">Live Data</div>
+        </div>
+        <p class="page-sub">Equities, ETFs, options, bonds, and macro indices — all in one place. Data via Yahoo Finance
+          (free tier) and Binance for crypto.</p>
+      </div>
+      <div class="risk-banner">⚠ Market data is for informational and analytical purposes only. Trading involves risk of
+        loss. Not financial advice. SpiralCoin is not a registered broker-dealer.</div>
+      <div class="tabs" id="marketsTabs" style="margin-bottom:2rem">
+        <button class="tab active" data-tab="equities">Equities</button>
+        <button class="tab" data-tab="etfs">ETFs</button>
+        <button class="tab" data-tab="indices">Indices</button>
+        <button class="tab" data-tab="options">Options (Sample)</button>
+        <button class="tab" data-tab="bonds">Bonds &amp; Rates</button>
+      </div>
+      <!-- EQUITIES -->
+      <div class="tab-panel active" id="tab-equities">
+        <div class="chart-wrap">
+          <div class="chart-bar">
+            <strong id="eq-sym">AAPL</strong>
+            <span style="font-family:var(--mono);font-size:1rem;color:var(--gold)" id="eq-price">—</span>
+            <span style="font-size:.82rem;padding:.2rem .5rem;border-radius:4px" id="eq-chg">—</span>
+          </div>
+          <div id="markets-chart"></div>
+        </div>
+        <div class="table-wrap">
+          <table class="market-table" id="equityTable">
+            <thead>
+              <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Change</th>
+                <th>% Chg</th>
+                <th>Volume</th>
+              </tr>
+            </thead>
+            <tbody id="equityBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <!-- ETFs -->
+      <div class="tab-panel" id="tab-etfs">
+        <div class="table-wrap">
+          <table class="market-table">
+            <thead>
+              <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Change</th>
+                <th>% Chg</th>
+                <th>AUM / Note</th>
+              </tr>
+            </thead>
+            <tbody id="etfBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <!-- INDICES -->
+      <div class="tab-panel" id="tab-indices">
+        <div class="table-wrap">
+          <table class="market-table">
+            <thead>
+              <tr>
+                <th>Index</th>
+                <th>Name</th>
+                <th>Level</th>
+                <th>Change</th>
+                <th>% Chg</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+            <tbody id="indexBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <!-- OPTIONS -->
+      <div class="tab-panel" id="tab-options">
+        <div class="options-note">📋 <strong>Options Chain — AAPL (Sample Data)</strong>. Live options flow, Greeks, and
+          IV data available with <a href="/pricing.html">Pro subscription</a>. The table below shows representative
+          structure — connect a broker API to populate live strikes.</div>
+        <div class="table-wrap">
+          <table class="market-table">
+            <thead>
+              <tr>
+                <th>Strike</th>
+                <th>Type</th>
+                <th>Expiry</th>
+                <th>Last</th>
+                <th>Bid</th>
+                <th>Ask</th>
+                <th>IV</th>
+                <th>Delta</th>
+                <th>Gamma</th>
+                <th>Theta</th>
+              </tr>
+            </thead>
+            <tbody id="optionsBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <!-- BONDS -->
+      <div class="tab-panel" id="tab-bonds">
+        <div class="options-note">🏦 <strong>US Treasury Yield Curve &amp; Rates</strong>. Add your free <a
+            href="https://fred.stlouisfed.org/docs/api/api_key.html" target="_blank" rel="noopener">FRED API key</a> to
+          load real-time Fed data.</div>
+        <div class="table-wrap">
+          <table class="market-table">
+            <thead>
+              <tr>
+                <th>Instrument</th>
+                <th>Ticker</th>
+                <th>Yield / Rate</th>
+                <th>Prev</th>
+                <th>Change</th>
+                <th>Source</th>
+              </tr>
+            </thead>
+            <tbody id="bondsBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">
+        <div style="font-size:.75rem;color:var(--dim)"><a href="/cookies.html" style="color:inherit;text-decoration:underline;margin-right:.5rem">Cookies</a></div>
+        <div class="footer-legal">© 2026 SpiralCoin (SPLC). Market data for informational purposes only. Not financial
+          advice.</div>
+        <div class="footer-links">
+          <a href="/">Home</a><a href="/markets.html">Markets</a><a href="/crypto.html">Crypto</a>
+          <a href="/splc.html">SPLC</a><a href="/pricing.html">Pricing</a><a href="/signup.html">Account</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const EQUITIES = [{ sym: 'AAPL', name: 'Apple Inc.' }, { sym: 'MSFT', name: 'Microsoft Corp.' }, { sym: 'NVDA', name: 'NVIDIA Corp.' }, { sym: 'GOOGL', name: 'Alphabet Inc.' }, { sym: 'AMZN', name: 'Amazon.com Inc.' }, { sym: 'TSLA', name: 'Tesla Inc.' }, { sym: 'META', name: 'Meta Platforms' }, { sym: 'JPM', name: 'JPMorgan Chase' }, { sym: 'V', name: 'Visa Inc.' }, { sym: 'GS', name: 'Goldman Sachs' }, { sym: 'BAC', name: 'Bank of America' }, { sym: 'WMT', name: 'Walmart Inc.' }, { sym: 'UNH', name: 'UnitedHealth Group' }, { sym: 'XOM', name: 'Exxon Mobil' }, { sym: 'JNJ', name: 'Johnson & Johnson' }];
+    const ETFS = [{ sym: 'SPY', name: 'SPDR S&P 500 ETF', note: '$550B+ AUM' }, { sym: 'QQQ', name: 'Invesco Nasdaq-100', note: '$300B+ AUM' }, { sym: 'IWM', name: 'iShares Russell 2000', note: 'Small Cap' }, { sym: 'GLD', name: 'SPDR Gold Shares', note: 'Gold' }, { sym: 'TLT', name: 'iShares 20Y+ Treasury', note: 'Bonds' }, { sym: 'VTI', name: 'Vanguard Total Mkt', note: 'Broad Market' }, { sym: 'ARKK', name: 'ARK Innovation ETF', note: 'Innovation' }, { sym: 'XLF', name: 'Financial Select SPDR', note: 'Financials' }, { sym: 'SOXX', name: 'iShares Semiconductor', note: 'Semis' }, { sym: 'XLE', name: 'Energy Select SPDR', note: 'Energy' }];
+    const INDICES = [{ sym: '%5EGSPC', name: 'S&P 500', type: 'Equity' }, { sym: '%5EIXIC', name: 'NASDAQ Composite', type: 'Equity' }, { sym: '%5EDJI', name: 'Dow Jones Industrial', type: 'Equity' }, { sym: '%5ERUT', name: 'Russell 2000', type: 'Equity' }, { sym: '%5EVIX', name: 'CBOE Volatility', type: 'Volatility' }, { sym: 'GC%3DF', name: 'Gold Futures', type: 'Commodity' }, { sym: 'CL%3DF', name: 'Crude Oil Futures', type: 'Commodity' }, { sym: 'EURUSD%3DX', name: 'EUR/USD', type: 'FX' }];
+    const BONDS_DATA = [{ name: '2-Year Treasury', ticker: 'DGS2', yield: '—', prev: '—', type: 'US Treasury' }, { name: '5-Year Treasury', ticker: 'DGS5', yield: '—', prev: '—', type: 'US Treasury' }, { name: '10-Year Treasury', ticker: 'DGS10', yield: '—', prev: '—', type: 'US Treasury' }, { name: '30-Year Treasury', ticker: 'DGS30', yield: '—', prev: '—', type: 'US Treasury' }, { name: 'Fed Funds Rate', ticker: 'FEDFUNDS', yield: '—', prev: '—', type: 'Federal Reserve' }, { name: 'CPI (YoY)', ticker: 'CPIAUCSL', yield: '—', prev: '—', type: 'Inflation' }, { name: 'PCE Price Index', ticker: 'PCEPI', yield: '—', prev: '—', type: 'Inflation' }, { name: 'M2 Money Supply', ticker: 'M2SL', yield: '—', prev: '—', type: 'Monetary' }];
+    const OPTIONS_SAMPLE = [{ strike: 180, type: 'CALL', expiry: '2025-01-17', last: 12.50, bid: 12.40, ask: 12.60, iv: '28%', delta: '.62', gamma: '.04', theta: '-.08' }, { strike: 185, type: 'CALL', expiry: '2025-01-17', last: 8.20, bid: 8.10, ask: 8.30, iv: '26%', delta: '.52', gamma: '.05', theta: '-.09' }, { strike: 190, type: 'CALL', expiry: '2025-01-17', last: 4.90, bid: 4.80, ask: 5.00, iv: '25%', delta: '.40', gamma: '.06', theta: '-.10' }, { strike: 195, type: 'CALL', expiry: '2025-01-17', last: 2.10, bid: 2.00, ask: 2.20, iv: '24%', delta: '.25', gamma: '.05', theta: '-.08' }, { strike: 180, type: 'PUT', expiry: '2025-01-17', last: 3.20, bid: 3.10, ask: 3.30, iv: '29%', delta: '-.38', gamma: '.04', theta: '-.07' }, { strike: 185, type: 'PUT', expiry: '2025-01-17', last: 5.80, bid: 5.70, ask: 5.90, iv: '27%', delta: '-.48', gamma: '.05', theta: '-.09' }, { strike: 190, type: 'PUT', expiry: '2025-01-17', last: 9.40, bid: 9.30, ask: 9.50, iv: '26%', delta: '-.60', gamma: '.06', theta: '-.11' }, { strike: 195, type: 'PUT', expiry: '2025-01-17', last: 14.20, bid: 14.10, ask: 14.30, iv: '28%', delta: '-.75', gamma: '.04', theta: '-.10' }];
+    let mchart = null, mseries = null;
+    document.addEventListener('DOMContentLoaded', () => {
+      initMarketsChart(); buildEquityTable(); buildETFTable(); buildIndexTable(); buildOptionsTable(); buildBondsTable();
+      setupTabs(); fetchAllEquities(); fetchAllETFs(); fetchAllIndices();
+    });
+    function initMarketsChart() {
+      mchart = LightweightCharts.createChart(document.getElementById('markets-chart'), { width: document.getElementById('markets-chart').offsetWidth || 900, height: 300, layout: { background: { type: 'solid', color: '#0e1828' }, textColor: '#7a8fa8' }, grid: { vertLines: { color: 'rgba(255,255,255,0.04)' }, horzLines: { color: 'rgba(255,255,255,0.04)' } }, crosshair: { mode: LightweightCharts.CrosshairMode.Normal }, rightPriceScale: { borderColor: 'rgba(255,255,255,0.08)' }, timeScale: { borderColor: 'rgba(255,255,255,0.08)', timeVisible: true } });
+      mseries = mchart.addCandlestickSeries({ upColor: '#00c97a', downColor: '#ff3d5a', borderVisible: false, wickUpColor: '#00c97a', wickDownColor: '#ff3d5a' });
+      loadEquityChart('AAPL');
+    }
+    async function loadEquityChart(sym) {
+      try {
+        document.getElementById('eq-sym').textContent = sym;
+        const url = `/api/yahoo.php?op=chart&symbol=${encodeURIComponent(sym)}&interval=5m&range=5d`;
+        const r = await fetch(url, { signal: AbortSignal.timeout(8000) });
+        const d = await r.json(); const q = d.chart.result[0];
+        const ts = q.timestamp; const qt = q.indicators.quote[0];
+        const candles = ts.map((t, i) => ({ time: t, open: qt.open[i] || 0, high: qt.high[i] || 0, low: qt.low[i] || 0, close: qt.close[i] || 0 })).filter(c => c.open > 0);
+        mseries.setData(candles); mchart.timeScale().fitContent();
+        const last = candles[candles.length - 1]; if (last) { document.getElementById('eq-price').textContent = '$' + last.close.toFixed(2); }
+      } catch (e) { }
+    }
+    function buildEquityTable() {
+      document.getElementById('equityBody').innerHTML = EQUITIES.map(s => `<tr onclick="loadEquityChart('${s.sym}')" style="cursor:pointer"><td class="sym-cell">${s.sym}</td><td class="name-cell">${s.name}</td><td class="price-cell" id="ep-${s.sym}">—</td><td><span class="chg-cell chg-flat" id="ec-${s.sym}">—</span></td><td><span class="chg-cell chg-flat" id="ep2-${s.sym}">—</span></td><td class="vol-cell" id="ev-${s.sym}">—</td></tr>`).join('');
+    }
+    function buildETFTable() {
+      document.getElementById('etfBody').innerHTML = ETFS.map(s => `<tr><td class="sym-cell">${s.sym}</td><td class="name-cell">${s.name}</td><td class="price-cell" id="etfp-${s.sym}">—</td><td><span class="chg-cell chg-flat" id="etfc-${s.sym}">—</span></td><td><span class="chg-cell chg-flat" id="etfp2-${s.sym}">—</span></td><td class="vol-cell">${s.note}</td></tr>`).join('');
+    }
+    function buildIndexTable() {
+      document.getElementById('indexBody').innerHTML = INDICES.map(s => `<tr><td class="sym-cell">${decodeURIComponent(s.sym).replace('%5E', '^').replace('%3D', '=')}</td><td class="name-cell">${s.name}</td><td class="price-cell" id="idxp-${s.sym}">—</td><td><span class="chg-cell chg-flat" id="idxc-${s.sym}">—</span></td><td><span class="chg-cell chg-flat" id="idxp2-${s.sym}">—</span></td><td class="vol-cell">${s.type}</td></tr>`).join('');
+    }
+    function buildOptionsTable() {
+      document.getElementById('optionsBody').innerHTML = OPTIONS_SAMPLE.map(o => `<tr><td class="sym-cell">$${o.strike}</td><td style="color:${o.type === 'CALL' ? 'var(--green)' : 'var(--red)'};font-weight:600">${o.type}</td><td style="font-size:.8rem;color:var(--muted)">${o.expiry}</td><td class="price-cell">$${o.last}</td><td class="vol-cell">$${o.bid}</td><td class="vol-cell">$${o.ask}</td><td class="vol-cell">${o.iv}</td><td class="vol-cell">${o.delta}</td><td class="vol-cell">${o.gamma}</td><td class="vol-cell">${o.theta}</td></tr>`).join('');
+    }
+    function buildBondsTable() {
+      document.getElementById('bondsBody').innerHTML = BONDS_DATA.map(b => `<tr><td class="sym-cell" style="font-size:.85rem">${b.name}</td><td class="name-cell">${b.ticker}</td><td class="price-cell" id="bp-${b.ticker}">—</td><td class="vol-cell">—</td><td><span class="chg-cell chg-flat">—</span></td><td class="vol-cell">${b.type}</td></tr>`).join('');
+    }
+    async function fetchAllEquities() {
+      for (const s of EQUITIES) {
+        try {
+          const url = `/api/yahoo.php?op=chart&symbol=${encodeURIComponent(s.sym)}&interval=1d&range=5d`;
+          const r = await fetch(url, { signal: AbortSignal.timeout(8000) });
+          const d = await r.json(); const meta = d.chart.result[0].meta;
+          const price = meta.regularMarketPrice || meta.previousClose;
+          const prev = meta.chartPreviousClose || meta.previousClose;
+          const chgAbs = price - prev; const chgPct = prev ? ((price - prev) / prev * 100) : 0;
+          const ep = document.getElementById('ep-' + s.sym);
+          const ec = document.getElementById('ec-' + s.sym);
+          const ep2 = document.getElementById('ep2-' + s.sym);
+          if (ep) ep.textContent = '$' + price.toFixed(2);
+          if (ec) { ec.textContent = (chgAbs >= 0 ? '+' : '') + chgAbs.toFixed(2); setChg(ec, chgAbs); }
+          if (ep2) { ep2.textContent = (chgPct >= 0 ? '+' : '') + chgPct.toFixed(2) + '%'; setChg(ep2, chgPct); }
+        } catch (e) { } await sleep(150);
+      }
+    }
+    async function fetchAllETFs() {
+      for (const s of ETFS) {
+        try {
+          const url = `/api/yahoo.php?op=chart&symbol=${encodeURIComponent(s.sym)}&interval=1d&range=5d`;
+          const r = await fetch(url, { signal: AbortSignal.timeout(8000) });
+          const d = await r.json(); const meta = d.chart.result[0].meta;
+          const price = meta.regularMarketPrice || meta.previousClose;
+          const prev = meta.chartPreviousClose || meta.previousClose;
+          const chgAbs = price - prev; const chgPct = prev ? ((price - prev) / prev * 100) : 0;
+          const p = document.getElementById('etfp-' + s.sym); const c = document.getElementById('etfc-' + s.sym); const p2 = document.getElementById('etfp2-' + s.sym);
+          if (p) p.textContent = '$' + price.toFixed(2);
+          if (c) { c.textContent = (chgAbs >= 0 ? '+' : '') + chgAbs.toFixed(2); setChg(c, chgAbs); }
+          if (p2) { p2.textContent = (chgPct >= 0 ? '+' : '') + chgPct.toFixed(2) + '%'; setChg(p2, chgPct); }
+        } catch (e) { } await sleep(150);
+      }
+    }
+    async function fetchAllIndices() {
+      for (const s of INDICES) {
+        try {
+          const raw = decodeURIComponent(s.sym);
+          const url = `/api/yahoo.php?op=chart&symbol=${encodeURIComponent(raw)}&interval=1d&range=5d`;
+          const r = await fetch(url, { signal: AbortSignal.timeout(8000) });
+          const d = await r.json(); const meta = d.chart.result[0].meta;
+          const price = meta.regularMarketPrice || meta.previousClose;
+          const prev = meta.chartPreviousClose || meta.previousClose;
+          const chgAbs = price - prev; const chgPct = prev ? ((price - prev) / prev * 100) : 0;
+          const p = document.getElementById('idxp-' + s.sym); const c = document.getElementById('idxc-' + s.sym); const p2 = document.getElementById('idxp2-' + s.sym);
+          if (p) p.textContent = price.toFixed(2);
+          if (c) { c.textContent = (chgAbs >= 0 ? '+' : '') + chgAbs.toFixed(2); setChg(c, chgAbs); }
+          if (p2) { p2.textContent = (chgPct >= 0 ? '+' : '') + chgPct.toFixed(2) + '%'; setChg(p2, chgPct); }
+        } catch (e) { } await sleep(150);
+      }
+    }
+    function setChg(el, v) { el.classList.remove('chg-up', 'chg-dn', 'chg-flat'); el.classList.add(v > 0.01 ? 'chg-up' : v < -0.01 ? 'chg-dn' : 'chg-flat'); }
+    function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+    function setupTabs() { document.querySelectorAll('#marketsTabs .tab').forEach(t => { t.addEventListener('click', () => { document.querySelectorAll('#marketsTabs .tab').forEach(x => x.classList.remove('active')); document.querySelectorAll('.tab-panel').forEach(x => x.classList.remove('active')); t.classList.add('active'); document.getElementById('tab-' + t.dataset.tab).classList.add('active'); }); }); }
+    window.addEventListener('resize', () => { if (mchart) mchart.resize(document.getElementById('markets-chart').offsetWidth, 300); });
+  </script>
+<script src="/assets/js/ga-events.js?v=20260528a" defer></script>
+</body>
+
+</html>

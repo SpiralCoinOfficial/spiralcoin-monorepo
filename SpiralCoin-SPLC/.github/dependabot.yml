@@ -1,0 +1,23 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/contracts"
+    schedule:
+      interval: "weekly"
+    # These packages have no upstream fix available — they are transitive
+    # dev-only dependencies of hardhat/ethers/mocha used solely for local
+    # smart-contract compilation and deployment. They are never bundled into
+    # the production website.
+    ignore:
+      - dependency-name: "ws"
+        reason: "No fix available; dev-only hardhat/ethers transitive dep"
+      - dependency-name: "undici"
+        reason: "No fix available; dev-only hardhat transitive dep"
+      - dependency-name: "elliptic"
+        reason: "No fix available; dev-only @ethersproject transitive dep"
+      - dependency-name: "cookie"
+        reason: "No fix available; dev-only @sentry/node transitive dep"
+      - dependency-name: "tmp"
+        reason: "No fix available; dev-only solc transitive dep"
+      - dependency-name: "inflight"
+        reason: "Deprecated but no CVE; dev-only transitive dep"

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Founding Sponsors — SpiralCoin</title>
+    <meta name="description"
+        content="The SpiralCoin founding sponsor wall. Recognition for the contributors who funded the audit, liquidity bootstrap, and first six months of development.">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://www.spiralcoin.net/funding/sponsors.html">
+    <link rel="icon" type="image/svg+xml" href="/assets/spiralcoin-mark.svg?v=20260528a">
+    <meta property="og:title" content="SpiralCoin Founding Sponsors">
+    <meta property="og:description" content="Recognition wall for the founding sponsors of SpiralCoin.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.spiralcoin.net/funding/sponsors.html">
+    <meta property="og:image" content="https://www.spiralcoin.net/spiralcoin_og_1200x630.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #060a10;
+            --surface: #0a1120;
+            --card: #0e1828;
+            --border: rgba(255, 255, 255, 0.065);
+            --gold: #c9a227;
+            --gold-b: #e8c042;
+            --text: #dce8f5;
+            --muted: #7a8fa8;
+            --dim: #4a5568;
+            --r: 8px;
+            --r2: 14px;
+            --mono: 'IBM Plex Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            font-family: Inter, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6
+        }
+
+        a {
+            color: var(--gold);
+            text-decoration: none
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.2rem
+        }
+
+        header.site {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2rem;
+            background: linear-gradient(180deg, rgba(14, 18, 32, 0.95), transparent);
+        }
+
+        header.site .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            color: var(--text);
+            font-weight: 700;
+            font-size: 1.05rem
+        }
+
+        .brand img {
+            width: 28px;
+            height: 28px
+        }
+
+        nav.top a {
+            margin-left: 1.2rem;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        nav.top a:hover {
+            color: var(--gold)
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: var(--gold);
+            letter-spacing: .01em;
+            margin-bottom: .5rem
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            color: var(--text);
+            margin: 2rem 0 1rem
+        }
+
+        .lead {
+            color: var(--muted);
+            font-size: 1.05rem;
+            max-width: 720px;
+            margin-bottom: 2rem
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: .8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .stat {
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            padding: 1rem 1.2rem;
+        }
+
+        .stat-label {
+            font-size: .65rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--dim)
+        }
+
+        .stat-value {
+            font-family: var(--mono);
+            font-size: 1.2rem;
+            margin-top: .3rem;
+            color: var(--text)
+        }
+
+        .progress {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            height: 14px;
+            overflow: hidden;
+            margin: 0 0 2rem;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--gold), var(--gold-b));
+            transition: width .8s ease;
+        }
+
+        .sponsor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: .8rem;
+            margin: 1rem 0 3rem;
+        }
+
+        .sponsor-grid:empty::before {
+            content: "Be the first founding sponsor. The wall starts with you.";
+            display: block;
+            padding: 2rem;
+            text-align: center;
+            color: var(--muted);
+            border: 1px dashed var(--border);
+            border-radius: var(--r2);
+            grid-column: 1 / -1;
+        }
+
+        .cta-row {
+            display: flex;
+            gap: .8rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem
+        }
+
+        .btn {
+            display: inline-block;
+            padding: .7rem 1.2rem;
+            border-radius: var(--r);
+            font-weight: 600;
+            font-size: .95rem;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text);
+            transition: all .2s;
+        }
+
+        .btn:hover {
+            border-color: var(--gold)
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold), var(--gold-b));
+            color: #1a1a1a;
+            border-color: var(--gold);
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-1px);
+            text-decoration: none
+        }
+
+        .disclaimer {
+            font-size: .82rem;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            padding-top: 1.2rem;
+            margin-top: 2rem;
+            line-height: 1.7;
+        }
+
+        footer.site {
+            margin-top: 3rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: .85rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site">
+        <div class="container">
+            <a class="brand" href="/">
+                <img src="/assets/spiralcoin-mark.svg?v=20260528a" alt="SpiralCoin">
+                <span>SpiralCoin</span>
+            </a>
+            <nav class="top">
+                <a href="/splc.html">SPLC Token</a>
+                <a href="/whitepaper.html">Whitepaper</a>
+                <a href="https://github.com/sponsors/SpiralCoin-Official" rel="noopener" target="_blank">Become a
+                    Sponsor</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Founding Sponsors</h1>
+        <p class="lead">
+            Recognition for the contributors funding the SpiralCoin audit, liquidity bootstrap,
+            and first six months of development. Every sponsorship is on-chain via GitHub Sponsors
+            and verifiable in the public webhook log.
+        </p>
+
+        <div class="stat-grid">
+            <div class="stat">
+                <div class="stat-label">Goal</div>
+                <div class="stat-value">$120,000 · 10 sponsors</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Raised</div>
+                <div class="stat-value" data-splc-raised>$0 / $120,000</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Sponsors</div>
+                <div class="stat-value" data-splc-count>0 / 10 founding sponsors</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Tier</div>
+                <div class="stat-value">$12,000 one-time · founding</div>
+            </div>
+        </div>
+
+        <div class="progress" aria-label="Goal progress">
+            <div class="progress-bar" data-splc-bar role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+
+        <h2>The Wall</h2>
+        <div class="sponsor-grid" data-splc-grid></div>
+
+        <h2>Where the funding goes</h2>
+        <div class="stat-grid">
+            <div class="stat">
+                <div class="stat-label">Smart-contract audit</div>
+                <div class="stat-value">$40,000</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">SPLC/USDC liquidity</div>
+                <div class="stat-value">$20,000</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">6 months development</div>
+                <div class="stat-value">$45,000</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Infrastructure / legal</div>
+                <div class="stat-value">$15,000</div>
+            </div>
+        </div>
+
+        <div class="cta-row">
+            <a class="btn btn-gold" href="https://github.com/sponsors/SpiralCoin-Official" target="_blank"
+                rel="noopener" data-ga-event="sponsor_cta_click" data-ga-label="sponsors_wall_top">Become a Founding
+                Sponsor</a>
+            <a class="btn" href="/splc.html#contributors">View token details</a>
+            <a class="btn" href="mailto:sponsor@spiralcoin.net?subject=SpiralCoin%20Sponsorship">Contact the team</a>
+        </div>
+
+        <div class="disclaimer">
+            <strong style="color:var(--text)">Disclosure.</strong>
+            Sponsorships are donations toward bootstrapping public on-chain infrastructure.
+            They are <strong>not</strong> investments, equity, securities, tokens, profit-share,
+            or revenue-share entitlements. No financial return is offered or implied.
+            Recognition is provided on this page and on the SpiralCoin platform; recognition
+            is not a security or financial instrument.
+            <br><br>
+            Sponsors can request removal from this public wall by emailing
+            <a href="mailto:sponsor@spiralcoin.net">sponsor@spiralcoin.net</a>. The funding
+            total will remain accurate; only the display name and avatar will be hidden.
+            <br><br>
+            <em>Trading involves risk. Past performance does not guarantee future results.</em>
+        </div>
+    </main>
+
+    <footer class="site">
+        <div class="container">
+            &copy; <span id="year"></span> SpiralCoin Official ·
+            <a href="/">Home</a> ·
+            <a href="/whitepaper.html">Whitepaper</a> ·
+            <a href="/cookies.html">Cookies</a>
+        </div>
+    </footer>
+
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <script src="/assets/js/sponsor-widget.js?v=20260528a" defer></script>
+</body>
+
+</html>

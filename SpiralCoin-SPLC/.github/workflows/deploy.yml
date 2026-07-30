@@ -1,0 +1,72 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+# GITHUB_TOKEN needs write access to push to gh-pages branch
+permissions:
+  contents: write
+
+jobs:
+  deploy-site:
+    name: Publish site to gh-pages
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history so peaceiris can detect changes
+
+      # ── Stage only publishable site assets ───────────────────────────────
+      # Excludes: dev tooling, smart contracts, SFTP logs, scripts, docs
+      # Preserves: all HTML/CSS/JS, sitemap, robots.txt, CNAME, images, app/
+      # ─────────────────────────────────────────────────────────────────────
+      - name: Prepare site files
+        run: |
+          mkdir -p _site
+
+          # Copy CNAME first (required for custom domain on gh-pages)
+          cp CNAME _site/
+
+          # Copy all publishable root-level files
+          rsync -av \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='node_modules/' \
+            --exclude='contracts/' \
+            --exclude='alchemy-demo/' \
+            --exclude='w3a-quick-start/' \
+            --exclude='IONOS/' \
+            --exclude='SPLC/' \
+            --exclude='npm/' \
+            --exclude='*.sh' \
+            --exclude='*.bat' \
+            --exclude='*.py' \
+            --exclude='*.md' \
+            --exclude='_sftp_*.txt' \
+            --exclude='sftp_*.txt' \
+            --exclude='sftp_*.txt' \
+            --exclude='_site/' \
+            --exclude='CNAME' \
+            ./ _site/
+
+          echo "=== Site files staged ==="
+          find _site -maxdepth 2 | sort
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages
+          # Preserve any assets committed directly to gh-pages (e.g. /app/ dapp)
+          keep_files: true
+          commit_message: "deploy: sync site from main (${{ github.sha }})"
