@@ -1,0 +1,14 @@
+{
+  "name": "spiralcoin-frontend",
+  "version": "1.0.0",
+  "description": "SpiralCoin frontend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "mkdir -p build && cp -r public/* build/"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "dotenv": "^17.2.3"
+  }
+}
