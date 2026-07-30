@@ -2,12 +2,12 @@
   "name": "spiralcoin-monorepo",
   "private": true,
   "workspaces": [
-    "*",
-    "spiralcoin*",
-    "SpiralCoin*"
+    "SpiralCoin-SPLC",
+    "spiralcoin-frontend",
+    "spiralcoin/marketfeed"
   ],
   "scripts": {
-    "build:all": "npm run build --workspaces",
+    "build:all": "npm run build --workspaces --if-present",
     "test:contracts": "npm test --workspace=SpiralCoin-SPLC"
   }
 }
