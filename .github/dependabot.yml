@@ -1,0 +1,45 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    auto-merge-options:
+      merge-method: "squash"
+      auto-merge-type: "all"
+      minor-and-patch: true
+
+  - package-ecosystem: "npm"
+    directory: "/SpiralCoin-SPLC/alchemy-demo"
+    schedule:
+      interval: "weekly"
+    auto-merge-options:
+      merge-method: "squash"
+      auto-merge-type: "all"
+      minor-and-patch: true
+
+  - package-ecosystem: "npm"
+    directory: "/SpiralCoin-SPLC/app"
+    schedule:
+      interval: "weekly"
+    auto-merge-options:
+      merge-method: "squash"
+      auto-merge-type: "all"
+      minor-and-patch: true
+
+  - package-ecosystem: "npm"
+    directory: "/SpiralCoin-SPLC/w3a-quick-start"
+    schedule:
+      interval: "weekly"
+    auto-merge-options:
+      merge-method: "squash"
+      auto-merge-type: "all"
+      minor-and-patch: true
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    auto-merge-options:
+      merge-method: "squash"
+      auto-merge-type: "all"
