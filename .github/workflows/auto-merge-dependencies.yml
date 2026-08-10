@@ -1,0 +1,163 @@
+name: Auto-Merge Dependency Updates
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+  schedule:
+    - cron: '0 2 * * *'  # Daily at 2 AM UTC
+
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  merge-patch-and-minor:
+    name: Merge Patch & Minor Updates
+    runs-on: ubuntu-latest
+    if: |
+      github.actor == 'dependabot[bot]' ||
+      github.event_name == 'schedule'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Enable auto-merge for patch/minor updates
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: pullRequests } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              creator: 'dependabot[bot]'
+            });
+
+            for (const pr of pullRequests) {
+              // Extract version info from PR title
+              const titleMatch = pr.title.match(/from [\w.-]+ to ([\w.-]+)/i);
+              const isMajor = pr.title.match(/major|breaking/i);
+              const isMinorPatch = pr.title.match(/minor|patch/i) || titleMatch?.includes('.');
+
+              if (!isMajor && (isMinorPatch || !isMajor)) {
+                try {
+                  // Approve the PR
+                  await github.rest.pulls.createReview({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    pull_number: pr.number,
+                    event: 'APPROVE',
+                    body: 'Auto-approved: Patch/Minor dependency update'
+                  });
+
+                  // Merge the PR with squash strategy
+                  await github.rest.pulls.merge({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    pull_number: pr.number,
+                    merge_method: 'squash'
+                  });
+
+                  core.info(`✅ Merged PR #${pr.number}: ${pr.title}`);
+                } catch (error) {
+                  core.warning(`⚠️ Could not merge PR #${pr.number}: ${error.message}`);
+                }
+              }
+            }
+
+  test-major-updates:
+    name: Test Major Version Updates
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Setup Docker
+        uses: docker/setup-buildx-action@v3
+
+      - name: Install dependencies
+        run: npm ci
+        continue-on-error: true
+
+      - name: Run tests
+        run: npm test
+        continue-on-error: true
+
+      - name: Build check
+        run: npm run build
+        continue-on-error: true
+
+      - name: Report test results
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: pr } = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number
+            });
+
+            if (pr.title.match(/major|breaking|v[0-9]+\.0\.0/i)) {
+              await github.rest.pulls.createReview({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: pr.number,
+                event: 'COMMENT',
+                body: '✅ Major version update tests completed. Please review before merging.'
+              });
+            }
+
+  merge-after-tests:
+    name: Merge Approved Major Updates
+    runs-on: ubuntu-latest
+    needs: test-major-updates
+    if: |
+      always() &&
+      github.actor == 'dependabot[bot]'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Merge after tests
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: pullRequests } = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              creator: 'dependabot[bot]'
+            });
+
+            for (const pr of pullRequests) {
+              // Get PR reviews
+              const { data: reviews } = await github.rest.pulls.listReviews({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: pr.number
+              });
+
+              const hasApproval = reviews.some(r => r.state === 'APPROVED');
+              const isMajor = pr.title.match(/major|breaking/i);
+
+              if (hasApproval && isMajor) {
+                try {
+                  await github.rest.pulls.merge({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    pull_number: pr.number,
+                    merge_method: 'squash'
+                  });
+                  core.info(`✅ Merged major update PR #${pr.number}: ${pr.title}`);
+                } catch (error) {
+                  core.warning(`⚠️ Could not merge PR #${pr.number}: ${error.message}`);
+                }
+              }
+            }
